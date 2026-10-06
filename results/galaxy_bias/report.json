@@ -1,0 +1,68 @@
+{
+  "schema": "tjpcov-galaxy-bias-diagnostic-v1",
+  "scope": "Public projection scaling; not a physical covariance",
+  "passed": true,
+  "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+  "gaussian_manifest_sha256": "a280b1e4fe2ff470941a16ed0ed384ccd7cde5147a699f533265e1bd5d7ba3ac",
+  "metrics": {
+    "cng_tracer_ratio": {
+      "expected": 16,
+      "range": [
+        16.0,
+        16.0
+      ],
+      "max_relative_error": 0.0
+    },
+    "cng_native_ratio": {
+      "expected": 256,
+      "range": [
+        255.99999999999997,
+        256.0000000000004
+      ],
+      "max_relative_error": 1.5543122344752192e-15
+    },
+    "shear_control_ratio": {
+      "expected": 1,
+      "range": [
+        1.0,
+        1.0
+      ],
+      "max_relative_error": 0.0
+    },
+    "ssc_extra_bias_ratio": {
+      "expected": 16,
+      "range": [
+        16.0,
+        16.0
+      ],
+      "max_relative_error": 0.0
+    }
+  },
+  "threads": 6,
+  "inputs": {
+    "cng_trispectrum": "1Mpc^9/[(1+(k1/0.1)^2)(1+(k2/0.1)^2)]; k in Mpc^-1",
+    "ssc_background_variance": "constant1Mpc",
+    "ssc_response": "native CCL linear bias + count subtraction",
+    "galaxy_bias": [
+      1,
+      2
+    ],
+    "lens": "lens1",
+    "source": "source3"
+  },
+  "tjpcov": {
+    "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+    "status": ""
+  },
+  "source_sha256": {
+    "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+    "covariance_fourier_cNG.py": "e7b04ce41b622f1d37b1fdd674a70c71c927b70f8516ca6fd4f0d16af12c8f6d",
+    "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+    "covariance_gaussian_fsky.py": "98ab9596da9c9352054ac3f668b433fcdc5e2132d751761742e49cc2220eb8ec"
+  },
+  "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+  "script_sha256": "60cfa0f4804d5301bec8c8761855e5addb94d8a78e831694f95d2e4b3c68ab77",
+  "files": {
+    "diagnostic.npz": "e14988ed4e41cc1ac8e1ce9142418786c084fd0d717f0072a184803fc3fccda3"
+  }
+}
