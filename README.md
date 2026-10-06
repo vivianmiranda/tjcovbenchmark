@@ -12,9 +12,11 @@ Complete matrix comparisons retain all entries and show Gaussian, SSC,
 cNG and total differences separately.
 
 **Status:** the low- and high-multipole Gaussian comparisons, including
-30 × 30 galaxy-and-shear matrices, pass at floating-point precision with shared spectra and bin weights.
-The isolated environment is installed and tested. SSC, halo and cNG
-comparisons are in progress; timing measurements come last.
+30 × 30 galaxy-and-shear matrices, pass at floating-point precision with
+shared spectra and bin weights. The isolated environment is installed and
+tested. Small native SSC comparisons and their sampling diagnostics are
+also complete. Halo and cNG comparisons remain pending; timing measurements
+come last.
 
 ## Contents
 
@@ -25,6 +27,7 @@ comparisons are in progress; timing measurements come last.
 5. [CoCoA environment](#cocoa-environment)
 6. [First Gaussian comparison](#gaussian)
 7. [Gaussian results](#results)
+8. [Super-sample covariance](#ssc)
 
 ## Comparison scope <a name="scope"></a>
 
@@ -198,7 +201,7 @@ source start_cocoa.sh
 **Step :three:**: select the benchmark's OpenMP thread count.
 
 ```bash
-export OMP_NUM_THREADS=8
+export OMP_NUM_THREADS=6
 ```
 
 **Step :four:**: after the calculation, leave Cocoa's runtime environment.
@@ -259,7 +262,7 @@ python ../../tjcovbenchmark/scripts/export_lsst_y1.py \
 the OpenMP allocation.
 
 ```bash
-export OMP_NUM_THREADS=8
+export OMP_NUM_THREADS=6
 ```
 
 **Step :three:**: keep the numerical-array library single-threaded in
@@ -398,3 +401,179 @@ The [low-multipole record](results/gaussian_3x2_low/comparison.json) and
 all component checks. Their variance budgets are shown in the
 [low-multipole plot](figures/gaussian_3x2_low/gaussian_components.png) and
 [high-multipole plot](figures/gaussian_3x2_high/gaussian_components.png).
+
+## Super-sample covariance <a name="ssc"></a>
+
+SSC describes how matter fluctuations larger than the footprint change
+our measured spectra. A long-wavelength overdensity changes the local
+matter power; multiplying the responses of two spectra and integrating
+over the foreground matter produces their covariance.
+
+These tests retain **all entries of a 5 × 5 shear SSC matrix** for source
+bin 3. They use the effective multipoles of the low/high Gaussian cases.
+They are point-sampled SSC calculations: TJPCov's native SSC evaluates
+band centers, whereas its Gaussian calculator averages the bands. We do
+not combine them into an implicitly band-averaged total.
+
+### First check the sampling
+
+The initial TJPCov time grid was not sufficiently resolved for this case.
+Its circular-disc background variance rises sharply near the observer.
+The sampled values agree at shared nodes, but a coarse grid does not
+adequately describe the variation between them for the SSC projection.
+
+A diagnostic using **the same public CCL halo and projection functions**
+reproduces the native TJPCov matrix exactly, then changes one input grid
+at a time:
+
+| Change from the initial grid | Largest SSC change / initial SSC rms product |
+| --- | ---: |
+| Refine only matter-response time samples | 0.00311% |
+| Refine only background-variance time samples | 23.9959% |
+| Refine both time grids | 23.9963% |
+
+Thus the large effect is localized to **background-variance sampling**.
+It is not a 24% disagreement between halo prescriptions or between codes.
+Doubling wavenumber sampling instead changes entries by only 0.0000735%
+of the finer matrix's SSC rms product.
+
+The native refinement below doubles the intervals in both CCL time-grid
+segments, retaining the original nodes. Counts refer to the full response
+grid; TJPCov uses its source-overlap subset for the background variance.
+The normalization in this next table uses each **finer** matrix's SSC rms product,
+which explains why its first percentage differs from the table above.
+
+| CCL time-grid nodes, coarse → fine | Low-multipole SSC change |
+| --- | ---: |
+| 50 → 99 | 31.57% |
+| 99 → 197 | 2.618% |
+| 197 → 393 | 0.1574% |
+| 393 → 785 | 0.0180% |
+
+At high multipoles, 393 → 785 nodes changes entries by **0.000496%**.
+At 393 nodes, switching the low-multipole projection from `qag_quad` to
+`spline` changes entries by **0.000510%**. This tests the projection and
+time sampling; it does not establish convergence of every halo ingredient.
+
+![SSC time-grid refinement](figures/ssc_sampling/ssc_sampling.png)
+
+Markers on the left show values evaluated by CCL. The fine curve joins
+evaluated samples; it does not reconstruct the internal interpolation.
+The disc variance shown has units of length before the radial projection.
+The right panel shows the resulting native SSC variances relative to the
+785-node result.
+
+CoCoA's low-multipole quadrature checks give **0.0565%** for integration
+level 0 → 1 and **0.0457%** for 1 → 2. At level 2, increasing its global
+boost from 1 to 2 changes entries by **0.00589%**. These component checks
+are adequate to distinguish the much larger differences below; they are
+not a full-survey or Fisher-convergence certification.
+
+### Native model comparison after refinement
+
+Both codes receive the same CAMB power tables and source distribution.
+Each retains its own halo response and footprint calculation:
+
+- **CoCoA:** the fitted Tinker (2010) multiplicity and bias, Bhattacharya
+  concentration, the guarded Wynn treatment of I11, a response based on
+  the two-halo power slope and transferred to nonlinear power, and a
+  spherical-cap footprint.
+- **TJPCov:** Tinker (2008) abundance, Tinker (2010) bias, Duffy
+  concentration, CCL's linear-power slope/amplitude plus the I12 response,
+  and circular-disc background variance.
+
+The CoCoA component is evaluated directly at the requested multipoles,
+using its production C interface. Its full survey assembler additionally
+interpolates in multipole. CCL retains its native background and tracer
+interpolation. The remaining difference therefore combines several
+choices; individual ingredient tests are needed to attribute it.
+
+The following uses CoCoA boost 2/integration level 2 and the 785-node
+CCL time grid. Positive values would mean TJPCov exceeds CoCoA; the
+measured diagonal differences here are negative.
+
+| SSC comparison | Low multipoles | High multipoles |
+| --- | ---: | ---: |
+| TJPCov diagonal relative to CoCoA | −10.48% to −26.62% | −20.55% to −20.34% |
+| Largest absolute entry difference / CoCoA SSC rms product | 26.62% | 20.55% |
+
+![Refined low-multipole native SSC comparison](figures/ssc_low_refined/ssc_matrices.png)
+
+![Refined high-multipole native SSC comparison](figures/ssc_high_refined/ssc_matrices.png)
+
+The refined matrices have positive symmetric parts. The high-multipole
+SSC component is nearly rank deficient: nearby modes respond almost the
+same way to the background. The coarse TJPCov result had a tiny negative
+mode, which is retained in the archive; it disappears with refinement.
+No eigenvalues are clipped. SSC-only weak-mode ratios are sensitive here
+and must not be interpreted as a result for G + SSC + cNG.
+
+The [SSC record](results/ssc_native.json) and
+[array archive](results/ssc_native.npz) retain 19 native calculations,
+the four sampling diagnostics, complete matrices and source provenance.
+Their units are recorded explicitly. Timings are excluded from this
+accuracy campaign.
+
+### Reproduce the SSC comparison
+
+First complete the Gaussian input export and native low/high cases above.
+Keep the same two activated terminals and thread allocation.
+
+**Step :one:**: in the **TJPCov terminal**, compute the coarse baseline.
+
+```bash
+python scripts/run_ssc.py work/lsst_y1 work/gaussian_low \
+  --tjpcov ../TJPCov --match-power-a-range --output work/ssc_low_qag
+```
+
+The explicit domain flag sets CCL's lowest response scale factor to the
+CAMB table boundary, rather than requesting power at earlier times not
+supplied by that table. It preserves the full source-redshift support.
+This changes a public CCL setting; neither TJPCov nor CCL source is patched.
+
+**Step :two:**: compute the refined native matrix.
+
+```bash
+python scripts/run_ssc.py work/lsst_y1 work/gaussian_low \
+  --tjpcov ../TJPCov --match-power-a-range --a-refinement 16 \
+  --output work/ssc_low_a16
+```
+
+**Step :three:**: save the first refinement for the sampling diagnostic.
+
+```bash
+python scripts/run_ssc.py work/lsst_y1 work/gaussian_low \
+  --tjpcov ../TJPCov --match-power-a-range --a-refinement 2 \
+  --output work/ssc_low_a2
+```
+
+**Step :four:**: separate the response-grid and variance-grid effects.
+
+```bash
+python scripts/diagnose_ssc_sampling.py work/lsst_y1 work/gaussian_low \
+  work/ssc_low_qag work/ssc_low_a2 --tjpcov ../TJPCov \
+  --output work/ssc_sampling_a2
+```
+
+**Step :five:**: in the **CoCoA terminal**, from `cocoa/Cocoa/`, evaluate
+its native response and spherical-cap projection at the same multipoles.
+
+```bash
+python ../../tjcovbenchmark/scripts/run_cocoa_ssc.py \
+  ../../tjcovbenchmark/work/lsst_y1 ../../tjcovbenchmark/work/gaussian_low \
+  --cocoa . --accuracy-boost 2 --integration-accuracy 2 \
+  --output ../../tjcovbenchmark/work/cocoa_ssc_low_ab2_i2
+```
+
+**Step :six:**: in the **TJPCov terminal**, compare and plot all entries.
+
+```bash
+python scripts/compare_ssc.py work/cocoa_ssc_low_ab2_i2 work/ssc_low_a16 \
+  --output work/ssc_comparison_low_refined --figures figures/ssc_low_refined
+```
+
+For high multipoles, use `work/gaussian_high` and new output paths.
+For the refinement table, repeat Step 2 with factors 1, 2, 4, 8 and 16.
+`--k-refinement 2` tests k-grid density; `--integration-method spline`
+tests the projection method separately. Repeat the CoCoA step at boosts
+1/2 and integration levels 0/1/2 to check its own numerical controls.

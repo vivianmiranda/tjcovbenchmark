@@ -52,7 +52,9 @@ Cocoa environment dump; it can contain credentials.
 
 The TJPCov recipe was installed and import-tested on 2026-10-06. The
 resolved Conda and Python versions are saved under results/environment/.
-The low/high five-band Gaussian numerical cases pass. For a new install,
+The low/high 5x5 and 30x30 Gaussian cases pass. Native 5x5 SSC and
+its sampling refinements have run; read the measured findings in
+[the SSC diagnostic](references/ssc_sampling_diagnostic.md). For a new install,
 check imports and a minimal source-bin case; a recipe alone is not proof
 that the environment works.
 

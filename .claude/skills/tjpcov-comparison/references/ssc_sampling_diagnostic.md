@@ -1,7 +1,7 @@
 # Separating the SSC scale-factor tables
 
-Prepared on 2026-10-06. This record describes a diagnostic, not a new
-convergence result. Its numerical execution belongs to the coordinator.
+Executed on 2026-10-06. The coordinator ran all four cases; the numerical
+findings and limits are recorded below.
 
 The native TJPCov SSC calculator uses CCL's power-grid scale factors for
 two different tables. The halo response is tabulated across the complete
@@ -77,3 +77,36 @@ of changing CCL's internal cosmology tables or an incomplete recreation.
 This test isolates two interpolation samplings. It does not establish
 mass integration, physical response modeling, cross-code SSC agreement,
 or a converged full covariance.
+
+## Measured result
+
+The coarse/coarse and fine/fine diagnostics reproduce the corresponding
+native TJPCov matrices exactly. Relative to the coarse SSC diagonal rms
+product, refining only the response a grid changes entries by 0.00311%;
+refining only the disc-variance a grid changes them by 23.9959%. Refining
+both gives 23.9963%. Doubling k sampling gives only 0.0000735%.
+
+Native a-grid refinement retains shared nodes. Using the finer matrix's
+SSC rms normalization, 50->99->197->393->785 response-grid nodes gives
+successive changes 31.5726%, 2.6184%, 0.15742%, 0.0179984% at low ell.
+The last change at high ell is 0.000496484%. At 393 nodes, qag_quad versus
+spline changes low-ell SSC by 0.000509868%. The first 31.57% uses a different
+normalization from the 24% diagnostic; this is not a numerical conflict.
+
+CoCoA integration 0->1->2 changes the low-ell SSC by 0.0565306% and
+0.0457384%, respectively. At integration 2, global boost 1->2 changes
+entries by 0.00588654%. All runs use six or fewer OpenMP workers and one
+BLAS worker. Their elapsed times are diagnostic only because project
+regression validation was active concurrently.
+
+The refined native comparison retains different halo fits, responses,
+background/tracer interpolation and cap/disc windows. TJPCov shear SSC
+diagonals are 10.48--26.62% below CoCoA at low ell, 20.34--20.55% below at
+high ell. Do not attribute the whole residual to a single ingredient.
+The high-ell component is almost rank deficient: the initial small
+negative mode disappears after refinement, with no eigenvalue clipping.
+SSC-only weak-mode ratios do not certify total covariance accuracy.
+
+The native archive includes all 19 cases, all four diagnostics and raw
+matrices. It is not a uniformly band-averaged total: native TJPCov SSC
+samples band centers, whereas its Gaussian calculator averages bands.

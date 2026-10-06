@@ -1,12 +1,10 @@
 # Comparison plan and parity with OneCovariance
 
-Added as item 5, then moved to item 4 when the Schmidt study was deferred
-to the end of the queue, 2026-10-06. The user authorized parallel agents
-for source review, scripts, README and environment preparation while
-CoCoA validation and a two-thread OneCov accuracy refresh run. This
-preparation does not authorize a third numerical job or an installation.
-Numerical TJPCov comparisons wait for the coordinator to release a slot
-and for the dedicated environment to be installed with authorization.
+Current queue item 4. On 2026-10-06 the user authorized numerical
+TJPCov comparisons using up to six OpenMP threads, alongside the existing
+CoCoA validation. The separate environment is installed and checked.
+Correctness runs remain sequential within this comparison; benchmark
+timings wait for a quiet machine. No production code is changed here.
 
 ## Common inputs
 
@@ -149,11 +147,23 @@ are unavailable. Explain that capability difference beside the figure.
 Keep timings in tables. Add each plot to the README when its comparison
 is validated; do not fill it with prospective or copied numerical results.
 
-## Next concrete action
+## Current numerical checkpoint — 2026-10-06
 
-After dependency installation is authorized and the numerical slot is
-free, validate the environment and execute the prepared four-script
-Gaussian workflow in the README. No numerical result exists yet.
+Gaussian shear 5x5 and galaxy/shear 30x30 matrices pass at both low and
+high multipoles. Native spectra are exported to CoCoA and native discrete
+TJPCov bin weights are matched. Every component agrees within 7e-16 of
+the total Gaussian diagonal rms product. All totals are positive.
+
+Nineteen native SSC cases and four public-CCL sampling diagnostics have
+completed. See `references/ssc_sampling_diagnostic.md` for the isolated
+background-variance sensitivity and remaining model differences. The
+complete records and arrays are in `results/ssc_native.json` and `.npz`.
+These are 5x5 point-sampled SSC components, not full G+SSC+cNG totals.
+
+Next: native halo ingredients and separated trispectra, then the bounded
+cNG and complete-matrix comparisons below. Real-space worker, memory and
+noise audits remain gates before a native real-space run. No overlapping
+elapsed times from this campaign may be used as benchmarks.
 
 ## Gaussian preparation checkpoint — 2026-10-06
 
@@ -188,11 +198,9 @@ with these arrays. It compares all four Gaussian pieces, checks total
 positivity and generalized variance ratios, and preserves every entry.
 `scripts/plot_gaussian.py` uses the OneCov correlation/residual/component
 layout, with actual residual ranges. It will not plot a failed comparison
-as a passing result. No scientific figures were produced during prep.
+as a passing result. No scientific figures were produced during the initial preparation.
+The completed numerical campaign is summarized above.
 
-Remaining before a first claim: install/import in the private environment;
-run the low-ell 5x5 case; inspect exact SACC and CCL runtime behavior;
-repeat high ell; then extend to the six-observable 30x30 case. The latter
-needs explicit zero-noise extraction for galaxy legs and is not silently
-covered by the shear-only script. Numerical convergence and native spectra
-are separate later checks. Syntax checks are not numerical validation.
+The initial import, source-bin and galaxy/shear extension gates are now
+complete. Gaussian assembly agreement with shared spectra does not yet
+establish agreement of independently generated native spectra.
