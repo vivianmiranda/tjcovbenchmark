@@ -1,0 +1,2407 @@
+{
+  "schema": "trispectrum-study-v1",
+  "halo_order": [
+    "1h",
+    "2h (1+3)",
+    "2h (2+2)",
+    "3h",
+    "4h"
+  ],
+  "manifests": {
+    "native_m128": {
+      "schema": "tjpcov-trispectrum-v1",
+      "status": "completed",
+      "scope": "Public CCL matter functions used by TJPCov cNG",
+      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "units": {
+        "k": "h/Mpc",
+        "power": "(Mpc/h)^3",
+        "terms": "(Mpc/h)^9"
+      },
+      "axes": {
+        "terms": [
+          "redshift",
+          "halo_order",
+          "unordered_pair"
+        ]
+      },
+      "mass_precision": {
+        "log10M_min": 8.0,
+        "log10M_max": 16.0,
+        "nM": 128,
+        "integration_method_M": "simpson"
+      },
+      "mass_function": "tinker08",
+      "concentration": "duffy08",
+      "separable_growth": true,
+      "tinker10_normalization": "CCL norm_all_z=False; not CoCoA normalization",
+      "maximum_exchange_asymmetry_over_term_peak": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.1733098598073248e-16
+      ],
+      "tjpcov": {
+        "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+        "status": ""
+      },
+      "tjpcov_source_sha256": "e7b04ce41b622f1d37b1fdd674a70c71c927b70f8516ca6fd4f0d16af12c8f6d",
+      "ccl_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+      "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+      "versions": {
+        "pyccl": "3.3.3",
+        "tjpcov": "0.5.2.dev9+g2f59302af"
+      },
+      "threads": 6,
+      "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
+      "timing_scope": "accuracy only",
+      "files": {
+        "trispectrum.npz": "a6d9e2a6c64b10e9dd81488812049a203a31d4a1776da9d8802aa0eeaa091bce"
+      }
+    },
+    "native_m255": {
+      "schema": "tjpcov-trispectrum-v1",
+      "status": "completed",
+      "scope": "Public CCL matter functions used by TJPCov cNG",
+      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "units": {
+        "k": "h/Mpc",
+        "power": "(Mpc/h)^3",
+        "terms": "(Mpc/h)^9"
+      },
+      "axes": {
+        "terms": [
+          "redshift",
+          "halo_order",
+          "unordered_pair"
+        ]
+      },
+      "mass_precision": {
+        "log10M_min": 8.0,
+        "log10M_max": 16.0,
+        "nM": 255,
+        "integration_method_M": "simpson"
+      },
+      "mass_function": "tinker08",
+      "concentration": "duffy08",
+      "separable_growth": true,
+      "tinker10_normalization": "CCL norm_all_z=False; not CoCoA normalization",
+      "maximum_exchange_asymmetry_over_term_peak": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0866549303087315e-16
+      ],
+      "tjpcov": {
+        "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+        "status": ""
+      },
+      "tjpcov_source_sha256": "e7b04ce41b622f1d37b1fdd674a70c71c927b70f8516ca6fd4f0d16af12c8f6d",
+      "ccl_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+      "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+      "versions": {
+        "pyccl": "3.3.3",
+        "tjpcov": "0.5.2.dev9+g2f59302af"
+      },
+      "threads": 6,
+      "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
+      "timing_scope": "accuracy only",
+      "files": {
+        "trispectrum.npz": "9741eefbd3676fedbe45a694163b450f52afc3cc487e73c7c9f30cf0afbd7ab3"
+      }
+    },
+    "direct_m255": {
+      "schema": "tjpcov-trispectrum-v1",
+      "status": "completed",
+      "scope": "Public CCL matter functions used by TJPCov cNG",
+      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "units": {
+        "k": "h/Mpc",
+        "power": "(Mpc/h)^3",
+        "terms": "(Mpc/h)^9"
+      },
+      "axes": {
+        "terms": [
+          "redshift",
+          "halo_order",
+          "unordered_pair"
+        ]
+      },
+      "mass_precision": {
+        "log10M_min": 8.0,
+        "log10M_max": 16.0,
+        "nM": 255,
+        "integration_method_M": "simpson"
+      },
+      "mass_function": "tinker08",
+      "concentration": "duffy08",
+      "separable_growth": false,
+      "tinker10_normalization": "CCL norm_all_z=False; not CoCoA normalization",
+      "maximum_exchange_asymmetry_over_term_peak": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0866504795555222e-16
+      ],
+      "tjpcov": {
+        "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+        "status": ""
+      },
+      "tjpcov_source_sha256": "e7b04ce41b622f1d37b1fdd674a70c71c927b70f8516ca6fd4f0d16af12c8f6d",
+      "ccl_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+      "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+      "versions": {
+        "pyccl": "3.3.3",
+        "tjpcov": "0.5.2.dev9+g2f59302af"
+      },
+      "threads": 6,
+      "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
+      "timing_scope": "accuracy only",
+      "files": {
+        "trispectrum.npz": "76b60a73ea8032157ae908d03a9daaf544070a023f9520693b43ab93e4d172ea"
+      }
+    },
+    "bhattacharya_m255": {
+      "schema": "tjpcov-trispectrum-v1",
+      "status": "completed",
+      "scope": "Public CCL matter functions used by TJPCov cNG",
+      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "units": {
+        "k": "h/Mpc",
+        "power": "(Mpc/h)^3",
+        "terms": "(Mpc/h)^9"
+      },
+      "axes": {
+        "terms": [
+          "redshift",
+          "halo_order",
+          "unordered_pair"
+        ]
+      },
+      "mass_precision": {
+        "log10M_min": 8.0,
+        "log10M_max": 16.0,
+        "nM": 255,
+        "integration_method_M": "simpson"
+      },
+      "mass_function": "tinker08",
+      "concentration": "bhattacharya13",
+      "separable_growth": true,
+      "tinker10_normalization": "CCL norm_all_z=False; not CoCoA normalization",
+      "maximum_exchange_asymmetry_over_term_peak": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0866533836606618e-16
+      ],
+      "tjpcov": {
+        "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+        "status": ""
+      },
+      "tjpcov_source_sha256": "e7b04ce41b622f1d37b1fdd674a70c71c927b70f8516ca6fd4f0d16af12c8f6d",
+      "ccl_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+      "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+      "versions": {
+        "pyccl": "3.3.3",
+        "tjpcov": "0.5.2.dev9+g2f59302af"
+      },
+      "threads": 6,
+      "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
+      "timing_scope": "accuracy only",
+      "files": {
+        "trispectrum.npz": "9df06b0ecf89fc1dd75dc25ccad924943da411e7c55d787360eec812edea8af7"
+      }
+    },
+    "tinker10_m255": {
+      "schema": "tjpcov-trispectrum-v1",
+      "status": "completed",
+      "scope": "Public CCL matter functions used by TJPCov cNG",
+      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "units": {
+        "k": "h/Mpc",
+        "power": "(Mpc/h)^3",
+        "terms": "(Mpc/h)^9"
+      },
+      "axes": {
+        "terms": [
+          "redshift",
+          "halo_order",
+          "unordered_pair"
+        ]
+      },
+      "mass_precision": {
+        "log10M_min": 8.0,
+        "log10M_max": 16.0,
+        "nM": 255,
+        "integration_method_M": "simpson"
+      },
+      "mass_function": "tinker10",
+      "concentration": "duffy08",
+      "separable_growth": true,
+      "tinker10_normalization": "CCL norm_all_z=False; not CoCoA normalization",
+      "maximum_exchange_asymmetry_over_term_peak": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.173312435553e-16
+      ],
+      "tjpcov": {
+        "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+        "status": ""
+      },
+      "tjpcov_source_sha256": "e7b04ce41b622f1d37b1fdd674a70c71c927b70f8516ca6fd4f0d16af12c8f6d",
+      "ccl_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+      "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+      "versions": {
+        "pyccl": "3.3.3",
+        "tjpcov": "0.5.2.dev9+g2f59302af"
+      },
+      "threads": 6,
+      "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
+      "timing_scope": "accuracy only",
+      "files": {
+        "trispectrum.npz": "3e9820ae34abd30bebdd3025181dc46823a405be00d32f8879425cf12d573644"
+      }
+    },
+    "both_m255": {
+      "schema": "tjpcov-trispectrum-v1",
+      "status": "completed",
+      "scope": "Public CCL matter functions used by TJPCov cNG",
+      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "units": {
+        "k": "h/Mpc",
+        "power": "(Mpc/h)^3",
+        "terms": "(Mpc/h)^9"
+      },
+      "axes": {
+        "terms": [
+          "redshift",
+          "halo_order",
+          "unordered_pair"
+        ]
+      },
+      "mass_precision": {
+        "log10M_min": 8.0,
+        "log10M_max": 16.0,
+        "nM": 255,
+        "integration_method_M": "simpson"
+      },
+      "mass_function": "tinker10",
+      "concentration": "bhattacharya13",
+      "separable_growth": true,
+      "tinker10_normalization": "CCL norm_all_z=False; not CoCoA normalization",
+      "maximum_exchange_asymmetry_over_term_peak": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.1733093049289334e-16
+      ],
+      "tjpcov": {
+        "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+        "status": ""
+      },
+      "tjpcov_source_sha256": "e7b04ce41b622f1d37b1fdd674a70c71c927b70f8516ca6fd4f0d16af12c8f6d",
+      "ccl_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+      "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+      "versions": {
+        "pyccl": "3.3.3",
+        "tjpcov": "0.5.2.dev9+g2f59302af"
+      },
+      "threads": 6,
+      "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
+      "timing_scope": "accuracy only",
+      "files": {
+        "trispectrum.npz": "fef99472fc1747e344b85a2d6f66c043d30ee599abad7fe016a03517d7e70e9d"
+      }
+    },
+    "cocoa_i0": {
+      "schema": "cocoa-trispectrum-v1",
+      "status": "completed",
+      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "units": {
+        "k": "h/Mpc",
+        "power": "(Mpc/h)^3",
+        "terms": "(Mpc/h)^9"
+      },
+      "axes": {
+        "terms": [
+          "redshift",
+          "halo_order",
+          "unordered_pair"
+        ]
+      },
+      "integration_accuracy": 0,
+      "halo_mass_nquad": 96,
+      "tree_nquad": 96,
+      "tree_npanel": 20,
+      "lnm_edges": [
+        -92.10340371976183,
+        -82.89306334778566,
+        -73.68272297580947,
+        -64.47238260383328,
+        -55.2620422318571,
+        -46.05170185988092,
+        -36.841361487904734,
+        -27.63102111592855,
+        -18.420680743952367,
+        -9.210340371976184,
+        0.0,
+        9.210340371976184,
+        11.51292546497023,
+        13.815510557964274,
+        16.981565060831088,
+        20.1476195636979,
+        23.31367406656471,
+        26.479728569431526,
+        29.64578307229834,
+        32.81183757516515,
+        35.977892078031964,
+        39.14394658089878
+      ],
+      "core": {
+        "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+        "status": ""
+      },
+      "lsst_y1": {
+        "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+        "status": ""
+      },
+      "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+      "threads": 6,
+      "script_sha256": "eaaa4b53e4d696aac64a626c17c58a02c5f1f7532af6b9ee910fbbb7ef944662",
+      "power_table_check": "linear and nonlinear inputs bitwise equal",
+      "timing_scope": "accuracy only",
+      "files": {
+        "trispectrum.npz": "5eec487f27b282a3c7ebe120e348e395adff2ddebe2c42067f16e00159da5ce7"
+      }
+    },
+    "cocoa_i1": {
+      "schema": "cocoa-trispectrum-v1",
+      "status": "completed",
+      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "units": {
+        "k": "h/Mpc",
+        "power": "(Mpc/h)^3",
+        "terms": "(Mpc/h)^9"
+      },
+      "axes": {
+        "terms": [
+          "redshift",
+          "halo_order",
+          "unordered_pair"
+        ]
+      },
+      "integration_accuracy": 1,
+      "halo_mass_nquad": 128,
+      "tree_nquad": 128,
+      "tree_npanel": 21,
+      "lnm_edges": [
+        -92.10340371976183,
+        -82.89306334778566,
+        -73.68272297580947,
+        -64.47238260383328,
+        -55.2620422318571,
+        -46.05170185988092,
+        -36.841361487904734,
+        -27.63102111592855,
+        -18.420680743952367,
+        -9.210340371976184,
+        0.0,
+        9.210340371976184,
+        11.51292546497023,
+        13.815510557964274,
+        16.981565060831088,
+        20.1476195636979,
+        23.31367406656471,
+        26.479728569431526,
+        29.64578307229834,
+        32.81183757516515,
+        35.977892078031964,
+        39.14394658089878
+      ],
+      "core": {
+        "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+        "status": ""
+      },
+      "lsst_y1": {
+        "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+        "status": ""
+      },
+      "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+      "threads": 6,
+      "script_sha256": "eaaa4b53e4d696aac64a626c17c58a02c5f1f7532af6b9ee910fbbb7ef944662",
+      "power_table_check": "linear and nonlinear inputs bitwise equal",
+      "timing_scope": "accuracy only",
+      "files": {
+        "trispectrum.npz": "a72084e87c1e9b808d6a3c40c0bc714f2917ba68df2a96adeebeed7d5e21274b"
+      }
+    },
+    "cocoa_i2": {
+      "schema": "cocoa-trispectrum-v1",
+      "status": "completed",
+      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "units": {
+        "k": "h/Mpc",
+        "power": "(Mpc/h)^3",
+        "terms": "(Mpc/h)^9"
+      },
+      "axes": {
+        "terms": [
+          "redshift",
+          "halo_order",
+          "unordered_pair"
+        ]
+      },
+      "integration_accuracy": 2,
+      "halo_mass_nquad": 256,
+      "tree_nquad": 256,
+      "tree_npanel": 22,
+      "lnm_edges": [
+        -92.10340371976183,
+        -82.89306334778566,
+        -73.68272297580947,
+        -64.47238260383328,
+        -55.2620422318571,
+        -46.05170185988092,
+        -36.841361487904734,
+        -27.63102111592855,
+        -18.420680743952367,
+        -9.210340371976184,
+        0.0,
+        9.210340371976184,
+        11.51292546497023,
+        13.815510557964274,
+        16.981565060831088,
+        20.1476195636979,
+        23.31367406656471,
+        26.479728569431526,
+        29.64578307229834,
+        32.81183757516515,
+        35.977892078031964,
+        39.14394658089878
+      ],
+      "core": {
+        "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+        "status": ""
+      },
+      "lsst_y1": {
+        "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+        "status": ""
+      },
+      "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+      "threads": 6,
+      "script_sha256": "eaaa4b53e4d696aac64a626c17c58a02c5f1f7532af6b9ee910fbbb7ef944662",
+      "power_table_check": "linear and nonlinear inputs bitwise equal",
+      "timing_scope": "accuracy only",
+      "files": {
+        "trispectrum.npz": "2e377b4d0de9746bc518360f37449892d47b9d365874a4fd0fc1d5e2791318fb"
+      }
+    },
+    "comparison_native": {
+      "schema": "trispectrum-comparison-v1",
+      "status": "completed",
+      "cocoa": {
+        "schema": "cocoa-trispectrum-v1",
+        "status": "completed",
+        "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+        "halo_order": [
+          "1h",
+          "2h13",
+          "2h22",
+          "3h",
+          "4h"
+        ],
+        "units": {
+          "k": "h/Mpc",
+          "power": "(Mpc/h)^3",
+          "terms": "(Mpc/h)^9"
+        },
+        "axes": {
+          "terms": [
+            "redshift",
+            "halo_order",
+            "unordered_pair"
+          ]
+        },
+        "integration_accuracy": 0,
+        "halo_mass_nquad": 96,
+        "tree_nquad": 96,
+        "tree_npanel": 20,
+        "lnm_edges": [
+          -92.10340371976183,
+          -82.89306334778566,
+          -73.68272297580947,
+          -64.47238260383328,
+          -55.2620422318571,
+          -46.05170185988092,
+          -36.841361487904734,
+          -27.63102111592855,
+          -18.420680743952367,
+          -9.210340371976184,
+          0.0,
+          9.210340371976184,
+          11.51292546497023,
+          13.815510557964274,
+          16.981565060831088,
+          20.1476195636979,
+          23.31367406656471,
+          26.479728569431526,
+          29.64578307229834,
+          32.81183757516515,
+          35.977892078031964,
+          39.14394658089878
+        ],
+        "core": {
+          "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+          "status": ""
+        },
+        "lsst_y1": {
+          "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+          "status": ""
+        },
+        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "threads": 6,
+        "script_sha256": "eaaa4b53e4d696aac64a626c17c58a02c5f1f7532af6b9ee910fbbb7ef944662",
+        "power_table_check": "linear and nonlinear inputs bitwise equal",
+        "timing_scope": "accuracy only",
+        "files": {
+          "trispectrum.npz": "5eec487f27b282a3c7ebe120e348e395adff2ddebe2c42067f16e00159da5ce7"
+        }
+      },
+      "ccl": {
+        "schema": "tjpcov-trispectrum-v1",
+        "status": "completed",
+        "scope": "Public CCL matter functions used by TJPCov cNG",
+        "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+        "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+        "halo_order": [
+          "1h",
+          "2h13",
+          "2h22",
+          "3h",
+          "4h"
+        ],
+        "units": {
+          "k": "h/Mpc",
+          "power": "(Mpc/h)^3",
+          "terms": "(Mpc/h)^9"
+        },
+        "axes": {
+          "terms": [
+            "redshift",
+            "halo_order",
+            "unordered_pair"
+          ]
+        },
+        "mass_precision": {
+          "log10M_min": 8.0,
+          "log10M_max": 16.0,
+          "nM": 255,
+          "integration_method_M": "simpson"
+        },
+        "mass_function": "tinker08",
+        "concentration": "duffy08",
+        "separable_growth": true,
+        "tinker10_normalization": "CCL norm_all_z=False; not CoCoA normalization",
+        "maximum_exchange_asymmetry_over_term_peak": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0866549303087315e-16
+        ],
+        "tjpcov": {
+          "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+          "status": ""
+        },
+        "tjpcov_source_sha256": "e7b04ce41b622f1d37b1fdd674a70c71c927b70f8516ca6fd4f0d16af12c8f6d",
+        "ccl_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+        "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+        "versions": {
+          "pyccl": "3.3.3",
+          "tjpcov": "0.5.2.dev9+g2f59302af"
+        },
+        "threads": 6,
+        "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
+        "timing_scope": "accuracy only",
+        "files": {
+          "trispectrum.npz": "9741eefbd3676fedbe45a694163b450f52afc3cc487e73c7c9f30cf0afbd7ab3"
+        }
+      },
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "native": [
+        {
+          "redshift": 0.1,
+          "fractional_range": [
+            [
+              -0.02259828625637532,
+              0.216982669267134
+            ],
+            [
+              -0.018414290097813795,
+              0.15213017024278352
+            ],
+            [
+              -0.014466238352691955,
+              0.13095629177333543
+            ],
+            [
+              -0.008550131596864338,
+              0.06512633146978344
+            ],
+            [
+              -0.018456348877935087,
+              0.6163065135945966
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.216982669267134,
+            0.15213017024278352,
+            0.13095629177333543,
+            0.06512633146978344,
+            0.6163065135945966
+          ],
+          "maximum_diagonal_fractional": [
+            0.216982669267134,
+            0.15213017024278352,
+            0.13095629177333543,
+            0.06512633146978344,
+            0.011846295266863677
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.173588400100789,
+            0.13176972187083402,
+            0.11135855659638728,
+            0.05814726759145107,
+            0.6163065135945966
+          ],
+          "sum_fractional_range": [
+            -0.015602904063893863,
+            0.208167945731496
+          ]
+        },
+        {
+          "redshift": 0.5,
+          "fractional_range": [
+            [
+              0.006159376597019778,
+              0.26146064732606733
+            ],
+            [
+              0.012310363305866476,
+              0.1713876803442108
+            ],
+            [
+              0.04995561480662894,
+              0.19274711091895852
+            ],
+            [
+              0.023070693287009975,
+              0.0654811230832049
+            ],
+            [
+              -0.05722301460801602,
+              0.6158654920180052
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.26146064732606733,
+            0.1713876803442108,
+            0.19274711091895852,
+            0.0654811230832049,
+            0.6158654920180052
+          ],
+          "maximum_diagonal_fractional": [
+            0.26146064732606733,
+            0.1713876803442108,
+            0.19274711091895852,
+            0.06042450731944783,
+            0.05722301460801602
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.21129852930050574,
+            0.1638367435168333,
+            0.17516700126162663,
+            0.0654811230832049,
+            0.6158654920180052
+          ],
+          "sum_fractional_range": [
+            -0.006912208228951888,
+            0.2516143434625262
+          ]
+        },
+        {
+          "redshift": 1.0,
+          "fractional_range": [
+            [
+              0.018406673314053042,
+              0.08204847280514653
+            ],
+            [
+              0.02567826483835574,
+              0.06876216773405934
+            ],
+            [
+              0.07702041251982762,
+              0.10305552831007125
+            ],
+            [
+              0.0001589642584446591,
+              0.04375356724062542
+            ],
+            [
+              -0.07122191704061441,
+              0.6152174188240667
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.08204847280514653,
+            0.06876216773405934,
+            0.10305552831007125,
+            0.04375356724062542,
+            0.6152174188240667
+          ],
+          "maximum_diagonal_fractional": [
+            0.06885746633649045,
+            0.055106132417511895,
+            0.10305552831007125,
+            0.042368994169495675,
+            0.07122191704061441
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.08204847280514653,
+            0.06876216773405934,
+            0.1005634142099106,
+            0.04375356724062542,
+            0.6152174188240667
+          ],
+          "sum_fractional_range": [
+            -0.010158333757154914,
+            0.3881274892624913
+          ]
+        }
+      ],
+      "common_power_and_moments": [
+        {
+          "redshift": 0.1,
+          "fractional_range": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -2.984525788388183e-16,
+              3.0843674840138233e-16
+            ],
+            [
+              -9.485559508472818e-06,
+              1.608783072602824e-06
+            ],
+            [
+              -3.4398076838546395e-05,
+              3.1947115902477775e-06
+            ],
+            [
+              -0.00015226865341691798,
+              5.170667186930202e-06
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.0,
+            3.0843674840138233e-16,
+            9.485559508472818e-06,
+            3.4398076838546395e-05,
+            0.00015226865341691798
+          ],
+          "maximum_diagonal_fractional": [
+            0.0,
+            2.984525788388183e-16,
+            9.485559508472818e-06,
+            3.4398076838546395e-05,
+            8.506732715605808e-05
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.0,
+            3.0843674840138233e-16,
+            1.608783072602824e-06,
+            1.6150933419623468e-05,
+            0.00015226865341691798
+          ],
+          "sum_fractional_range": [
+            -5.437991638768125e-05,
+            4.058741556844936e-06
+          ]
+        },
+        {
+          "redshift": 0.5,
+          "fractional_range": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -3.0095327917477206e-16,
+              3.9682808587596873e-16
+            ],
+            [
+              -6.582370695852697e-05,
+              2.401248259574078e-06
+            ],
+            [
+              -0.0002323659797549819,
+              4.066033277845265e-06
+            ],
+            [
+              -0.0005206244129669891,
+              5.749784662823707e-06
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.0,
+            3.9682808587596873e-16,
+            6.582370695852697e-05,
+            0.0002323659797549819,
+            0.0005206244129669891
+          ],
+          "maximum_diagonal_fractional": [
+            0.0,
+            3.702443670799498e-16,
+            6.582370695852697e-05,
+            0.0002323659797549819,
+            0.0005206244129669891
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.0,
+            3.9682808587596873e-16,
+            9.956349176362132e-06,
+            0.00011642617902540024,
+            0.0002644169538646965
+          ],
+          "sum_fractional_range": [
+            -0.00015452507970581397,
+            4.588380637216005e-06
+          ]
+        },
+        {
+          "redshift": 1.0,
+          "fractional_range": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -2.1374588252375546e-16,
+              3.506371653840779e-16
+            ],
+            [
+              -0.00016120582483964018,
+              5.938717876614662e-06
+            ],
+            [
+              -0.000581342167106641,
+              1.0500881451875688e-05
+            ],
+            [
+              -0.0011936816311340713,
+              1.5341765449171377e-05
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.0,
+            3.506371653840779e-16,
+            0.00016120582483964018,
+            0.000581342167106641,
+            0.0011936816311340713
+          ],
+          "maximum_diagonal_fractional": [
+            0.0,
+            3.506371653840779e-16,
+            0.00016120582483964018,
+            0.000581342167106641,
+            0.0011936816311340713
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.0,
+            2.79676387979554e-16,
+            2.4958798616437054e-05,
+            0.00029406188592796253,
+            0.0006677563942899431
+          ],
+          "sum_fractional_range": [
+            -0.0004934511553110754,
+            1.3590634784010902e-05
+          ]
+        }
+      ],
+      "power_reader_effect": [
+        {
+          "redshift": 0.1,
+          "fractional_range": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -7.667365234802247e-05,
+              0.00010599529478517021
+            ],
+            [
+              -5.2443773575032806e-05,
+              8.656308245085492e-05
+            ],
+            [
+              -0.0005514799255689592,
+              0.0019422949306120614
+            ],
+            [
+              -0.38130313454172216,
+              0.01879262159363715
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.0,
+            0.00010599529478517021,
+            8.656308245085492e-05,
+            0.0019422949306120614,
+            0.38130313454172216
+          ],
+          "maximum_diagonal_fractional": [
+            0.0,
+            0.00010599529478517021,
+            2.0989905075185793e-05,
+            0.00014750944788840764,
+            0.00021703104853607876
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.0,
+            0.00010575866158523703,
+            8.656308245085492e-05,
+            0.0019422949306120614,
+            0.38130313454172216
+          ],
+          "sum_fractional_range": [
+            -0.12275251511380791,
+            0.010314157577244742
+          ]
+        },
+        {
+          "redshift": 0.5,
+          "fractional_range": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -0.00010664699750339394,
+              7.600175220940585e-05
+            ],
+            [
+              -8.24182064065301e-05,
+              5.6572009580969874e-05
+            ],
+            [
+              -0.0006110891874005492,
+              0.0018823627920379231
+            ],
+            [
+              -0.3813201426412788,
+              0.018700798527737497
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.0,
+            0.00010664699750339394,
+            8.24182064065301e-05,
+            0.0018823627920379231,
+            0.3813201426412788
+          ],
+          "maximum_diagonal_fractional": [
+            0.0,
+            0.00010664699750339394,
+            2.1033808161351527e-05,
+            0.00017374052703594603,
+            0.00018516757480824297
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.0,
+            0.00010661666566065925,
+            8.24182064065301e-05,
+            0.0018823627920379231,
+            0.3813201426412788
+          ],
+          "sum_fractional_range": [
+            -0.18949017513787714,
+            0.013000003370722935
+          ]
+        },
+        {
+          "redshift": 1.0,
+          "fractional_range": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -8.480137976672393e-05,
+              9.785178972900524e-05
+            ],
+            [
+              -6.057190733825017e-05,
+              7.842385082739345e-05
+            ],
+            [
+              -0.0005679270446288159,
+              0.0019254737060363572
+            ],
+            [
+              -0.38123709851149723,
+              0.018767776278750536
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.0,
+            9.785178972900524e-05,
+            7.842385082739345e-05,
+            0.0019254737060363572,
+            0.38123709851149723
+          ],
+          "maximum_diagonal_fractional": [
+            0.0,
+            9.785178972900524e-05,
+            1.2874239915130222e-05,
+            0.00013124141628209691,
+            0.00019262972371641358
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.0,
+            9.764760787661262e-05,
+            7.842385082739345e-05,
+            0.0019254737060363572,
+            0.38123709851149723
+          ],
+          "sum_fractional_range": [
+            -0.2708663066464537,
+            0.01563793862106344
+          ]
+        }
+      ],
+      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "native_manifest_sha256": "f992638f815243e19b963bfb41ba4252bc44dd2345c171cac09993147357a2dc",
+      "script_sha256": "d8601d571e3bb77d0fd6838eb2276d99966e865a3e1a6894b3fd8d163c5c3d41",
+      "files": {
+        "comparison.npz": "df979baca701029afbda537baf1268c9cc0596e572ce13f8a6e6beb38d518480"
+      },
+      "scope": "Matter trispectra, not projected covariance; copied 1h consistency check"
+    },
+    "comparison_direct": {
+      "schema": "trispectrum-comparison-v1",
+      "status": "completed",
+      "cocoa": {
+        "schema": "cocoa-trispectrum-v1",
+        "status": "completed",
+        "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+        "halo_order": [
+          "1h",
+          "2h13",
+          "2h22",
+          "3h",
+          "4h"
+        ],
+        "units": {
+          "k": "h/Mpc",
+          "power": "(Mpc/h)^3",
+          "terms": "(Mpc/h)^9"
+        },
+        "axes": {
+          "terms": [
+            "redshift",
+            "halo_order",
+            "unordered_pair"
+          ]
+        },
+        "integration_accuracy": 0,
+        "halo_mass_nquad": 96,
+        "tree_nquad": 96,
+        "tree_npanel": 20,
+        "lnm_edges": [
+          -92.10340371976183,
+          -82.89306334778566,
+          -73.68272297580947,
+          -64.47238260383328,
+          -55.2620422318571,
+          -46.05170185988092,
+          -36.841361487904734,
+          -27.63102111592855,
+          -18.420680743952367,
+          -9.210340371976184,
+          0.0,
+          9.210340371976184,
+          11.51292546497023,
+          13.815510557964274,
+          16.981565060831088,
+          20.1476195636979,
+          23.31367406656471,
+          26.479728569431526,
+          29.64578307229834,
+          32.81183757516515,
+          35.977892078031964,
+          39.14394658089878
+        ],
+        "core": {
+          "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+          "status": ""
+        },
+        "lsst_y1": {
+          "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+          "status": ""
+        },
+        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "threads": 6,
+        "script_sha256": "eaaa4b53e4d696aac64a626c17c58a02c5f1f7532af6b9ee910fbbb7ef944662",
+        "power_table_check": "linear and nonlinear inputs bitwise equal",
+        "timing_scope": "accuracy only",
+        "files": {
+          "trispectrum.npz": "5eec487f27b282a3c7ebe120e348e395adff2ddebe2c42067f16e00159da5ce7"
+        }
+      },
+      "ccl": {
+        "schema": "tjpcov-trispectrum-v1",
+        "status": "completed",
+        "scope": "Public CCL matter functions used by TJPCov cNG",
+        "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+        "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+        "halo_order": [
+          "1h",
+          "2h13",
+          "2h22",
+          "3h",
+          "4h"
+        ],
+        "units": {
+          "k": "h/Mpc",
+          "power": "(Mpc/h)^3",
+          "terms": "(Mpc/h)^9"
+        },
+        "axes": {
+          "terms": [
+            "redshift",
+            "halo_order",
+            "unordered_pair"
+          ]
+        },
+        "mass_precision": {
+          "log10M_min": 8.0,
+          "log10M_max": 16.0,
+          "nM": 255,
+          "integration_method_M": "simpson"
+        },
+        "mass_function": "tinker08",
+        "concentration": "duffy08",
+        "separable_growth": false,
+        "tinker10_normalization": "CCL norm_all_z=False; not CoCoA normalization",
+        "maximum_exchange_asymmetry_over_term_peak": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0866504795555222e-16
+        ],
+        "tjpcov": {
+          "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+          "status": ""
+        },
+        "tjpcov_source_sha256": "e7b04ce41b622f1d37b1fdd674a70c71c927b70f8516ca6fd4f0d16af12c8f6d",
+        "ccl_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+        "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+        "versions": {
+          "pyccl": "3.3.3",
+          "tjpcov": "0.5.2.dev9+g2f59302af"
+        },
+        "threads": 6,
+        "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
+        "timing_scope": "accuracy only",
+        "files": {
+          "trispectrum.npz": "76b60a73ea8032157ae908d03a9daaf544070a023f9520693b43ab93e4d172ea"
+        }
+      },
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "native": [
+        {
+          "redshift": 0.1,
+          "fractional_range": [
+            [
+              -0.02259828625637532,
+              0.216982669267134
+            ],
+            [
+              -0.018414290097813795,
+              0.15213017024278352
+            ],
+            [
+              -0.014462726358675458,
+              0.13095482506137582
+            ],
+            [
+              -0.008538437533887873,
+              0.06512335896638509
+            ],
+            [
+              -0.018430478296377523,
+              0.616552663872324
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.216982669267134,
+            0.15213017024278352,
+            0.13095482506137582,
+            0.06512335896638509,
+            0.616552663872324
+          ],
+          "maximum_diagonal_fractional": [
+            0.216982669267134,
+            0.15213017024278352,
+            0.13095482506137582,
+            0.06512335896638509,
+            0.011841752723355364
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.173588400100789,
+            0.13176972187083402,
+            0.11135676866442902,
+            0.05814388712691693,
+            0.616552663872324
+          ],
+          "sum_fractional_range": [
+            -0.015585276411878457,
+            0.2081677901463681
+          ]
+        },
+        {
+          "redshift": 0.5,
+          "fractional_range": [
+            [
+              0.006159376597019778,
+              0.26146064732606733
+            ],
+            [
+              0.012310363305866476,
+              0.1713876803442108
+            ],
+            [
+              0.050017857316340356,
+              0.1927460155364316
+            ],
+            [
+              0.023166141025452266,
+              0.0654767908191262
+            ],
+            [
+              -0.05722843125640476,
+              0.6162737031086867
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.26146064732606733,
+            0.1713876803442108,
+            0.1927460155364316,
+            0.0654767908191262,
+            0.6162737031086867
+          ],
+          "maximum_diagonal_fractional": [
+            0.26146064732606733,
+            0.1713876803442108,
+            0.1927460155364316,
+            0.060420984671962163,
+            0.05722843125640476
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.21129852930050574,
+            0.1638367435168333,
+            0.17516431739583785,
+            0.0654767908191262,
+            0.6162737031086867
+          ],
+          "sum_fractional_range": [
+            -0.006758727495074446,
+            0.251614186673111
+          ]
+        },
+        {
+          "redshift": 1.0,
+          "fractional_range": [
+            [
+              0.018406673314053042,
+              0.08204847280514653
+            ],
+            [
+              0.02567826483835574,
+              0.06876216773405934
+            ],
+            [
+              0.07701740511622064,
+              0.10305244705275324
+            ],
+            [
+              0.00015025070776123476,
+              0.04374375282772251
+            ],
+            [
+              -0.07123552543173979,
+              0.6159902285134229
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.08204847280514653,
+            0.06876216773405934,
+            0.10305244705275324,
+            0.04374375282772251,
+            0.6159902285134229
+          ],
+          "maximum_diagonal_fractional": [
+            0.06885746633649045,
+            0.055106132417511895,
+            0.10305244705275324,
+            0.042360968350826186,
+            0.07123552543173979
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.08204847280514653,
+            0.06876216773405934,
+            0.10055690386006576,
+            0.04374375282772251,
+            0.6159902285134229
+          ],
+          "sum_fractional_range": [
+            -0.009725279196224235,
+            0.38859141211842574
+          ]
+        }
+      ],
+      "common_power_and_moments": [
+        {
+          "redshift": 0.1,
+          "fractional_range": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -2.984525788388183e-16,
+              3.0843674840138233e-16
+            ],
+            [
+              -1.1995244558468972e-09,
+              3.955121410444389e-09
+            ],
+            [
+              -8.934285464181743e-10,
+              4.0217970923418786e-09
+            ],
+            [
+              -4.946886580281139e-06,
+              3.63136005887139e-07
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.0,
+            3.0843674840138233e-16,
+            3.955121410444389e-09,
+            4.0217970923418786e-09,
+            4.946886580281139e-06
+          ],
+          "maximum_diagonal_fractional": [
+            0.0,
+            2.984525788388183e-16,
+            3.955121410444389e-09,
+            4.0217970923418786e-09,
+            4.946886580281139e-06
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.0,
+            3.0843674840138233e-16,
+            1.0050785309555861e-10,
+            6.972024534448491e-11,
+            2.3078315324717602e-08
+          ],
+          "sum_fractional_range": [
+            -1.1676236610913548e-07,
+            1.2996270726262082e-09
+          ]
+        },
+        {
+          "redshift": 0.5,
+          "fractional_range": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -3.0095327917477206e-16,
+              3.9682808587596873e-16
+            ],
+            [
+              -1.248656318496815e-09,
+              4.62259255114548e-09
+            ],
+            [
+              -8.977753033497601e-10,
+              4.022909810783138e-09
+            ],
+            [
+              -4.9740143238922845e-06,
+              3.648829797330761e-07
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.0,
+            3.9682808587596873e-16,
+            4.62259255114548e-09,
+            4.022909810783138e-09,
+            4.9740143238922845e-06
+          ],
+          "maximum_diagonal_fractional": [
+            0.0,
+            3.702443670799498e-16,
+            4.62259255114548e-09,
+            4.022909810783138e-09,
+            4.9740143238922845e-06
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.0,
+            3.9682808587596873e-16,
+            1.0066666787399772e-10,
+            6.812220299196238e-11,
+            2.333088962852387e-08
+          ],
+          "sum_fractional_range": [
+            -1.6237653388539997e-07,
+            1.6684058579130578e-09
+          ]
+        },
+        {
+          "redshift": 1.0,
+          "fractional_range": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -2.1374588252375546e-16,
+              3.506371653840779e-16
+            ],
+            [
+              -1.1944721083331463e-09,
+              3.959595734342882e-09
+            ],
+            [
+              -9.002404662792682e-10,
+              4.025040425234676e-09
+            ],
+            [
+              -4.983014619263104e-06,
+              3.658078247767116e-07
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.0,
+            3.506371653840779e-16,
+            3.959595734342882e-09,
+            4.025040425234676e-09,
+            4.983014619263104e-06
+          ],
+          "maximum_diagonal_fractional": [
+            0.0,
+            3.506371653840779e-16,
+            3.959595734342882e-09,
+            4.025040425234676e-09,
+            4.983014619263104e-06
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.0,
+            2.79676387979554e-16,
+            9.905882652793964e-11,
+            6.87393255291536e-11,
+            2.9906692563636765e-08
+          ],
+          "sum_fractional_range": [
+            -2.111891275191624e-07,
+            3.6394465219302674e-09
+          ]
+        }
+      ],
+      "power_reader_effect": [
+        {
+          "redshift": 0.1,
+          "fractional_range": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -7.667365234802247e-05,
+              0.00010599529478517021
+            ],
+            [
+              -5.2443773575032806e-05,
+              8.656308245085492e-05
+            ],
+            [
+              -0.0005514799255689592,
+              0.0019422949306120614
+            ],
+            [
+              -0.38130313454172216,
+              0.01879262159363715
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.0,
+            0.00010599529478517021,
+            8.656308245085492e-05,
+            0.0019422949306120614,
+            0.38130313454172216
+          ],
+          "maximum_diagonal_fractional": [
+            0.0,
+            0.00010599529478517021,
+            2.0989905075185793e-05,
+            0.00014750944788840764,
+            0.00021703104853607876
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.0,
+            0.00010575866158523703,
+            8.656308245085492e-05,
+            0.0019422949306120614,
+            0.38130313454172216
+          ],
+          "sum_fractional_range": [
+            -0.12275251511380791,
+            0.010314157577244742
+          ]
+        },
+        {
+          "redshift": 0.5,
+          "fractional_range": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -0.00010664699750339394,
+              7.600175220940585e-05
+            ],
+            [
+              -8.24182064065301e-05,
+              5.6572009580969874e-05
+            ],
+            [
+              -0.0006110891874005492,
+              0.0018823627920379231
+            ],
+            [
+              -0.3813201426412788,
+              0.018700798527737497
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.0,
+            0.00010664699750339394,
+            8.24182064065301e-05,
+            0.0018823627920379231,
+            0.3813201426412788
+          ],
+          "maximum_diagonal_fractional": [
+            0.0,
+            0.00010664699750339394,
+            2.1033808161351527e-05,
+            0.00017374052703594603,
+            0.00018516757480824297
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.0,
+            0.00010661666566065925,
+            8.24182064065301e-05,
+            0.0018823627920379231,
+            0.3813201426412788
+          ],
+          "sum_fractional_range": [
+            -0.18949017513787714,
+            0.013000003370722935
+          ]
+        },
+        {
+          "redshift": 1.0,
+          "fractional_range": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              -8.480137976672393e-05,
+              9.785178972900524e-05
+            ],
+            [
+              -6.057190733825017e-05,
+              7.842385082739345e-05
+            ],
+            [
+              -0.0005679270446288159,
+              0.0019254737060363572
+            ],
+            [
+              -0.38123709851149723,
+              0.018767776278750536
+            ]
+          ],
+          "maximum_absolute_fractional": [
+            0.0,
+            9.785178972900524e-05,
+            7.842385082739345e-05,
+            0.0019254737060363572,
+            0.38123709851149723
+          ],
+          "maximum_diagonal_fractional": [
+            0.0,
+            9.785178972900524e-05,
+            1.2874239915130222e-05,
+            0.00013124141628209691,
+            0.00019262972371641358
+          ],
+          "maximum_offdiagonal_fractional": [
+            0.0,
+            9.764760787661262e-05,
+            7.842385082739345e-05,
+            0.0019254737060363572,
+            0.38123709851149723
+          ],
+          "sum_fractional_range": [
+            -0.2708663066464537,
+            0.01563793862106344
+          ]
+        }
+      ],
+      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "native_manifest_sha256": "a8f89fb9761c116782aad633ffe79312c76e4c691c52b7f8d1d58e624f966150",
+      "script_sha256": "d8601d571e3bb77d0fd6838eb2276d99966e865a3e1a6894b3fd8d163c5c3d41",
+      "files": {
+        "comparison.npz": "b1732b698bbcbddb7244e8556b13c4f651ae13da7cbb8f6bf16c94e1390db4d5"
+      },
+      "scope": "Matter trispectra, not projected covariance; copied 1h consistency check"
+    }
+  },
+  "statistics": {
+    "native": [
+      {
+        "redshift": 0.1,
+        "fractional_range": [
+          [
+            -0.02259828625637532,
+            0.216982669267134
+          ],
+          [
+            -0.018414290097813795,
+            0.15213017024278352
+          ],
+          [
+            -0.014466238352691955,
+            0.13095629177333543
+          ],
+          [
+            -0.008550131596864338,
+            0.06512633146978344
+          ],
+          [
+            -0.018456348877935087,
+            0.6163065135945966
+          ]
+        ],
+        "maximum_absolute_fractional": [
+          0.216982669267134,
+          0.15213017024278352,
+          0.13095629177333543,
+          0.06512633146978344,
+          0.6163065135945966
+        ],
+        "maximum_diagonal_fractional": [
+          0.216982669267134,
+          0.15213017024278352,
+          0.13095629177333543,
+          0.06512633146978344,
+          0.011846295266863677
+        ],
+        "maximum_offdiagonal_fractional": [
+          0.173588400100789,
+          0.13176972187083402,
+          0.11135855659638728,
+          0.05814726759145107,
+          0.6163065135945966
+        ],
+        "sum_fractional_range": [
+          -0.015602904063893863,
+          0.208167945731496
+        ]
+      },
+      {
+        "redshift": 0.5,
+        "fractional_range": [
+          [
+            0.006159376597019778,
+            0.26146064732606733
+          ],
+          [
+            0.012310363305866476,
+            0.1713876803442108
+          ],
+          [
+            0.04995561480662894,
+            0.19274711091895852
+          ],
+          [
+            0.023070693287009975,
+            0.0654811230832049
+          ],
+          [
+            -0.05722301460801602,
+            0.6158654920180052
+          ]
+        ],
+        "maximum_absolute_fractional": [
+          0.26146064732606733,
+          0.1713876803442108,
+          0.19274711091895852,
+          0.0654811230832049,
+          0.6158654920180052
+        ],
+        "maximum_diagonal_fractional": [
+          0.26146064732606733,
+          0.1713876803442108,
+          0.19274711091895852,
+          0.06042450731944783,
+          0.05722301460801602
+        ],
+        "maximum_offdiagonal_fractional": [
+          0.21129852930050574,
+          0.1638367435168333,
+          0.17516700126162663,
+          0.0654811230832049,
+          0.6158654920180052
+        ],
+        "sum_fractional_range": [
+          -0.006912208228951888,
+          0.2516143434625262
+        ]
+      },
+      {
+        "redshift": 1.0,
+        "fractional_range": [
+          [
+            0.018406673314053042,
+            0.08204847280514653
+          ],
+          [
+            0.02567826483835574,
+            0.06876216773405934
+          ],
+          [
+            0.07702041251982762,
+            0.10305552831007125
+          ],
+          [
+            0.0001589642584446591,
+            0.04375356724062542
+          ],
+          [
+            -0.07122191704061441,
+            0.6152174188240667
+          ]
+        ],
+        "maximum_absolute_fractional": [
+          0.08204847280514653,
+          0.06876216773405934,
+          0.10305552831007125,
+          0.04375356724062542,
+          0.6152174188240667
+        ],
+        "maximum_diagonal_fractional": [
+          0.06885746633649045,
+          0.055106132417511895,
+          0.10305552831007125,
+          0.042368994169495675,
+          0.07122191704061441
+        ],
+        "maximum_offdiagonal_fractional": [
+          0.08204847280514653,
+          0.06876216773405934,
+          0.1005634142099106,
+          0.04375356724062542,
+          0.6152174188240667
+        ],
+        "sum_fractional_range": [
+          -0.010158333757154914,
+          0.3881274892624913
+        ]
+      }
+    ],
+    "shared_inputs_direct_growth": [
+      {
+        "redshift": 0.1,
+        "fractional_range": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -2.984525788388183e-16,
+            3.0843674840138233e-16
+          ],
+          [
+            -1.1995244558468972e-09,
+            3.955121410444389e-09
+          ],
+          [
+            -8.934285464181743e-10,
+            4.0217970923418786e-09
+          ],
+          [
+            -4.946886580281139e-06,
+            3.63136005887139e-07
+          ]
+        ],
+        "maximum_absolute_fractional": [
+          0.0,
+          3.0843674840138233e-16,
+          3.955121410444389e-09,
+          4.0217970923418786e-09,
+          4.946886580281139e-06
+        ],
+        "maximum_diagonal_fractional": [
+          0.0,
+          2.984525788388183e-16,
+          3.955121410444389e-09,
+          4.0217970923418786e-09,
+          4.946886580281139e-06
+        ],
+        "maximum_offdiagonal_fractional": [
+          0.0,
+          3.0843674840138233e-16,
+          1.0050785309555861e-10,
+          6.972024534448491e-11,
+          2.3078315324717602e-08
+        ],
+        "sum_fractional_range": [
+          -1.1676236610913548e-07,
+          1.2996270726262082e-09
+        ]
+      },
+      {
+        "redshift": 0.5,
+        "fractional_range": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -3.0095327917477206e-16,
+            3.9682808587596873e-16
+          ],
+          [
+            -1.248656318496815e-09,
+            4.62259255114548e-09
+          ],
+          [
+            -8.977753033497601e-10,
+            4.022909810783138e-09
+          ],
+          [
+            -4.9740143238922845e-06,
+            3.648829797330761e-07
+          ]
+        ],
+        "maximum_absolute_fractional": [
+          0.0,
+          3.9682808587596873e-16,
+          4.62259255114548e-09,
+          4.022909810783138e-09,
+          4.9740143238922845e-06
+        ],
+        "maximum_diagonal_fractional": [
+          0.0,
+          3.702443670799498e-16,
+          4.62259255114548e-09,
+          4.022909810783138e-09,
+          4.9740143238922845e-06
+        ],
+        "maximum_offdiagonal_fractional": [
+          0.0,
+          3.9682808587596873e-16,
+          1.0066666787399772e-10,
+          6.812220299196238e-11,
+          2.333088962852387e-08
+        ],
+        "sum_fractional_range": [
+          -1.6237653388539997e-07,
+          1.6684058579130578e-09
+        ]
+      },
+      {
+        "redshift": 1.0,
+        "fractional_range": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -2.1374588252375546e-16,
+            3.506371653840779e-16
+          ],
+          [
+            -1.1944721083331463e-09,
+            3.959595734342882e-09
+          ],
+          [
+            -9.002404662792682e-10,
+            4.025040425234676e-09
+          ],
+          [
+            -4.983014619263104e-06,
+            3.658078247767116e-07
+          ]
+        ],
+        "maximum_absolute_fractional": [
+          0.0,
+          3.506371653840779e-16,
+          3.959595734342882e-09,
+          4.025040425234676e-09,
+          4.983014619263104e-06
+        ],
+        "maximum_diagonal_fractional": [
+          0.0,
+          3.506371653840779e-16,
+          3.959595734342882e-09,
+          4.025040425234676e-09,
+          4.983014619263104e-06
+        ],
+        "maximum_offdiagonal_fractional": [
+          0.0,
+          2.79676387979554e-16,
+          9.905882652793964e-11,
+          6.87393255291536e-11,
+          2.9906692563636765e-08
+        ],
+        "sum_fractional_range": [
+          -2.111891275191624e-07,
+          3.6394465219302674e-09
+        ]
+      }
+    ],
+    "power_reader_effect": [
+      {
+        "redshift": 0.1,
+        "fractional_range": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -7.667365234802247e-05,
+            0.00010599529478517021
+          ],
+          [
+            -5.2443773575032806e-05,
+            8.656308245085492e-05
+          ],
+          [
+            -0.0005514799255689592,
+            0.0019422949306120614
+          ],
+          [
+            -0.38130313454172216,
+            0.01879262159363715
+          ]
+        ],
+        "maximum_absolute_fractional": [
+          0.0,
+          0.00010599529478517021,
+          8.656308245085492e-05,
+          0.0019422949306120614,
+          0.38130313454172216
+        ],
+        "maximum_diagonal_fractional": [
+          0.0,
+          0.00010599529478517021,
+          2.0989905075185793e-05,
+          0.00014750944788840764,
+          0.00021703104853607876
+        ],
+        "maximum_offdiagonal_fractional": [
+          0.0,
+          0.00010575866158523703,
+          8.656308245085492e-05,
+          0.0019422949306120614,
+          0.38130313454172216
+        ],
+        "sum_fractional_range": [
+          -0.12275251511380791,
+          0.010314157577244742
+        ]
+      },
+      {
+        "redshift": 0.5,
+        "fractional_range": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.00010664699750339394,
+            7.600175220940585e-05
+          ],
+          [
+            -8.24182064065301e-05,
+            5.6572009580969874e-05
+          ],
+          [
+            -0.0006110891874005492,
+            0.0018823627920379231
+          ],
+          [
+            -0.3813201426412788,
+            0.018700798527737497
+          ]
+        ],
+        "maximum_absolute_fractional": [
+          0.0,
+          0.00010664699750339394,
+          8.24182064065301e-05,
+          0.0018823627920379231,
+          0.3813201426412788
+        ],
+        "maximum_diagonal_fractional": [
+          0.0,
+          0.00010664699750339394,
+          2.1033808161351527e-05,
+          0.00017374052703594603,
+          0.00018516757480824297
+        ],
+        "maximum_offdiagonal_fractional": [
+          0.0,
+          0.00010661666566065925,
+          8.24182064065301e-05,
+          0.0018823627920379231,
+          0.3813201426412788
+        ],
+        "sum_fractional_range": [
+          -0.18949017513787714,
+          0.013000003370722935
+        ]
+      },
+      {
+        "redshift": 1.0,
+        "fractional_range": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -8.480137976672393e-05,
+            9.785178972900524e-05
+          ],
+          [
+            -6.057190733825017e-05,
+            7.842385082739345e-05
+          ],
+          [
+            -0.0005679270446288159,
+            0.0019254737060363572
+          ],
+          [
+            -0.38123709851149723,
+            0.018767776278750536
+          ]
+        ],
+        "maximum_absolute_fractional": [
+          0.0,
+          9.785178972900524e-05,
+          7.842385082739345e-05,
+          0.0019254737060363572,
+          0.38123709851149723
+        ],
+        "maximum_diagonal_fractional": [
+          0.0,
+          9.785178972900524e-05,
+          1.2874239915130222e-05,
+          0.00013124141628209691,
+          0.00019262972371641358
+        ],
+        "maximum_offdiagonal_fractional": [
+          0.0,
+          9.764760787661262e-05,
+          7.842385082739345e-05,
+          0.0019254737060363572,
+          0.38123709851149723
+        ],
+        "sum_fractional_range": [
+          -0.2708663066464537,
+          0.01563793862106344
+        ]
+      }
+    ],
+    "cocoa_integration_refinement": [
+      [
+        1.9061347175108878e-06,
+        1.384408779170343e-06,
+        2.071122629065947e-06,
+        1.5095425713873567e-06,
+        3.0265910634375004e-06
+      ],
+      [
+        1.5465427498639883e-06,
+        1.0977939910450374e-06,
+        1.5676790547924924e-06,
+        7.21063653230658e-07,
+        2.0678503902527012e-06
+      ]
+    ],
+    "ccl_mass_refinement": [
+      3.115640121886809e-05,
+      2.512660966635938e-05,
+      1.634151466090028e-05,
+      8.170790372630243e-06,
+      1.8166969768529384e-06
+    ],
+    "native_diagnostic_changes": {
+      "direct_m255": [
+        0.0,
+        0.0,
+        0.00016120582489087543,
+        0.0005813421671645447,
+        0.0011936813896545884
+      ],
+      "bhattacharya_m255": [
+        0.22692461687478072,
+        0.15900464237288614,
+        0.13107995148135965,
+        0.06722961651640058,
+        0.0112842813274312
+      ],
+      "tinker10_m255": [
+        0.21295045765640896,
+        0.20849430029492044,
+        0.4795856138041008,
+        0.20647023546159815,
+        0.2588750541822752
+      ],
+      "both_m255": [
+        0.37014757244921426,
+        0.26350414786439,
+        0.48619699017740303,
+        0.20647023683479993,
+        0.2687515235455614
+      ]
+    },
+    "power_refinement": {
+      "schema": "trispectrum-power-diagnostic-v1",
+      "status": "completed",
+      "scope": "Same CAMB samples; cubic fill, production linear lookup; fixed halo moments",
+      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "factors": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "node_counts": [
+        1500,
+        2999,
+        5997,
+        11993,
+        23985
+      ],
+      "max_fractional_vs_smooth_by_halo_order": [
+        [
+          0.0,
+          9.786027951241838e-05,
+          7.84321230695717e-05,
+          0.0019221063195082877,
+          0.6163162670899445
+        ],
+        [
+          0.0,
+          2.4849557957562496e-05,
+          1.751910877723084e-05,
+          0.00010469214722319542,
+          0.19387868301643074
+        ],
+        [
+          0.0,
+          6.4898104159549774e-06,
+          5.219768779984868e-06,
+          1.9536695335942156e-05,
+          0.017317160272700027
+        ],
+        [
+          0.0,
+          1.3857571312669847e-06,
+          1.1753038227091395e-06,
+          1.8341504750329918e-05,
+          0.0048753113838544415
+        ],
+        [
+          0.0,
+          4.376696891572607e-07,
+          2.898226834080475e-07,
+          1.3806261014437382e-06,
+          0.0038831921783277767
+        ]
+      ],
+      "interior_pair_count": 36,
+      "interior_max_fractional_vs_smooth_by_halo_order": [
+        [
+          0.0,
+          9.763807375229305e-05,
+          7.84321230695717e-05,
+          0.0019221063195082877,
+          0.6163162670899445
+        ],
+        [
+          0.0,
+          2.479301931868072e-05,
+          1.751910877723084e-05,
+          0.00010469214722319542,
+          0.19387868301643074
+        ],
+        [
+          0.0,
+          6.475050491672185e-06,
+          5.219768779984868e-06,
+          1.9536695335942156e-05,
+          0.017317160272700027
+        ],
+        [
+          0.0,
+          1.3826098095304218e-06,
+          1.1753038227091395e-06,
+          1.8341504750329918e-05,
+          0.0048753113838544415
+        ],
+        [
+          0.0,
+          4.3667316351747587e-07,
+          2.898226834080475e-07,
+          1.3806261014437382e-06,
+          0.0038831921783277767
+        ]
+      ],
+      "boundary_scope": "Dense edge secants change; smooth control keeps original extrapolation. Interior metric excludes those samples.",
+      "script_sha256": "edbd16221ac6ccea185eb20bff4e946bb47f104562f225cc24e458540d36b53e",
+      "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+      "files": {
+        "diagnostic.npz": "d2b99ca66add701451b9be1078b4d007b588ae6f66966048513e374733515c58"
+      }
+    }
+  },
+  "script_sha256": "643a7ec327cbdbe1ae1c5d363545ecf45b26606998857150b4a5c5b755e463e6",
+  "files": {
+    "trispectra.npz": "9cb10b9d2523fc5534edfe4746259a611776160c5214c4df17be0634cd3b7a5a"
+  },
+  "figures": {
+    "trispectrum_model_diagnostic.pdf": "e841163b6ef3396a68881f97efff17442de05201496b87942c9b66eca29d0741",
+    "trispectrum_model_diagnostic.png": "af1ba786dcae6eb93310a74582c32e7feca65adeef25ad6be744325b85b0b427",
+    "trispectrum_pairs.png": "3f796bcfd074edf8348cdca86f0f6418e35c85663041a2e83e2b3b3d47d21bd6",
+    "trispectrum_pairs.pdf": "77635748b7c333c391edc6aa829463fc800ebdd16cae73ec65663129972e1c71",
+    "trispectrum_terms.png": "29f2f3ee80d2c83610ed8925be5d416c41928d32156cd6618b31140e4d86dbcc",
+    "trispectrum_terms.pdf": "c998ff4b81d590e204459e0d4cd20537ddab1e7373419c51548d6dd19821f4c8",
+    "trispectrum_power_diagnostic.png": "15ca7b4fbcc3f95fc247a0f8f0a3c79df6181a8dd98236f61ff61da6058c27fb",
+    "trispectrum_power_diagnostic.pdf": "6b1bef6af62771dab32605f144f488d5411a445bcfc543606e3b1598e2197cc1"
+  }
+}
