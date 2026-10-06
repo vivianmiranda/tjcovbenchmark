@@ -76,6 +76,15 @@ only to fit memory and then label the result converged.
 
 ## Documentation
 
+Use the sibling OneCov-benchmark-/README.md as the direct template for
+the TJPCov README, including its scientific figures. Match the section
+sequence, component tables, panel arrangements, labels and difference
+normalizations so readers can compare the studies side by side. Read its
+current plotting scripts before creating a corresponding TJPCov figure.
+The figure checklist is in references/comparison_plan.md. Reuse suitable
+plotting code; recompute every scientific result for TJPCov. Never copy
+OneCov's numerical conclusions or show placeholders as measured plots.
+
 The README is for current CoCoA-versus-TJPCov results and reproducible
 commands. Keep internal studies, historical runs and unadopted proposals
 in references. Do not send human readers to Claude skills or private test
