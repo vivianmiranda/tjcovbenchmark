@@ -54,7 +54,9 @@ The TJPCov recipe was installed and import-tested on 2026-10-06. The
 resolved Conda and Python versions are saved under results/environment/.
 The low/high 5x5 and 30x30 Gaussian cases pass. Native 5x5 SSC and
 its sampling refinements have run; read the measured findings in
-[the SSC diagnostic](references/ssc_sampling_diagnostic.md). For a new install,
+[the SSC diagnostic](references/ssc_sampling_diagnostic.md). Native halo
+ingredients and mass-quadrature checks are recorded in
+[the halo study](references/halo_preparation.md). For a new install,
 check imports and a minimal source-bin case; a recipe alone is not proof
 that the environment works.
 

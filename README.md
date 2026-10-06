@@ -15,8 +15,8 @@ cNG and total differences separately.
 30 × 30 galaxy-and-shear matrices, pass at floating-point precision with
 shared spectra and bin weights. The isolated environment is installed and
 tested. Small native SSC comparisons and their sampling diagnostics are
-also complete. Halo and cNG comparisons remain pending; timing measurements
-come last.
+also complete. The first native halo-ingredient comparisons are measured
+below. Separated trispectra and cNG remain pending; timings come last.
 
 ## Contents
 
@@ -28,6 +28,7 @@ come last.
 6. [First Gaussian comparison](#gaussian)
 7. [Gaussian results](#results)
 8. [Super-sample covariance](#ssc)
+9. [Halo ingredients](#halo)
 
 ## Comparison scope <a name="scope"></a>
 
@@ -577,3 +578,131 @@ For the refinement table, repeat Step 2 with factors 1, 2, 4, 8 and 16.
 `--k-refinement 2` tests k-grid density; `--integration-method spline`
 tests the projection method separately. Repeat the CoCoA step at boosts
 1/2 and integration levels 0/1/2 to check its own numerical controls.
+
+## Halo ingredients <a name="halo"></a>
+
+The halo model combines the abundance of halos, their clustering bias and
+how matter is distributed inside each halo. Comparing these ingredients
+helps explain a covariance difference before it is integrated along the
+line of sight.
+
+This pilot samples redshifts 0.1, 0.5 and 1, masses from 10 billion to
+one quadrillion solar masses/h, and wavenumbers from 0.001 to 10 h/Mpc.
+Both codes receive the same CAMB tables; CoCoA's initialization reproduces
+every supplied linear and nonlinear power sample bitwise.
+
+The table gives the **largest absolute fractional difference** across the
+sampled mass or wavenumber range, using TJPCov/CCL as the denominator.
+The plot retains the sign: CoCoA / TJPCov-CCL − 1.
+
+| Quantity | z = 0.1 | z = 0.5 | z = 1 |
+| --- | ---: | ---: | ---: |
+| Mass rms fluctuation, sigma(M) | 0.00908% | 0.000918% | 0.00109% |
+| Halo abundance, dn/dlnM | 3.18% | 3.70% | 5.44% |
+| Halo bias | 0.0387% | 0.0577% | 0.0592% |
+| Concentration | 25.37% | 24.07% | 27.52% |
+| Linear power lookup | 0.0114% | 0.0107% | 0.0106% |
+| I11 | 0.318% | 1.464% | 1.830% |
+| I02, diagonal pairs | 4.06% | 6.80% | 4.93% |
+| I12, diagonal pairs | 6.35% | 9.21% | 5.10% |
+
+![Native halo ingredients and matched-concentration NFW check](figures/halo/halo_ingredients.png)
+
+### Mass variance and abundance
+
+Sigma(M) measures the linear matter fluctuation after averaging over a
+sphere containing mass M at the mean density. Equal input tables do not
+make their subsequent readers and variance integrals identical:
+
+- **CoCoA:** uses its FFTLog variance tables and native power interpolation.
+- **TJPCov/CCL:** uses CCL's native sigma spline and power/growth machinery.
+
+The small sigma differences above include those numerical conventions.
+The halo mass-quadrature tests below do not refine either sigma table, so
+they do not identify a unique cause for the residual sigma difference.
+The native power readers themselves differ by up to 0.0114% between the
+shared input nodes.
+
+The larger abundance differences compare **different fits**: CoCoA's
+bias-normalized Tinker (2010) multiplicity and CCL's Tinker (2008)
+abundance. They are not evidence that either mass integral is failing.
+The two codes also retain Bhattacharya and Duffy concentration relations,
+respectively, so a substantial concentration difference is expected.
+
+### Common formulas and different conventions
+
+Both codes use the Tinker (2010) bias form, but their collapse constants
+are 1.686 for CoCoA and 1.6864702 for CCL. Giving CoCoA the actual CCL peak
+height reduces the bias discrepancy to at most **0.00143%**. A residual
+remains because the collapse constant appears explicitly in the formula
+as well as in peak height. This diagnostic leaves the native bias intact.
+
+For NFW profiles, matching concentration reduces the largest difference
+in the dimensionless Fourier profile to **1.32e-5**. The codes' mean-density
+constants differ by 0.005985%, which slightly changes the halo radius at
+fixed mass. Matching that radius in the diagnostic reduces the profile
+difference further to **3.97e-9**. Native profiles and moments retain their
+own constants; no production model is modified to obtain agreement.
+
+### Halo moments and integration checks
+
+I11 is the bias-weighted, mass-weighted profile integral. Its large-scale
+limit describes how the halo population responds to a matter overdensity.
+I02 averages the product of two profiles weighted by squared halo mass;
+it supplies one-halo power. I12 includes an additional halo-bias factor
+and enters the response used for SSC.
+
+Their low-mass treatments differ:
+
+- **CoCoA:** keeps the current Wynn treatment for I11 and direct finite
+  integrals for the higher moments.
+- **TJPCov/CCL:** its default halo calculator integrates from 10^8 to
+  10^16 solar masses, then adds separate missing-mass and missing-response
+  terms evaluated at the minimum mass. These additive terms also enter
+  I02 and I12. It does not rescale every fitted halo bias.
+
+Refining CCL's mass grid from 128 to 255 nodes changes I11/I02/I12 by at
+most **0.000818%**. CoCoA's integration levels 0, 1 and 2 use 96, 128 and
+256 nodes per panel; their successive changes in these moments are at
+most **0.0000883%** and **0.0000632%**. The larger native differences in the
+table therefore survive these quadrature checks. The displayed comparison
+uses CCL's refined mass grid and CoCoA integration level 2.
+
+The [ingredient comparison](results/halo/comparison.json) and
+[refinement record](results/halo/refinements.json) accompany all five
+native exports and the [combined arrays](results/halo/halo.npz).
+These measurements do not yet apportion the SSC difference among the
+halo response, concentration and survey window, or certify a full cNG
+covariance.
+
+### Reproduce the halo comparison
+
+Use the same activated environments and saved input bundle as above.
+
+**Step :one:**: in the **TJPCov terminal**, export the native ingredients
+on the refined mass-integration grid.
+
+```bash
+python scripts/run_halo.py work/lsst_y1 --tjpcov ../TJPCov \
+  --mass-refinement 2 --output work/halo_native_m255
+```
+
+**Step :two:**: in the **CoCoA terminal**, from `cocoa/Cocoa/`, evaluate
+its ingredients on the same output nodes.
+
+```bash
+python ../../tjcovbenchmark/scripts/export_cocoa_halo.py \
+  ../../tjcovbenchmark/work/lsst_y1 ../../tjcovbenchmark/work/halo_native_m255 \
+  --cocoa . --integration-accuracy 2 \
+  --output ../../tjcovbenchmark/work/halo_cocoa_i2
+```
+
+**Step :three:**: in the **TJPCov terminal**, compare and plot.
+
+```bash
+python scripts/compare_halo.py work/halo_native_m255 work/halo_cocoa_i2 \
+  --output work/halo_comparison --figures figures/halo
+```
+
+For the refinement checks, repeat Step 1 with `--mass-refinement 1` and
+Step 2 with `--integration-accuracy 0` and `1`, each in a fresh directory.

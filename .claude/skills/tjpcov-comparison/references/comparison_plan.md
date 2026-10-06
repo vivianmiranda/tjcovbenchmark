@@ -160,8 +160,13 @@ background-variance sensitivity and remaining model differences. The
 complete records and arrays are in `results/ssc_native.json` and `.npz`.
 These are 5x5 point-sampled SSC components, not full G+SSC+cNG totals.
 
-Next: native halo ingredients and separated trispectra, then the bounded
-cNG and complete-matrix comparisons below. Real-space worker, memory and
+Native halo ingredients now have fresh common-CAMB exports at three
+redshifts, CCL mass-grid128/255 and CoCoA96/128/256 quadrature checks.
+Matched concentration/radius and peak-height diagnostics are in
+references/halo_preparation.md; results are under results/halo/.
+
+Next: separated trispectra, then the bounded cNG and complete-matrix
+comparisons below. Real-space worker, memory and
 noise audits remain gates before a native real-space run. No overlapping
 elapsed times from this campaign may be used as benchmarks.
 

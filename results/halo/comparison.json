@@ -1,0 +1,369 @@
+{
+  "schema": "cocoa-tjpcov-halo-comparison-v1",
+  "scope": "native halo ingredients; different fits and completions",
+  "difference": "CoCoA / TJPCov-CCL - 1",
+  "units": {
+    "mass": "Msun/h",
+    "k": "h/Mpc",
+    "dndlnm": "(h/Mpc)^3",
+    "rho": "(Msun/h)/(Mpc/h)^3",
+    "linear_i02_i12": "(Mpc/h)^3",
+    "profile_i01_i11": "1"
+  },
+  "tjpcov": {
+    "schema": "tjpcov-halo-ingredients-v1",
+    "status": "completed",
+    "scope": "Public CCL ingredients selected by native TJPCov SSC",
+    "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+    "native_model": {
+      "mass_definition": "M200m",
+      "mass_function": "Tinker08",
+      "bias": "Tinker10",
+      "concentration": "Duffy08",
+      "profile": "analytic truncated NFW",
+      "delta_c": 1.68647019984,
+      "completion": "CCL additive minimum-mass terms in all moments"
+    },
+    "controls": {
+      "log10M_min": 8.0,
+      "log10M_max": 16.0,
+      "nM": 255,
+      "integration_method_M": "simpson"
+    },
+    "mass_refinement": 2,
+    "units": {
+      "mass": "Msun/h",
+      "k": "h/Mpc",
+      "dndlnm": "(h/Mpc)^3",
+      "rho": "(Msun/h)/(Mpc/h)^3",
+      "linear_i02_i12": "(Mpc/h)^3",
+      "profile_i01_i11": "1"
+    },
+    "axes": {
+      "mass_statistics": [
+        "redshift",
+        "mass"
+      ],
+      "power_moments": [
+        "redshift",
+        "k"
+      ],
+      "profile": [
+        "redshift",
+        "k",
+        "mass"
+      ]
+    },
+    "tjpcov": {
+      "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+      "status": ""
+    },
+    "tjpcov_source_sha256": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+    "ccl_source_sha256": {
+      "power.py": "980c1431b70469f9cf74ea0e2eb2015aaa07302c3be16df60562c09fb279fee8",
+      "halos/halo_model.py": "645b02366216c653499d035b91f75dfa1a7d68e42cc807d016d900f641733b7d",
+      "halos/halo_model_base.py": "8c8edffec1a1ea22dad6d9239b4604612db77fc44ab8796187672851238633ef",
+      "halos/hmfunc/tinker08.py": "6b8f50ff0e259a95294ee220fe1fc2a90459b46bfa4d7ecba2f24d8fc578071c",
+      "halos/hbias/tinker10.py": "3ebb57a97e7e5191665601c5ef333f8587fde70f35ff28d791238779ba00f7c2",
+      "halos/concentration/duffy08.py": "b135f90368da2db2694e143d9995eded0f2cb85bffd30b1d001bd269ec8b82c1",
+      "halos/profiles/nfw.py": "99faa997ed040ff865693bfc607bff90a2825abcb4a04fd05ee3b02952686cf1",
+      "halos/profiles/profile_base.py": "5bcaf0fd20a8068be0a8a6ebdf65d62b213c0e89ed184187ef11a028b490b538",
+      "halos/profiles_2pt.py": "485f2f9e7363af9ede07813f55dcacb341621a7a933142f584874763c6bf951b"
+    },
+    "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+    "versions": {
+      "tjpcov": "0.5.2.dev9+g2f59302af",
+      "pyccl": "3.3.3",
+      "numpy": "2.4.3",
+      "scipy": "1.17.1"
+    },
+    "platform": "macOS-13.7.5-arm64-arm-64bit",
+    "threads": 6,
+    "script_sha256": "3937ff73d90bd859838134223f0d712a64aada9ba8545e4010556b439885d417",
+    "timing_scope": "Accuracy only; no benchmark timing",
+    "files": {
+      "halo.npz": "478f4cbda4951553e9cdac6b90616dc6f1d7b2ac1b56a9be0d98e729226c401d"
+    }
+  },
+  "cocoa": {
+    "schema": "cocoa-halo-ingredients-v1",
+    "status": "completed",
+    "scope": "Native halo ingredients and explicit matched-fit diagnostics",
+    "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+    "native_manifest_sha256": "ddcdbc9aa385bb61d183219d2ffa35c7defc2fbf1816c30e8d9c457c97c449d0",
+    "power_table_check": "linear and nonlinear CAMB tables bitwise equal",
+    "native_model": {
+      "mass_definition": "M200m",
+      "mass_function": "Tinker10",
+      "bias": "Tinker10",
+      "concentration": "Bhattacharya13",
+      "delta_c": 1.686,
+      "completion": "Current production Wynn I11; direct higher moments"
+    },
+    "controls": {
+      "integration_accuracy": 2,
+      "halo_mass_nquad": 256,
+      "lnm_edges": [
+        -92.10340371976183,
+        -82.89306334778566,
+        -73.68272297580947,
+        -64.47238260383328,
+        -55.2620422318571,
+        -46.05170185988092,
+        -36.841361487904734,
+        -27.63102111592855,
+        -18.420680743952367,
+        -9.210340371976184,
+        0.0,
+        9.210340371976184,
+        11.51292546497023,
+        13.815510557964274,
+        16.981565060831088,
+        20.1476195636979,
+        23.31367406656471,
+        26.479728569431526,
+        29.64578307229834,
+        32.81183757516515,
+        35.977892078031964,
+        39.14394658089878
+      ]
+    },
+    "units": {
+      "mass": "Msun/h",
+      "k": "h/Mpc",
+      "dndlnm": "(h/Mpc)^3",
+      "rho": "(Msun/h)/(Mpc/h)^3",
+      "linear_i02_i12": "(Mpc/h)^3",
+      "profile_i01_i11": "1"
+    },
+    "axes": {
+      "mass_statistics": [
+        "redshift",
+        "mass"
+      ],
+      "power_moments": [
+        "redshift",
+        "k"
+      ],
+      "profile": [
+        "redshift",
+        "k",
+        "mass"
+      ]
+    },
+    "core": {
+      "commit": "a35dbc9bf5db0ae72ea980bbf6b0ad8289fe17d4",
+      "status": ""
+    },
+    "lsst_y1": {
+      "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+      "status": ""
+    },
+    "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+    "script_sha256": "7d40cd04c04932eeebbd16b0dbeb6466a26b5f966d0378ea418b593100e0d4b8",
+    "threads": 6,
+    "timing_scope": "Accuracy only; no benchmark timing",
+    "files": {
+      "halo.npz": "68b0556c355b349fb68af6e5f94a35acf7c4edb4734685377901834d0e9540d0"
+    }
+  },
+  "rows": [
+    {
+      "redshift": 0.1,
+      "sigma": {
+        "fractional_range": [
+          -9.08079780230775e-05,
+          -7.850509231299707e-05
+        ],
+        "max_absolute_fractional": 9.08079780230775e-05
+      },
+      "dndlnm": {
+        "fractional_range": [
+          -0.03176834053904021,
+          0.00959733765130144
+        ],
+        "max_absolute_fractional": 0.03176834053904021
+      },
+      "bias": {
+        "fractional_range": [
+          -0.0003871029271238502,
+          -6.377462362927577e-05
+        ],
+        "max_absolute_fractional": 0.0003871029271238502
+      },
+      "concentration": {
+        "fractional_range": [
+          -0.2536914951850586,
+          0.07831570751764527
+        ],
+        "max_absolute_fractional": 0.2536914951850586
+      },
+      "linear": {
+        "fractional_range": [
+          -0.00011383124279829016,
+          7.667953164780528e-05
+        ],
+        "max_absolute_fractional": 0.00011383124279829016
+      },
+      "i11": {
+        "fractional_range": [
+          7.71465114013381e-10,
+          0.003176832468567037
+        ],
+        "max_absolute_fractional": 0.003176832468567037
+      },
+      "i02": {
+        "fractional_range": [
+          -0.0024665850388781996,
+          0.04063434572757951
+        ],
+        "max_absolute_fractional": 0.04063434572757951
+      },
+      "i12": {
+        "fractional_range": [
+          -0.007250316218044839,
+          0.06347160172697786
+        ],
+        "max_absolute_fractional": 0.06347160172697786
+      },
+      "matched_concentration_profile_max_absolute": 1.1842348529023106e-05,
+      "matched_radius_profile_max_absolute": 1.8592766215519418e-09,
+      "mean_density_fractional_difference": -5.984988296314775e-05,
+      "matched_sigma_bias_max_absolute_fractional": 0.0005732798857833732,
+      "matched_peak_bias_max_absolute_fractional": 1.4225437144355091e-05
+    },
+    {
+      "redshift": 0.5,
+      "sigma": {
+        "fractional_range": [
+          -9.177081307765178e-06,
+          3.151446378302225e-06
+        ],
+        "max_absolute_fractional": 9.177081307765178e-06
+      },
+      "dndlnm": {
+        "fractional_range": [
+          0.005533498052693764,
+          0.03699287976086896
+        ],
+        "max_absolute_fractional": 0.03699287976086896
+      },
+      "bias": {
+        "fractional_range": [
+          -0.0005772990606698336,
+          -0.00011916716317972309
+        ],
+        "max_absolute_fractional": 0.0005772990606698336
+      },
+      "concentration": {
+        "fractional_range": [
+          -0.24070132497611096,
+          0.09708468671379245
+        ],
+        "max_absolute_fractional": 0.24070132497611096
+      },
+      "linear": {
+        "fractional_range": [
+          -8.385760652496188e-05,
+          0.00010665837229861808
+        ],
+        "max_absolute_fractional": 0.00010665837229861808
+      },
+      "i11": {
+        "fractional_range": [
+          -0.014637526426038217,
+          -2.6467150693321173e-10
+        ],
+        "max_absolute_fractional": 0.014637526426038217
+      },
+      "i02": {
+        "fractional_range": [
+          0.029128468878212077,
+          0.0679821185311642
+        ],
+        "max_absolute_fractional": 0.0679821185311642
+      },
+      "i12": {
+        "fractional_range": [
+          0.02469650290066605,
+          0.09212100558985048
+        ],
+        "max_absolute_fractional": 0.09212100558985048
+      },
+      "matched_concentration_profile_max_absolute": 1.253258814787328e-05,
+      "matched_radius_profile_max_absolute": 2.4840526302583044e-09,
+      "mean_density_fractional_difference": -5.984988296314775e-05,
+      "matched_sigma_bias_max_absolute_fractional": 0.0005969060760824263,
+      "matched_peak_bias_max_absolute_fractional": 1.337948101209907e-05
+    },
+    {
+      "redshift": 1.0,
+      "sigma": {
+        "fractional_range": [
+          -1.0882736482309419e-05,
+          1.4439630777740575e-06
+        ],
+        "max_absolute_fractional": 1.0882736482309419e-05
+      },
+      "dndlnm": {
+        "fractional_range": [
+          -0.026339534395496966,
+          0.05437334041394415
+        ],
+        "max_absolute_fractional": 0.05437334041394415
+      },
+      "bias": {
+        "fractional_range": [
+          -0.0005920949624753646,
+          -0.0001716515565506338
+        ],
+        "max_absolute_fractional": 0.0005920949624753646
+      },
+      "concentration": {
+        "fractional_range": [
+          -0.27517567422465705,
+          0.04727374278629415
+        ],
+        "max_absolute_fractional": 0.27517567422465705
+      },
+      "linear": {
+        "fractional_range": [
+          -0.00010570412770216642,
+          8.480857165071853e-05
+        ],
+        "max_absolute_fractional": 0.00010570412770216642
+      },
+      "i11": {
+        "fractional_range": [
+          -0.018301986644241652,
+          -5.230221811203251e-10
+        ],
+        "max_absolute_fractional": 0.018301986644241652
+      },
+      "i02": {
+        "fractional_range": [
+          0.032293626133738096,
+          0.04934388568521353
+        ],
+        "max_absolute_fractional": 0.04934388568521353
+      },
+      "i12": {
+        "fractional_range": [
+          0.037798132450791666,
+          0.050966619459525075
+        ],
+        "max_absolute_fractional": 0.050966619459525075
+      },
+      "matched_concentration_profile_max_absolute": 1.3130358106516749e-05,
+      "matched_radius_profile_max_absolute": 3.9608268886937026e-09,
+      "mean_density_fractional_difference": -5.984988296314775e-05,
+      "matched_sigma_bias_max_absolute_fractional": 0.0006161104835046283,
+      "matched_peak_bias_max_absolute_fractional": 1.201377125314984e-05
+    }
+  ],
+  "script_sha256": "e3791854039368cf89258eae655779211813298a90fede8f39e5fa2046bea6c1",
+  "files": {
+    "halo.npz": "c8b79c5ebf4e5d9dea69de9cd5afef2a5055c67097bf6a070f3de1fd05f1e969"
+  },
+  "timing_policy": "Correctness campaign; no benchmark times"
+}

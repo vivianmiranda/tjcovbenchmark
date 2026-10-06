@@ -1,0 +1,50 @@
+{
+  "scope": "mass quadrature checks; not sigma-table or full-covariance convergence",
+  "checks": [
+    {
+      "coarse": "halo_native",
+      "fine": "halo_native_m255",
+      "normalization": "coarse/fine - 1; largest absolute fractional change",
+      "max_fractional_change": {
+        "sigma": 0.0,
+        "dndlnm": 0.0,
+        "bias": 0.0,
+        "concentration": 0.0,
+        "linear": 0.0,
+        "i11": 4.5417393468305534e-07,
+        "i02": 2.6148349081545064e-06,
+        "i12": 8.17079071147031e-06
+      }
+    },
+    {
+      "coarse": "halo_cocoa_final_i0",
+      "fine": "halo_cocoa_final_i1",
+      "normalization": "coarse/fine - 1; largest absolute fractional change",
+      "max_fractional_change": {
+        "sigma": 0.0,
+        "dndlnm": 0.0,
+        "bias": 0.0,
+        "concentration": 0.0,
+        "linear": 0.0,
+        "i11": 8.031673037756093e-08,
+        "i02": 8.00799802691543e-07,
+        "i12": 8.820230320560896e-07
+      }
+    },
+    {
+      "coarse": "halo_cocoa_final_i1",
+      "fine": "halo_cocoa_final_i2",
+      "normalization": "coarse/fine - 1; largest absolute fractional change",
+      "max_fractional_change": {
+        "sigma": 0.0,
+        "dndlnm": 0.0,
+        "bias": 0.0,
+        "concentration": 0.0,
+        "linear": 0.0,
+        "i11": 6.13925712489305e-08,
+        "i02": 5.212216984684659e-07,
+        "i12": 6.318382339554063e-07
+      }
+    }
+  ]
+}

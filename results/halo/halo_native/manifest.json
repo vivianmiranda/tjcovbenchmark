@@ -1,0 +1,75 @@
+{
+  "schema": "tjpcov-halo-ingredients-v1",
+  "status": "completed",
+  "scope": "Public CCL ingredients selected by native TJPCov SSC",
+  "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+  "native_model": {
+    "mass_definition": "M200m",
+    "mass_function": "Tinker08",
+    "bias": "Tinker10",
+    "concentration": "Duffy08",
+    "profile": "analytic truncated NFW",
+    "delta_c": 1.68647019984,
+    "completion": "CCL additive minimum-mass terms in all moments"
+  },
+  "controls": {
+    "log10M_min": 8.0,
+    "log10M_max": 16.0,
+    "nM": 128,
+    "integration_method_M": "simpson"
+  },
+  "mass_refinement": 1,
+  "units": {
+    "mass": "Msun/h",
+    "k": "h/Mpc",
+    "dndlnm": "(h/Mpc)^3",
+    "rho": "(Msun/h)/(Mpc/h)^3",
+    "linear_i02_i12": "(Mpc/h)^3",
+    "profile_i01_i11": "1"
+  },
+  "axes": {
+    "mass_statistics": [
+      "redshift",
+      "mass"
+    ],
+    "power_moments": [
+      "redshift",
+      "k"
+    ],
+    "profile": [
+      "redshift",
+      "k",
+      "mass"
+    ]
+  },
+  "tjpcov": {
+    "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+    "status": ""
+  },
+  "tjpcov_source_sha256": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+  "ccl_source_sha256": {
+    "power.py": "980c1431b70469f9cf74ea0e2eb2015aaa07302c3be16df60562c09fb279fee8",
+    "halos/halo_model.py": "645b02366216c653499d035b91f75dfa1a7d68e42cc807d016d900f641733b7d",
+    "halos/halo_model_base.py": "8c8edffec1a1ea22dad6d9239b4604612db77fc44ab8796187672851238633ef",
+    "halos/hmfunc/tinker08.py": "6b8f50ff0e259a95294ee220fe1fc2a90459b46bfa4d7ecba2f24d8fc578071c",
+    "halos/hbias/tinker10.py": "3ebb57a97e7e5191665601c5ef333f8587fde70f35ff28d791238779ba00f7c2",
+    "halos/concentration/duffy08.py": "b135f90368da2db2694e143d9995eded0f2cb85bffd30b1d001bd269ec8b82c1",
+    "halos/profiles/nfw.py": "99faa997ed040ff865693bfc607bff90a2825abcb4a04fd05ee3b02952686cf1",
+    "halos/profiles/profile_base.py": "5bcaf0fd20a8068be0a8a6ebdf65d62b213c0e89ed184187ef11a028b490b538",
+    "halos/profiles_2pt.py": "485f2f9e7363af9ede07813f55dcacb341621a7a933142f584874763c6bf951b"
+  },
+  "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+  "versions": {
+    "tjpcov": "0.5.2.dev9+g2f59302af",
+    "pyccl": "3.3.3",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1"
+  },
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "threads": 6,
+  "script_sha256": "3937ff73d90bd859838134223f0d712a64aada9ba8545e4010556b439885d417",
+  "timing_scope": "Accuracy only; no benchmark timing",
+  "files": {
+    "halo.npz": "82536cd49a55c4b91bd8e76ac9a912fafe655dc451c5b7197c266140d287cd28"
+  }
+}
