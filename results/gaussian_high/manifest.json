@@ -1,0 +1,148 @@
+{
+  "schema": "tjpcov-gaussian-shear-v1",
+  "status": "completed",
+  "scope": "Gaussian EE assembly only; supplied CAMB P; native CCL C_ell",
+  "input_manifest": {
+    "schema": "lsst-y1-tjpcov-inputs-v1",
+    "survey": "LSST Y1 forecast subset",
+    "source_bin_1based": 3,
+    "lens_bins_1based": [
+      1,
+      2
+    ],
+    "area_deg2": 12300.0,
+    "source_density_arcmin2": 2.0,
+    "sigma_e_component": 0.26,
+    "lens_density_arcmin2": [
+      3.6,
+      3.6
+    ],
+    "bias": [
+      1.72716,
+      1.65168
+    ],
+    "cosmology": {
+      "omegam": 0.3,
+      "omegab": 0.05,
+      "H0": 70.0,
+      "ns": 0.965,
+      "As_1e9": 2.1,
+      "w": -1.0,
+      "w0pwa": -1.0,
+      "mnu": 0.0,
+      "AccuracyBoost": 1.0,
+      "CLAccuracyBoost": 1.0,
+      "CAMBAccuracyBoost": 1.0,
+      "kmax": 20.0,
+      "k_per_logint": 20,
+      "non_linear_emul": 2,
+      "lens_potential_accuracy": 1.0,
+      "halofit_version": "takahashi"
+    },
+    "gaussian": {
+      "nonlimber": false,
+      "ia": "none",
+      "A1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "A2": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "B_TA": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "rsd": false,
+    "magnification": false,
+    "galaxy_bias": "linear",
+    "units": {
+      "k": "h/Mpc",
+      "power": "(Mpc/h)^3",
+      "nz": "z_mid then unrenormalized n(z)",
+      "power_axes": [
+        "redshift",
+        "wavenumber"
+      ]
+    },
+    "cocoa": {
+      "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+      "status": ""
+    },
+    "core": {
+      "commit": "a35dbc9bf5db0ae72ea980bbf6b0ad8289fe17d4",
+      "status": ""
+    },
+    "lsst_y1": {
+      "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+      "status": ""
+    },
+    "threads": 6,
+    "camb_version": "1.6.7",
+    "camb_source": {
+      "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+      "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+    },
+    "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+    "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+    "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+    "script_sha256": "8d4c992c7bd1bc5e8e9fb11b7badcf366db3d6e4d46aabcadfba25f202560ebc",
+    "files": {
+      "inputs.npz": "6c540402d2468491ac04d8b1c8511a1c85ab924248cc7cb7f788b826401fec73",
+      "camb_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+    }
+  },
+  "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+  "tjpcov": {
+    "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+    "status": ""
+  },
+  "installed_source": {
+    "covariance_gaussian_fsky.py": "98ab9596da9c9352054ac3f668b433fcdc5e2132d751761742e49cc2220eb8ec",
+    "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+    "wigner_transform.py": "b81ddffbee35567e27a92fa7a53d048ec7f4430c56b7ec54b561dae0ef2ccc5f",
+    "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+  },
+  "versions": {
+    "tjpcov": "0.5.2.dev9+g2f59302af",
+    "pyccl": "3.3.3",
+    "sacc": "2.4",
+    "numpy": "2.4.3",
+    "scipy": "1.17.1"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+  "ccl_angular_cl_sha256": "038aae8290b55003af05af88c03c811575ab078581a7e1d570b0d4b3e70ef246",
+  "ccl_l_limber_default": -1,
+  "background": "native CCL; not imported from CAMB",
+  "area_sr": 3.746794263376515,
+  "source_name": "source3",
+  "ordering": "one source EE spectrum, then five increasing ell bands",
+  "estimator": "native TJPCov ell-weighted average; integer ell nodes",
+  "noise_extraction": "N factors 0,1,2; NN=(C2-2*C1+C0)/2; CN=C1-C0-NN",
+  "threads": 6,
+  "diagnostic_call_seconds": [
+    0.04185291699832305,
+    0.00774504104629159,
+    0.007493165961932391
+  ],
+  "diagnostic_elapsed_seconds": 0.19334112503565848,
+  "timing_scope": "diagnostic only; includes three noise configurations",
+  "script_sha256": "6c8c33b73c47ac135711ac8ca15f3bc54b3d26ff36202ba8248ae025ec245746",
+  "files": {
+    "gaussian.npz": "c2573273d399a828eef16a52a767789a5242abeea06cecb147f7bfbb20c9d0d3",
+    "source_bins.fits": "b683f03ffc8a58888eef8715f1f3485fac38985fa1fc5a2eaea8d9e963250022"
+  }
+}

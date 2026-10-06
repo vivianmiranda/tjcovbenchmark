@@ -1,4 +1,4 @@
-"""Compute a five-band native TJPCov shear covariance and export its spectra.
+"""Compute native TJPCov five-band covariances and export their spectra.
 
 Run in the separate TJPCov environment. This is the first assembly test,
 not a complete LSST covariance or a native-spectrum CoCoA comparison.
@@ -10,6 +10,7 @@ import argparse
 import importlib.metadata
 import inspect
 import platform
+import signal
 from pathlib import Path
 from time import perf_counter
 
@@ -22,9 +23,15 @@ def main():
     parser.add_argument("inputs", type=Path)
     parser.add_argument("--tjpcov", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--include-lenses", action="store_true",
+                        help="add the two exported lenses and all six spectra")
+    parser.add_argument("--timeout", type=int, default=600,
+                        help="Unix wall-time limit in seconds (default: 600)")
     parser.add_argument("--ell-range", type=int, nargs=2, default=[30, 150],
                         metavar=("FIRST", "STOP"), help="exclusive upper edge")
     args = parser.parse_args()
+    if args.timeout <= 0:
+        parser.error("--timeout must be positive")
     first, stop = args.ell_range
     if first < 2 or stop - first < 20 or stop - first > 200:
         parser.error("This bounded pilot needs 2 <= FIRST and 20..200 ell steps")
@@ -43,6 +50,17 @@ def main():
     if (manifest["units"]["k"] != "h/Mpc"
             or manifest["units"]["power"] != "(Mpc/h)^3"):
         raise ValueError("Recheck the supplied matter-power units")
+
+    output.mkdir(parents=True)
+    write_json(output / "run_settings.json", {
+        "timeout_seconds": args.timeout, "threads": threads,
+        "include_lenses": args.include_lenses, "ell_range": args.ell_range,
+        "input_manifest_sha256": sha256(inputs / "manifest.json"),
+    })
+    # A hard Unix deadline also stops compiled CCL calls. Partial files
+    # remain available to the supervising process if SIGALRM terminates us.
+    signal.signal(signal.SIGALRM, signal.SIG_DFL)
+    signal.alarm(args.timeout)
 
     import numpy as np
     import pyccl as ccl
@@ -116,20 +134,51 @@ def main():
         raise ValueError("Malformed source n(z)")
     source = f"source{manifest['source_bin_1based']}"
     catalog = sacc.Sacc()
+    lenses = []
+    if args.include_lenses:
+        lens_nz = data["lens_nz"]
+        if (lens_nz.ndim != 2 or lens_nz.shape[1] != 3
+                or not np.all(np.isfinite(lens_nz)) or np.any(lens_nz < 0)
+                or np.any(np.diff(lens_nz[:, 0]) <= 0)
+                or np.any(np.max(lens_nz[:, 1:], axis=0) <= 0)):
+            raise ValueError("Malformed two-lens n(z)")
+        for index, original_bin in enumerate(manifest["lens_bins_1based"]):
+            name = f"lens{original_bin}"
+            lenses.append(name)
+            catalog.add_tracer("NZ", name, z=lens_nz[:, 0],
+                               nz=lens_nz[:, index + 1],
+                               quantity="galaxy_density")
     catalog.add_tracer("NZ", source, z=nz[:, 0], nz=nz[:, 1],
                        quantity="galaxy_shear", spin=2)
-    catalog.add_ell_cl("cl_ee", source, source, centers, np.zeros(5),
-                       window=sacc.BandpowerWindow(ell, windows))
+    fields = lenses + [source]
+    pairs = np.array([[0, 0]], dtype=np.int32)
+    if args.include_lenses:
+        # Keep the OneCov comparison order: all clustering, both galaxy–
+        # shear spectra, then shear. Cross-lens clustering is retained.
+        pairs = np.array([[0, 0], [0, 1], [1, 1], [0, 2], [1, 2], [2, 2]],
+                         dtype=np.int32)
+    for observable, (left, right) in enumerate(pairs):
+        dtype = "cl_ee" if left == len(lenses) else (
+            "cl_0e" if right == len(lenses) else "cl_00")
+        catalog.add_ell_cl(dtype, fields[left], fields[right], centers,
+                           np.zeros(5), window=sacc.BandpowerWindow(ell, windows))
+        if not np.array_equal(catalog.indices(
+                data_type=dtype, tracers=(fields[left], fields[right])),
+                np.arange(observable * 5, (observable + 1) * 5)):
+            raise ValueError("SACC ordering differs from observable-then-band")
     area_sr = manifest["area_deg2"] * (np.pi / 180)**2
     config = {"cosmo": cosmo, "sacc_file": catalog, "IA": None,
               "use_mpi": False, "fsky": area_sr / (4 * np.pi),
               f"Ngal_{source}": manifest["source_density_arcmin2"]}
-    output.mkdir(parents=True)
+    for index, name in enumerate(lenses):
+        config[f"bias_{name}"] = manifest["bias"][index]
     catalog.save_fits(str(output / "source_bins.fits"), overwrite=False)
 
     # A Gaussian covariance is quadratic in the noise power N. Three
     # public calls with N multiplied by 0,1,2 separate CC, CN and NN.
     # Vary sigma_e by sqrt(factor), since N=sigma_e^2/number_density.
+    # For a galaxy N=1/number_density: divide density by factor. At zero
+    # use the public infinite-density limit; TJPCov returns exactly N=0.
     # This diagnostic adds calls; it is not a one-call production timing.
     calls = []
     call_seconds = []
@@ -137,6 +186,9 @@ def main():
         options = dict(config)
         options[f"sigma_e_{source}"] = (
             manifest["sigma_e_component"] * np.sqrt(factor))
+        for index, name in enumerate(lenses):
+            density = manifest["lens_density_arcmin2"][index]
+            options[f"Ngal_{name}"] = density / factor if factor else np.inf
         options["outdir"] = str(output / f"native_noise_{factor}")
         native = FourierGaussianFsky({"tjpcov": options})
         actual_ell, effective_ell, actual_edges = native.get_binning_info()
@@ -144,17 +196,34 @@ def main():
                 or not np.array_equal(actual_edges, edges)):
             raise ValueError("TJPCov reconstructed different ell nodes or edges")
         before = perf_counter()
-        calls.append(native.get_covariance_block(
-            (source, source), (source, source), include_b_modes=False))
+        if args.include_lenses:
+            # Let TJPCov select the SACC E/density data types and assemble
+            # every block, including all crossed Wick contractions.
+            calls.append(native.get_covariance())
+        else:
+            calls.append(native.get_covariance_block(
+                (source, source), (source, source), include_b_modes=False))
         call_seconds.append(perf_counter() - before)
+        tracer, noise = native.get_tracer_info()
+        expected_noise = [manifest["sigma_e_component"]**2
+                          * (np.pi / 10800)**2
+                          / manifest["source_density_arcmin2"]]
+        if args.include_lenses:
+            expected_noise = list((np.pi / 10800)**2 / np.asarray(
+                manifest["lens_density_arcmin2"])) + expected_noise
+        expected_noise = np.asarray(expected_noise)
+        np.testing.assert_allclose([noise[name] for name in fields],
+                                   factor * expected_noise, rtol=1e-14, atol=0)
         if factor == 1:
-            tracer, noise = native.get_tracer_info()
-            expected_noise = (manifest["sigma_e_component"]**2
-                              * (np.pi / 10800)**2
-                              / manifest["source_density_arcmin2"])
-            if not np.isclose(noise[source], expected_noise, rtol=1e-14, atol=0):
-                raise ValueError("TJPCov shape-noise units do not match")
-            spectra = ccl.angular_cl(cosmo, tracer[source], tracer[source], ell)
+            # Export every field pair. Covariances require crossed spectra
+            # even when a survey would exclude them from its data vector.
+            spectra = np.empty((ell.size, len(fields), len(fields)))
+            for left in range(len(fields)):
+                for right in range(left, len(fields)):
+                    cell = ccl.angular_cl(
+                        cosmo, tracer[fields[left]], tracer[fields[right]], ell)
+                    spectra[:, left, right] = cell
+                    spectra[:, right, left] = cell
 
     # With integer ell nodes and edges, native bin_cov weights each node
     # by ell*dell = ell. Its supplied SACC window amplitudes are not used.
@@ -171,17 +240,20 @@ def main():
     components = {"sample_variance": calls[0], "total": calls[1],
                   "noise": (calls[2] - 2 * calls[1] + calls[0]) / 2}
     components["mixed"] = calls[1] - calls[0] - components["noise"]
+    size = len(pairs) * 5
     for matrix in components.values():
-        if matrix.shape != (5, 5) or not np.all(np.isfinite(matrix)):
+        if matrix.shape != (size, size) or not np.all(np.isfinite(matrix)):
             raise ValueError("Invalid TJPCov Gaussian component")
     np.savez_compressed(output / "gaussian.npz", ell=ell, edges=edges,
                         effective_ell=effective_ell, operators=operators,
-                        spectra=spectra[:, None, None],
-                        noise_power=np.array([expected_noise]),
-                        pairs=np.array([[0, 0]], dtype=np.int32), **components)
+                        spectra=spectra, noise_power=expected_noise,
+                        pairs=pairs, **components)
     record = {
-        "schema": "tjpcov-gaussian-shear-v1", "status": "completed",
-        "scope": "Gaussian EE assembly only; supplied CAMB P; native CCL C_ell",
+        "schema": ("tjpcov-gaussian-fields-v1" if args.include_lenses
+                   else "tjpcov-gaussian-shear-v1"), "status": "completed",
+        "scope": ("Gaussian density/shear assembly; supplied CAMB P; native CCL C_ell"
+                  if args.include_lenses else
+                  "Gaussian EE assembly only; supplied CAMB P; native CCL C_ell"),
         "input_manifest": manifest,
         "input_manifest_sha256": sha256(inputs / "manifest.json"),
         "tjpcov": revision(args.tjpcov), "installed_source": source_hashes,
@@ -193,10 +265,13 @@ def main():
         "ccl_l_limber_default": limber_default,
         "background": "native CCL; not imported from CAMB",
         "area_sr": area_sr, "source_name": source,
-        "ordering": "one source EE spectrum, then five increasing ell bands",
+        "field_names": fields, "pairs": pairs.tolist(),
+        "include_lenses": args.include_lenses, "shape": [size, size],
+        "ordering": "listed observable pairs, then five increasing ell bands",
         "estimator": "native TJPCov ell-weighted average; integer ell nodes",
         "noise_extraction": "N factors 0,1,2; NN=(C2-2*C1+C0)/2; CN=C1-C0-NN",
-        "threads": threads,
+        "galaxy_zero_noise": "public Ngal=infinity limit" if lenses else None,
+        "threads": threads, "timeout_seconds": args.timeout,
         "diagnostic_call_seconds": call_seconds,
         "diagnostic_elapsed_seconds": perf_counter() - started,
         "timing_scope": "diagnostic only; includes three noise configurations",
@@ -205,6 +280,7 @@ def main():
                   for name in ("gaussian.npz", "source_bins.fits")},
     }
     write_json(output / "manifest.json", record)
+    signal.alarm(0)
     print(f"Saved native TJPCov Gaussian components and exact inputs to {output}")
 
 

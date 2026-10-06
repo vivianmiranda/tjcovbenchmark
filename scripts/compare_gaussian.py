@@ -7,6 +7,7 @@ SSC/cNG arrays here because those components have not been calculated.
 """
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -25,7 +26,10 @@ def main():
         parser.error("Choose a new output directory to preserve comparisons")
     threads = require_thread_environment()
     run = args.run.resolve()
-    record = load_bundle(run, "tjpcov-gaussian-shear-v1")
+    schema = json.loads((run / "manifest.json").read_text())["schema"]
+    if schema not in ("tjpcov-gaussian-shear-v1", "tjpcov-gaussian-fields-v1"):
+        raise ValueError("Expected a native shear or three-field Gaussian pilot")
+    record = load_bundle(run, schema)
     if record["status"] != "completed":
         raise ValueError("TJPCov run did not complete")
 
@@ -35,12 +39,17 @@ def main():
     data = np.load(run / "gaussian.npz", allow_pickle=False)
     ell, spectra, noise = data["ell"], data["spectra"], data["noise_power"]
     operators, pairs = data["operators"], data["pairs"]
+    expected_pairs = [[0, 0]]
+    nfield = 1
+    if schema == "tjpcov-gaussian-fields-v1":
+        nfield = 3
+        expected_pairs = [[0, 0], [0, 1], [1, 1], [0, 2], [1, 2], [2, 2]]
     if (ell.ndim != 1 or not np.all(np.diff(ell) == 1)
             or not np.all(ell == ell.astype(int)) or ell[0] < 2
-            or spectra.shape != (ell.size, 1, 1)
-            or noise.shape != (1,) or operators.shape != (5, ell.size)
-            or not np.array_equal(pairs, [[0, 0]])):
-        raise ValueError("Malformed shear-only ell, field or band layout")
+            or spectra.shape != (ell.size, nfield, nfield)
+            or noise.shape != (nfield,) or operators.shape != (5, ell.size)
+            or not np.array_equal(pairs, expected_pairs)):
+        raise ValueError("Malformed ell, field, observable-pair or band layout")
     for values in (spectra, noise, operators):
         if not np.all(np.isfinite(values)) or np.any(values < 0):
             raise ValueError("Invalid input spectrum, noise or operator")
@@ -74,12 +83,13 @@ def main():
     # tiny/zero cross entries in the comparison without division by them.
     # Fractional errors on nonzero entries are a separate diagnostic.
     tolerance = 1e-11
+    size = len(pairs) * operators.shape[0]
     report = {"schema": "cocoa-tjpcov-gaussian-comparison-v1",
               "scope": record["scope"], "native_run": record,
               "native_manifest_sha256": sha256(run / "manifest.json"),
               "component_diagnostics": {}, "passed": True,
               "variance_scaled_tolerance": tolerance,
-              "shape": [5, 5], "threads": threads,
+              "shape": [size, size], "threads": threads,
               "core": revision(cocoa / "external_modules/code/cosmolike_core"),
               "lsst_y1": revision(cocoa / "projects/lsst_y1"),
               "interface_sha256": sha256(interface.__file__),
@@ -119,7 +129,8 @@ def main():
         report["generalized_variance_ratio_range"] = None
 
     output.mkdir(parents=True)
-    arrays = {"ell_edges": data["edges"], "effective_ell": data["effective_ell"]}
+    arrays = {"ell_edges": data["edges"], "effective_ell": data["effective_ell"],
+              "pairs": pairs}
     for label, components in (("cocoa", cocoa_components),
                                ("tjpcov", tjpcov_components)):
         arrays.update({f"{label}_{key}": value for key, value in components.items()})

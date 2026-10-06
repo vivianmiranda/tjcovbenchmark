@@ -1,0 +1,82 @@
+{
+  "schema": "cocoa-halo-ingredients-v1",
+  "status": "completed",
+  "scope": "Native halo ingredients and explicit matched-fit diagnostics",
+  "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+  "native_manifest_sha256": "ddcdbc9aa385bb61d183219d2ffa35c7defc2fbf1816c30e8d9c457c97c449d0",
+  "power_table_check": "linear and nonlinear CAMB tables bitwise equal",
+  "native_model": {
+    "mass_definition": "M200m",
+    "mass_function": "Tinker10",
+    "bias": "Tinker10",
+    "concentration": "Bhattacharya13",
+    "delta_c": 1.686,
+    "completion": "Current production Wynn I11; direct higher moments"
+  },
+  "controls": {
+    "integration_accuracy": 0,
+    "halo_mass_nquad": 96,
+    "lnm_edges": [
+      -92.10340371976183,
+      -82.89306334778566,
+      -73.68272297580947,
+      -64.47238260383328,
+      -55.2620422318571,
+      -46.05170185988092,
+      -36.841361487904734,
+      -27.63102111592855,
+      -18.420680743952367,
+      -9.210340371976184,
+      0.0,
+      9.210340371976184,
+      11.51292546497023,
+      13.815510557964274,
+      16.981565060831088,
+      20.1476195636979,
+      23.31367406656471,
+      26.479728569431526,
+      29.64578307229834,
+      32.81183757516515,
+      35.977892078031964,
+      39.14394658089878
+    ]
+  },
+  "units": {
+    "mass": "Msun/h",
+    "k": "h/Mpc",
+    "dndlnm": "(h/Mpc)^3",
+    "rho": "(Msun/h)/(Mpc/h)^3",
+    "linear_i02_i12": "(Mpc/h)^3",
+    "profile_i01_i11": "1"
+  },
+  "axes": {
+    "mass_statistics": [
+      "redshift",
+      "mass"
+    ],
+    "power_moments": [
+      "redshift",
+      "k"
+    ],
+    "profile": [
+      "redshift",
+      "k",
+      "mass"
+    ]
+  },
+  "core": {
+    "commit": "a35dbc9bf5db0ae72ea980bbf6b0ad8289fe17d4",
+    "status": ""
+  },
+  "lsst_y1": {
+    "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+    "status": ""
+  },
+  "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+  "script_sha256": "7d40cd04c04932eeebbd16b0dbeb6466a26b5f966d0378ea418b593100e0d4b8",
+  "threads": 6,
+  "timing_scope": "Accuracy only; no benchmark timing",
+  "files": {
+    "halo.npz": "397b64acfc47cb9ac3d59d7cd163c60e94290b41c296669f3745e1dfce5892b1"
+  }
+}

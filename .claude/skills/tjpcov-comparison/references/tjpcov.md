@@ -1,8 +1,9 @@
 # Local source study — 2026-10-06
 
 Inspected TJPCov commit `2f59302af33607aec712185632d8274e59e6b33c`.
-All paths below are relative to the sibling TJPCov checkout. No source
-changes, imports, covariance runs or TJPCov dependency installs were made.
+All paths below are relative to the sibling TJPCov checkout. During this initial source review, no source changes, imports, covariance
+runs or TJPCov dependency installs were made. The later numerical campaign
+is recorded in comparison_plan.md and ssc_sampling_diagnostic.md.
 Also inspected the already installed CCL 3.3.3 Python source, read-only.
 The proposed environment selects that release, not the data-vector study's
 CCL PR #1296. Record the actual installed code before each campaign.
@@ -73,7 +74,8 @@ CCL 3.3.3 halos/pk_4pt.py::halomod_Tk3D_SSC_linear_bias combines
 (47/21 - dlnP/dlnk/3)*P and I12, and applies number-count corrections when
 requested. Check the actual selected P, profile normalizations, density
 reference and bias placement before comparing with CoCoA's two-halo
-slope and fractional-response transfer. No numerical comparison yet.
+slope and fractional-response transfer. The later native SSC comparisons
+are recorded in ssc_sampling_diagnostic.md.
 
 SSC blocks are reused from ssc_tr1_tr2_tr3_tr4.npz if present. Filenames
 do not identify cosmology or accuracy settings. Always use a fresh outdir
@@ -141,6 +143,5 @@ NaMaster and MPI are optional, not part of the first f_sky environment.
 
 The benchmark recipe pins CCL 3.3.3 and a separate Python 3.12 base. It
 does not reuse Cocoa's Python 3.11 environment or the data-vector study's
-CCL PR. New install and import validation are pending. Freeze the actual
-resolved dependencies after success; do not claim an untested recipe is
-a reproducible lock file.
+CCL PR. Installation, imports and pip dependency checks subsequently
+passed. Resolved package records are in results/environment/.
