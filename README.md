@@ -15,8 +15,20 @@ cNG and total differences separately.
 30 × 30 galaxy-and-shear matrices, pass at floating-point precision with
 shared spectra and bin weights. The isolated environment is installed and
 tested. Small native SSC comparisons and their sampling diagnostics are
-also complete. The first native halo-ingredient comparisons are measured
-below. Separated trispectra and cNG remain pending; timings come last.
+also complete. Native halo ingredients and all five matter-trispectrum
+terms have now been compared, including unequal wavenumbers and controlled
+input changes. The large discrepancies have several distinct causes,
+described below. Complete cNG projections remain pending; timings come last.
+
+The checks identify different causes in different parts of the calculation:
+
+| Where the difference appears | What the controlled tests identify |
+| --- | --- |
+| Coarse native SSC | Background-variance time sampling, before comparing physical models. |
+| Refined native SSC | Different response and survey-window predictions account for most of the difference. |
+| Small-scale 1h trispectrum | Concentration is a major contributor; abundance conventions also matter. |
+| Unequal-wavenumber 4h trispectrum | Power interpolation is amplified by cancellation of large perturbative terms. |
+| Galaxy-containing SSC/cNG | An additional bias multiplication in the inspected TJPCov path; the shear tests do not probe it. |
 
 ## Contents
 
@@ -29,6 +41,8 @@ below. Separated trispectra and cNG remain pending; timings come last.
 7. [Gaussian results](#results)
 8. [Super-sample covariance](#ssc)
 9. [Halo ingredients](#halo)
+10. [Separated matter trispectra](#trispectrum)
+11. [Galaxy-bias placement](#galaxy-bias)
 
 ## Comparison scope <a name="scope"></a>
 
@@ -487,7 +501,7 @@ The CoCoA component is evaluated directly at the requested multipoles,
 using its production C interface. Its full survey assembler additionally
 interpolates in multipole. CCL retains its native background and tracer
 interpolation. The remaining difference therefore combines several
-choices; individual ingredient tests are needed to attribute it.
+choices. The controlled swaps below separate their effects.
 
 The following uses CoCoA boost 2/integration level 2 and the 785-node
 CCL time grid. Positive values would mean TJPCov exceeds CoCoA; the
@@ -514,6 +528,113 @@ The [SSC record](results/ssc_native.json) and
 the four sampling diagnostics, complete matrices and source provenance.
 Their units are recorded explicitly. Timings are excluded from this
 accuracy campaign.
+
+### Separating the response from the survey window
+
+SSC measures how an unobserved, survey-wide density fluctuation changes
+the power measured inside the survey. Two separate predictions enter:
+
+- **Matter response:** the change in power per unit background overdensity.
+  Each covariance entry contains a product of two responses.
+- **Background variance:** the size of that overdensity after averaging
+  over the survey footprint. It weights the response product along the
+  line of sight.
+
+To separate them, we keep CoCoA's distances, source kernels and radial
+projection fixed, then replace one supplied table at a time with CCL's
+prediction. The first case reconstructs the saved CoCoA SSC **bitwise**.
+All entries of each 5 × 5 matrix are retained.
+
+| Change from native CoCoA | Low-ell diagonal change | High-ell diagonal change |
+| --- | ---: | ---: |
+| CCL background variance only | −8.83% to −8.55% | −7.30% to −7.27% |
+| CCL matter response only | −19.66% to −1.86% | −13.99% to −13.78% |
+| Both CCL predictions | −26.49% to −10.33% | −20.28% to −20.06% |
+
+The percentages use native CoCoA SSC as denominator. The two effects
+multiply inside the integral, so their individual percentages need not
+add to the combined change. The window swap compares complete native
+predictions: spherical cap versus disc **and** their power/background
+readers. It is not an isolated measurement of footprint shape alone.
+
+![SSC differences from response and window swaps](figures/ssc_models/ssc_model_swaps.png)
+
+The colors show the signed entry difference divided by the native CoCoA
+SSC diagonal rms product. The next figure shows the underlying tables
+at the same physical wavenumbers and radial samples, rather than attributing
+everything to a single covariance percentage. It displays z = 0.01–2;
+the archive retains the full radial domain used in the matrices.
+
+![SSC response and window along the line of sight](figures/ssc_models/ssc_model_inputs.png)
+
+Replacing both predictions leaves at most **0.187%** at low ell and
+**0.351%** at high ell relative to CCL's SSC rms product. This remaining
+difference includes geometry, tracer kernels and projection conventions.
+Supplying **CCL's physical inputs throughout** to CoCoA's actual C
+projection reduces the residual to **0.00204%** and **0.000251%**,
+respectively. Thus these projection checks do not reproduce the native
+20–27% discrepancy.
+
+A few extremely near-observer CCL samples have negative responses while
+extrapolating to very high k. They remain in the calculation. Projecting
+their complete shell contributions separately gives less than **1.3e−12**
+of the common-input SSC rms product in these cases; they do not explain
+the native discrepancy.
+
+For the last comparison, CCL's window table also includes the CoCoA
+quadrature nodes. That further window refinement changes CCL's own SSC
+by only **0.00152%** at low ell and **0.000309%** at high ell. It is recorded
+separately, rather than silently treated as the previous native matrix.
+
+### What differs in the matter response?
+
+Let D denote the derivative of the matter power with respect to a uniform
+background overdensity. For the shear-only case studied here:
+
+- **TJPCov/CCL:** combines the linear-power growth/dilation response with
+  the bias-weighted one-halo response I12:
+
+$$
+D_{\rm CCL}=\left[\frac{47}{21}
+ -\frac{1}{3}\frac{d\ln P_{\rm L}}{d\ln k}\right]P_{\rm L}+I_{12}.
+$$
+
+- **CoCoA:** uses two-halo power in the first term, then transfers the
+  fractional halo-model response to its supplied nonlinear power:
+
+$$
+P_{2h}=I_{11}^2P_{\rm L},\qquad P_h=P_{2h}+I_{02},
+$$
+
+$$
+D_h=\left[\frac{47}{21}
+ -\frac{1}{3}\frac{d\ln P_{2h}}{d\ln k}\right]P_{2h}+I_{12},
+\qquad D_{\rm CoCoA}=\frac{P_{\rm NL}}{P_h}D_h.
+$$
+
+These are different prescriptions even with identical halo fits.
+The nonlinear transfer is a modeling choice; it is not an algebraic
+identity equating halo-model power and nonlinear power.
+The CCL expression is evaluated by its
+[public SSC response function](https://github.com/LSSTDESC/CCL/blob/v3.3.3/pyccl/halos/pk_4pt.py).
+
+The figure below keeps **all CCL halo moments and powers fixed** and
+changes only these response prescriptions through CoCoA's public response
+kernel. Selecting the CCL convention reproduces CCL's actual response
+within **6.7e−16 fractionally**. The other curves show the effects of the
+two-halo prescription and nonlinear transfer separately. They are
+controlled formulas on shared ingredients, not native CoCoA curves.
+
+![Matter-response convention on common halo ingredients](figures/ssc_models/ssc_response_conventions.png)
+
+At k = 10 h/Mpc the combined convention change raises the response by
+**7.40%, 8.28% and 12.69%** at redshifts 0.1, 0.5 and 1. The native
+comparison also changes the halo fits and window; these local numbers
+are not interchangeable with the projected SSC percentages above.
+
+The [attribution record](results/ssc_models/comparison.json) and
+[complete arrays](results/ssc_models/models.npz) retain both windows,
+responses, geometry, every swapped matrix and the shared-input checks.
 
 ### Reproduce the SSC comparison
 
@@ -578,6 +699,40 @@ For the refinement table, repeat Step 2 with factors 1, 2, 4, 8 and 16.
 `--k-refinement 2` tests k-grid density; `--integration-method spline`
 tests the projection method separately. Repeat the CoCoA step at boosts
 1/2 and integration levels 0/1/2 to check its own numerical controls.
+
+To reproduce the attribution tests after those native runs:
+
+**Step :one:**: in the **TJPCov terminal**, export CCL's response, window
+and geometry at the saved CoCoA integration nodes.
+
+```bash
+python scripts/diagnose_ssc_models.py ccl work/lsst_y1 work/gaussian_low \
+  work/ssc_low_a16 work/cocoa_ssc_low_ab2_i2 --tjpcov ../TJPCov \
+  --output work/ssc_models_low_ccl_v2
+```
+
+**Step :two:**: in the **CoCoA terminal**, from `cocoa/Cocoa/`, perform
+the input swaps with the C projection and response functions.
+
+```bash
+python ../../tjcovbenchmark/scripts/diagnose_ssc_models.py cocoa \
+  ../../tjcovbenchmark/work/ssc_models_low_ccl_v2 \
+  ../../tjcovbenchmark/work/cocoa_ssc_low_ab2_i2 --cocoa . \
+  --output ../../tjcovbenchmark/work/ssc_models_low
+```
+
+Repeat for `high`, using `work/ssc_models_high_ccl` for the export.
+Each output directory must be new.
+
+**Step :three:**: in the **TJPCov terminal**, collect and plot both cases.
+
+```bash
+python scripts/plot_ssc_models.py \
+  --low work/ssc_models_low --high work/ssc_models_high \
+  --low-ccl work/ssc_models_low_ccl_v2 --high-ccl work/ssc_models_high_ccl \
+  --results results/ssc_models \
+  --figures figures/ssc_models
+```
 
 ## Halo ingredients <a name="halo"></a>
 
@@ -671,9 +826,9 @@ uses CCL's refined mass grid and CoCoA integration level 2.
 The [ingredient comparison](results/halo/comparison.json) and
 [refinement record](results/halo/refinements.json) accompany all five
 native exports and the [combined arrays](results/halo/halo.npz).
-These measurements do not yet apportion the SSC difference among the
-halo response, concentration and survey window, or certify a full cNG
-covariance.
+The SSC swaps above separate the response and window predictions;
+the trispectrum tests below isolate concentration and power-reader
+effects. Neither ingredient test alone certifies a full cNG covariance.
 
 ### Reproduce the halo comparison
 
@@ -706,3 +861,279 @@ python scripts/compare_halo.py work/halo_native_m255 work/halo_cocoa_i2 \
 
 For the refinement checks, repeat Step 1 with `--mass-refinement 1` and
 Step 2 with `--integration-accuracy 0` and `1`, each in a fresh directory.
+
+## Separated matter trispectra <a name="trispectrum"></a>
+
+The connected covariance depends on a four-point matter statistic,
+the trispectrum. Its halo decomposition asks where the four matter
+contributions reside:
+
+- **1h:** all four belong to one halo. Halo abundance and the density
+  profile strongly affect this term at small scales.
+- **2h:** either three contributions belong to one halo and one to another
+  (1+3), or two belong to each (2+2). Both assignments of unequal K and Q
+  are retained in the 1+3 term.
+- **3h:** one halo contributes twice; the other two contribute once each.
+- **4h:** four distinct halos are correlated through the tree-level matter
+  trispectrum, weighted by their bias and profile integrals.
+
+TJPCov's shear cNG calculator calls the public CCL functions for these
+five terms and sums them. We call those same functions at redshifts
+0.1, 0.5 and 1, on nine wavenumbers from 0.001 to 10 h/Mpc. Every one of
+the 45 unordered pairs is retained. These are **matter trispectra before
+survey projection**, not angular covariance matrices.
+
+### Native differences: diagonals do not tell the whole story
+
+The upper panels show amplitudes for equal wavenumbers. Lower panels show
+100 × (CoCoA / TJPCov-CCL − 1). Solid curves are CoCoA; dashed curves and
+markers are TJPCov/CCL. The two 2h partitions are combined in this figure.
+
+![Separated native matter trispectra](figures/trispectrum/trispectrum_terms.png)
+
+The table instead includes **all equal and unequal pairs**, keeping both
+2h partitions separate. Values are maximum absolute fractional differences,
+with CCL as denominator.
+
+| Term | z = 0.1 | z = 0.5 | z = 1 |
+| --- | ---: | ---: | ---: |
+| 1h | 21.70% | 26.15% | 8.20% |
+| 2h, 1+3 | 15.21% | 17.14% | 6.88% |
+| 2h, 2+2 | 13.10% | 19.27% | 10.31% |
+| 3h | 6.51% | 6.55% | 4.38% |
+| 4h | 61.63% | 61.59% | 61.52% |
+| Sum of all terms | 20.82% | 25.16% | 38.81% |
+
+The 4h maximum occurs at **K = 0.001 and Q = 0.316 h/Mpc**. This is a
+strongly unequal pair: one wavelength is much longer than the other.
+Its discrepancy is absent from the equal-k curves. It is not merely a
+percentage inflated by a negligible term: at z = 1, CCL's 4h contribution
+accounts for about 61% of the total trispectrum at this pair.
+
+![All wavenumber-pair differences](figures/trispectrum/trispectrum_pairs.png)
+
+Each panel uses its own color scale. All entries of the symmetric K,Q
+grid are shown, including off-diagonal configurations. These percentages
+must not be read as fractional changes in a projected survey covariance.
+
+### Which differences come from the halo profiles?
+
+At z = 0.5 and K = Q = 10 h/Mpc, changing only the **public CCL
+concentration choice** from Duffy to Bhattacharya reduces the 1h difference
+from **26.15% to 2.81%**. The 1+3 difference falls from 17.14% to 1.18%.
+This directly identifies concentration as a major source of the
+small-scale discrepancy in that case.
+
+- **CoCoA:** retains its native Bhattacharya concentration and
+  bias-normalized Tinker (2010) multiplicity throughout this comparison.
+- **TJPCov/CCL native:** retains Duffy concentration and Tinker (2008)
+  abundance. The extra curves below are explicitly changed-input CCL
+  diagnostics, not new native TJPCov predictions.
+
+Switching CCL's abundance to Tinker (2010) does not automatically reproduce
+CoCoA. CCL's default Tinker (2010) amplitude and CoCoA's bias-consistency
+normalization differ. Their Bhattacharya implementations also retain
+different collapse-threshold and growth conventions. Matching a fit's
+name therefore does not make all its numerical inputs identical.
+
+![Halo-fit changes in the trispectrum](figures/trispectrum/trispectrum_model_diagnostic.png)
+
+For example, changing both CCL fit names gives a −7.93% 1h difference at
+that same point, rather than perfect agreement. The tests identify
+sensitivity to each choice; they do not select a better calibrated model.
+
+### Why a tiny power difference can change 4h substantially
+
+In the unequal-wavelength limit, individual perturbation-theory terms are
+large and cancel. The remaining answer depends on how the power changes
+over the small interval around Q sampled by the longer mode K. Agreement
+in the value of P alone does not guarantee agreement in that variation.
+
+- **CoCoA:** reads log power by linear interpolation between supplied
+  log-k nodes. The function is continuous, but its slope changes at nodes.
+- **TJPCov/CCL:** uses CCL's spline power reader. Its native higher-halo
+  calculation also uses a separable-growth approximation for 2h22, 3h
+  and 4h.
+
+The native sampled powers differ by only about **0.011%**. To isolate
+their effect, we supply CoCoA's real C angular kernels and assembler with
+CCL's actual halo moments and power evaluations at every angular node.
+We also turn off separable growth through CCL's public function argument,
+so both sides evaluate power at the requested redshift.
+
+Under those shared inputs, the maximum differences are:
+
+| Contribution | Largest fractional difference |
+| --- | ---: |
+| 1h | Identical supplied value; consistency check only |
+| 2h, 1+3 | 4.0e−16 |
+| 2h, 2+2 | 4.7e−9 |
+| 3h | 4.1e−9 |
+| 4h | 5.0e−6 |
+
+Thus the large unequal-k discrepancy is not reproduced by the
+trispectrum algebra under shared inputs. Turning off separable growth
+alone changes CCL's 4h result by at most **0.119%**, far less than 62%.
+
+A second diagnostic keeps CoCoA's halo moments and angular quadrature
+fixed. A cubic interpolant of the **same original CAMB samples** fills
+denser, nested k tables; CoCoA still uses its actual linear lookup.
+The control evaluates that cubic input directly in the same C kernels.
+
+| Power-table nodes | Largest interior-pair 4h difference from the smooth-input control |
+| --- | ---: |
+| 1,500, original | 61.63% |
+| 2,999 | 19.39% |
+| 5,997 | 1.73% |
+| 11,993 | 0.49% |
+| 23,985 | 0.39% |
+
+Here 36 of the 45 pairs have every internal wavenumber within the CAMB
+table's domain; the maximum at every refinement lies among these pairs.
+The archive also retains all-pair results. Near the table boundary,
+densifying its end intervals changes the extrapolation slopes, whereas
+the smooth control keeps the original slopes. The interior comparison
+avoids conflating that boundary effect with interpolation.
+
+![Power-interpolation and common-input tests](figures/trispectrum/trispectrum_power_diagnostic.png)
+
+This localizes the large 4h sensitivity to the interpolated power shape.
+It does **not** establish the smooth curve as an exact physical solution,
+nor establish convergence at the final grid. The halo moments were held
+fixed to isolate this one effect. Production CoCoA is unchanged; the
+effect on complete projected cNG matrices still needs measurement.
+
+### Numerical checks and reproduction
+
+CCL mass-grid refinement from 128 to 255 nodes changes each term by at
+most **0.00312%**. CoCoA integration levels 0 → 1 and 1 → 2 change terms
+by at most **0.000303%** and **0.000207%**. Those quadrature changes are
+much smaller than the native differences; they do not refine the power
+reader and therefore cannot resolve its separate interpolation effect.
+
+The [complete report](results/trispectrum/comparison.json) and
+[array archive](results/trispectrum/trispectra.npz) preserve all terms,
+pairs, model variants, refinement checks and input hashes.
+
+**Step :one:**: in the **CoCoA terminal**, from `cocoa/Cocoa/`, export
+the native terms and their angular nodes.
+
+```bash
+python ../../tjcovbenchmark/scripts/export_cocoa_trispectrum.py \
+  ../../tjcovbenchmark/work/lsst_y1 --cocoa . \
+  --output ../../tjcovbenchmark/work/trispectrum_cocoa_i0
+```
+
+**Step :two:**: in the **TJPCov terminal**, evaluate the native CCL terms.
+
+```bash
+python scripts/run_trispectrum.py work/lsst_y1 work/trispectrum_cocoa_i0 \
+  --tjpcov ../TJPCov --mass-refinement 2 \
+  --output work/trispectrum_native_m255
+```
+
+**Step :three:**: compute the direct-growth diagnostic in a fresh folder.
+
+```bash
+python scripts/run_trispectrum.py work/lsst_y1 work/trispectrum_cocoa_i0 \
+  --tjpcov ../TJPCov --mass-refinement 2 --direct-growth \
+  --output work/trispectrum_direct_m255
+```
+
+**Step :four:**: in the **CoCoA terminal**, compare native and supplied
+ingredients using the actual C kernels.
+
+```bash
+python ../../tjcovbenchmark/scripts/compare_trispectrum.py \
+  ../../tjcovbenchmark/work/trispectrum_cocoa_i0 \
+  ../../tjcovbenchmark/work/trispectrum_direct_m255 \
+  --output ../../tjcovbenchmark/work/trispectrum_comparison_direct
+```
+
+**Step :five:**: isolate the power-grid effect without modifying libraries.
+
+```bash
+python ../../tjcovbenchmark/scripts/diagnose_trispectrum_power.py \
+  ../../tjcovbenchmark/work/lsst_y1 \
+  ../../tjcovbenchmark/work/trispectrum_cocoa_i0 --cocoa . \
+  --output ../../tjcovbenchmark/work/trispectrum_power_refinement
+```
+
+The fit diagnostics use `--concentration bhattacharya13` and/or
+`--mass-function tinker10` in Step 2. Repeat the CoCoA export with
+`--integration-accuracy 1` and `2`, and the native CCL export with
+`--mass-refinement 1`, for the integration checks. Every run needs a
+new output folder. Repeat Step 4 for `trispectrum_native_m255`, writing
+`trispectrum_comparison_native`, to retain the native-growth comparison.
+
+The plot collector expects these additional folders:
+
+| Output suffix after `work/trispectrum_` | Variation |
+| --- | --- |
+| `native_m128` | Native CCL mass refinement 1. |
+| `bhattacharya_m255` | CCL mass refinement 2, Bhattacharya concentration. |
+| `tinker10_m255` | CCL mass refinement 2, Tinker (2010) abundance. |
+| `both_m255` | CCL mass refinement 2, both fit changes. |
+| `cocoa_i1`, `cocoa_i2` | CoCoA integration levels 1 and 2. |
+
+**Step :six:**: in the **TJPCov terminal**, collect all saved comparisons
+and create the four figures above.
+
+```bash
+python scripts/plot_trispectrum.py work --output results/trispectrum \
+  --figures figures/trispectrum
+```
+
+## Galaxy-bias placement <a name="galaxy-bias"></a>
+
+This is separate from the shear discrepancies above. In the inspected
+TJPCov revision, its tracer builder includes the configured galaxy bias
+in each galaxy transfer function. Its higher-halo cNG code also multiplies
+the matter trispectrum by four bias factors before projection. These
+placements are visible in the
+[tracer builder](https://github.com/LSSTDESC/TJPCov/blob/2f59302af33607aec712185632d8274e59e6b33c/tjpcov/covariance_builder.py#L896)
+and [cNG assembly](https://github.com/LSSTDESC/TJPCov/blob/2f59302af33607aec712185632d8274e59e6b33c/tjpcov/covariance_fourier_cNG.py#L208).
+
+For four linearly biased galaxy legs, the matter contribution should
+receive one factor of bias per leg. With constant bias b, that gives b⁴.
+We tested the source placement using the actual TJPCov tracer builder,
+public CCL projection and a common supplied trispectrum:
+
+| Doubling galaxy bias from 1 to 2 | Measured covariance factor |
+| --- | ---: |
+| Bias in four tracer legs only | 16 |
+| Biased tracers plus TJPCov's explicit higher-halo multiplier | 256 |
+| Shear-only control | 1 |
+
+The factors agree with these values to floating-point precision. The
+inspected higher-halo placement therefore applies galaxy bias twice.
+This finding concerns the higher-halo matter contribution; it does not
+replace the separate HOD modeling needed for the galaxy one-halo term.
+
+For SSC, CCL's response helper includes bias and the number-count
+mean-density subtraction. Holding that response fixed, replacing
+unit-bias projection tracers with b = 2 tracers introduces another factor
+of **16**. This isolates the extra projection factors without pretending
+that the full SSC response, including its subtraction, has a simple
+b⁴ scaling under all changes.
+
+- **CoCoA:** its linear-bias matter projection applies the bias through
+  the galaxy windows; the matter trispectrum has no extra galaxy bias.
+- **TJPCov at the studied revision:** the additional factors described
+  above affect galaxy-containing SSC/higher-halo cNG blocks. Pure shear
+  is unaffected and cannot diagnose this issue.
+
+These are placement diagnostics, not new physical covariance forecasts.
+No TJPCov or CCL source was patched. The
+[test record](results/galaxy_bias/report.json) and
+[complete small matrices](results/galaxy_bias/diagnostic.npz) retain the
+source hashes and measured ratios.
+
+**Step :one:**: in the **TJPCov terminal**, use the completed three-field
+Gaussian catalog to reproduce the test.
+
+```bash
+python scripts/diagnose_galaxy_bias.py work/lsst_y1 \
+  work/gaussian_3x2_low_checked --tjpcov ../TJPCov \
+  --output work/galaxy_bias_placement
+```
