@@ -115,6 +115,38 @@ not make halo abundance or SSC response prescriptions identical.
   times. Unsupported/pending comparisons are named honestly. Historical
   cutoff investigations remain in skill references.
 
+## README and figure template
+
+Use the current sibling OneCov-benchmark-/README.md and its plotting
+scripts as the presentation template. Keep the same progression through
+Gaussian, SSC, halo ingredients, sigma/abundance, separated trispectra,
+cNG projection, complete Fourier and real-space covariance results.
+Use the same Cocoa-style installation and reproduction steps.
+
+| OneCov figure | Corresponding TJPCov figure |
+| --- | --- |
+| gaussian_matrices.png | Correlation matrices and magnified residuals for the same selected bins. |
+| gaussian_components.png | Gaussian signal, mixed-noise and pure-noise variance contributions. |
+| ssc_projection.png | Shared-input SSC projection and matrix differences. |
+| halo_ingredients.png | Native halo ingredients and their ratios at matching redshifts. |
+| sigma_abundance.png | Mass variance and abundance differences, with their causes tested separately. |
+| trispectrum_terms.png | Separate 1h, 2h, 3h and 4h terms, including unequal wavenumbers. |
+| connected_projection.png | Shared-trispectrum cNG projection and residuals. |
+| complete_shear_difference.png | Four-panel G/SSC/cNG/total Fourier covariance differences. |
+| real_shear_difference.png | The complete selected xi+/xi− matrix, including their cross-covariance, for implemented components. |
+
+Retain panel order, probe separators, units, legend conventions and
+normalization across the two studies. Set residual color ranges from
+the actual results and label them; matching appearance must not hide
+different discrepancy sizes. Captions must name the compared codes,
+inputs, difference sign, reference normalization and scope.
+
+Only show panels supported by actual TJPCov calculations. In particular,
+do not mimic a four-component native real-space result where SSC/cNG
+are unavailable. Explain that capability difference beside the figure.
+Keep timings in tables. Add each plot to the README when its comparison
+is validated; do not fill it with prospective or copied numerical results.
+
 ## Next concrete action
 
 After dependency installation is authorized and the numerical slot is
