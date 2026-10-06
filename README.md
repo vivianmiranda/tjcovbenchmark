@@ -11,10 +11,10 @@ separate halo trispectra, and connected non-Gaussian covariance (cNG).
 Complete matrix comparisons retain all entries and show Gaussian, SSC,
 cNG and total differences separately.
 
-**Status:** the local TJPCov source study, installation recipes and first
-Gaussian comparison scripts are prepared. Numerical comparisons and
-timings have not yet been run.
-The new TJPCov environment recipe has not yet been installed and tested.
+**Status:** the first low- and high-multipole shear Gaussian comparisons
+pass at floating-point precision with shared spectra and bin weights.
+The isolated environment is installed and tested. SSC, halo and cNG
+comparisons are in progress; timing measurements come last.
 
 ## Contents
 
@@ -145,8 +145,10 @@ source start_tjpcov.sh
 
 TJPCov itself is Python; the compile step installs it without rebuilding
 CCL or changing Cocoa. The recipe pins Python, CCL and the principal
-numerical packages. It is not yet a platform lock file: the remaining
-dependency versions will be recorded after the first successful install.
+numerical packages. The tested macOS ARM environment is recorded in
+[the resolved Conda export](results/environment/conda-osx-arm64.yml) and
+[Python package versions](results/environment/python-packages.txt).
+The portable recipe above remains the starting point on other platforms.
 
 ## Starting and stopping <a name="sessions"></a>
 
@@ -207,7 +209,7 @@ source stop_cocoa.sh
 
 ## First Gaussian comparison <a name="gaussian"></a>
 
-The prepared first case uses **LSST Y1 source bin 3**, five Fourier bands
+The first case uses **LSST Y1 source bin 3**, five Fourier bands
 over `30 <= ell < 150`, and its complete 5 × 5 Gaussian covariance.
 The source density and ellipticity noise come from the project settings.
 
@@ -309,15 +311,55 @@ the runners verify its hashes before using it.
 | [plot_gaussian.py](scripts/plot_gaussian.py) | Make correlation, residual and variance-component panels in the OneCov comparison style. |
 
 Manifests record the input hashes, survey identities, units, code
-revisions, installed TJPCov source hashes and package versions. These
-scripts have passed syntax and source/API review; their first numerical
-execution still awaits installation of the separate TJPCov environment.
+revisions, installed TJPCov source hashes and package versions. The low- and high-multipole workflows have both been executed in the
+separate environments, including the native operator and noise-unit checks.
 
 ## Results <a name="results"></a>
 
-The first numerical result will compare the Gaussian Fourier covariance
-for LSST Y1 source bin 3. Subsequent results will include component
-difference plots and execution-time tables, with the input conventions,
-tested revisions and numerical refinements stated beside them.
+### Shared-spectrum Gaussian covariance
 
-No TJPCov runtime or cross-code accuracy has been measured yet.
+**LSST Y1 source bin 3, five bands per case.** Both codes receive the
+same angular spectra, shape-noise power and discrete band weights.
+Every entry of each 5 × 5 matrix is compared. Differences below are
+normalized by the CoCoA total Gaussian rms product, including for the
+individual components.
+
+| Component | Low multipoles, 30–149 | High multipoles, 1500–1619 |
+| --- | ---: | ---: |
+| Sample variance | 1.33e−16 | 8.42e−19 |
+| Signal × noise | 3.44e−16 | 6.58e−16 |
+| Pure noise | 1.81e−16 | 4.38e−16 |
+| Total Gaussian | 1.72e−16 | 2.51e−16 |
+
+Both totals are positive definite. Their generalized variance ratios
+differ from one by at most 3.34e−16: the two Gaussian assembly routines
+agree to floating-point precision for these cases. The largest fractional
+difference on a nonzero individual component is 7.2e−15.
+
+The nonoverlapping Fourier bands give diagonal matrices in this
+sky-fraction approximation. The small residual panels magnify rounding
+differences; they are not physical discrepancies.
+
+![Low-multipole Gaussian matrices](figures/gaussian_low/gaussian_matrices.png)
+
+![High-multipole Gaussian matrices](figures/gaussian_high/gaussian_matrices.png)
+
+The variance budget changes substantially between the cases. Signal
+matters at low multipoles, while shape noise supplies about 90% of the
+high-multipole variance. CoCoA lines and TJPCov markers overlap for all
+three contributions.
+
+![Low-multipole Gaussian components](figures/gaussian_low/gaussian_components.png)
+
+![High-multipole Gaussian components](figures/gaussian_high/gaussian_components.png)
+
+These are **assembly tests**, not a comparison of independently generated
+CoCoA and CCL spectra. They do not establish SSC/cNG agreement or full-survey
+convergence. No performance claim is made from these correctness runs.
+
+The [low-multipole report](results/gaussian_low/comparison.json) and
+[high-multipole report](results/gaussian_high/comparison.json) contain the
+checks, code revisions and input hashes. Each result directory includes
+the component matrices, supplied spectra, band operators and native SACC
+file. TJPCov is revision `2f59302`, using CCL 3.3.3; CoCoA includes the
+committed Wynn/FFTLog implementation `d95867f`.

@@ -50,16 +50,18 @@ Keep Cocoa and TJPCov in separate terminals. Follow the Cocoa/LSST README
 for Cocoa activation, compilation and thread settings. Never copy a full
 Cocoa environment dump; it can contain credentials.
 
-The new TJPCov recipe is not installed or numerically validated yet.
-Before publishing results, save resolved versions and a platform-specific
-Conda export, check imports and run a minimal source-bin case. Dependency
-installation requires authorization; preparing a recipe is not proof that
-the environment works.
+The TJPCov recipe was installed and import-tested on 2026-10-06. The
+resolved Conda and Python versions are saved under results/environment/.
+The low/high five-band Gaussian numerical cases pass. For a new install,
+check imports and a minimal source-bin case; a recipe alone is not proof
+that the environment works.
 
 Run only one numerical job at a time unless concurrent correctness runs
 are explicitly authorized and their worker allocation is coordinated.
-The current parallel-agent authorization is for TJPCov preparation only;
-do not add a TJPCov job alongside the validation and OneCov refresh jobs.
+The user subsequently authorized small TJPCov numerical covariance runs
+with up to six OpenMP threads while the validation runner continues. The
+OneCov accuracy runner has finished. Coordinate one TJPCov case at a time;
+timings come last, after other numerical work has stopped.
 Use at most eight total workers on this laptop for measurements, BLAS one
 thread, and derive OpenMP count from OMP_NUM_THREADS.
 TJPCov's Wigner multiprocessing pool has a separate worker count; an
