@@ -33,6 +33,25 @@ def main():
     rms = np.sqrt(np.diag(cocoa))
     residual = (tjpcov - cocoa) / rms[:, None] / rms[None, :]
     ell = data["effective_ell"]
+    pairs = data["pairs"] if "pairs" in data else np.array([[0, 0]])
+    fields = report["native_run"].get(
+        "field_names", [report["native_run"]["source_name"]])
+    field_labels = [rf"g_{{{name[4:]}}}" if name.startswith("lens")
+                    else r"\gamma" for name in fields]
+    labels = [f"${field_labels[left]}{field_labels[right]}$"
+              for left, right in pairs]
+    nband = ell.size
+
+    def observable_axis(axis, vertical=False):
+        """Separate the six measured spectra, each with five adjacent bands."""
+        centers = np.arange(len(pairs)) * nband + (nband - 1) / 2
+        axis.set_xticks(centers, labels)
+        if vertical:
+            axis.set_yticks(centers, labels)
+        for boundary in np.arange(1, len(pairs)) * nband - 0.5:
+            axis.axvline(boundary, color="0.65", linewidth=0.6)
+            if vertical:
+                axis.axhline(boundary, color="0.65", linewidth=0.6)
     plt.rcParams.update({"font.size": 10, "axes.spines.top": False,
                          "axes.spines.right": False})
     figure, axes = plt.subplots(1, 3, figsize=(12, 4), layout="constrained")
@@ -53,20 +72,33 @@ def main():
                         label=r"$\Delta C_{ij}/\sqrt{C^{\rm CoCoA}_{ii}C^{\rm CoCoA}_{jj}}$")
     axes[2].set_title("TJPCov − CoCoA")
     for axis in axes:
-        axis.set_xlabel("Increasing multipole band")
-        axis.set_ylabel("Increasing multipole band")
-    figure.suptitle("LSST Y1 source bin · shared spectra · Gaussian covariance")
+        if len(pairs) == 1:
+            axis.set_xlabel("Increasing multipole band")
+            axis.set_ylabel("Increasing multipole band")
+        else:
+            observable_axis(axis, vertical=True)
+    figure.suptitle("LSST Y1 subset · shared spectra · Gaussian covariance")
 
     fractions, axis = plt.subplots(figsize=(7, 4), layout="constrained")
     for name, label, color in (("sample_variance", "Sample variance", "#2563a6"),
                                 ("mixed", "Signal × noise", "#c05621"),
                                 ("noise", "Pure noise", "#23836c")):
-        axis.plot(ell, np.diag(data[f"cocoa_{name}"]) / np.diag(cocoa),
-                   color=color, label=label)
-        axis.plot(ell, np.diag(data[f"tjpcov_{name}"]) / np.diag(tjpcov),
-                   linestyle="none", marker="o", fillstyle="none", color=color)
-    axis.set(xlabel=r"Effective multipole $\ell$",
-             ylabel="Fraction of Gaussian variance", ylim=(-0.03, 1.05),
+        values = np.diag(data[f"cocoa_{name}"]) / np.diag(cocoa)
+        other = np.diag(data[f"tjpcov_{name}"]) / np.diag(tjpcov)
+        x = ell if len(pairs) == 1 else np.arange(len(values))
+        for observable in range(len(pairs)):
+            samples = slice(observable * nband, (observable + 1) * nband)
+            # Lines show increasing ell within one measured spectrum;
+            # connecting two different spectra would imply false continuity.
+            axis.plot(x[samples], values[samples], color=color,
+                       label=label if observable == 0 else None)
+        axis.plot(x, other, linestyle="none", marker="o",
+                   fillstyle="none", color=color)
+    if len(pairs) == 1:
+        axis.set_xlabel(r"Effective multipole $\ell$")
+    else:
+        observable_axis(axis)
+    axis.set(ylabel="Fraction of Gaussian variance", ylim=(-0.03, 1.05),
              title="CoCoA lines / TJPCov markers")
     axis.legend()
     args.output.mkdir(parents=True, exist_ok=True)
