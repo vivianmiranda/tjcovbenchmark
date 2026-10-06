@@ -56,8 +56,12 @@ Conda export, check imports and run a minimal source-bin case. Dependency
 installation requires authorization; preparing a recipe is not proof that
 the environment works.
 
-Run only one numerical job at a time. Use at most eight total workers on
-this laptop, BLAS one thread, and derive OpenMP count from OMP_NUM_THREADS.
+Run only one numerical job at a time unless concurrent correctness runs
+are explicitly authorized and their worker allocation is coordinated.
+The current parallel-agent authorization is for TJPCov preparation only;
+do not add a TJPCov job alongside the validation and OneCov refresh jobs.
+Use at most eight total workers on this laptop for measurements, BLAS one
+thread, and derive OpenMP count from OMP_NUM_THREADS.
 TJPCov's Wigner multiprocessing pool has a separate worker count; an
 OpenMP variable alone does not limit it. Resolve this before a real-space
 run. Do not run timing jobs alongside tests, compilation or another code.

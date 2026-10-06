@@ -11,8 +11,9 @@ separate halo trispectra, and connected non-Gaussian covariance (cNG).
 Complete matrix comparisons retain all entries and show Gaussian, SSC,
 cNG and total differences separately.
 
-**Status:** the local TJPCov source study and installation recipes are
-prepared. Numerical comparisons and timings have not yet been run.
+**Status:** the local TJPCov source study, installation recipes and first
+Gaussian comparison scripts are prepared. Numerical comparisons and
+timings have not yet been run.
 The new TJPCov environment recipe has not yet been installed and tested.
 
 ## Contents
@@ -22,7 +23,8 @@ The new TJPCov environment recipe has not yet been installed and tested.
 3. [Installation and compilation](#installation)
 4. [Starting and stopping](#sessions)
 5. [CoCoA environment](#cocoa-environment)
-6. [Results](#results)
+6. [First Gaussian comparison](#gaussian)
+7. [Results](#results)
 
 ## Comparison scope <a name="scope"></a>
 
@@ -55,6 +57,8 @@ approximation; the installation below does not include NaMaster or MPI.
 
 Start with the same LSST Y1 redshift distributions, survey area, number
 densities, shape noise and CAMB tables used in the OneCovariance study.
+The exporter reads the actual LSST project configuration and preserves
+the selected bin's identity and original redshift samples.
 The initial comparison uses massless neutrinos and zero intrinsic
 alignment, magnification and redshift-space distortions.
 
@@ -200,6 +204,114 @@ export OMP_NUM_THREADS=8
 ```bash
 source stop_cocoa.sh
 ```
+
+## First Gaussian comparison <a name="gaussian"></a>
+
+The prepared first case uses **LSST Y1 source bin 3**, five Fourier bands
+over `30 <= ell < 150`, and its complete 5 × 5 Gaussian covariance.
+The source density and ellipticity noise come from the project settings.
+
+This first test asks whether the two codes assemble the same covariance
+from the same angular spectra:
+
+- **TJPCov:** reads the LSST distribution through SACC and imports CoCoA's
+  CAMB power tables through CCL. Its native Gaussian calculator computes
+  the shear spectrum and covariance. The runner exports those same CCL
+  spectrum samples and the bin operator used by TJPCov.
+- **CoCoA:** receives the exported spectra, noise and operator through
+  its production covariance interface. Its C kernels compute the matrix.
+
+TJPCov's bin weights are proportional to `ell` on this integer grid.
+The scripts check its reconstructed edges and match those weights in
+CoCoA. The final endpoint is present to define the last edge and has zero
+weight in the covariance. SACC's stored mean values are not used as
+supplied spectra by this TJPCov calculator.
+
+Sample variance, signal–noise and pure-noise pieces are saved separately.
+TJPCov does not expose that split directly: three public calls with noise
+power multiplied by zero, one and two recover the coefficients of its
+quadratic dependence on noise. CoCoA obtains the same pieces by turning
+the supplied signal or noise off.
+
+This isolates **Gaussian assembly**. It does not compare native spectra,
+validate the halo model, or generate SSC/cNG. CCL uses the supplied CAMB
+power but its own background and interpolation; a later native-spectrum
+comparison must measure those differences. The three noise calls also
+do not constitute a production timing measurement.
+
+### Run the prepared case
+
+These commands assume the sibling directory layout described above.
+Finish each step before starting the next; use the two activated terminals
+from the environment instructions. Use new output names for a new case.
+
+**Step :one:**: in the **CoCoA terminal**, from `cocoa/Cocoa/`, export the
+actual survey inputs and CAMB tables. This does not compute a covariance.
+
+```bash
+python ../../tjcovbenchmark/scripts/export_lsst_y1.py \
+  --cocoa . --output ../../tjcovbenchmark/work/lsst_y1
+```
+
+**Step :two:**: in the **TJPCov terminal**, from `tjcovbenchmark/`, select
+the OpenMP allocation.
+
+```bash
+export OMP_NUM_THREADS=8
+```
+
+**Step :three:**: keep the numerical-array library single-threaded in
+that terminal.
+
+```bash
+export OPENBLAS_NUM_THREADS=1
+```
+
+**Step :four:**: compute TJPCov's native Gaussian components and export
+the angular spectra it uses.
+
+```bash
+python scripts/run_gaussian.py work/lsst_y1 --tjpcov ../TJPCov \
+  --output work/gaussian_low
+```
+
+**Step :five:**: return to the **CoCoA terminal**, still in `cocoa/Cocoa/`,
+and compare its Gaussian matrix using those exact arrays.
+
+```bash
+python ../../tjcovbenchmark/scripts/compare_gaussian.py \
+  ../../tjcovbenchmark/work/gaussian_low --cocoa . \
+  --output ../../tjcovbenchmark/work/comparison_low
+```
+
+**Step :six:**: in the **TJPCov terminal**, plot the passing comparison.
+
+```bash
+python scripts/plot_gaussian.py work/comparison_low \
+  --output figures/gaussian_low
+```
+
+The matrix figure shows each code's correlations and the signed
+TJPCov-minus-CoCoA difference, normalized by CoCoA's total rms product.
+A second figure separates the three Gaussian variance contributions.
+Every matrix entry is retained; the report also checks positivity and
+generalized variance ratios. No eigenvalues are clipped.
+
+For the matching high-multipole case, use `--ell-range 1500 1620` in
+Step 4 and fresh output paths in Steps 4–6. Reuse the exported LSST bundle;
+the runners verify its hashes before using it.
+
+| Script | Purpose |
+| --- | --- |
+| [export_lsst_y1.py](scripts/export_lsst_y1.py) | Save the project's actual catalog, noise, cosmology and CAMB arrays. |
+| [run_gaussian.py](scripts/run_gaussian.py) | Run native TJPCov shear Gaussian blocks and export the shared spectra/operator. |
+| [compare_gaussian.py](scripts/compare_gaussian.py) | Call CoCoA's production C kernels and compare all Gaussian entries. |
+| [plot_gaussian.py](scripts/plot_gaussian.py) | Make correlation, residual and variance-component panels in the OneCov comparison style. |
+
+Manifests record the input hashes, survey identities, units, code
+revisions, installed TJPCov source hashes and package versions. These
+scripts have passed syntax and source/API review; their first numerical
+execution still awaits installation of the separate TJPCov environment.
 
 ## Results <a name="results"></a>
 

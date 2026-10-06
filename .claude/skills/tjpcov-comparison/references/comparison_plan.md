@@ -1,10 +1,12 @@
 # Comparison plan and parity with OneCovariance
 
-Added as item 5 in the overall work order, 2026-10-06. Source review,
-README and environment preparation may proceed while CoCoA validation
-runs. Numerical TJPCov comparisons wait for a validated, committed Wynn
-baseline and the current OneCov figures/README refresh. Do not interrupt
-the single active numerical job or install into its environment.
+Added as item 5, then moved to item 4 when the Schmidt study was deferred
+to the end of the queue, 2026-10-06. The user authorized parallel agents
+for source review, scripts, README and environment preparation while
+CoCoA validation and a two-thread OneCov accuracy refresh run. This
+preparation does not authorize a third numerical job or an installation.
+Numerical TJPCov comparisons wait for the coordinator to release a slot
+and for the dedicated environment to be installed with authorization.
 
 ## Common inputs
 
@@ -150,5 +152,47 @@ is validated; do not fill it with prospective or copied numerical results.
 ## Next concrete action
 
 After dependency installation is authorized and the numerical slot is
-free, validate the environment and implement the SACC/export adapter plus
-the smallest Gaussian case. No numerical result exists yet.
+free, validate the environment and execute the prepared four-script
+Gaussian workflow in the README. No numerical result exists yet.
+
+## Gaussian preparation checkpoint — 2026-10-06
+
+`scripts/export_lsst_y1.py` uses the actual project configuration and
+initialize functions, saving the source-3/lens-1,2 n(z) columns, survey
+numbers and CAMB tables with input units/axes and hashes. It does not
+import the OneCov scripts or depend on OneCov's untracked work folders.
+
+`scripts/run_gaussian.py` constructs a SACC source case with five bands,
+passes a real CCL CosmologyCalculator to FourierGaussianFsky, and calls
+the untouched native calculator. Linear/nonlinear CAMB P are converted
+from h/Mpc and (Mpc/h)^3 to CCL's Mpc units; the background remains native
+CCL and this distinction is recorded. It checks installed TJPCov source
+bytes against the named checkout and checks CCL's Limber default.
+
+The runner exports the CCL C_ell values evaluated with the same cosmology,
+tracer, ell nodes and defaults as TJPCov. A SACC mean is never a substitute.
+It separates CC/CN/NN by native calls at shape-noise powers 0,N,2N:
+NN=(C(2N)-2C(N)+C(0))/2 and CN=C(N)-C(0)-NN. The calls are diagnostic;
+their elapsed times must not be put in a production timing table.
+
+SACC endpoint detail: windows include each nominal upper boundary because
+TJPCov gets the final edge from the last positive window node. Its native
+bin_cov excludes the upper edge. Therefore the exported ell grid includes
+one final zero-weight node. The comparison checks actual reconstructed
+edges, uses ell weights, and verifies its operator transcription against
+native bin_cov with a supplied test array. General windows/noninteger ell
+grids are not supported by this first script.
+
+`scripts/compare_gaussian.py` calls CoCoA's actual production interface
+with these arrays. It compares all four Gaussian pieces, checks total
+positivity and generalized variance ratios, and preserves every entry.
+`scripts/plot_gaussian.py` uses the OneCov correlation/residual/component
+layout, with actual residual ranges. It will not plot a failed comparison
+as a passing result. No scientific figures were produced during prep.
+
+Remaining before a first claim: install/import in the private environment;
+run the low-ell 5x5 case; inspect exact SACC and CCL runtime behavior;
+repeat high ell; then extend to the six-observable 30x30 case. The latter
+needs explicit zero-noise extraction for galaxy legs and is not silently
+covered by the shear-only script. Numerical convergence and native spectra
+are separate later checks. Syntax checks are not numerical validation.
