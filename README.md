@@ -11,8 +11,8 @@ separate halo trispectra, and connected non-Gaussian covariance (cNG).
 Complete matrix comparisons retain all entries and show Gaussian, SSC,
 cNG and total differences separately.
 
-**Status:** the first low- and high-multipole shear Gaussian comparisons
-pass at floating-point precision with shared spectra and bin weights.
+**Status:** the low- and high-multipole Gaussian comparisons, including
+30 × 30 galaxy-and-shear matrices, pass at floating-point precision with shared spectra and bin weights.
 The isolated environment is installed and tested. SSC, halo and cNG
 comparisons are in progress; timing measurements come last.
 
@@ -24,7 +24,7 @@ comparisons are in progress; timing measurements come last.
 4. [Starting and stopping](#sessions)
 5. [CoCoA environment](#cocoa-environment)
 6. [First Gaussian comparison](#gaussian)
-7. [Results](#results)
+7. [Gaussian results](#results)
 
 ## Comparison scope <a name="scope"></a>
 
@@ -303,6 +303,12 @@ For the matching high-multipole case, use `--ell-range 1500 1620` in
 Step 4 and fresh output paths in Steps 4–6. Reuse the exported LSST bundle;
 the runners verify its hashes before using it.
 
+To include **lens bins 1 and 2**, add `--include-lenses` to Step 4.
+This keeps all six measured spectra: the three clustering pairs, both
+galaxy–shear pairs and the shear spectrum. Five bands per spectrum give
+a complete 30 × 30 matrix. Use fresh run, comparison and figure paths.
+The same three public noise settings separate all Gaussian components.
+
 | Script | Purpose |
 | --- | --- |
 | [export_lsst_y1.py](scripts/export_lsst_y1.py) | Save the project's actual catalog, noise, cosmology and CAMB arrays. |
@@ -314,7 +320,7 @@ Manifests record the input hashes, survey identities, units, code
 revisions, installed TJPCov source hashes and package versions. The low- and high-multipole workflows have both been executed in the
 separate environments, including the native operator and noise-unit checks.
 
-## Results <a name="results"></a>
+## Gaussian results <a name="results"></a>
 
 ### Shared-spectrum Gaussian covariance
 
@@ -363,3 +369,32 @@ checks, code revisions and input hashes. Each result directory includes
 the component matrices, supplied spectra, band operators and native SACC
 file. TJPCov is revision `2f59302`, using CCL 3.3.3; CoCoA includes the
 committed Wynn/FFTLog implementation `d95867f`.
+
+### Galaxy-and-shear matrices
+
+Adding the two lens bins tests correlations between different observables,
+including cross-lens clustering. These off-diagonal blocks are retained.
+The maximum differences use the same total-Gaussian rms normalization as
+above.
+
+| Component | Low multipoles, 30 × 30 | High multipoles, 30 × 30 |
+| --- | ---: | ---: |
+| Sample variance | 3.89e−16 | 3.33e−16 |
+| Signal × noise | 6.96e−16 | 6.58e−16 |
+| Pure noise | 3.35e−16 | 4.51e−16 |
+| Total Gaussian | 5.38e−16 | 2.76e−16 |
+
+Both totals are positive definite, and generalized variance ratios differ
+from one by at most 5.11e−15. Noise extraction subtracts nearly equal
+matrices; fractional errors on very small noise entries are consequently
+larger than the rms-normalized differences shown here.
+
+![Low-multipole galaxy-and-shear Gaussian matrices](figures/gaussian_3x2_low/gaussian_matrices.png)
+
+![High-multipole galaxy-and-shear Gaussian matrices](figures/gaussian_3x2_high/gaussian_matrices.png)
+
+The [low-multipole record](results/gaussian_3x2_low/comparison.json) and
+[high-multipole record](results/gaussian_3x2_high/comparison.json) include
+all component checks. Their variance budgets are shown in the
+[low-multipole plot](figures/gaussian_3x2_low/gaussian_components.png) and
+[high-multipole plot](figures/gaussian_3x2_high/gaussian_components.png).
