@@ -1,0 +1,23 @@
+# First-install recipe for the f_sky comparison (no NaMaster or MPI).
+# The first successful installation must save a platform-specific Conda
+# export before numerical results are published. This is not a lock file.
+name: tjcovbenchmark
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12.13
+  - numpy=2.4.3
+  - scipy=1.17.1
+  - pyccl=3.3.3
+  - camb=1.6.5
+  - pyyaml=6.0.3
+  - sacc>=0.12
+  - healpy
+  - h5py
+  - jinja2
+  - matplotlib-base
+  - pip
+  - setuptools>=61
+  - setuptools_scm>=6.2
+  - wheel
+  - pytest
