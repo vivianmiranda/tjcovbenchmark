@@ -165,7 +165,14 @@ redshifts, CCL mass-grid128/255 and CoCoA96/128/256 quadrature checks.
 Matched concentration/radius and peak-height diagnostics are in
 references/halo_preparation.md; results are under results/halo/.
 
-Next: separated trispectra, then the bounded cNG and complete-matrix
+All five separated trispectra and their public-fit, direct-growth,
+mass/angular quadrature and power-table diagnostics are now complete.
+SSC response/window swaps and common-input projections are also complete.
+See references/trispectrum_diagnostics.md for the measured attribution,
+galaxy-bias placement test and exact scope. Figures/results are linked
+from the README. No production CoCoA/CCL/TJPCov source changed.
+
+Next: bounded cNG projections and complete-matrix
 comparisons below. Real-space worker, memory and
 noise audits remain gates before a native real-space run. No overlapping
 elapsed times from this campaign may be used as benchmarks.

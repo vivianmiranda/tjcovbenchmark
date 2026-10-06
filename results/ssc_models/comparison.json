@@ -1,0 +1,382 @@
+{
+  "schema": "tjpcov-ssc-model-figures-v1",
+  "status": "completed",
+  "script_sha256": "e426d0c7efdf876bc4dec5d8a4c7e7e00a32bbb071eb110036e944f57abfa228",
+  "files": {
+    "provenance/low.json": "7f7d52b63c0b24d7449a1f38269b8140a676f5637a178b02d3fdbc63c557e762",
+    "provenance/high.json": "dc18236323fafb1548fc4dce6047c553f3dc5ca033cb56afc58762d2dfd8d585",
+    "provenance/low_ccl.json": "08001caedae1ac4b4f29dc3dcac3f8f383e2fed5df6b5828656a2b71dcf2189f",
+    "provenance/high_ccl.json": "8ee57c093c7657b8c5aef09d30ee3431683630cdd9cd8f2389affa26fcf84a9b",
+    "models.npz": "4009852a834a229f69cd6cb5ef3d66a837939516c79a13b002e46d3c186055b1"
+  },
+  "figures": {
+    "ssc_model_inputs.pdf": "7938bef93a74ca4346418346ceffbef55ff7d104f05d894a1815eed72c3d755c",
+    "ssc_model_inputs.png": "ad18bd131f1c682d5591ec32cd2ab668061d6f78f4a169cde2ca206f2ca2878f",
+    "ssc_model_swaps.pdf": "00a326c2ffa2b207795ddcaa14e1008aeb5dc295efbee2cfdd84a23711bf2489",
+    "ssc_model_swaps.png": "f20b7c9a46fe49c7242d5103d7a02b0dd01222e6c93a51cb22e7d2c346913b51",
+    "ssc_response_conventions.pdf": "d0360f0a5c80b5a689d56b9c793394bad313872491d622896baaa94f568e0321",
+    "ssc_response_conventions.png": "487da55a5bef823672690659b2f5931f52672cf6ac0a8f9e606b329a6c68a90d"
+  },
+  "matrix_normalization": "100*(substitution-CoCoA)/sqrt(Cii*Cjj); C is native CoCoA SSC, not total covariance",
+  "estimator": "point multipoles; no band averaging",
+  "cases": {
+    "low": {
+      "schema": "cocoa-tjpcov-ssc-model-diagnostic-v1",
+      "status": "completed",
+      "threads": 6,
+      "timeout_seconds": 600,
+      "script_sha256": "1572f1f09c1b1b16069ed3800a2224bb285f889c5631c5f872fffb92981ffa4d",
+      "timing_policy": "Correctness only; no benchmark durations",
+      "ccl_export_manifest_sha256": "08001caedae1ac4b4f29dc3dcac3f8f383e2fed5df6b5828656a2b71dcf2189f",
+      "cocoa_manifest_sha256": "989ef2e538f62b5c307fb40fd2075eabd3a5c505e8da10ad5f808fd9b1d1df9b",
+      "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+      "cases": {
+        "cocoa_response_cap_window": {
+          "max_abs_difference_over_reference_rms_product": 0.0,
+          "diagonal_fractional_difference": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "cocoa_response_disc_window": {
+          "max_abs_difference_over_reference_rms_product": 0.08828724483905125,
+          "diagonal_fractional_difference": [
+            -0.08828724483905126,
+            -0.0875453087127851,
+            -0.0869483467738239,
+            -0.08635654992398256,
+            -0.08546571385174362
+          ]
+        },
+        "ccl_response_cap_window": {
+          "max_abs_difference_over_reference_rms_product": 0.19656245677639497,
+          "diagonal_fractional_difference": [
+            -0.018633893839575477,
+            -0.0628706052872241,
+            -0.11205912738026336,
+            -0.15921538553769976,
+            -0.19656245677639494
+          ]
+        },
+        "ccl_response_disc_window": {
+          "max_abs_difference_over_reference_rms_product": 0.26489580361761167,
+          "diagonal_fractional_difference": [
+            -0.10328582575679712,
+            -0.143129711572478,
+            -0.18785113506047613,
+            -0.23092759483913272,
+            -0.26489580361761167
+          ]
+        }
+      },
+      "units": {
+        "covariance": "dimensionless"
+      },
+      "scope": "SSC-only controlled predictions; no G/cNG or band averaging",
+      "files": {
+        "models.npz": "76e46f4ab5bb1e6da2b0f807e4c93e16e2224fb0f3a10b452bd6bbcf9c705ff2"
+      },
+      "projection_check": {
+        "max_abs_difference_over_reference_rms_product": 2.0368547699593614e-05,
+        "diagonal_fractional_difference": [
+          -1.7057753791016594e-05,
+          -1.707020197894149e-05,
+          -2.0368547699600725e-05,
+          -1.7102254932899186e-05,
+          -1.7811895885122553e-05
+        ]
+      },
+      "remaining_after_response_and_window_swaps": {
+        "max_abs_difference_over_reference_rms_product": 0.0018693779559434416,
+        "diagonal_fractional_difference": [
+          0.0016872547516513237,
+          0.0018126193385805678,
+          0.001869377955943552,
+          0.001827611218737868,
+          0.001726226726245006
+        ]
+      },
+      "negative_response_shells": {
+        "count": 1,
+        "maximum_redshift": 1.3662365328404036e-05,
+        "max_abs_contribution_over_common_rms_product": 3.3777477717324507e-18,
+        "scope": "All shells with any negative CCL response; retained in full result"
+      },
+      "interpretation": {
+        "response_swap": "native responses include different halo fits and readers",
+        "window_swap": "native window predictions include power/background choices",
+        "projection_check": "same CCL physical inputs; GSL versus CCL radial integration and interpolation remain distinct",
+        "remaining": "CoCoA versus CCL geometry/tracer weights and projection; not uniquely a quadrature error",
+        "interaction": "response and window changes multiply; they need not add"
+      },
+      "formula_gate_max_fractional_difference": 6.661338147750939e-16,
+      "formula_scope": {
+        "scope": "common CCL ingredients; response conventions only",
+        "units": "Mpc^3 for power, I02, I12 and response; I11/slope unitless",
+        "input_axis_order": "[quantity,a,k]",
+        "input_roles": [
+          "Plinear",
+          "Pnonlinear",
+          "I11",
+          "I02",
+          "I12",
+          "dln(I11^2 Plinear)/dlnk",
+          "dlnPlinear/dlnk"
+        ],
+        "centered_logk_step": 2.5e-05
+      }
+    },
+    "high": {
+      "schema": "cocoa-tjpcov-ssc-model-diagnostic-v1",
+      "status": "completed",
+      "threads": 6,
+      "timeout_seconds": 600,
+      "script_sha256": "1572f1f09c1b1b16069ed3800a2224bb285f889c5631c5f872fffb92981ffa4d",
+      "timing_policy": "Correctness only; no benchmark durations",
+      "ccl_export_manifest_sha256": "8ee57c093c7657b8c5aef09d30ee3431683630cdd9cd8f2389affa26fcf84a9b",
+      "cocoa_manifest_sha256": "dfce351a51ef60ec312e5e4af2898b5365f5be696f83ec7777b319ebd152a347",
+      "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+      "cases": {
+        "cocoa_response_cap_window": {
+          "max_abs_difference_over_reference_rms_product": 0.0,
+          "diagonal_fractional_difference": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "cocoa_response_disc_window": {
+          "max_abs_difference_over_reference_rms_product": 0.0729672390265693,
+          "diagonal_fractional_difference": [
+            -0.07296723902656932,
+            -0.07290945286947714,
+            -0.07285188775236984,
+            -0.0727933989691032,
+            -0.07273527235869792
+          ]
+        },
+        "ccl_response_cap_window": {
+          "max_abs_difference_over_reference_rms_product": 0.13990014186673547,
+          "diagonal_fractional_difference": [
+            -0.1399001418667355,
+            -0.1393519240895622,
+            -0.13882193130562115,
+            -0.13829902361954205,
+            -0.13779708047236539
+          ]
+        },
+        "ccl_response_disc_window": {
+          "max_abs_difference_over_reference_rms_product": 0.20278801217062675,
+          "diagonal_fractional_difference": [
+            -0.2027880121706267,
+            -0.2022213068044243,
+            -0.2016716049457571,
+            -0.20112742417353702,
+            -0.20060292746649433
+          ]
+        }
+      },
+      "units": {
+        "covariance": "dimensionless"
+      },
+      "scope": "SSC-only controlled predictions; no G/cNG or band averaging",
+      "files": {
+        "models.npz": "741e2b9e84f67ca724d7732c6f48a562acb30acb87f735de7ef4c586cd6715a7"
+      },
+      "projection_check": {
+        "max_abs_difference_over_reference_rms_product": 2.5081761853773115e-06,
+        "diagonal_fractional_difference": [
+          -1.6192599975317634e-06,
+          -1.8515009591046905e-06,
+          -2.282684366416987e-06,
+          -2.50817618541177e-06,
+          -2.186329958742128e-06
+        ]
+      },
+      "remaining_after_response_and_window_swaps": {
+        "max_abs_difference_over_reference_rms_product": 0.0035070385359558154,
+        "diagonal_fractional_difference": [
+          0.0034120034807851862,
+          0.0034352075210100086,
+          0.0034583715808023108,
+          0.0034823752188644086,
+          0.0035070385359559086
+        ]
+      },
+      "negative_response_shells": {
+        "count": 6,
+        "maximum_redshift": 0.00021676340952181405,
+        "max_abs_contribution_over_common_rms_product": 1.215799054374237e-12,
+        "scope": "All shells with any negative CCL response; retained in full result"
+      },
+      "interpretation": {
+        "response_swap": "native responses include different halo fits and readers",
+        "window_swap": "native window predictions include power/background choices",
+        "projection_check": "same CCL physical inputs; GSL versus CCL radial integration and interpolation remain distinct",
+        "remaining": "CoCoA versus CCL geometry/tracer weights and projection; not uniquely a quadrature error",
+        "interaction": "response and window changes multiply; they need not add"
+      },
+      "formula_gate_max_fractional_difference": 6.661338147750939e-16,
+      "formula_scope": {
+        "scope": "common CCL ingredients; response conventions only",
+        "units": "Mpc^3 for power, I02, I12 and response; I11/slope unitless",
+        "input_axis_order": "[quantity,a,k]",
+        "input_roles": [
+          "Plinear",
+          "Pnonlinear",
+          "I11",
+          "I02",
+          "I12",
+          "dln(I11^2 Plinear)/dlnk",
+          "dlnPlinear/dlnk"
+        ],
+        "centered_logk_step": 2.5e-05
+      }
+    }
+  },
+  "sightline_masks_and_ranges": [
+    {
+      "quantity": "matter response [Mpc^3]",
+      "denominator_floor": 9.55950579924743e-08,
+      "relative_floor": 1e-12,
+      "masked_samples": 0,
+      "total_samples": 8960,
+      "redshift_range": [
+        1.3662365328404036e-05,
+        3.499950556814623
+      ],
+      "ccl_tabulated_k_range_Mpc_inverse": [
+        5.000000000000004e-05,
+        999.9999999999998
+      ],
+      "displayed_redshift_range": [
+        0.01,
+        2
+      ],
+      "extrapolated_samples": 4,
+      "displayed_extrapolated_samples": 0,
+      "negative_ccl_responses": 2
+    },
+    {
+      "quantity": "matter response [Mpc^3]",
+      "denominator_floor": 1.6682714174831322e-09,
+      "relative_floor": 1e-12,
+      "masked_samples": 0,
+      "total_samples": 8960,
+      "redshift_range": [
+        1.3662365328404036e-05,
+        3.499950556814623
+      ],
+      "ccl_tabulated_k_range_Mpc_inverse": [
+        5.000000000000004e-05,
+        999.9999999999998
+      ],
+      "displayed_redshift_range": [
+        0.01,
+        2
+      ],
+      "extrapolated_samples": 35,
+      "displayed_extrapolated_samples": 0,
+      "negative_ccl_responses": 30
+    },
+    {
+      "quantity": "background variance [Mpc]",
+      "denominator_floor": 4.325370401974791e-11,
+      "relative_floor": 1e-12,
+      "masked_samples": 0,
+      "total_samples": 1792
+    },
+    {
+      "quantity": "Low native CoCoA SSC diagonal",
+      "ell": 67.5,
+      "fraction_below_displayed_z": 0.010864274666214351,
+      "fraction_above_displayed_z": 0.0
+    },
+    {
+      "quantity": "High native CoCoA SSC diagonal",
+      "ell": 1558.0,
+      "fraction_below_displayed_z": 2.5529781088683135e-05,
+      "fraction_above_displayed_z": 0.0
+    }
+  ],
+  "formula_masks": [
+    {
+      "quantity": "ccl_convention",
+      "denominator_floor": 1.5988562499539727e-07,
+      "relative_floor": 1e-12,
+      "masked_samples": 0,
+      "total_samples": 33,
+      "redshift": 0.1
+    },
+    {
+      "quantity": "two_halo_convention",
+      "denominator_floor": 1.5988562499539727e-07,
+      "relative_floor": 1e-12,
+      "masked_samples": 0,
+      "total_samples": 33,
+      "redshift": 0.1
+    },
+    {
+      "quantity": "fractional_nonlinear_convention",
+      "denominator_floor": 1.5988562499539727e-07,
+      "relative_floor": 1e-12,
+      "masked_samples": 0,
+      "total_samples": 33,
+      "redshift": 0.1
+    },
+    {
+      "quantity": "ccl_convention",
+      "denominator_floor": 1.0500278568942273e-07,
+      "relative_floor": 1e-12,
+      "masked_samples": 0,
+      "total_samples": 33,
+      "redshift": 0.5
+    },
+    {
+      "quantity": "two_halo_convention",
+      "denominator_floor": 1.0500278568942273e-07,
+      "relative_floor": 1e-12,
+      "masked_samples": 0,
+      "total_samples": 33,
+      "redshift": 0.5
+    },
+    {
+      "quantity": "fractional_nonlinear_convention",
+      "denominator_floor": 1.0500278568942273e-07,
+      "relative_floor": 1e-12,
+      "masked_samples": 0,
+      "total_samples": 33,
+      "redshift": 0.5
+    },
+    {
+      "quantity": "ccl_convention",
+      "denominator_floor": 6.5322962520403e-08,
+      "relative_floor": 1e-12,
+      "masked_samples": 0,
+      "total_samples": 33,
+      "redshift": 1.0
+    },
+    {
+      "quantity": "two_halo_convention",
+      "denominator_floor": 6.5322962520403e-08,
+      "relative_floor": 1e-12,
+      "masked_samples": 0,
+      "total_samples": 33,
+      "redshift": 1.0
+    },
+    {
+      "quantity": "fractional_nonlinear_convention",
+      "denominator_floor": 6.5322962520403e-08,
+      "relative_floor": 1e-12,
+      "masked_samples": 0,
+      "total_samples": 33,
+      "redshift": 1.0
+    }
+  ],
+  "scope": "Saved correctness diagnostics; no performance measurement"
+}

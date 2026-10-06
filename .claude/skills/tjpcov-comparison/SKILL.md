@@ -56,7 +56,12 @@ The low/high 5x5 and 30x30 Gaussian cases pass. Native 5x5 SSC and
 its sampling refinements have run; read the measured findings in
 [the SSC diagnostic](references/ssc_sampling_diagnostic.md). Native halo
 ingredients and mass-quadrature checks are recorded in
-[the halo study](references/halo_preparation.md). For a new install,
+[the halo study](references/halo_preparation.md). Read
+[trispectrum and SSC attribution](references/trispectrum_diagnostics.md)
+before interpreting a large discrepancy or changing a power grid. Its
+controlled tests distinguish interpolation, halo fits, response/window
+choices and the galaxy-bias placement issue in the inspected TJPCov code.
+For a new install,
 check imports and a minimal source-bin case; a recipe alone is not proof
 that the environment works.
 
