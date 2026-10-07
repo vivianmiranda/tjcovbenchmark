@@ -1,0 +1,88 @@
+{
+  "schema": "tjpcov-ssc-sampling-diagnostic-v1",
+  "status": "completed",
+  "timeout_seconds": 600,
+  "threads": 6,
+  "inputs": {
+    "/Users/vivianmiranda/data/COCOA/september2026/test/tjcovbenchmark/work/global_power_11993/lsst_y1": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+    "/Users/vivianmiranda/data/COCOA/september2026/test/tjcovbenchmark/work/global_power_11993/gaussian_shear_low": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+    "/Users/vivianmiranda/data/COCOA/september2026/test/tjcovbenchmark/work/global_power_11993/ssc_low_qag": "5570a8143fb4b1c8a2a1ee57be25e209c1bd27e02ae51c2357c08706b55af053",
+    "/Users/vivianmiranda/data/COCOA/september2026/test/tjcovbenchmark/work/global_power_11993/ssc_low_a2": "d011ad813705252b81dfe973f4781393807b834268059f2e840427878f339c85"
+  },
+  "scope": "public CCL 2x2 a-sampling diagnostic at effective ell",
+  "script_sha256": "60ebb812d5fddf867f7a908007ec9482f11f401c6f2f4f35531974cd5331f371",
+  "cases": {
+    "coarse_coarse": {
+      "response_a_count": 50,
+      "window_a_count": 35,
+      "elapsed_seconds_diagnostic_only": 0.4278229160117917,
+      "versus_coarse_native": {
+        "max_abs_difference_over_coarse_diagonal_rms": 0.0,
+        "max_fractional_diagonal_change": 0.0
+      }
+    },
+    "fine_coarse": {
+      "response_a_count": 99,
+      "window_a_count": 35,
+      "elapsed_seconds_diagnostic_only": 0.7206590830464847,
+      "versus_coarse_native": {
+        "max_abs_difference_over_coarse_diagonal_rms": 3.113547637068249e-05,
+        "max_fractional_diagonal_change": 3.113547637068249e-05
+      }
+    },
+    "coarse_fine": {
+      "response_a_count": 50,
+      "window_a_count": 69,
+      "elapsed_seconds_diagnostic_only": 0.078996249998454,
+      "versus_coarse_native": {
+        "max_abs_difference_over_coarse_diagonal_rms": 0.23995913116371018,
+        "max_fractional_diagonal_change": 0.23995913116371018
+      }
+    },
+    "fine_fine": {
+      "response_a_count": 99,
+      "window_a_count": 69,
+      "elapsed_seconds_diagnostic_only": 0.0015471249935217202,
+      "versus_coarse_native": {
+        "max_abs_difference_over_coarse_diagonal_rms": 0.23996305914668722,
+        "max_fractional_diagonal_change": 0.23996305914668725
+      }
+    }
+  },
+  "integration_method": "qag_quad",
+  "halo_model": {
+    "mass_definition": "200m",
+    "mass_function": "Tinker08",
+    "bias": "Tinker10",
+    "concentration": "Duffy08",
+    "profile": "analytic NFW",
+    "number_count_legs": 0,
+    "response": "linear-power slope and amplitude plus normalized I12",
+    "hmc_defaults": {
+      "log10M_min": 8.0,
+      "log10M_max": 16.0,
+      "nM": 128,
+      "integration_method_M": "simpson"
+    }
+  },
+  "disc_variance_units": "Mpc",
+  "fixed_cosmology_a_controls": {
+    "match_power_a_range": true,
+    "a_refinement": 1,
+    "original_A_SPLINE_MINLOG_PK": 0.01,
+    "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+    "A_SPLINE_MIN_PK": 0.1,
+    "A_SPLINE_NA_PK": 40,
+    "A_SPLINE_NLOG_PK": 11,
+    "input_a_min": 0.019611688566385566
+  },
+  "baseline_reproduction_tolerance": 1e-08,
+  "fine_fine_versus_fine_native": {
+    "max_abs_difference_over_coarse_diagonal_rms": 0.0,
+    "max_fractional_diagonal_change": 0.0
+  },
+  "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+  "files": {
+    "sampling.npz": "00b5aa3e630b9971663a0c934418497cb39a97f2644fac15cbdd92ef871b3a66"
+  }
+}

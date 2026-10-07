@@ -14,7 +14,7 @@
     "schema": "tjpcov-halo-ingredients-v1",
     "status": "completed",
     "scope": "Public CCL ingredients selected by native TJPCov SSC",
-    "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+    "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
     "native_model": {
       "mass_definition": "M200m",
       "mass_function": "Tinker08",
@@ -82,15 +82,15 @@
     "script_sha256": "3937ff73d90bd859838134223f0d712a64aada9ba8545e4010556b439885d417",
     "timing_scope": "Accuracy only; no benchmark timing",
     "files": {
-      "halo.npz": "478f4cbda4951553e9cdac6b90616dc6f1d7b2ac1b56a9be0d98e729226c401d"
+      "halo.npz": "261bf79e11709e2a71f00c95cd43aabec2cc2c5564a71af4fa7d0f6c2b0497c6"
     }
   },
   "cocoa": {
     "schema": "cocoa-halo-ingredients-v1",
     "status": "completed",
     "scope": "Native halo ingredients and explicit matched-fit diagnostics",
-    "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-    "native_manifest_sha256": "ddcdbc9aa385bb61d183219d2ffa35c7defc2fbf1816c30e8d9c457c97c449d0",
+    "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+    "native_manifest_sha256": "c8f1880bd97382a334844db09be995345daf888b1481b042eecb12435ee94754",
     "power_table_check": "linear and nonlinear CAMB tables bitwise equal",
     "native_model": {
       "mass_definition": "M200m",
@@ -152,19 +152,19 @@
       ]
     },
     "core": {
-      "commit": "a35dbc9bf5db0ae72ea980bbf6b0ad8289fe17d4",
-      "status": ""
+      "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+      "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
     },
     "lsst_y1": {
       "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
-      "status": ""
+      "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
     },
     "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
-    "script_sha256": "7d40cd04c04932eeebbd16b0dbeb6466a26b5f966d0378ea418b593100e0d4b8",
+    "script_sha256": "f53f265581c52f8d041cd9659853c491dfa5c5e5fdd899804c0340ac8bb31d44",
     "threads": 6,
     "timing_scope": "Accuracy only; no benchmark timing",
     "files": {
-      "halo.npz": "68b0556c355b349fb68af6e5f94a35acf7c4edb4734685377901834d0e9540d0"
+      "halo.npz": "70c4c6f27aba696f46afe79c6c71b5eb7da185a00e99be224a211dff3b119f15"
     }
   },
   "rows": [
@@ -172,198 +172,198 @@
       "redshift": 0.1,
       "sigma": {
         "fractional_range": [
-          -9.08079780230775e-05,
-          -7.850509231299707e-05
+          -9.080830821195374e-05,
+          -7.850514473572989e-05
         ],
-        "max_absolute_fractional": 9.08079780230775e-05
+        "max_absolute_fractional": 9.080830821195374e-05
       },
       "dndlnm": {
         "fractional_range": [
-          -0.03176834053904021,
-          0.00959733765130144
+          -0.031768340419024765,
+          0.009597338030961078
         ],
-        "max_absolute_fractional": 0.03176834053904021
+        "max_absolute_fractional": 0.031768340419024765
       },
       "bias": {
         "fractional_range": [
-          -0.0003871029271238502,
-          -6.377462362927577e-05
+          -0.0003871022500607779,
+          -6.377461141304774e-05
         ],
-        "max_absolute_fractional": 0.0003871029271238502
+        "max_absolute_fractional": 0.0003871022500607779
       },
       "concentration": {
         "fractional_range": [
-          -0.2536914951850586,
-          0.07831570751764527
+          -0.2536914951957392,
+          0.0783157074143821
         ],
-        "max_absolute_fractional": 0.2536914951850586
+        "max_absolute_fractional": 0.2536914951957392
       },
       "linear": {
         "fractional_range": [
-          -0.00011383124279829016,
-          7.667953164780528e-05
+          -9.510322411476757e-06,
+          -6.789482496549759e-06
         ],
-        "max_absolute_fractional": 0.00011383124279829016
+        "max_absolute_fractional": 9.510322411476757e-06
       },
       "i11": {
         "fractional_range": [
-          7.71465114013381e-10,
-          0.003176832468567037
+          7.663627510368087e-10,
+          0.0031768322822089967
         ],
-        "max_absolute_fractional": 0.003176832468567037
+        "max_absolute_fractional": 0.0031768322822089967
       },
       "i02": {
         "fractional_range": [
-          -0.0024665850388781996,
-          0.04063434572757951
+          -0.0024665867701822997,
+          0.04063434530627075
         ],
-        "max_absolute_fractional": 0.04063434572757951
+        "max_absolute_fractional": 0.04063434530627075
       },
       "i12": {
         "fractional_range": [
-          -0.007250316218044839,
-          0.06347160172697786
+          -0.007250317759088021,
+          0.06347160141558761
         ],
-        "max_absolute_fractional": 0.06347160172697786
+        "max_absolute_fractional": 0.06347160141558761
       },
       "matched_concentration_profile_max_absolute": 1.1842348529023106e-05,
       "matched_radius_profile_max_absolute": 1.8592766215519418e-09,
       "mean_density_fractional_difference": -5.984988296314775e-05,
-      "matched_sigma_bias_max_absolute_fractional": 0.0005732798857833732,
-      "matched_peak_bias_max_absolute_fractional": 1.4225437144355091e-05
+      "matched_sigma_bias_max_absolute_fractional": 0.0005732798857831511,
+      "matched_peak_bias_max_absolute_fractional": 1.422543714479918e-05
     },
     {
       "redshift": 0.5,
       "sigma": {
         "fractional_range": [
-          -9.177081307765178e-06,
-          3.151446378302225e-06
+          -9.177411523397794e-06,
+          3.1513939511285116e-06
         ],
-        "max_absolute_fractional": 9.177081307765178e-06
+        "max_absolute_fractional": 9.177411523397794e-06
       },
       "dndlnm": {
         "fractional_range": [
-          0.005533498052693764,
-          0.03699287976086896
+          0.005533493370226683,
+          0.036992880050361165
         ],
-        "max_absolute_fractional": 0.03699287976086896
+        "max_absolute_fractional": 0.036992880050361165
       },
       "bias": {
         "fractional_range": [
-          -0.0005772990606698336,
-          -0.00011916716317972309
+          -0.0005772983551476374,
+          -0.00011916714465787237
         ],
-        "max_absolute_fractional": 0.0005772990606698336
+        "max_absolute_fractional": 0.0005772983551476374
       },
       "concentration": {
         "fractional_range": [
-          -0.24070132497611096,
-          0.09708468671379245
+          -0.24070132498697727,
+          0.09708468660873182
         ],
-        "max_absolute_fractional": 0.24070132497611096
+        "max_absolute_fractional": 0.24070132498697727
       },
       "linear": {
         "fractional_range": [
-          -8.385760652496188e-05,
-          0.00010665837229861808
+          2.0473117999353363e-05,
+          2.31876523244523e-05
         ],
-        "max_absolute_fractional": 0.00010665837229861808
+        "max_absolute_fractional": 2.31876523244523e-05
       },
       "i11": {
         "fractional_range": [
-          -0.014637526426038217,
-          -2.6467150693321173e-10
+          -0.014637526957790414,
+          -2.6610680325944713e-10
         ],
-        "max_absolute_fractional": 0.014637526426038217
+        "max_absolute_fractional": 0.014637526957790414
       },
       "i02": {
         "fractional_range": [
-          0.029128468878212077,
-          0.0679821185311642
+          0.029128466933364017,
+          0.06798211804116194
         ],
-        "max_absolute_fractional": 0.0679821185311642
+        "max_absolute_fractional": 0.06798211804116194
       },
       "i12": {
         "fractional_range": [
-          0.02469650290066605,
-          0.09212100558985048
+          0.024696501040595287,
+          0.09212100530046374
         ],
-        "max_absolute_fractional": 0.09212100558985048
+        "max_absolute_fractional": 0.09212100530046374
       },
       "matched_concentration_profile_max_absolute": 1.253258814787328e-05,
       "matched_radius_profile_max_absolute": 2.4840526302583044e-09,
       "mean_density_fractional_difference": -5.984988296314775e-05,
-      "matched_sigma_bias_max_absolute_fractional": 0.0005969060760824263,
+      "matched_sigma_bias_max_absolute_fractional": 0.0005969060760825373,
       "matched_peak_bias_max_absolute_fractional": 1.337948101209907e-05
     },
     {
       "redshift": 1.0,
       "sigma": {
         "fractional_range": [
-          -1.0882736482309419e-05,
-          1.4439630777740575e-06
+          -1.0883066696609767e-05,
+          1.443910650600344e-06
         ],
-        "max_absolute_fractional": 1.0882736482309419e-05
+        "max_absolute_fractional": 1.0883066696609767e-05
       },
       "dndlnm": {
         "fractional_range": [
-          -0.026339534395496966,
-          0.05437334041394415
+          -0.026339541607750983,
+          0.054373340597304365
         ],
-        "max_absolute_fractional": 0.05437334041394415
+        "max_absolute_fractional": 0.054373340597304365
       },
       "bias": {
         "fractional_range": [
-          -0.0005920949624753646,
-          -0.0001716515565506338
+          -0.0005920942337604984,
+          -0.00017165152842935072
         ],
-        "max_absolute_fractional": 0.0005920949624753646
+        "max_absolute_fractional": 0.0005920942337604984
       },
       "concentration": {
         "fractional_range": [
-          -0.27517567422465705,
-          0.04727374278629415
+          -0.2751756742350302,
+          0.04727374268600437
         ],
-        "max_absolute_fractional": 0.27517567422465705
+        "max_absolute_fractional": 0.2751756742350302
       },
       "linear": {
         "fractional_range": [
-          -0.00010570412770216642,
-          8.480857165071853e-05
+          -1.3854967195747747e-06,
+          1.339504287267701e-06
         ],
-        "max_absolute_fractional": 0.00010570412770216642
+        "max_absolute_fractional": 1.3854967195747747e-06
       },
       "i11": {
         "fractional_range": [
-          -0.018301986644241652,
-          -5.230221811203251e-10
+          -0.018301987394238384,
+          -5.373574918365875e-10
         ],
-        "max_absolute_fractional": 0.018301986644241652
+        "max_absolute_fractional": 0.018301987394238384
       },
       "i02": {
         "fractional_range": [
-          0.032293626133738096,
-          0.04934388568521353
+          0.03229362580941575,
+          0.049343884633431756
         ],
-        "max_absolute_fractional": 0.04934388568521353
+        "max_absolute_fractional": 0.049343884633431756
       },
       "i12": {
         "fractional_range": [
-          0.037798132450791666,
-          0.050966619459525075
+          0.03779813221153416,
+          0.050966618859765944
         ],
-        "max_absolute_fractional": 0.050966619459525075
+        "max_absolute_fractional": 0.050966618859765944
       },
       "matched_concentration_profile_max_absolute": 1.3130358106516749e-05,
       "matched_radius_profile_max_absolute": 3.9608268886937026e-09,
       "mean_density_fractional_difference": -5.984988296314775e-05,
-      "matched_sigma_bias_max_absolute_fractional": 0.0006161104835046283,
+      "matched_sigma_bias_max_absolute_fractional": 0.0006161104835045172,
       "matched_peak_bias_max_absolute_fractional": 1.201377125314984e-05
     }
   ],
   "script_sha256": "e3791854039368cf89258eae655779211813298a90fede8f39e5fa2046bea6c1",
   "files": {
-    "halo.npz": "c8b79c5ebf4e5d9dea69de9cd5afef2a5055c67097bf6a070f3de1fd05f1e969"
+    "halo.npz": "9d9d7c628176fedd4a9562a1dfd30d918986a542ac99b98123a3f0b2f2104548"
   },
   "timing_policy": "Correctness campaign; no benchmark times"
 }

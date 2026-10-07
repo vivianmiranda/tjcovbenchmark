@@ -27,7 +27,8 @@ The checks identify different causes in different parts of the calculation:
 | Coarse native SSC | Background-variance time sampling, before comparing physical models. |
 | Refined native SSC | Different response and survey-window predictions account for most of the difference. |
 | Small-scale 1h trispectrum | Concentration is a major contributor; abundance conventions also matter. |
-| Unequal-wavenumber 4h trispectrum | Power interpolation is amplified by cancellation of large perturbative terms. |
+| Unequal-wavenumber 4h trispectrum | Dense production power tables control interpolation sensitivity; shared powers and moments isolate the remaining algebraic difference. |
+| High-k native 4h trispectrum | Different I11 weights dominate its relative difference, where 4h is a tiny part of the summed trispectrum. |
 | Galaxy-containing SSC/cNG | An additional bias multiplication in the inspected TJPCov path; the shear tests do not probe it. |
 
 ## Contents
@@ -79,6 +80,14 @@ The exporter reads the actual LSST project configuration and preserves
 the selected bin's identity and original redshift samples.
 The initial comparison uses massless neutrinos and zero intrinsic
 alignment, magnification and redshift-space distortions.
+
+**The results below use CoCoA's current covariance power preparation.**
+At global accuracy boost one, natural cubic splines fill 11,993 log-k
+samples from 1,500 CAMB anchors, separately at each redshift. The original
+samples remain unchanged. Linear, nonlinear and cb power all receive the
+same refinement; the C calculations retain their ordinary linear lookups.
+TJPCov/CCL receives those same dense tables. This adds interpolation
+samples, not new CAMB information or a wider wavenumber range.
 
 Shared inputs isolate an individual calculation. Native-model results
 then show the combined effect of each code's physical choices. These
@@ -263,7 +272,9 @@ do not constitute a production timing measurement.
 
 These commands assume the sibling directory layout described above.
 Finish each step before starting the next; use the two activated terminals
-from the environment instructions. Use new output names for a new case.
+from the environment instructions. Generated files stay under `work/`;
+the published figures and results remain unchanged. Use new output names
+for a new case.
 
 **Step :one:**: in the **CoCoA terminal**, from `cocoa/Cocoa/`, export the
 actual survey inputs and CAMB tables. This does not compute a covariance.
@@ -308,7 +319,7 @@ python ../../tjcovbenchmark/scripts/compare_gaussian.py \
 
 ```bash
 python scripts/plot_gaussian.py work/comparison_low \
-  --output figures/gaussian_low
+  --output work/figures/gaussian_low
 ```
 
 The matrix figure shows each code's correlations and the signed
@@ -350,10 +361,10 @@ individual components.
 
 | Component | Low multipoles, 30–149 | High multipoles, 1500–1619 |
 | --- | ---: | ---: |
-| Sample variance | 1.33e−16 | 8.42e−19 |
-| Signal × noise | 3.44e−16 | 6.58e−16 |
-| Pure noise | 1.81e−16 | 4.38e−16 |
-| Total Gaussian | 1.72e−16 | 2.51e−16 |
+| Sample variance | 2.05e−16 | 4.28e−19 |
+| Signal × noise | 6.16e−16 | 6.58e−16 |
+| Pure noise | 2.36e−16 | 4.38e−16 |
+| Total Gaussian | 4.11e−16 | 2.51e−16 |
 
 Both totals are positive definite. Their generalized variance ratios
 differ from one by at most 3.34e−16: the two Gaussian assembly routines
@@ -385,8 +396,10 @@ The [low-multipole report](results/gaussian_low/comparison.json) and
 [high-multipole report](results/gaussian_high/comparison.json) contain the
 checks, code revisions and input hashes. Each result directory includes
 the component matrices, supplied spectra, band operators and native SACC
-file. TJPCov is revision `2f59302`, using CCL 3.3.3; CoCoA includes the
-committed Wynn/FFTLog implementation `d95867f`.
+file. TJPCov is revision `2f59302`, using CCL 3.3.3. CoCoA includes the
+guarded Wynn/FFTLog treatment and the dense power preparation described
+above. The [refresh record](results/refresh_summary.json) identifies the
+source revisions, binary and input hashes for these calculations.
 
 ### Galaxy-and-shear matrices
 
@@ -397,13 +410,13 @@ above.
 
 | Component | Low multipoles, 30 × 30 | High multipoles, 30 × 30 |
 | --- | ---: | ---: |
-| Sample variance | 3.89e−16 | 3.33e−16 |
-| Signal × noise | 6.96e−16 | 6.58e−16 |
-| Pure noise | 3.35e−16 | 4.51e−16 |
-| Total Gaussian | 5.38e−16 | 2.76e−16 |
+| Sample variance | 3.69e−16 | 3.32e−16 |
+| Signal × noise | 7.67e−16 | 7.40e−16 |
+| Pure noise | 2.97e−16 | 4.38e−16 |
+| Total Gaussian | 5.38e−16 | 2.92e−16 |
 
 Both totals are positive definite, and generalized variance ratios differ
-from one by at most 5.11e−15. Noise extraction subtracts nearly equal
+from one by at most 4.89e−15. Noise extraction subtracts nearly equal
 matrices; fractional errors on very small noise entries are consequently
 larger than the rms-normalized differences shown here.
 
@@ -478,11 +491,12 @@ The disc variance shown has units of length before the radial projection.
 The right panel shows the resulting native SSC variances relative to the
 785-node result.
 
-CoCoA's low-multipole quadrature checks give **0.0565%** for integration
-level 0 → 1 and **0.0457%** for 1 → 2. At level 2, increasing its global
-boost from 1 to 2 changes entries by **0.00589%**. These component checks
-are adequate to distinguish the much larger differences below; they are
-not a full-survey or Fisher-convergence certification.
+CoCoA's low-multipole quadrature checks give **0.00626%** for integration
+level 0 → 1 and **0.00418%** for 1 → 2. The corresponding high-multipole
+changes are **0.0000327%** and **0.0000471%**. These hold global boost at
+one, so every run uses the same 11,993-node power grid. They distinguish
+the much larger model differences below; they are not full-survey or
+Fisher-convergence tests.
 
 ### Native model comparison after refinement
 
@@ -503,14 +517,14 @@ interpolates in multipole. CCL retains its native background and tracer
 interpolation. The remaining difference therefore combines several
 choices. The controlled swaps below separate their effects.
 
-The following uses CoCoA boost 2/integration level 2 and the 785-node
+The following uses CoCoA boost 1/integration level 2 and the 785-node
 CCL time grid. Positive values would mean TJPCov exceeds CoCoA; the
 measured diagonal differences here are negative.
 
 | SSC comparison | Low multipoles | High multipoles |
 | --- | ---: | ---: |
-| TJPCov diagonal relative to CoCoA | −10.48% to −26.62% | −20.55% to −20.34% |
-| Largest absolute entry difference / CoCoA SSC rms product | 26.62% | 20.55% |
+| TJPCov diagonal relative to CoCoA | −26.61% to −10.51% | −20.56% to −20.35% |
+| Largest absolute entry difference / CoCoA SSC rms product | 26.61% | 20.56% |
 
 ![Refined low-multipole native SSC comparison](figures/ssc_low_refined/ssc_matrices.png)
 
@@ -524,10 +538,11 @@ No eigenvalues are clipped. SSC-only weak-mode ratios are sensitive here
 and must not be interpreted as a result for G + SSC + cNG.
 
 The [SSC record](results/ssc_native.json) and
-[array archive](results/ssc_native.npz) retain 19 native calculations,
-the four sampling diagnostics, complete matrices and source provenance.
-Their units are recorded explicitly. Timings are excluded from this
-accuracy campaign.
+[array archive](results/ssc_native.npz) retain 16 native calculations,
+their complete matrices and source provenance. The four controlled
+sampling cases have a separate [record](results/ssc_sampling/report.json)
+and [array archive](results/ssc_sampling/sampling.npz). Timings are
+excluded from this accuracy campaign.
 
 ### Separating the response from the survey window
 
@@ -548,8 +563,8 @@ All entries of each 5 × 5 matrix are retained.
 | Change from native CoCoA | Low-ell diagonal change | High-ell diagonal change |
 | --- | ---: | ---: |
 | CCL background variance only | −8.83% to −8.55% | −7.30% to −7.27% |
-| CCL matter response only | −19.66% to −1.86% | −13.99% to −13.78% |
-| Both CCL predictions | −26.49% to −10.33% | −20.28% to −20.06% |
+| CCL matter response only | −19.65% to −1.89% | −13.99% to −13.78% |
+| Both CCL predictions | −26.48% to −10.35% | −20.28% to −20.06% |
 
 The percentages use native CoCoA SSC as denominator. The two effects
 multiply inside the integral, so their individual percentages need not
@@ -567,8 +582,8 @@ the archive retains the full radial domain used in the matrices.
 
 ![SSC response and window along the line of sight](figures/ssc_models/ssc_model_inputs.png)
 
-Replacing both predictions leaves at most **0.187%** at low ell and
-**0.351%** at high ell relative to CCL's SSC rms product. This remaining
+Replacing both predictions leaves at most **0.193%** at low ell and
+**0.357%** at high ell relative to CCL's SSC rms product. This remaining
 difference includes geometry, tracer kernels and projection conventions.
 Supplying **CCL's physical inputs throughout** to CoCoA's actual C
 projection reduces the residual to **0.00204%** and **0.000251%**,
@@ -683,22 +698,23 @@ its native response and spherical-cap projection at the same multipoles.
 ```bash
 python ../../tjcovbenchmark/scripts/run_cocoa_ssc.py \
   ../../tjcovbenchmark/work/lsst_y1 ../../tjcovbenchmark/work/gaussian_low \
-  --cocoa . --accuracy-boost 2 --integration-accuracy 2 \
-  --output ../../tjcovbenchmark/work/cocoa_ssc_low_ab2_i2
+  --cocoa . --accuracy-boost 1 --integration-accuracy 2 \
+  --output ../../tjcovbenchmark/work/cocoa_ssc_low_i2
 ```
 
 **Step :six:**: in the **TJPCov terminal**, compare and plot all entries.
 
 ```bash
-python scripts/compare_ssc.py work/cocoa_ssc_low_ab2_i2 work/ssc_low_a16 \
-  --output work/ssc_comparison_low_refined --figures figures/ssc_low_refined
+python scripts/compare_ssc.py work/cocoa_ssc_low_i2 work/ssc_low_a16 \
+  --output work/ssc_comparison_low_refined --figures work/figures/ssc_low_refined
 ```
 
 For high multipoles, use `work/gaussian_high` and new output paths.
 For the refinement table, repeat Step 2 with factors 1, 2, 4, 8 and 16.
 `--k-refinement 2` tests k-grid density; `--integration-method spline`
-tests the projection method separately. Repeat the CoCoA step at boosts
-1/2 and integration levels 0/1/2 to check its own numerical controls.
+tests the projection method separately. Repeat the CoCoA step at integration levels 0/1/2 while holding global
+boost at one. A different global boost also changes the power grid and
+requires a matching new input export for both codes.
 
 To reproduce the attribution tests after those native runs:
 
@@ -707,8 +723,8 @@ and geometry at the saved CoCoA integration nodes.
 
 ```bash
 python scripts/diagnose_ssc_models.py ccl work/lsst_y1 work/gaussian_low \
-  work/ssc_low_a16 work/cocoa_ssc_low_ab2_i2 --tjpcov ../TJPCov \
-  --output work/ssc_models_low_ccl_v2
+  work/ssc_low_a16 work/cocoa_ssc_low_i2 --tjpcov ../TJPCov \
+  --output work/ssc_models_low_ccl
 ```
 
 **Step :two:**: in the **CoCoA terminal**, from `cocoa/Cocoa/`, perform
@@ -716,8 +732,8 @@ the input swaps with the C projection and response functions.
 
 ```bash
 python ../../tjcovbenchmark/scripts/diagnose_ssc_models.py cocoa \
-  ../../tjcovbenchmark/work/ssc_models_low_ccl_v2 \
-  ../../tjcovbenchmark/work/cocoa_ssc_low_ab2_i2 --cocoa . \
+  ../../tjcovbenchmark/work/ssc_models_low_ccl \
+  ../../tjcovbenchmark/work/cocoa_ssc_low_i2 --cocoa . \
   --output ../../tjcovbenchmark/work/ssc_models_low
 ```
 
@@ -729,9 +745,9 @@ Each output directory must be new.
 ```bash
 python scripts/plot_ssc_models.py \
   --low work/ssc_models_low --high work/ssc_models_high \
-  --low-ccl work/ssc_models_low_ccl_v2 --high-ccl work/ssc_models_high_ccl \
-  --results results/ssc_models \
-  --figures figures/ssc_models
+  --low-ccl work/ssc_models_low_ccl --high-ccl work/ssc_models_high_ccl \
+  --results work/results/ssc_models \
+  --figures work/figures/ssc_models
 ```
 
 ## Halo ingredients <a name="halo"></a>
@@ -744,7 +760,7 @@ line of sight.
 This pilot samples redshifts 0.1, 0.5 and 1, masses from 10 billion to
 one quadrillion solar masses/h, and wavenumbers from 0.001 to 10 h/Mpc.
 Both codes receive the same CAMB tables; CoCoA's initialization reproduces
-every supplied linear and nonlinear power sample bitwise.
+every supplied linear, nonlinear and cb power sample bitwise.
 
 The table gives the **largest absolute fractional difference** across the
 sampled mass or wavenumber range, using TJPCov/CCL as the denominator.
@@ -756,7 +772,7 @@ The plot retains the sign: CoCoA / TJPCov-CCL − 1.
 | Halo abundance, dn/dlnM | 3.18% | 3.70% | 5.44% |
 | Halo bias | 0.0387% | 0.0577% | 0.0592% |
 | Concentration | 25.37% | 24.07% | 27.52% |
-| Linear power lookup | 0.0114% | 0.0107% | 0.0106% |
+| Linear power lookup | 0.000951% | 0.00232% | 0.000139% |
 | I11 | 0.318% | 1.464% | 1.830% |
 | I02, diagonal pairs | 4.06% | 6.80% | 4.93% |
 | I12, diagonal pairs | 6.35% | 9.21% | 5.10% |
@@ -775,7 +791,7 @@ make their subsequent readers and variance integrals identical:
 The small sigma differences above include those numerical conventions.
 The halo mass-quadrature tests below do not refine either sigma table, so
 they do not identify a unique cause for the residual sigma difference.
-The native power readers themselves differ by up to 0.0114% between the
+The native power readers themselves differ by up to 0.00232% between the
 shared input nodes.
 
 The larger abundance differences compare **different fits**: CoCoA's
@@ -856,7 +872,7 @@ python ../../tjcovbenchmark/scripts/export_cocoa_halo.py \
 
 ```bash
 python scripts/compare_halo.py work/halo_native_m255 work/halo_cocoa_i2 \
-  --output work/halo_comparison --figures figures/halo
+  --output work/halo_comparison --figures work/figures/halo
 ```
 
 For the refinement checks, repeat Step 1 with `--mass-refinement 1` and
@@ -898,17 +914,24 @@ with CCL as denominator.
 | Term | z = 0.1 | z = 0.5 | z = 1 |
 | --- | ---: | ---: | ---: |
 | 1h | 21.70% | 26.15% | 8.20% |
-| 2h, 1+3 | 15.21% | 17.14% | 6.88% |
-| 2h, 2+2 | 13.10% | 19.27% | 10.31% |
-| 3h | 6.51% | 6.55% | 4.38% |
-| 4h | 61.63% | 61.59% | 61.52% |
-| Sum of all terms | 20.82% | 25.16% | 38.81% |
+| 2h, 1+3 | 15.21% | 17.14% | 6.87% |
+| 2h, 2+2 | 13.10% | 19.28% | 10.31% |
+| 3h | 6.51% | 6.55% | 4.37% |
+| 4h | 1.19% | 5.72% | 7.12% |
+| Sum of all terms | 20.82% | 25.16% | 7.90% |
 
-The 4h maximum occurs at **K = 0.001 and Q = 0.316 h/Mpc**. This is a
-strongly unequal pair: one wavelength is much longer than the other.
-Its discrepancy is absent from the equal-k curves. It is not merely a
-percentage inflated by a negligible term: at z = 1, CCL's 4h contribution
-accounts for about 61% of the total trispectrum at this pair.
+The unequal pair **K = 0.001, Q = 0.316 h/Mpc** gives native 4h
+differences of **0.487%, 0.465% and 0.431%** at these three redshifts.
+The contribution matters there: at z = 1 it supplies about 61% of CCL's
+summed trispectrum. The dense-power result should therefore be judged
+at unequal pairs as well as along the diagonal.
+
+The largest remaining native 4h differences in the table occur instead
+at high k. At z = 1 and K = Q = 10 h/Mpc, I11 differs by −1.830%.
+Four such factors predict a −7.122% change; the actual 4h change is
+−7.121%. The halo profile/bias weights explain almost all of that ratio.
+At this point 4h supplies only **0.00604%** of the CCL sum, so its 7.12%
+relative difference is not a 7.12% change in the summed trispectrum.
 
 ![All wavenumber-pair differences](figures/trispectrum/trispectrum_pairs.png)
 
@@ -949,13 +972,14 @@ large and cancel. The remaining answer depends on how the power changes
 over the small interval around Q sampled by the longer mode K. Agreement
 in the value of P alone does not guarantee agreement in that variation.
 
-- **CoCoA:** reads log power by linear interpolation between supplied
-  log-k nodes. The function is continuous, but its slope changes at nodes.
+- **CoCoA:** prepares dense tables with a natural cubic spline, then reads
+  log power linearly between the inserted log-k nodes. The function is
+  continuous, but the fast reader's slope still changes at its nodes.
 - **TJPCov/CCL:** uses CCL's spline power reader. Its native higher-halo
   calculation also uses a separable-growth approximation for 2h22, 3h
   and 4h.
 
-The native sampled powers differ by only about **0.011%**. To isolate
+The native sampled powers differ by at most **0.00232%**. To isolate
 their effect, we supply CoCoA's real C angular kernels and assembler with
 CCL's actual halo moments and power evaluations at every angular node.
 We also turn off separable growth through CCL's public function argument,
@@ -966,27 +990,28 @@ Under those shared inputs, the maximum differences are:
 | Contribution | Largest fractional difference |
 | --- | ---: |
 | 1h | Identical supplied value; consistency check only |
-| 2h, 1+3 | 4.0e−16 |
+| 2h, 1+3 | 4.5e−16 |
 | 2h, 2+2 | 4.7e−9 |
 | 3h | 4.1e−9 |
 | 4h | 5.0e−6 |
 
-Thus the large unequal-k discrepancy is not reproduced by the
-trispectrum algebra under shared inputs. Turning off separable growth
-alone changes CCL's 4h result by at most **0.119%**, far less than 62%.
+These kernels agree more closely under common inputs than the native
+models do. Turning off separable growth alone changes CCL's 4h result
+by about **0.119%** at most. Replacing only CoCoA's power evaluations with
+CCL's, while retaining CoCoA's halo moments, changes 4h by at most
+**0.493%**. Thus the remaining reader difference is measurable even
+though the values of the linear power are very close.
 
 A second diagnostic keeps CoCoA's halo moments and angular quadrature
-fixed. A cubic interpolant of the **same original CAMB samples** fills
-denser, nested k tables; CoCoA still uses its actual linear lookup.
-The control evaluates that cubic input directly in the same C kernels.
+fixed while refining its **installed production table** once more. The
+same natural-cubic helper fills all three power tables; CoCoA still uses
+its actual linear lookup. The control evaluates that smooth input
+directly in the same C kernels.
 
 | Power-table nodes | Largest interior-pair 4h difference from the smooth-input control |
 | --- | ---: |
-| 1,500, original | 61.63% |
-| 2,999 | 19.39% |
-| 5,997 | 1.73% |
-| 11,993 | 0.49% |
-| 23,985 | 0.39% |
+| 11,993, production baseline | 0.488% |
+| 23,985 | 0.389% |
 
 Here 36 of the 45 pairs have every internal wavenumber within the CAMB
 table's domain; the maximum at every refinement lies among these pairs.
@@ -997,17 +1022,18 @@ avoids conflating that boundary effect with interpolation.
 
 ![Power-interpolation and common-input tests](figures/trispectrum/trispectrum_power_diagnostic.png)
 
-This localizes the large 4h sensitivity to the interpolated power shape.
-It does **not** establish the smooth curve as an exact physical solution,
-nor establish convergence at the final grid. The halo moments were held
-fixed to isolate this one effect. Production CoCoA is unchanged; the
-effect on complete projected cNG matrices still needs measurement.
+This isolates the sensitivity to interpolated power shape. It does
+**not** establish the smooth curve as an exact physical solution or
+certify the final grid as converged. The halo moments stay fixed only
+in this diagnostic. The native comparisons above use the globally
+refined production inputs throughout; a complete cross-code projected
+cNG matrix still needs to be computed.
 
 ### Numerical checks and reproduction
 
 CCL mass-grid refinement from 128 to 255 nodes changes each term by at
 most **0.00312%**. CoCoA integration levels 0 → 1 and 1 → 2 change terms
-by at most **0.000303%** and **0.000207%**. Those quadrature changes are
+by at most **0.000574%** and **0.000240%**. Those quadrature changes are
 much smaller than the native differences; they do not refine the power
 reader and therefore cannot resolve its separate interpolation effect.
 
@@ -1080,8 +1106,8 @@ The plot collector expects these additional folders:
 and create the four figures above.
 
 ```bash
-python scripts/plot_trispectrum.py work --output results/trispectrum \
-  --figures figures/trispectrum
+python scripts/plot_trispectrum.py work --output work/results/trispectrum \
+  --figures work/figures/trispectrum
 ```
 
 ## Galaxy-bias placement <a name="galaxy-bias"></a>
@@ -1134,6 +1160,6 @@ Gaussian catalog to reproduce the test.
 
 ```bash
 python scripts/diagnose_galaxy_bias.py work/lsst_y1 \
-  work/gaussian_3x2_low_checked --tjpcov ../TJPCov \
+  work/gaussian_3x2_low --tjpcov ../TJPCov \
   --output work/galaxy_bias_placement
 ```

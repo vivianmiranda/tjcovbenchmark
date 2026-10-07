@@ -1,644 +1,4481 @@
 {
   "schema": "cocoa-tjpcov-native-ssc-campaign-v1",
-  "scope": "5x5 point-sampled native shear SSC, source3, low and high ell; no total covariance",
-  "units": {
-    "ssc": "dimensionless",
-    "tjpcov_disc_variance": "Mpc",
-    "cocoa_variance": "c/H0",
-    "cocoa_response": "(c/H0)^3"
-  },
-  "timing_policy": "Correctness only, concurrent project validation. No benchmark times.",
-  "shared_inputs": {
-    "schema": "lsst-y1-tjpcov-inputs-v1",
-    "survey": "LSST Y1 forecast subset",
-    "source_bin_1based": 3,
-    "lens_bins_1based": [
-      1,
-      2
-    ],
-    "area_deg2": 12300.0,
-    "source_density_arcmin2": 2.0,
-    "sigma_e_component": 0.26,
-    "lens_density_arcmin2": [
-      3.6,
-      3.6
-    ],
-    "bias": [
-      1.72716,
-      1.65168
-    ],
-    "cosmology": {
-      "omegam": 0.3,
-      "omegab": 0.05,
-      "H0": 70.0,
-      "ns": 0.965,
-      "As_1e9": 2.1,
-      "w": -1.0,
-      "w0pwa": -1.0,
-      "mnu": 0.0,
-      "AccuracyBoost": 1.0,
-      "CLAccuracyBoost": 1.0,
-      "CAMBAccuracyBoost": 1.0,
-      "kmax": 20.0,
-      "k_per_logint": 20,
-      "non_linear_emul": 2,
-      "lens_potential_accuracy": 1.0,
-      "halofit_version": "takahashi"
-    },
-    "gaussian": {
-      "nonlimber": false,
-      "ia": "none",
-      "A1": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "A2": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "B_TA": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ]
-    },
-    "rsd": false,
-    "magnification": false,
-    "galaxy_bias": "linear",
-    "units": {
-      "k": "h/Mpc",
-      "power": "(Mpc/h)^3",
-      "nz": "z_mid then unrenormalized n(z)",
-      "power_axes": [
-        "redshift",
-        "wavenumber"
-      ]
-    },
-    "cocoa": {
-      "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
-      "status": ""
-    },
-    "core": {
-      "commit": "a35dbc9bf5db0ae72ea980bbf6b0ad8289fe17d4",
-      "status": ""
-    },
-    "lsst_y1": {
-      "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
-      "status": ""
-    },
-    "threads": 6,
-    "camb_version": "1.6.7",
-    "camb_source": {
-      "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
-      "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
-    },
-    "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
-    "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
-    "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
-    "script_sha256": "8d4c992c7bd1bc5e8e9fb11b7badcf366db3d6e4d46aabcadfba25f202560ebc",
-    "files": {
-      "inputs.npz": "6c540402d2468491ac04d8b1c8511a1c85ab924248cc7cb7f788b826401fec73",
-      "camb_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
-    }
-  },
-  "native_models": {
-    "tjpcov": {
-      "commit": "2f59302af33607aec712185632d8274e59e6b33c",
-      "status": ""
-    },
-    "installed_source": {
-      "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
-      "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
-      "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
-      "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
-    },
-    "versions": {
-      "tjpcov": "0.5.2.dev9+g2f59302af",
-      "pyccl": "3.3.3",
-      "sacc": "2.4",
-      "numpy": "2.4.3",
-      "scipy": "1.17.1"
-    },
-    "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
-    "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
-    "halo_model": {
-      "mass_definition": "200m",
-      "mass_function": "Tinker08",
-      "bias": "Tinker10",
-      "concentration": "Duffy08",
-      "profile": "analytic NFW",
-      "number_count_legs": 0,
-      "response": "linear-power slope and amplitude plus normalized I12",
-      "hmc_defaults": {
-        "log10M_min": 8.0,
-        "log10M_max": 16.0,
-        "nM": 128,
-        "integration_method_M": "simpson"
-      }
-    },
-    "a_domain_control": {
-      "match_power_a_range": true,
-      "a_refinement": 16,
-      "original_A_SPLINE_MINLOG_PK": 0.01,
-      "A_SPLINE_MINLOG_PK": 0.019611688566385566,
-      "A_SPLINE_MIN_PK": 0.1,
-      "A_SPLINE_NA_PK": 625,
-      "A_SPLINE_NLOG_PK": 161,
-      "input_a_min": 0.019611688566385566
-    },
-    "window": "CCL circular-disc transverse linear-power integral"
-  },
-  "cocoa_model": {
-    "core": {
-      "commit": "a35dbc9bf5db0ae72ea980bbf6b0ad8289fe17d4",
-      "status": ""
-    },
-    "lsst_y1": {
-      "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
-      "status": ""
-    },
-    "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc"
-  },
-  "cases": {
-    "ssc_low_qag": {
-      "backend": "tjpcov",
-      "manifest_sha256": "da8ad948cf49b9b52f02a0d55fa4b3cb26e3f0c0b2978a08272b3f5447fcad94",
-      "script_sha256": "792cc904231fc0f51cc36f9e591ba0ac1a20426debf430bd7952febb685b471d",
-      "raw_npz_sha256": "90d1acf28c548beda06aff5e4d4179a2865971732b563ea9d7360e73dcce5286",
-      "threads": 6,
-      "a_samples": 50,
-      "window_a_samples": 35,
-      "a_refinement": 1,
-      "k_refinement": 1,
-      "integration_method": "qag_quad",
-      "minimum_correlation_eigenvalue": 0.0012260408936782309
-    },
-    "ssc_low_a2": {
-      "backend": "tjpcov",
-      "manifest_sha256": "44dd4a26bf1557984876f8fb47ab3203da466d927489323d259f9d4adc4b7b34",
-      "script_sha256": "d647d9ddeff9e75baa7f01eb1f0b391f6fa8caa662d26a9d8cb1396e569d6c7a",
-      "raw_npz_sha256": "a46e022744e76bfd84d4250770b5821721808969e100053da613dcbe9d923df7",
-      "threads": 6,
-      "a_samples": 99,
-      "window_a_samples": 69,
-      "a_refinement": 2,
-      "k_refinement": 1,
-      "integration_method": "qag_quad",
-      "minimum_correlation_eigenvalue": 0.001455714026859754
-    },
-    "ssc_low_k2": {
-      "backend": "tjpcov",
-      "manifest_sha256": "eeb8d299798363054fc3003c7be2a4880590de3d322814ac913c0293960702b6",
-      "script_sha256": "d647d9ddeff9e75baa7f01eb1f0b391f6fa8caa662d26a9d8cb1396e569d6c7a",
-      "raw_npz_sha256": "b045b9d037fa55c083ec6e585737854025f142763213b3d0108e00e7e3277652",
-      "threads": 6,
-      "a_samples": 50,
-      "window_a_samples": 35,
-      "a_refinement": 1,
-      "k_refinement": 2,
-      "integration_method": "qag_quad",
-      "minimum_correlation_eigenvalue": 0.0012261288193779654
-    },
-    "ssc_low_refined": {
-      "backend": "tjpcov",
-      "manifest_sha256": "7df583a5a3f67ca52e37a24687769e6898c3bcaf228ae5bd31119f95952265d5",
-      "script_sha256": "d647d9ddeff9e75baa7f01eb1f0b391f6fa8caa662d26a9d8cb1396e569d6c7a",
-      "raw_npz_sha256": "22ec2cb222b1837f0034edd67fcf304ad1d444422821a4abcfaba98cbf675381",
-      "threads": 6,
-      "a_samples": 99,
-      "window_a_samples": 69,
-      "a_refinement": 2,
-      "k_refinement": 2,
-      "integration_method": "qag_quad",
-      "minimum_correlation_eigenvalue": 0.0014559453734771194
-    },
-    "ssc_low_a4": {
-      "backend": "tjpcov",
-      "manifest_sha256": "09446dbceef819eb16c795a493c3c35c75999160ac924b5dbe098bd657627658",
-      "script_sha256": "22a6f8b20117716a6242a373440b8e020ef4d3f252b1be3d00ed4009a1fad255",
-      "raw_npz_sha256": "9c56258e1deb313350d07e419483778a19068616cba5b93fa47d83869333a6c3",
-      "threads": 6,
-      "a_samples": 197,
-      "window_a_samples": 136,
-      "a_refinement": 4,
-      "k_refinement": 1,
-      "integration_method": "qag_quad",
-      "minimum_correlation_eigenvalue": 0.001460945034324664
-    },
-    "ssc_low_a8": {
-      "backend": "tjpcov",
-      "manifest_sha256": "e89400c0c4c59b84cde714193e63470c3c8505abbacccc87baad7a1689738f78",
-      "script_sha256": "22a6f8b20117716a6242a373440b8e020ef4d3f252b1be3d00ed4009a1fad255",
-      "raw_npz_sha256": "f1f333a477c5f71889058e85c5b4212ce2fe623dcdb1d74525b52956f4bb59bf",
-      "threads": 6,
-      "a_samples": 393,
-      "window_a_samples": 271,
-      "a_refinement": 8,
-      "k_refinement": 1,
-      "integration_method": "qag_quad",
-      "minimum_correlation_eigenvalue": 0.0014620334312908238
-    },
-    "ssc_low_a8_spline": {
-      "backend": "tjpcov",
-      "manifest_sha256": "6292338332548e9fb9a43cd174a64b844eb856249a004870e3a979ce625c3289",
-      "script_sha256": "22a6f8b20117716a6242a373440b8e020ef4d3f252b1be3d00ed4009a1fad255",
-      "raw_npz_sha256": "20d5aa3218fab345ad9493c7cc5211998fc38b7e367e78e3c15b35676a7e5631",
-      "threads": 6,
-      "a_samples": 393,
-      "window_a_samples": 271,
-      "a_refinement": 8,
-      "k_refinement": 1,
-      "integration_method": "spline",
-      "minimum_correlation_eigenvalue": 0.0014608539423757512
-    },
-    "ssc_low_a16": {
-      "backend": "tjpcov",
-      "manifest_sha256": "fe9c3bef050e006847d07f4fc73d688392714b4aa3be037edaa789f3d8373be7",
-      "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
-      "raw_npz_sha256": "c8d26d9d637bedde32a06502eeb887e26199a11e5a69a5dc9b1539fe4822301a",
-      "threads": 6,
-      "a_samples": 785,
-      "window_a_samples": 541,
-      "a_refinement": 16,
-      "k_refinement": 1,
-      "integration_method": "qag_quad",
-      "minimum_correlation_eigenvalue": 0.0014593883354039154
-    },
-    "ssc_high_qag": {
-      "backend": "tjpcov",
-      "manifest_sha256": "5b9579ac6a42aaef1599c598c26df20c1ab5aa93c6c8f42c6bb8ab04adee6f37",
-      "script_sha256": "d647d9ddeff9e75baa7f01eb1f0b391f6fa8caa662d26a9d8cb1396e569d6c7a",
-      "raw_npz_sha256": "5b432d11b6774da53c49fb17d5700636af4c45015c1da9b6efefa43c7c4892f2",
-      "threads": 6,
-      "a_samples": 50,
-      "window_a_samples": 35,
-      "a_refinement": 1,
-      "k_refinement": 1,
-      "integration_method": "qag_quad",
-      "minimum_correlation_eigenvalue": -1.1236224117997463e-07
-    },
-    "ssc_high_a8": {
-      "backend": "tjpcov",
-      "manifest_sha256": "2bc721a93285dd5548cceb7769dde10fdda701b6a852348ec279bf2b032d9af9",
-      "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
-      "raw_npz_sha256": "70b0318fd15f14c10025fcc3bb641bef1a69979680e0504c76c3414b44f78c9b",
-      "threads": 6,
-      "a_samples": 393,
-      "window_a_samples": 271,
-      "a_refinement": 8,
-      "k_refinement": 1,
-      "integration_method": "qag_quad",
-      "minimum_correlation_eigenvalue": 2.5186226780028053e-12
-    },
-    "ssc_high_a16": {
-      "backend": "tjpcov",
-      "manifest_sha256": "1c74957c60758f71504e98c3c082f8ebe344342ba1a7001d68caf14c90cd5ce3",
-      "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
-      "raw_npz_sha256": "f69aa902161cc49003ebacb6020baedf72f6bfb7f92f90ed20df64cb6a4d6cfe",
-      "threads": 6,
-      "a_samples": 785,
-      "window_a_samples": 541,
-      "a_refinement": 16,
-      "k_refinement": 1,
-      "integration_method": "qag_quad",
-      "minimum_correlation_eigenvalue": 2.4942536698555557e-12
-    },
-    "cocoa_ssc_low": {
-      "backend": "cocoa",
-      "manifest_sha256": "c41ab5a5711b52188837183b082d44f8563b7b03b6c32a62881e49db04bae98e",
-      "script_sha256": "2831923f9b5b9df377d2c055d23a649ce3a246031f16e3e878878e4df88bf077",
-      "raw_npz_sha256": "16a627c26ac99415437f20ba544a63c48a6998e533fbbd93eed7ed50230281c2",
-      "threads": 6,
-      "integration_accuracy": 0,
-      "radial_nquad": 96,
-      "halo_mass_nquad": 96,
-      "nwindow": 16385,
-      "core_accuracyboost": 1,
-      "mask_ell_max": 32768,
-      "response_step": 5e-05,
-      "minimum_correlation_eigenvalue": 0.0011904670960069948
-    },
-    "cocoa_ssc_low_i1": {
-      "backend": "cocoa",
-      "manifest_sha256": "5156ccf6e585f5d0fc61a395ef487c519a6dab900e9de4268a5e9b2fd18a4c8b",
-      "script_sha256": "6664ed880c741f0821f37fc3ee1c79622cdd8c4f8d6d9547985413488382f1be",
-      "raw_npz_sha256": "0da3530d5c1e1f3300fb36c639cf7e914a0afd4039a91890720b654cb0cc0323",
-      "threads": 6,
-      "integration_accuracy": 1,
-      "radial_nquad": 128,
-      "halo_mass_nquad": 128,
-      "nwindow": 16385,
-      "core_accuracyboost": 1,
-      "mask_ell_max": 32768,
-      "response_step": 5e-05,
-      "minimum_correlation_eigenvalue": 0.0011950386104343964
-    },
-    "cocoa_ssc_low_i2": {
-      "backend": "cocoa",
-      "manifest_sha256": "80f2c8cfcf32c4209a93c80d15da48232b61040ac96386dc1e7deefad92325fb",
-      "script_sha256": "6664ed880c741f0821f37fc3ee1c79622cdd8c4f8d6d9547985413488382f1be",
-      "raw_npz_sha256": "3c58c06f9411fa560b529b12d283bb18036c849f9fa34510bacbb74dded4b17f",
-      "threads": 6,
-      "integration_accuracy": 2,
-      "radial_nquad": 256,
-      "halo_mass_nquad": 256,
-      "nwindow": 16385,
-      "core_accuracyboost": 1,
-      "mask_ell_max": 32768,
-      "response_step": 5e-05,
-      "minimum_correlation_eigenvalue": 0.0011906035387354527
-    },
-    "cocoa_ssc_low_ab2_i1": {
-      "backend": "cocoa",
-      "manifest_sha256": "760ded36becbe596d69d3168a69562acf61b10dce788e4211e7a10ecdfe3783a",
-      "script_sha256": "6664ed880c741f0821f37fc3ee1c79622cdd8c4f8d6d9547985413488382f1be",
-      "raw_npz_sha256": "a800bab2fe9c9807c305b7c0132a307e52b35ecad7d7a034896c1330b02ea086",
-      "threads": 6,
-      "integration_accuracy": 1,
-      "radial_nquad": 128,
-      "halo_mass_nquad": 128,
-      "nwindow": 32769,
-      "core_accuracyboost": 2,
-      "mask_ell_max": 65536,
-      "response_step": 2.5e-05,
-      "minimum_correlation_eigenvalue": 0.0011950489208816953
-    },
-    "cocoa_ssc_low_ab2_i2": {
-      "backend": "cocoa",
-      "manifest_sha256": "989ef2e538f62b5c307fb40fd2075eabd3a5c505e8da10ad5f808fd9b1d1df9b",
-      "script_sha256": "6664ed880c741f0821f37fc3ee1c79622cdd8c4f8d6d9547985413488382f1be",
-      "raw_npz_sha256": "bd12045513e1bd53919a8a9be6fda7742ce334cc54581f62a38bd1be49d59526",
-      "threads": 6,
-      "integration_accuracy": 2,
-      "radial_nquad": 256,
-      "halo_mass_nquad": 256,
-      "nwindow": 32769,
-      "core_accuracyboost": 2,
-      "mask_ell_max": 65536,
-      "response_step": 2.5e-05,
-      "minimum_correlation_eigenvalue": 0.0011906500537187128
-    },
-    "cocoa_ssc_high": {
-      "backend": "cocoa",
-      "manifest_sha256": "b68f4e68262e6831d898b125c41524b68ae9ea68cddbcef15caf0341b146b43f",
-      "script_sha256": "2831923f9b5b9df377d2c055d23a649ce3a246031f16e3e878878e4df88bf077",
-      "raw_npz_sha256": "b443e8e95c30ad996b4b18c2d2be833f5cfd837b1d43c74b89caa471fa7f0793",
-      "threads": 6,
-      "integration_accuracy": 0,
-      "radial_nquad": 96,
-      "halo_mass_nquad": 96,
-      "nwindow": 16385,
-      "core_accuracyboost": 1,
-      "mask_ell_max": 32768,
-      "response_step": 5e-05,
-      "minimum_correlation_eigenvalue": 1.925871451299542e-11
-    },
-    "cocoa_ssc_high_i1": {
-      "backend": "cocoa",
-      "manifest_sha256": "9d2c7df1fd6d0b7c1a161e6adb72e987c40df6566d01f3ec7b4a9d4916207d6d",
-      "script_sha256": "6664ed880c741f0821f37fc3ee1c79622cdd8c4f8d6d9547985413488382f1be",
-      "raw_npz_sha256": "1e738ee096acc6e572a1b6d53522580c62926534f3548bb14288c43540f51e9c",
-      "threads": 6,
-      "integration_accuracy": 1,
-      "radial_nquad": 128,
-      "halo_mass_nquad": 128,
-      "nwindow": 16385,
-      "core_accuracyboost": 1,
-      "mask_ell_max": 32768,
-      "response_step": 5e-05,
-      "minimum_correlation_eigenvalue": 1.6621376714478245e-11
-    },
-    "cocoa_ssc_high_ab2_i2": {
-      "backend": "cocoa",
-      "manifest_sha256": "dfce351a51ef60ec312e5e4af2898b5365f5be696f83ec7777b319ebd152a347",
-      "script_sha256": "6664ed880c741f0821f37fc3ee1c79622cdd8c4f8d6d9547985413488382f1be",
-      "raw_npz_sha256": "781419a07c562a7e513fe0e649b5d36ae353ee18b53804e180a3df01285d45b6",
-      "threads": 6,
-      "integration_accuracy": 2,
-      "radial_nquad": 256,
-      "halo_mass_nquad": 256,
-      "nwindow": 32769,
-      "core_accuracyboost": 2,
-      "mask_ell_max": 65536,
-      "response_step": 2.5e-05,
-      "minimum_correlation_eigenvalue": 1.5745857304624266e-11
-    }
-  },
-  "comparisons": {
-    "low": {
-      "scope": "Native shear SSC at matching effective multipoles",
-      "difference": "TJPCov minus CoCoA; CoCoA SSC rms normalization",
-      "max_variance_scaled_difference": 0.26616623119242205,
-      "diagonal_fractional_difference": [
-        -0.10479443446382009,
-        -0.14468054171924838,
-        -0.18935854435387767,
-        -0.23232888206463576,
-        -0.266166231192422
-      ],
-      "generalized_variance_ratio_range": [
-        0.49223103108470945,
-        1.4515497928730774
-      ],
-      "modes": {
-        "cocoa": {
-          "max_asymmetry_over_cocoa_rms": 2.814700791331545e-16,
-          "min_eigenvalue_over_cocoa_rms": 0.0011906500537185998
-        },
-        "tjpcov": {
-          "max_asymmetry_over_cocoa_rms": 1.9720093074710012e-16,
-          "min_eigenvalue_over_cocoa_rms": 0.0011284644392809838
-        }
-      },
-      "interpretation": "Different halo responses and cap/disc windows; numerical refinement must be tested separately.",
-      "cocoa_case": "cocoa_ssc_low_ab2_i2",
-      "tjpcov_case": "ssc_low_a16"
-    },
-    "high": {
-      "scope": "Native shear SSC at matching effective multipoles",
-      "difference": "TJPCov minus CoCoA; CoCoA SSC rms normalization",
-      "max_variance_scaled_difference": 0.20550130987580736,
-      "diagonal_fractional_difference": [
-        -0.20550130987580728,
-        -0.2049548867673383,
-        -0.2044254024375155,
-        -0.20390211016701554,
-        -0.20339898213571106
-      ],
-      "generalized_variance_ratio_range": [
-        0.04961644831871294,
-        2.8871224993881617
-      ],
-      "modes": {
-        "cocoa": {
-          "max_asymmetry_over_cocoa_rms": 1.560964333842206e-16,
-          "min_eigenvalue_over_cocoa_rms": 1.574566086159946e-11
-        },
-        "tjpcov": {
-          "max_asymmetry_over_cocoa_rms": 1.4718193297482968e-16,
-          "min_eigenvalue_over_cocoa_rms": 1.9839328362678717e-12
-        }
-      },
-      "interpretation": "Different halo responses and cap/disc windows; numerical refinement must be tested separately.",
-      "cocoa_case": "cocoa_ssc_high_ab2_i2",
-      "tjpcov_case": "ssc_high_a16"
-    }
-  },
+  "scope": "Native five-multipole shear SSC; no G/cNG/total matrix",
+  "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+  "cocoa_accuracy": "AB=1; independent integration levels 0,1,2",
+  "timing_policy": "Accuracy campaign; elapsed logs are not benchmarks",
   "refinements": [
     {
       "coarse": "ssc_low_qag",
       "fine": "ssc_low_a2",
-      "max_difference_percent_fine_rms": 31.572552098145955
+      "max_abs_difference_over_fine_rms_product": 0.3157255210217475,
+      "diagonal_fractional_change": [
+        0.3013186481735637,
+        0.31572552102174756,
+        0.2964869566407302,
+        0.2392017663001218,
+        0.16624106323622967
+      ]
     },
     {
       "coarse": "ssc_low_a2",
       "fine": "ssc_low_a4",
-      "max_difference_percent_fine_rms": 2.618402710207255
+      "max_abs_difference_over_fine_rms_product": 0.026184027105622006,
+      "diagonal_fractional_change": [
+        0.026184027105621954,
+        0.02056314997608677,
+        0.015243530247632808,
+        0.011438239093856994,
+        0.008777331353835294
+      ]
     },
     {
       "coarse": "ssc_low_a4",
       "fine": "ssc_low_a8",
-      "max_difference_percent_fine_rms": 0.157419792532944
+      "max_abs_difference_over_fine_rms_product": 0.0015741979254935566,
+      "diagonal_fractional_change": [
+        0.0015741979254935146,
+        0.0013904344025639226,
+        0.0013070508703032502,
+        0.0011639635253650749,
+        0.0009478105506721679
+      ]
     },
     {
       "coarse": "ssc_low_a8",
       "fine": "ssc_low_a16",
-      "max_difference_percent_fine_rms": 0.01799837786276492
-    },
-    {
-      "coarse": "ssc_high_a8",
-      "fine": "ssc_high_a16",
-      "max_difference_percent_fine_rms": 0.0004964840412161055
-    },
-    {
-      "coarse": "ssc_low_a8",
-      "fine": "ssc_low_a8_spline",
-      "max_difference_percent_fine_rms": 0.0005098675404038668
+      "max_abs_difference_over_fine_rms_product": 0.0001799837785887207,
+      "diagonal_fractional_change": [
+        0.0001799837785887437,
+        0.00016945288221115185,
+        0.0001268162406171669,
+        0.00010914612134205193,
+        8.243134361740623e-05
+      ]
     },
     {
       "coarse": "ssc_low_qag",
       "fine": "ssc_low_k2",
-      "max_difference_percent_fine_rms": 7.351398458822074e-05
+      "max_abs_difference_over_fine_rms_product": 7.351398489056569e-07,
+      "diagonal_fractional_change": [
+        1.8946756497051354e-07,
+        1.1604413852062123e-07,
+        3.206529444188533e-07,
+        -7.351398488841809e-07,
+        -1.1371715902264157e-07
+      ]
     },
     {
-      "coarse": "cocoa_ssc_low",
+      "coarse": "ssc_low_a8",
+      "fine": "ssc_low_a8_spline",
+      "max_abs_difference_over_fine_rms_product": 5.0986753833056545e-06,
+      "diagonal_fractional_change": [
+        -3.441210619126167e-06,
+        1.3262406666214588e-06,
+        -3.88744168877686e-06,
+        -9.548695245609196e-07,
+        1.0867047461893264e-07
+      ]
+    },
+    {
+      "coarse": "ssc_high_qag",
+      "fine": "ssc_high_a8",
+      "max_abs_difference_over_fine_rms_product": 0.007923588060651653,
+      "diagonal_fractional_change": [
+        0.007923588060651632,
+        0.007824095262262354,
+        0.0077259204127893,
+        0.007627143076472942,
+        0.007530711192227368
+      ]
+    },
+    {
+      "coarse": "ssc_high_a8",
+      "fine": "ssc_high_a16",
+      "max_abs_difference_over_fine_rms_product": 4.964840412801269e-06,
+      "diagonal_fractional_change": [
+        4.964840412791105e-06,
+        4.902466663292415e-06,
+        4.840385896542898e-06,
+        4.777794265331536e-06,
+        4.715592048176731e-06
+      ]
+    },
+    {
+      "coarse": "cocoa_ssc_low_i0",
       "fine": "cocoa_ssc_low_i1",
-      "max_difference_percent_fine_rms": 0.05653061678476493
+      "max_abs_difference_over_fine_rms_product": 6.260587541950428e-05,
+      "diagonal_fractional_change": [
+        1.683243482086816e-05,
+        6.2605875419397e-05,
+        -6.51687458519401e-06,
+        3.884666266884551e-06,
+        -2.1722388864997555e-05
+      ]
     },
     {
       "coarse": "cocoa_ssc_low_i1",
       "fine": "cocoa_ssc_low_i2",
-      "max_difference_percent_fine_rms": 0.04573837743053711
+      "max_abs_difference_over_fine_rms_product": 4.1801889684823e-05,
+      "diagonal_fractional_change": [
+        2.6309586008244068e-05,
+        1.2544173077833065e-05,
+        -2.86509302654947e-05,
+        4.180188968483378e-05,
+        -2.6099557673631146e-05
+      ]
     },
     {
-      "coarse": "cocoa_ssc_low_i1",
-      "fine": "cocoa_ssc_low_ab2_i1",
-      "max_difference_percent_fine_rms": 0.006721077515750147
-    },
-    {
-      "coarse": "cocoa_ssc_low_i2",
-      "fine": "cocoa_ssc_low_ab2_i2",
-      "max_difference_percent_fine_rms": 0.0058865361896387365
-    },
-    {
-      "coarse": "cocoa_ssc_low_ab2_i1",
-      "fine": "cocoa_ssc_low_ab2_i2",
-      "max_difference_percent_fine_rms": 0.04657248099024014
-    },
-    {
-      "coarse": "cocoa_ssc_high",
+      "coarse": "cocoa_ssc_high_i0",
       "fine": "cocoa_ssc_high_i1",
-      "max_difference_percent_fine_rms": 0.00013016198349781385
+      "max_abs_difference_over_fine_rms_product": 3.27161749214914e-07,
+      "diagonal_fractional_change": [
+        3.1105300801748115e-07,
+        2.0524994659432139e-07,
+        2.418369720036395e-07,
+        2.9300895332262655e-07,
+        3.271617492472956e-07
+      ]
     },
     {
       "coarse": "cocoa_ssc_high_i1",
-      "fine": "cocoa_ssc_high_ab2_i2",
-      "max_difference_percent_fine_rms": 0.005570109777909028
+      "fine": "cocoa_ssc_high_i2",
+      "max_abs_difference_over_fine_rms_product": 4.7058837970258135e-07,
+      "diagonal_fractional_change": [
+        -4.705883797084809e-07,
+        -3.6333173236702265e-07,
+        -3.0354590052628083e-07,
+        -4.0516925847722263e-07,
+        -3.8533228041703893e-07
+      ]
     }
   ],
-  "sampling_diagnostic": {
-    "schema": "tjpcov-ssc-sampling-diagnostic-v1",
-    "status": "completed",
-    "timeout_seconds": 600,
-    "threads": 6,
-    "scope": "public CCL 2x2 a-sampling diagnostic at effective ell",
-    "script_sha256": "60ebb812d5fddf867f7a908007ec9482f11f401c6f2f4f35531974cd5331f371",
-    "cases": {
-      "coarse_coarse": {
-        "response_a_count": 50,
-        "window_a_count": 35,
-        "versus_coarse_native": {
-          "max_abs_difference_over_coarse_diagonal_rms": 0.0,
-          "max_fractional_diagonal_change": 0.0
-        }
-      },
-      "fine_coarse": {
-        "response_a_count": 99,
-        "window_a_count": 35,
-        "versus_coarse_native": {
-          "max_abs_difference_over_coarse_diagonal_rms": 3.1135476306269314e-05,
-          "max_fractional_diagonal_change": 3.113547630626931e-05
-        }
-      },
-      "coarse_fine": {
-        "response_a_count": 50,
-        "window_a_count": 69,
-        "versus_coarse_native": {
-          "max_abs_difference_over_coarse_diagonal_rms": 0.23995913114050296,
-          "max_fractional_diagonal_change": 0.23995913114050293
-        }
-      },
-      "fine_fine": {
-        "response_a_count": 99,
-        "window_a_count": 69,
-        "versus_coarse_native": {
-          "max_abs_difference_over_coarse_diagonal_rms": 0.2399630591234147,
-          "max_fractional_diagonal_change": 0.23996305912341467
+  "runs": {
+    "ssc_low_qag": {
+      "manifest_sha256": "5570a8143fb4b1c8a2a1ee57be25e209c1bd27e02ae51c2357c08706b55af053",
+      "manifest": {
+        "schema": "tjpcov-ssc-shear-v1",
+        "status": "completed",
+        "scope": "native SSC at five effective multipoles; not band averaged",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+        "input_manifest": {
+          "schema": "lsst-y1-tjpcov-inputs-v1",
+          "survey": "LSST Y1 forecast subset",
+          "source_bin_1based": 3,
+          "lens_bins_1based": [
+            1,
+            2
+          ],
+          "area_deg2": 12300.0,
+          "source_density_arcmin2": 2.0,
+          "sigma_e_component": 0.26,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6
+          ],
+          "bias": [
+            1.72716,
+            1.65168
+          ],
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rsd": false,
+          "magnification": false,
+          "galaxy_bias": "linear",
+          "power_preparation": {
+            "method": "natural cubic ln(P) versus log10(k), at fixed z",
+            "accuracy_boost": 1,
+            "power_accuracyboost": 8,
+            "refinement": 8,
+            "native_k_nodes": 1500,
+            "installed_k_nodes": 11993,
+            "redshift_nodes": 140,
+            "power_tables": [
+              "linear",
+              "nonlinear",
+              "linear_cb"
+            ],
+            "original_nodes_retained_exactly": true,
+            "installed_tables_reproduced_exactly": true,
+            "native_archive": "camb_native_tables.npz",
+            "installed_archive": "camb_tables.npz",
+            "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+          },
+          "units": {
+            "k": "h/Mpc",
+            "power": "(Mpc/h)^3",
+            "nz": "z_mid then unrenormalized n(z)",
+            "power_axes": [
+              "redshift",
+              "wavenumber"
+            ]
+          },
+          "cocoa": {
+            "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+            "status": ""
+          },
+          "core": {
+            "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+            "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+          },
+          "lsst_y1": {
+            "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+            "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+          },
+          "threads": 6,
+          "camb_version": "1.6.7",
+          "camb_source": {
+            "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+            "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+          },
+          "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+          "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+          "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+          "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+          "files": {
+            "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+            "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+            "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+          }
+        },
+        "source_name": "source3",
+        "area_sr": 3.746794263376515,
+        "shape": [
+          5,
+          5
+        ],
+        "effective_ell": [
+          35.5,
+          49.0,
+          67.5,
+          93.0,
+          129.0
+        ],
+        "integration_method": "qag_quad",
+        "a_domain_control": {
+          "match_power_a_range": true,
+          "a_refinement": 1,
+          "original_A_SPLINE_MINLOG_PK": 0.01,
+          "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+          "A_SPLINE_MIN_PK": 0.1,
+          "A_SPLINE_NA_PK": 40,
+          "A_SPLINE_NLOG_PK": 11,
+          "input_a_min": 0.019611688566385566
+        },
+        "k_sampling": {
+          "k_refinement": 1,
+          "original_N_K": 167,
+          "N_K": 167,
+          "K_MIN_Mpc_inverse": 5e-05,
+          "K_MAX_Mpc_inverse": 1000.0,
+          "base_count": 1220,
+          "refined_count": 1220,
+          "nested_nodes_claimed": false
+        },
+        "halo_model": {
+          "mass_definition": "200m",
+          "mass_function": "Tinker08",
+          "bias": "Tinker10",
+          "concentration": "Duffy08",
+          "profile": "analytic NFW",
+          "number_count_legs": 0,
+          "response": "linear-power slope and amplitude plus normalized I12",
+          "hmc_defaults": {
+            "log10M_min": 8.0,
+            "log10M_max": 16.0,
+            "nM": 128,
+            "integration_method_M": "simpson"
+          }
+        },
+        "window": "CCL circular-disc transverse linear-power integral",
+        "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
+        "background": "native CCL; only CAMB power is supplied",
+        "native_block_seconds_diagnostic_only": 0.4684663329971954,
+        "threads": 6,
+        "timeout_seconds": 600,
+        "positive_diagonal": true,
+        "symmetric_within_relative_1e-10": true,
+        "minimum_ssc_correlation_eigenvalue": 0.001226040893646749,
+        "max_asymmetry_over_peak": 0.0,
+        "tjpcov": {
+          "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+          "status": ""
+        },
+        "installed_source": {
+          "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+          "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+          "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+          "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+        },
+        "versions": {
+          "tjpcov": "0.5.2.dev9+g2f59302af",
+          "pyccl": "3.3.3",
+          "sacc": "2.4",
+          "numpy": "2.4.3",
+          "scipy": "1.17.1"
+        },
+        "python": "3.12.13",
+        "platform": "macOS-13.7.5-arm64-arm-64bit",
+        "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+        "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+        "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
+        "files": {
+          "ssc.npz": "6720ad70b372b91ef16b395074ab1cc3b73061b61f4a30b764f549643dc389a6"
         }
       }
     },
-    "integration_method": "qag_quad",
-    "halo_model": {
-      "mass_definition": "200m",
-      "mass_function": "Tinker08",
-      "bias": "Tinker10",
-      "concentration": "Duffy08",
-      "profile": "analytic NFW",
-      "number_count_legs": 0,
-      "response": "linear-power slope and amplitude plus normalized I12",
-      "hmc_defaults": {
-        "log10M_min": 8.0,
-        "log10M_max": 16.0,
-        "nM": 128,
-        "integration_method_M": "simpson"
+    "ssc_low_a2": {
+      "manifest_sha256": "d011ad813705252b81dfe973f4781393807b834268059f2e840427878f339c85",
+      "manifest": {
+        "schema": "tjpcov-ssc-shear-v1",
+        "status": "completed",
+        "scope": "native SSC at five effective multipoles; not band averaged",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+        "input_manifest": {
+          "schema": "lsst-y1-tjpcov-inputs-v1",
+          "survey": "LSST Y1 forecast subset",
+          "source_bin_1based": 3,
+          "lens_bins_1based": [
+            1,
+            2
+          ],
+          "area_deg2": 12300.0,
+          "source_density_arcmin2": 2.0,
+          "sigma_e_component": 0.26,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6
+          ],
+          "bias": [
+            1.72716,
+            1.65168
+          ],
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rsd": false,
+          "magnification": false,
+          "galaxy_bias": "linear",
+          "power_preparation": {
+            "method": "natural cubic ln(P) versus log10(k), at fixed z",
+            "accuracy_boost": 1,
+            "power_accuracyboost": 8,
+            "refinement": 8,
+            "native_k_nodes": 1500,
+            "installed_k_nodes": 11993,
+            "redshift_nodes": 140,
+            "power_tables": [
+              "linear",
+              "nonlinear",
+              "linear_cb"
+            ],
+            "original_nodes_retained_exactly": true,
+            "installed_tables_reproduced_exactly": true,
+            "native_archive": "camb_native_tables.npz",
+            "installed_archive": "camb_tables.npz",
+            "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+          },
+          "units": {
+            "k": "h/Mpc",
+            "power": "(Mpc/h)^3",
+            "nz": "z_mid then unrenormalized n(z)",
+            "power_axes": [
+              "redshift",
+              "wavenumber"
+            ]
+          },
+          "cocoa": {
+            "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+            "status": ""
+          },
+          "core": {
+            "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+            "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+          },
+          "lsst_y1": {
+            "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+            "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+          },
+          "threads": 6,
+          "camb_version": "1.6.7",
+          "camb_source": {
+            "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+            "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+          },
+          "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+          "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+          "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+          "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+          "files": {
+            "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+            "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+            "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+          }
+        },
+        "source_name": "source3",
+        "area_sr": 3.746794263376515,
+        "shape": [
+          5,
+          5
+        ],
+        "effective_ell": [
+          35.5,
+          49.0,
+          67.5,
+          93.0,
+          129.0
+        ],
+        "integration_method": "qag_quad",
+        "a_domain_control": {
+          "match_power_a_range": true,
+          "a_refinement": 2,
+          "original_A_SPLINE_MINLOG_PK": 0.01,
+          "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+          "A_SPLINE_MIN_PK": 0.1,
+          "A_SPLINE_NA_PK": 79,
+          "A_SPLINE_NLOG_PK": 21,
+          "input_a_min": 0.019611688566385566
+        },
+        "k_sampling": {
+          "k_refinement": 1,
+          "original_N_K": 167,
+          "N_K": 167,
+          "K_MIN_Mpc_inverse": 5e-05,
+          "K_MAX_Mpc_inverse": 1000.0,
+          "base_count": 1220,
+          "refined_count": 1220,
+          "nested_nodes_claimed": false
+        },
+        "halo_model": {
+          "mass_definition": "200m",
+          "mass_function": "Tinker08",
+          "bias": "Tinker10",
+          "concentration": "Duffy08",
+          "profile": "analytic NFW",
+          "number_count_legs": 0,
+          "response": "linear-power slope and amplitude plus normalized I12",
+          "hmc_defaults": {
+            "log10M_min": 8.0,
+            "log10M_max": 16.0,
+            "nM": 128,
+            "integration_method_M": "simpson"
+          }
+        },
+        "window": "CCL circular-disc transverse linear-power integral",
+        "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
+        "background": "native CCL; only CAMB power is supplied",
+        "native_block_seconds_diagnostic_only": 0.8750338749960065,
+        "threads": 6,
+        "timeout_seconds": 600,
+        "positive_diagonal": true,
+        "symmetric_within_relative_1e-10": true,
+        "minimum_ssc_correlation_eigenvalue": 0.0014557140268550495,
+        "max_asymmetry_over_peak": 5.23032987208371e-17,
+        "tjpcov": {
+          "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+          "status": ""
+        },
+        "installed_source": {
+          "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+          "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+          "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+          "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+        },
+        "versions": {
+          "tjpcov": "0.5.2.dev9+g2f59302af",
+          "pyccl": "3.3.3",
+          "sacc": "2.4",
+          "numpy": "2.4.3",
+          "scipy": "1.17.1"
+        },
+        "python": "3.12.13",
+        "platform": "macOS-13.7.5-arm64-arm-64bit",
+        "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+        "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+        "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
+        "files": {
+          "ssc.npz": "41749dc6c7018a6241805933e03692651c9a1d44228a04a6b2a52bdca29f2af2"
+        }
       }
     },
-    "disc_variance_units": "Mpc",
-    "fixed_cosmology_a_controls": {
-      "match_power_a_range": true,
-      "original_A_SPLINE_MINLOG_PK": 0.01,
-      "A_SPLINE_MINLOG_PK": 0.019611688566385566,
-      "A_SPLINE_MIN_PK": 0.1,
-      "A_SPLINE_NA_PK": 40,
-      "A_SPLINE_NLOG_PK": 11,
-      "input_a_min": 0.019611688566385566
+    "ssc_low_a4": {
+      "manifest_sha256": "4dc90aa572ee36eea265806ea85f99f3a41a2b29ead1c68c96bd794f9d76b6f3",
+      "manifest": {
+        "schema": "tjpcov-ssc-shear-v1",
+        "status": "completed",
+        "scope": "native SSC at five effective multipoles; not band averaged",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+        "input_manifest": {
+          "schema": "lsst-y1-tjpcov-inputs-v1",
+          "survey": "LSST Y1 forecast subset",
+          "source_bin_1based": 3,
+          "lens_bins_1based": [
+            1,
+            2
+          ],
+          "area_deg2": 12300.0,
+          "source_density_arcmin2": 2.0,
+          "sigma_e_component": 0.26,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6
+          ],
+          "bias": [
+            1.72716,
+            1.65168
+          ],
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rsd": false,
+          "magnification": false,
+          "galaxy_bias": "linear",
+          "power_preparation": {
+            "method": "natural cubic ln(P) versus log10(k), at fixed z",
+            "accuracy_boost": 1,
+            "power_accuracyboost": 8,
+            "refinement": 8,
+            "native_k_nodes": 1500,
+            "installed_k_nodes": 11993,
+            "redshift_nodes": 140,
+            "power_tables": [
+              "linear",
+              "nonlinear",
+              "linear_cb"
+            ],
+            "original_nodes_retained_exactly": true,
+            "installed_tables_reproduced_exactly": true,
+            "native_archive": "camb_native_tables.npz",
+            "installed_archive": "camb_tables.npz",
+            "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+          },
+          "units": {
+            "k": "h/Mpc",
+            "power": "(Mpc/h)^3",
+            "nz": "z_mid then unrenormalized n(z)",
+            "power_axes": [
+              "redshift",
+              "wavenumber"
+            ]
+          },
+          "cocoa": {
+            "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+            "status": ""
+          },
+          "core": {
+            "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+            "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+          },
+          "lsst_y1": {
+            "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+            "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+          },
+          "threads": 6,
+          "camb_version": "1.6.7",
+          "camb_source": {
+            "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+            "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+          },
+          "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+          "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+          "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+          "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+          "files": {
+            "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+            "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+            "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+          }
+        },
+        "source_name": "source3",
+        "area_sr": 3.746794263376515,
+        "shape": [
+          5,
+          5
+        ],
+        "effective_ell": [
+          35.5,
+          49.0,
+          67.5,
+          93.0,
+          129.0
+        ],
+        "integration_method": "qag_quad",
+        "a_domain_control": {
+          "match_power_a_range": true,
+          "a_refinement": 4,
+          "original_A_SPLINE_MINLOG_PK": 0.01,
+          "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+          "A_SPLINE_MIN_PK": 0.1,
+          "A_SPLINE_NA_PK": 157,
+          "A_SPLINE_NLOG_PK": 41,
+          "input_a_min": 0.019611688566385566
+        },
+        "k_sampling": {
+          "k_refinement": 1,
+          "original_N_K": 167,
+          "N_K": 167,
+          "K_MIN_Mpc_inverse": 5e-05,
+          "K_MAX_Mpc_inverse": 1000.0,
+          "base_count": 1220,
+          "refined_count": 1220,
+          "nested_nodes_claimed": false
+        },
+        "halo_model": {
+          "mass_definition": "200m",
+          "mass_function": "Tinker08",
+          "bias": "Tinker10",
+          "concentration": "Duffy08",
+          "profile": "analytic NFW",
+          "number_count_legs": 0,
+          "response": "linear-power slope and amplitude plus normalized I12",
+          "hmc_defaults": {
+            "log10M_min": 8.0,
+            "log10M_max": 16.0,
+            "nM": 128,
+            "integration_method_M": "simpson"
+          }
+        },
+        "window": "CCL circular-disc transverse linear-power integral",
+        "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
+        "background": "native CCL; only CAMB power is supplied",
+        "native_block_seconds_diagnostic_only": 1.6682728750165552,
+        "threads": 6,
+        "timeout_seconds": 600,
+        "positive_diagonal": true,
+        "symmetric_within_relative_1e-10": true,
+        "minimum_ssc_correlation_eigenvalue": 0.0014609450343200945,
+        "max_asymmetry_over_peak": 5.367280971225694e-17,
+        "tjpcov": {
+          "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+          "status": ""
+        },
+        "installed_source": {
+          "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+          "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+          "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+          "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+        },
+        "versions": {
+          "tjpcov": "0.5.2.dev9+g2f59302af",
+          "pyccl": "3.3.3",
+          "sacc": "2.4",
+          "numpy": "2.4.3",
+          "scipy": "1.17.1"
+        },
+        "python": "3.12.13",
+        "platform": "macOS-13.7.5-arm64-arm-64bit",
+        "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+        "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+        "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
+        "files": {
+          "ssc.npz": "9a15d52321b7e2be0713c1bfc1a93f7f2756917513098075ed8bbd5ae69744aa"
+        }
+      }
     },
-    "baseline_reproduction_tolerance": 1e-08,
-    "fine_fine_versus_fine_native": {
-      "max_abs_difference_over_coarse_diagonal_rms": 0.0,
-      "max_fractional_diagonal_change": 0.0
+    "ssc_low_a8": {
+      "manifest_sha256": "8a2b4b9fe5547a8c1da8ad871f62692e749cbdc100f70df0f295ec738c79bf58",
+      "manifest": {
+        "schema": "tjpcov-ssc-shear-v1",
+        "status": "completed",
+        "scope": "native SSC at five effective multipoles; not band averaged",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+        "input_manifest": {
+          "schema": "lsst-y1-tjpcov-inputs-v1",
+          "survey": "LSST Y1 forecast subset",
+          "source_bin_1based": 3,
+          "lens_bins_1based": [
+            1,
+            2
+          ],
+          "area_deg2": 12300.0,
+          "source_density_arcmin2": 2.0,
+          "sigma_e_component": 0.26,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6
+          ],
+          "bias": [
+            1.72716,
+            1.65168
+          ],
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rsd": false,
+          "magnification": false,
+          "galaxy_bias": "linear",
+          "power_preparation": {
+            "method": "natural cubic ln(P) versus log10(k), at fixed z",
+            "accuracy_boost": 1,
+            "power_accuracyboost": 8,
+            "refinement": 8,
+            "native_k_nodes": 1500,
+            "installed_k_nodes": 11993,
+            "redshift_nodes": 140,
+            "power_tables": [
+              "linear",
+              "nonlinear",
+              "linear_cb"
+            ],
+            "original_nodes_retained_exactly": true,
+            "installed_tables_reproduced_exactly": true,
+            "native_archive": "camb_native_tables.npz",
+            "installed_archive": "camb_tables.npz",
+            "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+          },
+          "units": {
+            "k": "h/Mpc",
+            "power": "(Mpc/h)^3",
+            "nz": "z_mid then unrenormalized n(z)",
+            "power_axes": [
+              "redshift",
+              "wavenumber"
+            ]
+          },
+          "cocoa": {
+            "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+            "status": ""
+          },
+          "core": {
+            "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+            "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+          },
+          "lsst_y1": {
+            "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+            "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+          },
+          "threads": 6,
+          "camb_version": "1.6.7",
+          "camb_source": {
+            "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+            "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+          },
+          "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+          "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+          "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+          "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+          "files": {
+            "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+            "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+            "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+          }
+        },
+        "source_name": "source3",
+        "area_sr": 3.746794263376515,
+        "shape": [
+          5,
+          5
+        ],
+        "effective_ell": [
+          35.5,
+          49.0,
+          67.5,
+          93.0,
+          129.0
+        ],
+        "integration_method": "qag_quad",
+        "a_domain_control": {
+          "match_power_a_range": true,
+          "a_refinement": 8,
+          "original_A_SPLINE_MINLOG_PK": 0.01,
+          "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+          "A_SPLINE_MIN_PK": 0.1,
+          "A_SPLINE_NA_PK": 313,
+          "A_SPLINE_NLOG_PK": 81,
+          "input_a_min": 0.019611688566385566
+        },
+        "k_sampling": {
+          "k_refinement": 1,
+          "original_N_K": 167,
+          "N_K": 167,
+          "K_MIN_Mpc_inverse": 5e-05,
+          "K_MAX_Mpc_inverse": 1000.0,
+          "base_count": 1220,
+          "refined_count": 1220,
+          "nested_nodes_claimed": false
+        },
+        "halo_model": {
+          "mass_definition": "200m",
+          "mass_function": "Tinker08",
+          "bias": "Tinker10",
+          "concentration": "Duffy08",
+          "profile": "analytic NFW",
+          "number_count_legs": 0,
+          "response": "linear-power slope and amplitude plus normalized I12",
+          "hmc_defaults": {
+            "log10M_min": 8.0,
+            "log10M_max": 16.0,
+            "nM": 128,
+            "integration_method_M": "simpson"
+          }
+        },
+        "window": "CCL circular-disc transverse linear-power integral",
+        "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
+        "background": "native CCL; only CAMB power is supplied",
+        "native_block_seconds_diagnostic_only": 3.2712173750041984,
+        "threads": 6,
+        "timeout_seconds": 600,
+        "positive_diagonal": true,
+        "symmetric_within_relative_1e-10": true,
+        "minimum_ssc_correlation_eigenvalue": 0.0014620334312960095,
+        "max_asymmetry_over_peak": 1.0751460267592277e-16,
+        "tjpcov": {
+          "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+          "status": ""
+        },
+        "installed_source": {
+          "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+          "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+          "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+          "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+        },
+        "versions": {
+          "tjpcov": "0.5.2.dev9+g2f59302af",
+          "pyccl": "3.3.3",
+          "sacc": "2.4",
+          "numpy": "2.4.3",
+          "scipy": "1.17.1"
+        },
+        "python": "3.12.13",
+        "platform": "macOS-13.7.5-arm64-arm-64bit",
+        "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+        "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+        "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
+        "files": {
+          "ssc.npz": "98c1df085067b48abfa041050fd5079925cde895829b85089cccfc1548330a73"
+        }
+      }
     },
-    "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a"
+    "ssc_low_a16": {
+      "manifest_sha256": "968ac8e8e8c86c026541556f0c85ba7f673e8ecb2a151d6604087d896ce3f87f",
+      "manifest": {
+        "schema": "tjpcov-ssc-shear-v1",
+        "status": "completed",
+        "scope": "native SSC at five effective multipoles; not band averaged",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+        "input_manifest": {
+          "schema": "lsst-y1-tjpcov-inputs-v1",
+          "survey": "LSST Y1 forecast subset",
+          "source_bin_1based": 3,
+          "lens_bins_1based": [
+            1,
+            2
+          ],
+          "area_deg2": 12300.0,
+          "source_density_arcmin2": 2.0,
+          "sigma_e_component": 0.26,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6
+          ],
+          "bias": [
+            1.72716,
+            1.65168
+          ],
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rsd": false,
+          "magnification": false,
+          "galaxy_bias": "linear",
+          "power_preparation": {
+            "method": "natural cubic ln(P) versus log10(k), at fixed z",
+            "accuracy_boost": 1,
+            "power_accuracyboost": 8,
+            "refinement": 8,
+            "native_k_nodes": 1500,
+            "installed_k_nodes": 11993,
+            "redshift_nodes": 140,
+            "power_tables": [
+              "linear",
+              "nonlinear",
+              "linear_cb"
+            ],
+            "original_nodes_retained_exactly": true,
+            "installed_tables_reproduced_exactly": true,
+            "native_archive": "camb_native_tables.npz",
+            "installed_archive": "camb_tables.npz",
+            "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+          },
+          "units": {
+            "k": "h/Mpc",
+            "power": "(Mpc/h)^3",
+            "nz": "z_mid then unrenormalized n(z)",
+            "power_axes": [
+              "redshift",
+              "wavenumber"
+            ]
+          },
+          "cocoa": {
+            "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+            "status": ""
+          },
+          "core": {
+            "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+            "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+          },
+          "lsst_y1": {
+            "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+            "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+          },
+          "threads": 6,
+          "camb_version": "1.6.7",
+          "camb_source": {
+            "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+            "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+          },
+          "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+          "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+          "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+          "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+          "files": {
+            "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+            "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+            "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+          }
+        },
+        "source_name": "source3",
+        "area_sr": 3.746794263376515,
+        "shape": [
+          5,
+          5
+        ],
+        "effective_ell": [
+          35.5,
+          49.0,
+          67.5,
+          93.0,
+          129.0
+        ],
+        "integration_method": "qag_quad",
+        "a_domain_control": {
+          "match_power_a_range": true,
+          "a_refinement": 16,
+          "original_A_SPLINE_MINLOG_PK": 0.01,
+          "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+          "A_SPLINE_MIN_PK": 0.1,
+          "A_SPLINE_NA_PK": 625,
+          "A_SPLINE_NLOG_PK": 161,
+          "input_a_min": 0.019611688566385566
+        },
+        "k_sampling": {
+          "k_refinement": 1,
+          "original_N_K": 167,
+          "N_K": 167,
+          "K_MIN_Mpc_inverse": 5e-05,
+          "K_MAX_Mpc_inverse": 1000.0,
+          "base_count": 1220,
+          "refined_count": 1220,
+          "nested_nodes_claimed": false
+        },
+        "halo_model": {
+          "mass_definition": "200m",
+          "mass_function": "Tinker08",
+          "bias": "Tinker10",
+          "concentration": "Duffy08",
+          "profile": "analytic NFW",
+          "number_count_legs": 0,
+          "response": "linear-power slope and amplitude plus normalized I12",
+          "hmc_defaults": {
+            "log10M_min": 8.0,
+            "log10M_max": 16.0,
+            "nM": 128,
+            "integration_method_M": "simpson"
+          }
+        },
+        "window": "CCL circular-disc transverse linear-power integral",
+        "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
+        "background": "native CCL; only CAMB power is supplied",
+        "native_block_seconds_diagnostic_only": 6.4212077500415035,
+        "threads": 6,
+        "timeout_seconds": 600,
+        "positive_diagonal": true,
+        "symmetric_within_relative_1e-10": true,
+        "minimum_ssc_correlation_eigenvalue": 0.0014593883353969724,
+        "max_asymmetry_over_peak": 5.3766976780182924e-17,
+        "tjpcov": {
+          "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+          "status": ""
+        },
+        "installed_source": {
+          "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+          "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+          "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+          "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+        },
+        "versions": {
+          "tjpcov": "0.5.2.dev9+g2f59302af",
+          "pyccl": "3.3.3",
+          "sacc": "2.4",
+          "numpy": "2.4.3",
+          "scipy": "1.17.1"
+        },
+        "python": "3.12.13",
+        "platform": "macOS-13.7.5-arm64-arm-64bit",
+        "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+        "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+        "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
+        "files": {
+          "ssc.npz": "c8a183536bb9f71ed1d509e78a7dd30d155d28a68768d3f4b16d70b53ee633bc"
+        }
+      }
+    },
+    "ssc_low_k2": {
+      "manifest_sha256": "4b4d6f8dc19ab9604061d9bd59e0dbce78024cfbe6259a1b1f5f85900210a678",
+      "manifest": {
+        "schema": "tjpcov-ssc-shear-v1",
+        "status": "completed",
+        "scope": "native SSC at five effective multipoles; not band averaged",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+        "input_manifest": {
+          "schema": "lsst-y1-tjpcov-inputs-v1",
+          "survey": "LSST Y1 forecast subset",
+          "source_bin_1based": 3,
+          "lens_bins_1based": [
+            1,
+            2
+          ],
+          "area_deg2": 12300.0,
+          "source_density_arcmin2": 2.0,
+          "sigma_e_component": 0.26,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6
+          ],
+          "bias": [
+            1.72716,
+            1.65168
+          ],
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rsd": false,
+          "magnification": false,
+          "galaxy_bias": "linear",
+          "power_preparation": {
+            "method": "natural cubic ln(P) versus log10(k), at fixed z",
+            "accuracy_boost": 1,
+            "power_accuracyboost": 8,
+            "refinement": 8,
+            "native_k_nodes": 1500,
+            "installed_k_nodes": 11993,
+            "redshift_nodes": 140,
+            "power_tables": [
+              "linear",
+              "nonlinear",
+              "linear_cb"
+            ],
+            "original_nodes_retained_exactly": true,
+            "installed_tables_reproduced_exactly": true,
+            "native_archive": "camb_native_tables.npz",
+            "installed_archive": "camb_tables.npz",
+            "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+          },
+          "units": {
+            "k": "h/Mpc",
+            "power": "(Mpc/h)^3",
+            "nz": "z_mid then unrenormalized n(z)",
+            "power_axes": [
+              "redshift",
+              "wavenumber"
+            ]
+          },
+          "cocoa": {
+            "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+            "status": ""
+          },
+          "core": {
+            "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+            "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+          },
+          "lsst_y1": {
+            "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+            "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+          },
+          "threads": 6,
+          "camb_version": "1.6.7",
+          "camb_source": {
+            "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+            "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+          },
+          "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+          "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+          "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+          "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+          "files": {
+            "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+            "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+            "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+          }
+        },
+        "source_name": "source3",
+        "area_sr": 3.746794263376515,
+        "shape": [
+          5,
+          5
+        ],
+        "effective_ell": [
+          35.5,
+          49.0,
+          67.5,
+          93.0,
+          129.0
+        ],
+        "integration_method": "qag_quad",
+        "a_domain_control": {
+          "match_power_a_range": true,
+          "a_refinement": 1,
+          "original_A_SPLINE_MINLOG_PK": 0.01,
+          "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+          "A_SPLINE_MIN_PK": 0.1,
+          "A_SPLINE_NA_PK": 40,
+          "A_SPLINE_NLOG_PK": 11,
+          "input_a_min": 0.019611688566385566
+        },
+        "k_sampling": {
+          "k_refinement": 2,
+          "original_N_K": 167,
+          "N_K": 334,
+          "K_MIN_Mpc_inverse": 5e-05,
+          "K_MAX_Mpc_inverse": 1000.0,
+          "base_count": 1220,
+          "refined_count": 2439,
+          "nested_nodes_claimed": false
+        },
+        "halo_model": {
+          "mass_definition": "200m",
+          "mass_function": "Tinker08",
+          "bias": "Tinker10",
+          "concentration": "Duffy08",
+          "profile": "analytic NFW",
+          "number_count_legs": 0,
+          "response": "linear-power slope and amplitude plus normalized I12",
+          "hmc_defaults": {
+            "log10M_min": 8.0,
+            "log10M_max": 16.0,
+            "nM": 128,
+            "integration_method_M": "simpson"
+          }
+        },
+        "window": "CCL circular-disc transverse linear-power integral",
+        "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
+        "background": "native CCL; only CAMB power is supplied",
+        "native_block_seconds_diagnostic_only": 0.8983237500069663,
+        "threads": 6,
+        "timeout_seconds": 600,
+        "positive_diagonal": true,
+        "symmetric_within_relative_1e-10": true,
+        "minimum_ssc_correlation_eigenvalue": 0.0012261288193483153,
+        "max_asymmetry_over_peak": 1.004813630851e-17,
+        "tjpcov": {
+          "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+          "status": ""
+        },
+        "installed_source": {
+          "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+          "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+          "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+          "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+        },
+        "versions": {
+          "tjpcov": "0.5.2.dev9+g2f59302af",
+          "pyccl": "3.3.3",
+          "sacc": "2.4",
+          "numpy": "2.4.3",
+          "scipy": "1.17.1"
+        },
+        "python": "3.12.13",
+        "platform": "macOS-13.7.5-arm64-arm-64bit",
+        "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+        "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+        "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
+        "files": {
+          "ssc.npz": "d9d500748a9eb201e213cb31169f2a40e03487ff4fdf19caaaa6ce48ec9d7834"
+        }
+      }
+    },
+    "ssc_low_a8_spline": {
+      "manifest_sha256": "a97ecb4446282c7b0377c935a52bc62542fc74a0c3bf585e4f0434eb428e2e10",
+      "manifest": {
+        "schema": "tjpcov-ssc-shear-v1",
+        "status": "completed",
+        "scope": "native SSC at five effective multipoles; not band averaged",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+        "input_manifest": {
+          "schema": "lsst-y1-tjpcov-inputs-v1",
+          "survey": "LSST Y1 forecast subset",
+          "source_bin_1based": 3,
+          "lens_bins_1based": [
+            1,
+            2
+          ],
+          "area_deg2": 12300.0,
+          "source_density_arcmin2": 2.0,
+          "sigma_e_component": 0.26,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6
+          ],
+          "bias": [
+            1.72716,
+            1.65168
+          ],
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rsd": false,
+          "magnification": false,
+          "galaxy_bias": "linear",
+          "power_preparation": {
+            "method": "natural cubic ln(P) versus log10(k), at fixed z",
+            "accuracy_boost": 1,
+            "power_accuracyboost": 8,
+            "refinement": 8,
+            "native_k_nodes": 1500,
+            "installed_k_nodes": 11993,
+            "redshift_nodes": 140,
+            "power_tables": [
+              "linear",
+              "nonlinear",
+              "linear_cb"
+            ],
+            "original_nodes_retained_exactly": true,
+            "installed_tables_reproduced_exactly": true,
+            "native_archive": "camb_native_tables.npz",
+            "installed_archive": "camb_tables.npz",
+            "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+          },
+          "units": {
+            "k": "h/Mpc",
+            "power": "(Mpc/h)^3",
+            "nz": "z_mid then unrenormalized n(z)",
+            "power_axes": [
+              "redshift",
+              "wavenumber"
+            ]
+          },
+          "cocoa": {
+            "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+            "status": ""
+          },
+          "core": {
+            "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+            "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+          },
+          "lsst_y1": {
+            "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+            "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+          },
+          "threads": 6,
+          "camb_version": "1.6.7",
+          "camb_source": {
+            "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+            "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+          },
+          "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+          "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+          "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+          "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+          "files": {
+            "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+            "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+            "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+          }
+        },
+        "source_name": "source3",
+        "area_sr": 3.746794263376515,
+        "shape": [
+          5,
+          5
+        ],
+        "effective_ell": [
+          35.5,
+          49.0,
+          67.5,
+          93.0,
+          129.0
+        ],
+        "integration_method": "spline",
+        "a_domain_control": {
+          "match_power_a_range": true,
+          "a_refinement": 8,
+          "original_A_SPLINE_MINLOG_PK": 0.01,
+          "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+          "A_SPLINE_MIN_PK": 0.1,
+          "A_SPLINE_NA_PK": 313,
+          "A_SPLINE_NLOG_PK": 81,
+          "input_a_min": 0.019611688566385566
+        },
+        "k_sampling": {
+          "k_refinement": 1,
+          "original_N_K": 167,
+          "N_K": 167,
+          "K_MIN_Mpc_inverse": 5e-05,
+          "K_MAX_Mpc_inverse": 1000.0,
+          "base_count": 1220,
+          "refined_count": 1220,
+          "nested_nodes_claimed": false
+        },
+        "halo_model": {
+          "mass_definition": "200m",
+          "mass_function": "Tinker08",
+          "bias": "Tinker10",
+          "concentration": "Duffy08",
+          "profile": "analytic NFW",
+          "number_count_legs": 0,
+          "response": "linear-power slope and amplitude plus normalized I12",
+          "hmc_defaults": {
+            "log10M_min": 8.0,
+            "log10M_max": 16.0,
+            "nM": 128,
+            "integration_method_M": "simpson"
+          }
+        },
+        "window": "CCL circular-disc transverse linear-power integral",
+        "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
+        "background": "native CCL; only CAMB power is supplied",
+        "native_block_seconds_diagnostic_only": 3.2243437499855645,
+        "threads": 6,
+        "timeout_seconds": 600,
+        "positive_diagonal": true,
+        "symmetric_within_relative_1e-10": true,
+        "minimum_ssc_correlation_eigenvalue": 0.0014608539423723002,
+        "max_asymmetry_over_peak": 1.3439279086941291e-17,
+        "tjpcov": {
+          "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+          "status": ""
+        },
+        "installed_source": {
+          "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+          "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+          "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+          "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+        },
+        "versions": {
+          "tjpcov": "0.5.2.dev9+g2f59302af",
+          "pyccl": "3.3.3",
+          "sacc": "2.4",
+          "numpy": "2.4.3",
+          "scipy": "1.17.1"
+        },
+        "python": "3.12.13",
+        "platform": "macOS-13.7.5-arm64-arm-64bit",
+        "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+        "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+        "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
+        "files": {
+          "ssc.npz": "ced3075b6f952fc84ee934c8e229f9714eb6d230c10044cd7dbb9ffcf0a1f4bc"
+        }
+      }
+    },
+    "ssc_high_qag": {
+      "manifest_sha256": "c8fcf49fa6d6ba8ccf9cce6cbe99f5f37e6e4787c084e808bcbdf9d11afc7f4f",
+      "manifest": {
+        "schema": "tjpcov-ssc-shear-v1",
+        "status": "completed",
+        "scope": "native SSC at five effective multipoles; not band averaged",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "74e7d3a4888795274305fc9846c35eadc11cccd0c872a05d382c587eb2fb9ae6",
+        "input_manifest": {
+          "schema": "lsst-y1-tjpcov-inputs-v1",
+          "survey": "LSST Y1 forecast subset",
+          "source_bin_1based": 3,
+          "lens_bins_1based": [
+            1,
+            2
+          ],
+          "area_deg2": 12300.0,
+          "source_density_arcmin2": 2.0,
+          "sigma_e_component": 0.26,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6
+          ],
+          "bias": [
+            1.72716,
+            1.65168
+          ],
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rsd": false,
+          "magnification": false,
+          "galaxy_bias": "linear",
+          "power_preparation": {
+            "method": "natural cubic ln(P) versus log10(k), at fixed z",
+            "accuracy_boost": 1,
+            "power_accuracyboost": 8,
+            "refinement": 8,
+            "native_k_nodes": 1500,
+            "installed_k_nodes": 11993,
+            "redshift_nodes": 140,
+            "power_tables": [
+              "linear",
+              "nonlinear",
+              "linear_cb"
+            ],
+            "original_nodes_retained_exactly": true,
+            "installed_tables_reproduced_exactly": true,
+            "native_archive": "camb_native_tables.npz",
+            "installed_archive": "camb_tables.npz",
+            "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+          },
+          "units": {
+            "k": "h/Mpc",
+            "power": "(Mpc/h)^3",
+            "nz": "z_mid then unrenormalized n(z)",
+            "power_axes": [
+              "redshift",
+              "wavenumber"
+            ]
+          },
+          "cocoa": {
+            "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+            "status": ""
+          },
+          "core": {
+            "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+            "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+          },
+          "lsst_y1": {
+            "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+            "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+          },
+          "threads": 6,
+          "camb_version": "1.6.7",
+          "camb_source": {
+            "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+            "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+          },
+          "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+          "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+          "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+          "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+          "files": {
+            "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+            "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+            "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+          }
+        },
+        "source_name": "source3",
+        "area_sr": 3.746794263376515,
+        "shape": [
+          5,
+          5
+        ],
+        "effective_ell": [
+          1511.5,
+          1534.5,
+          1558.0,
+          1582.5,
+          1607.5
+        ],
+        "integration_method": "qag_quad",
+        "a_domain_control": {
+          "match_power_a_range": true,
+          "a_refinement": 1,
+          "original_A_SPLINE_MINLOG_PK": 0.01,
+          "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+          "A_SPLINE_MIN_PK": 0.1,
+          "A_SPLINE_NA_PK": 40,
+          "A_SPLINE_NLOG_PK": 11,
+          "input_a_min": 0.019611688566385566
+        },
+        "k_sampling": {
+          "k_refinement": 1,
+          "original_N_K": 167,
+          "N_K": 167,
+          "K_MIN_Mpc_inverse": 5e-05,
+          "K_MAX_Mpc_inverse": 1000.0,
+          "base_count": 1220,
+          "refined_count": 1220,
+          "nested_nodes_claimed": false
+        },
+        "halo_model": {
+          "mass_definition": "200m",
+          "mass_function": "Tinker08",
+          "bias": "Tinker10",
+          "concentration": "Duffy08",
+          "profile": "analytic NFW",
+          "number_count_legs": 0,
+          "response": "linear-power slope and amplitude plus normalized I12",
+          "hmc_defaults": {
+            "log10M_min": 8.0,
+            "log10M_max": 16.0,
+            "nM": 128,
+            "integration_method_M": "simpson"
+          }
+        },
+        "window": "CCL circular-disc transverse linear-power integral",
+        "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
+        "background": "native CCL; only CAMB power is supplied",
+        "native_block_seconds_diagnostic_only": 0.46436870796605945,
+        "threads": 6,
+        "timeout_seconds": 600,
+        "positive_diagonal": true,
+        "symmetric_within_relative_1e-10": true,
+        "minimum_ssc_correlation_eigenvalue": -1.1236224049152687e-07,
+        "max_asymmetry_over_peak": 1.5878698210111713e-16,
+        "tjpcov": {
+          "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+          "status": ""
+        },
+        "installed_source": {
+          "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+          "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+          "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+          "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+        },
+        "versions": {
+          "tjpcov": "0.5.2.dev9+g2f59302af",
+          "pyccl": "3.3.3",
+          "sacc": "2.4",
+          "numpy": "2.4.3",
+          "scipy": "1.17.1"
+        },
+        "python": "3.12.13",
+        "platform": "macOS-13.7.5-arm64-arm-64bit",
+        "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+        "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+        "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
+        "files": {
+          "ssc.npz": "bb1a5e96a7f34f9ca947f86ff2f739ef5a3f32a3def9689250fc38aa0279fca3"
+        }
+      }
+    },
+    "ssc_high_a8": {
+      "manifest_sha256": "0b78210eb578bc536226c1e1c9a82224ceeaf3655b892ffa102dc95f8638bc3d",
+      "manifest": {
+        "schema": "tjpcov-ssc-shear-v1",
+        "status": "completed",
+        "scope": "native SSC at five effective multipoles; not band averaged",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "74e7d3a4888795274305fc9846c35eadc11cccd0c872a05d382c587eb2fb9ae6",
+        "input_manifest": {
+          "schema": "lsst-y1-tjpcov-inputs-v1",
+          "survey": "LSST Y1 forecast subset",
+          "source_bin_1based": 3,
+          "lens_bins_1based": [
+            1,
+            2
+          ],
+          "area_deg2": 12300.0,
+          "source_density_arcmin2": 2.0,
+          "sigma_e_component": 0.26,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6
+          ],
+          "bias": [
+            1.72716,
+            1.65168
+          ],
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rsd": false,
+          "magnification": false,
+          "galaxy_bias": "linear",
+          "power_preparation": {
+            "method": "natural cubic ln(P) versus log10(k), at fixed z",
+            "accuracy_boost": 1,
+            "power_accuracyboost": 8,
+            "refinement": 8,
+            "native_k_nodes": 1500,
+            "installed_k_nodes": 11993,
+            "redshift_nodes": 140,
+            "power_tables": [
+              "linear",
+              "nonlinear",
+              "linear_cb"
+            ],
+            "original_nodes_retained_exactly": true,
+            "installed_tables_reproduced_exactly": true,
+            "native_archive": "camb_native_tables.npz",
+            "installed_archive": "camb_tables.npz",
+            "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+          },
+          "units": {
+            "k": "h/Mpc",
+            "power": "(Mpc/h)^3",
+            "nz": "z_mid then unrenormalized n(z)",
+            "power_axes": [
+              "redshift",
+              "wavenumber"
+            ]
+          },
+          "cocoa": {
+            "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+            "status": ""
+          },
+          "core": {
+            "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+            "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+          },
+          "lsst_y1": {
+            "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+            "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+          },
+          "threads": 6,
+          "camb_version": "1.6.7",
+          "camb_source": {
+            "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+            "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+          },
+          "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+          "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+          "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+          "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+          "files": {
+            "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+            "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+            "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+          }
+        },
+        "source_name": "source3",
+        "area_sr": 3.746794263376515,
+        "shape": [
+          5,
+          5
+        ],
+        "effective_ell": [
+          1511.5,
+          1534.5,
+          1558.0,
+          1582.5,
+          1607.5
+        ],
+        "integration_method": "qag_quad",
+        "a_domain_control": {
+          "match_power_a_range": true,
+          "a_refinement": 8,
+          "original_A_SPLINE_MINLOG_PK": 0.01,
+          "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+          "A_SPLINE_MIN_PK": 0.1,
+          "A_SPLINE_NA_PK": 313,
+          "A_SPLINE_NLOG_PK": 81,
+          "input_a_min": 0.019611688566385566
+        },
+        "k_sampling": {
+          "k_refinement": 1,
+          "original_N_K": 167,
+          "N_K": 167,
+          "K_MIN_Mpc_inverse": 5e-05,
+          "K_MAX_Mpc_inverse": 1000.0,
+          "base_count": 1220,
+          "refined_count": 1220,
+          "nested_nodes_claimed": false
+        },
+        "halo_model": {
+          "mass_definition": "200m",
+          "mass_function": "Tinker08",
+          "bias": "Tinker10",
+          "concentration": "Duffy08",
+          "profile": "analytic NFW",
+          "number_count_legs": 0,
+          "response": "linear-power slope and amplitude plus normalized I12",
+          "hmc_defaults": {
+            "log10M_min": 8.0,
+            "log10M_max": 16.0,
+            "nM": 128,
+            "integration_method_M": "simpson"
+          }
+        },
+        "window": "CCL circular-disc transverse linear-power integral",
+        "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
+        "background": "native CCL; only CAMB power is supplied",
+        "native_block_seconds_diagnostic_only": 3.219968333025463,
+        "threads": 6,
+        "timeout_seconds": 600,
+        "positive_diagonal": true,
+        "symmetric_within_relative_1e-10": true,
+        "minimum_ssc_correlation_eigenvalue": 2.5188687109946236e-12,
+        "max_asymmetry_over_peak": 3.2009028947336093e-16,
+        "tjpcov": {
+          "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+          "status": ""
+        },
+        "installed_source": {
+          "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+          "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+          "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+          "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+        },
+        "versions": {
+          "tjpcov": "0.5.2.dev9+g2f59302af",
+          "pyccl": "3.3.3",
+          "sacc": "2.4",
+          "numpy": "2.4.3",
+          "scipy": "1.17.1"
+        },
+        "python": "3.12.13",
+        "platform": "macOS-13.7.5-arm64-arm-64bit",
+        "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+        "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+        "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
+        "files": {
+          "ssc.npz": "2e84671f573c3da363770d17b17a5e8008d481a58effd49511ef89c71fa188da"
+        }
+      }
+    },
+    "ssc_high_a16": {
+      "manifest_sha256": "5869ac7ce2791dac02898c9ab65feaad8be23df315992af979a2f94e64ef0394",
+      "manifest": {
+        "schema": "tjpcov-ssc-shear-v1",
+        "status": "completed",
+        "scope": "native SSC at five effective multipoles; not band averaged",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "74e7d3a4888795274305fc9846c35eadc11cccd0c872a05d382c587eb2fb9ae6",
+        "input_manifest": {
+          "schema": "lsst-y1-tjpcov-inputs-v1",
+          "survey": "LSST Y1 forecast subset",
+          "source_bin_1based": 3,
+          "lens_bins_1based": [
+            1,
+            2
+          ],
+          "area_deg2": 12300.0,
+          "source_density_arcmin2": 2.0,
+          "sigma_e_component": 0.26,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6
+          ],
+          "bias": [
+            1.72716,
+            1.65168
+          ],
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rsd": false,
+          "magnification": false,
+          "galaxy_bias": "linear",
+          "power_preparation": {
+            "method": "natural cubic ln(P) versus log10(k), at fixed z",
+            "accuracy_boost": 1,
+            "power_accuracyboost": 8,
+            "refinement": 8,
+            "native_k_nodes": 1500,
+            "installed_k_nodes": 11993,
+            "redshift_nodes": 140,
+            "power_tables": [
+              "linear",
+              "nonlinear",
+              "linear_cb"
+            ],
+            "original_nodes_retained_exactly": true,
+            "installed_tables_reproduced_exactly": true,
+            "native_archive": "camb_native_tables.npz",
+            "installed_archive": "camb_tables.npz",
+            "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+          },
+          "units": {
+            "k": "h/Mpc",
+            "power": "(Mpc/h)^3",
+            "nz": "z_mid then unrenormalized n(z)",
+            "power_axes": [
+              "redshift",
+              "wavenumber"
+            ]
+          },
+          "cocoa": {
+            "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+            "status": ""
+          },
+          "core": {
+            "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+            "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+          },
+          "lsst_y1": {
+            "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+            "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+          },
+          "threads": 6,
+          "camb_version": "1.6.7",
+          "camb_source": {
+            "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+            "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+          },
+          "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+          "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+          "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+          "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+          "files": {
+            "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+            "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+            "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+          }
+        },
+        "source_name": "source3",
+        "area_sr": 3.746794263376515,
+        "shape": [
+          5,
+          5
+        ],
+        "effective_ell": [
+          1511.5,
+          1534.5,
+          1558.0,
+          1582.5,
+          1607.5
+        ],
+        "integration_method": "qag_quad",
+        "a_domain_control": {
+          "match_power_a_range": true,
+          "a_refinement": 16,
+          "original_A_SPLINE_MINLOG_PK": 0.01,
+          "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+          "A_SPLINE_MIN_PK": 0.1,
+          "A_SPLINE_NA_PK": 625,
+          "A_SPLINE_NLOG_PK": 161,
+          "input_a_min": 0.019611688566385566
+        },
+        "k_sampling": {
+          "k_refinement": 1,
+          "original_N_K": 167,
+          "N_K": 167,
+          "K_MIN_Mpc_inverse": 5e-05,
+          "K_MAX_Mpc_inverse": 1000.0,
+          "base_count": 1220,
+          "refined_count": 1220,
+          "nested_nodes_claimed": false
+        },
+        "halo_model": {
+          "mass_definition": "200m",
+          "mass_function": "Tinker08",
+          "bias": "Tinker10",
+          "concentration": "Duffy08",
+          "profile": "analytic NFW",
+          "number_count_legs": 0,
+          "response": "linear-power slope and amplitude plus normalized I12",
+          "hmc_defaults": {
+            "log10M_min": 8.0,
+            "log10M_max": 16.0,
+            "nM": 128,
+            "integration_method_M": "simpson"
+          }
+        },
+        "window": "CCL circular-disc transverse linear-power integral",
+        "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
+        "background": "native CCL; only CAMB power is supplied",
+        "native_block_seconds_diagnostic_only": 6.405254000041168,
+        "threads": 6,
+        "timeout_seconds": 600,
+        "positive_diagonal": true,
+        "symmetric_within_relative_1e-10": true,
+        "minimum_ssc_correlation_eigenvalue": 2.4935650026453113e-12,
+        "max_asymmetry_over_peak": 0.0,
+        "tjpcov": {
+          "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+          "status": ""
+        },
+        "installed_source": {
+          "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+          "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+          "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+          "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+        },
+        "versions": {
+          "tjpcov": "0.5.2.dev9+g2f59302af",
+          "pyccl": "3.3.3",
+          "sacc": "2.4",
+          "numpy": "2.4.3",
+          "scipy": "1.17.1"
+        },
+        "python": "3.12.13",
+        "platform": "macOS-13.7.5-arm64-arm-64bit",
+        "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+        "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+        "script_sha256": "b9eb7f2b4640441b26f974933f97a513ba22b6aac8b2dfc23a69fb8541eda3d5",
+        "files": {
+          "ssc.npz": "65e59b5ccb9ed98d9462dd51fdcf152f52e694ef947377597d87d91ca4ecb441"
+        }
+      }
+    },
+    "cocoa_ssc_low_i0": {
+      "manifest_sha256": "dcdb2ff201acbbfb9a2c66a21618bb4f3a2aff68f586310f152deb75d8d49cb4",
+      "manifest": {
+        "schema": "cocoa-ssc-shear-v1",
+        "status": "completed",
+        "scope": "Native shear SSC at effective ell; no band averaging",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+        "core": {
+          "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+          "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+        },
+        "lsst_y1": {
+          "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+          "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+        },
+        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "script_sha256": "4db554ad336a5925e0b63a43531394e9f889da594274e2b83c57f76a3a81be5b",
+        "threads": 6,
+        "settings": {
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "lens_file": "data/lsst_y1_lens.nz",
+          "source_file": "data/lsst_y1_source.nz",
+          "photoz_interpolation": 1,
+          "photoz_zmid": 1,
+          "excluded_gammat": [],
+          "band_first": [
+            30,
+            42,
+            58,
+            80,
+            111,
+            153,
+            212,
+            294,
+            408,
+            565,
+            783,
+            1085,
+            1504,
+            2084,
+            2887
+          ],
+          "band_last": [
+            41,
+            57,
+            79,
+            110,
+            152,
+            211,
+            293,
+            407,
+            564,
+            782,
+            1084,
+            1503,
+            2083,
+            2886,
+            4000
+          ],
+          "lnm_edges": [
+            -92.10340371976183,
+            -82.89306334778566,
+            -73.68272297580947,
+            -64.47238260383328,
+            -55.2620422318571,
+            -46.05170185988092,
+            -36.841361487904734,
+            -27.63102111592855,
+            -18.420680743952367,
+            -9.210340371976184,
+            0.0,
+            9.210340371976184,
+            11.51292546497023,
+            13.815510557964274,
+            16.981565060831088,
+            20.1476195636979,
+            23.31367406656471,
+            26.479728569431526,
+            29.64578307229834,
+            32.81183757516515,
+            35.977892078031964,
+            39.14394658089878
+          ],
+          "area_deg2": 12300.0,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6,
+            3.6,
+            3.6,
+            3.6
+          ],
+          "source_density_arcmin2": [
+            2.0,
+            2.0,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "sigma_e_component": [
+            0.26,
+            0.26,
+            0.26,
+            0.26,
+            0.26
+          ],
+          "bias": [
+            1.72716,
+            1.65168,
+            1.61423,
+            1.92886,
+            2.11633
+          ],
+          "source_bin": 0,
+          "theta_edges_arcmin": [
+            2.5,
+            3.135157300638495,
+            3.931684519898743,
+            4.93057977054716,
+            6.183257265604562,
+            7.754193663194464,
+            9.724246749491554,
+            12.194817275951436,
+            15.293068165060644,
+            19.1784697227408,
+            24.051007746530075,
+            30.16147700969869,
+            37.82438993799881,
+            47.4341649025257,
+            59.48542735753746,
+            74.5984687446338,
+            93.55117356047646,
+            117.31905790857074,
+            147.1254803624343,
+            184.50460954729266,
+            231.3803894494597,
+            290.1655668828209,
+            363.88587816263316,
+            456.3357870083319,
+            572.2737896727143,
+            717.6673398625871,
+            900.0
+          ],
+          "a_edges": [
+            0.2222222222222222,
+            0.3333333333333333,
+            0.4,
+            0.5,
+            0.5882352941176471,
+            0.7142857142857143,
+            0.8333333333333334,
+            0.9999900000999989
+          ],
+          "accuracy_boost": 1,
+          "accuracy_parameters": {
+            "non_gaussian_accuracyboost": 1,
+            "window_accuracyboost": 1,
+            "core_accuracyboost": 1,
+            "power_accuracyboost": 8,
+            "nonlimber_accuracyboost": 1,
+            "ell_max": 100000,
+            "mask_ell_max": 32768,
+            "ng_ell_intervals": 127,
+            "response_step": 5e-05,
+            "nonlimber_lmax": 1000,
+            "integration_accuracy": 0
+          },
+          "ell_max": 100000,
+          "nonlimber_lmax": 1000,
+          "nonlimber_nchi": 4097,
+          "mask_ell_max": 32768,
+          "ng_ell": [
+            2.0,
+            2.2175448391075405,
+            2.4540199810240115,
+            2.711072701620943,
+            2.99049361931564,
+            3.2942291684436062,
+            3.6243951580380873,
+            3.9832915104666125,
+            4.373418282593277,
+            4.797493081069478,
+            5.258469993067305,
+            5.759560164326276,
+            6.304254167859208,
+            6.896346319136704,
+            7.5399611071288,
+            8.23958192532129,
+            9.000082302845763,
+            9.826759853278155,
+            10.725373177591594,
+            11.702181978328102,
+            12.763990664422625,
+            13.918195750428918,
+            15.172837380328156,
+            16.536655334833014,
+            18.019149912331756,
+            19.630648107566405,
+            21.38237554904283,
+            23.286534696285745,
+            25.356389841657503,
+            27.6063595088596,
+            30.052116891761013,
+            32.71069903320619,
+            35.600625504337295,
+            38.74202741114634,
+            42.156787626910976,
+            45.86869322736732,
+            49.90360119047712,
+            54.28961851504632,
+            59.057298012894044,
+            64.23985113845201,
+            69.87337933835623,
+            75.99712553260282,
+            82.65374747907468,
+            89.88961492568436,
+            97.7551326200846,
+            106.30509142701517,
+            115.59904999915756,
+            125.7017496601996,
+            136.6835653901669,
+            148.62099605456785,
+            161.59719729226677,
+            175.70256077415857,
+            191.035343867739,
+            207.70235409378472,
+            225.8196931430422,
+            245.51356563571068,
+            266.9211582575077,
+            290.19159539634046,
+            315.48697793650496,
+            342.983512446615,
+            372.87273862713147,
+            405.362863567844,
+            440.680212109681,
+            479.07080341401354,
+            520.8020647217634,
+            566.1646942402934,
+            615.4746861348643,
+            669.0755317306752,
+            727.3406122589543,
+            790.6757998148769,
+            859.5222846454799,
+            934.3596484623203,
+            1015.7092051874664,
+            1104.1376324043104,
+            1200.2609188097215,
+            1304.748655165355,
+            1418.328698638669,
+            1541.7922430252722,
+            1675.9993301715688,
+            1821.884840989997,
+            1980.4650078000732,
+            2152.8444933598857,
+            2340.22408590032,
+            2543.9090637652525,
+            2765.318287925485,
+            3005.99408570446,
+            3267.612994565403,
+            3551.997440800598,
+            3861.1284344761684,
+            4197.159369064654,
+            4562.431021893223,
+            4959.487859899847,
+            5391.095764282759,
+            5860.261297512281,
+            6370.25264691828,
+            6924.622390745386,
+            7527.232245263273,
+            8182.279965319445,
+            8894.32858572257,
+            9668.338207150664,
+            10509.70054800323,
+            11424.27650288456,
+            12418.436969348406,
+            13499.10722730183,
+            14673.81518021322,
+            15950.74379417034,
+            17338.7881000775,
+            18847.61715606575,
+            20487.741401744297,
+            22270.585873479926,
+            24208.569790718473,
+            26315.193067744483,
+            28605.13035351482,
+            31094.333254644862,
+            33800.141453627846,
+            36741.40349633228,
+            39938.608090178146,
+            43414.02682760871,
+            47191.86932906553,
+            51298.45188618357,
+            55762.38077996964,
+            60614.751550950394,
+            65889.36560939619,
+            71622.96569452157,
+            77855.49182285718,
+            84630.3595087217,
+            91994.76219486505,
+            100000.0
+          ],
+          "nwindow": 16385,
+          "tree_npanel": 20,
+          "response_step": 5e-05,
+          "core_accuracyboost": 1,
+          "power_refinement": 8,
+          "integration_accuracy": 0,
+          "radial_nquad": 96,
+          "angle_nquad": 96,
+          "halo_mass_nquad": 96,
+          "tree_nquad": 96,
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "minimum_correlation_eigenvalue": 0.0011961932454913012,
+        "max_scaled_asymmetry": 2.220446049250313e-16,
+        "timing_scope": "Accuracy only; concurrent validation, no benchmark",
+        "files": {
+          "ssc.npz": "60bb9dbd27961e1900e94c6fdf1e34848acd53a0476193c85300cc139c0194e5"
+        }
+      }
+    },
+    "cocoa_ssc_low_i1": {
+      "manifest_sha256": "cc9f28301a1b5712cdcaec4159a9d4a6760582686210905b7d6536e6a2b3cf67",
+      "manifest": {
+        "schema": "cocoa-ssc-shear-v1",
+        "status": "completed",
+        "scope": "Native shear SSC at effective ell; no band averaging",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+        "core": {
+          "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+          "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+        },
+        "lsst_y1": {
+          "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+          "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+        },
+        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "script_sha256": "4db554ad336a5925e0b63a43531394e9f889da594274e2b83c57f76a3a81be5b",
+        "threads": 6,
+        "settings": {
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "lens_file": "data/lsst_y1_lens.nz",
+          "source_file": "data/lsst_y1_source.nz",
+          "photoz_interpolation": 1,
+          "photoz_zmid": 1,
+          "excluded_gammat": [],
+          "band_first": [
+            30,
+            42,
+            58,
+            80,
+            111,
+            153,
+            212,
+            294,
+            408,
+            565,
+            783,
+            1085,
+            1504,
+            2084,
+            2887
+          ],
+          "band_last": [
+            41,
+            57,
+            79,
+            110,
+            152,
+            211,
+            293,
+            407,
+            564,
+            782,
+            1084,
+            1503,
+            2083,
+            2886,
+            4000
+          ],
+          "lnm_edges": [
+            -92.10340371976183,
+            -82.89306334778566,
+            -73.68272297580947,
+            -64.47238260383328,
+            -55.2620422318571,
+            -46.05170185988092,
+            -36.841361487904734,
+            -27.63102111592855,
+            -18.420680743952367,
+            -9.210340371976184,
+            0.0,
+            9.210340371976184,
+            11.51292546497023,
+            13.815510557964274,
+            16.981565060831088,
+            20.1476195636979,
+            23.31367406656471,
+            26.479728569431526,
+            29.64578307229834,
+            32.81183757516515,
+            35.977892078031964,
+            39.14394658089878
+          ],
+          "area_deg2": 12300.0,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6,
+            3.6,
+            3.6,
+            3.6
+          ],
+          "source_density_arcmin2": [
+            2.0,
+            2.0,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "sigma_e_component": [
+            0.26,
+            0.26,
+            0.26,
+            0.26,
+            0.26
+          ],
+          "bias": [
+            1.72716,
+            1.65168,
+            1.61423,
+            1.92886,
+            2.11633
+          ],
+          "source_bin": 0,
+          "theta_edges_arcmin": [
+            2.5,
+            3.135157300638495,
+            3.931684519898743,
+            4.93057977054716,
+            6.183257265604562,
+            7.754193663194464,
+            9.724246749491554,
+            12.194817275951436,
+            15.293068165060644,
+            19.1784697227408,
+            24.051007746530075,
+            30.16147700969869,
+            37.82438993799881,
+            47.4341649025257,
+            59.48542735753746,
+            74.5984687446338,
+            93.55117356047646,
+            117.31905790857074,
+            147.1254803624343,
+            184.50460954729266,
+            231.3803894494597,
+            290.1655668828209,
+            363.88587816263316,
+            456.3357870083319,
+            572.2737896727143,
+            717.6673398625871,
+            900.0
+          ],
+          "a_edges": [
+            0.2222222222222222,
+            0.3333333333333333,
+            0.4,
+            0.5,
+            0.5882352941176471,
+            0.7142857142857143,
+            0.8333333333333334,
+            0.9999900000999989
+          ],
+          "accuracy_boost": 1,
+          "accuracy_parameters": {
+            "non_gaussian_accuracyboost": 1,
+            "window_accuracyboost": 1,
+            "core_accuracyboost": 1,
+            "power_accuracyboost": 8,
+            "nonlimber_accuracyboost": 1,
+            "ell_max": 100000,
+            "mask_ell_max": 32768,
+            "ng_ell_intervals": 127,
+            "response_step": 5e-05,
+            "nonlimber_lmax": 1000,
+            "integration_accuracy": 1
+          },
+          "ell_max": 100000,
+          "nonlimber_lmax": 1000,
+          "nonlimber_nchi": 4097,
+          "mask_ell_max": 32768,
+          "ng_ell": [
+            2.0,
+            2.2175448391075405,
+            2.4540199810240115,
+            2.711072701620943,
+            2.99049361931564,
+            3.2942291684436062,
+            3.6243951580380873,
+            3.9832915104666125,
+            4.373418282593277,
+            4.797493081069478,
+            5.258469993067305,
+            5.759560164326276,
+            6.304254167859208,
+            6.896346319136704,
+            7.5399611071288,
+            8.23958192532129,
+            9.000082302845763,
+            9.826759853278155,
+            10.725373177591594,
+            11.702181978328102,
+            12.763990664422625,
+            13.918195750428918,
+            15.172837380328156,
+            16.536655334833014,
+            18.019149912331756,
+            19.630648107566405,
+            21.38237554904283,
+            23.286534696285745,
+            25.356389841657503,
+            27.6063595088596,
+            30.052116891761013,
+            32.71069903320619,
+            35.600625504337295,
+            38.74202741114634,
+            42.156787626910976,
+            45.86869322736732,
+            49.90360119047712,
+            54.28961851504632,
+            59.057298012894044,
+            64.23985113845201,
+            69.87337933835623,
+            75.99712553260282,
+            82.65374747907468,
+            89.88961492568436,
+            97.7551326200846,
+            106.30509142701517,
+            115.59904999915756,
+            125.7017496601996,
+            136.6835653901669,
+            148.62099605456785,
+            161.59719729226677,
+            175.70256077415857,
+            191.035343867739,
+            207.70235409378472,
+            225.8196931430422,
+            245.51356563571068,
+            266.9211582575077,
+            290.19159539634046,
+            315.48697793650496,
+            342.983512446615,
+            372.87273862713147,
+            405.362863567844,
+            440.680212109681,
+            479.07080341401354,
+            520.8020647217634,
+            566.1646942402934,
+            615.4746861348643,
+            669.0755317306752,
+            727.3406122589543,
+            790.6757998148769,
+            859.5222846454799,
+            934.3596484623203,
+            1015.7092051874664,
+            1104.1376324043104,
+            1200.2609188097215,
+            1304.748655165355,
+            1418.328698638669,
+            1541.7922430252722,
+            1675.9993301715688,
+            1821.884840989997,
+            1980.4650078000732,
+            2152.8444933598857,
+            2340.22408590032,
+            2543.9090637652525,
+            2765.318287925485,
+            3005.99408570446,
+            3267.612994565403,
+            3551.997440800598,
+            3861.1284344761684,
+            4197.159369064654,
+            4562.431021893223,
+            4959.487859899847,
+            5391.095764282759,
+            5860.261297512281,
+            6370.25264691828,
+            6924.622390745386,
+            7527.232245263273,
+            8182.279965319445,
+            8894.32858572257,
+            9668.338207150664,
+            10509.70054800323,
+            11424.27650288456,
+            12418.436969348406,
+            13499.10722730183,
+            14673.81518021322,
+            15950.74379417034,
+            17338.7881000775,
+            18847.61715606575,
+            20487.741401744297,
+            22270.585873479926,
+            24208.569790718473,
+            26315.193067744483,
+            28605.13035351482,
+            31094.333254644862,
+            33800.141453627846,
+            36741.40349633228,
+            39938.608090178146,
+            43414.02682760871,
+            47191.86932906553,
+            51298.45188618357,
+            55762.38077996964,
+            60614.751550950394,
+            65889.36560939619,
+            71622.96569452157,
+            77855.49182285718,
+            84630.3595087217,
+            91994.76219486505,
+            100000.0
+          ],
+          "nwindow": 16385,
+          "tree_npanel": 21,
+          "response_step": 5e-05,
+          "core_accuracyboost": 1,
+          "power_refinement": 8,
+          "integration_accuracy": 1,
+          "radial_nquad": 128,
+          "angle_nquad": 128,
+          "halo_mass_nquad": 128,
+          "tree_nquad": 128,
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "minimum_correlation_eigenvalue": 0.0011962053909833554,
+        "max_scaled_asymmetry": 3.3306690738754696e-16,
+        "timing_scope": "Accuracy only; concurrent validation, no benchmark",
+        "files": {
+          "ssc.npz": "5182511c49637955f76b50de19de4c601bbbfd8951a9a286b5af979563591ef1"
+        }
+      }
+    },
+    "cocoa_ssc_low_i2": {
+      "manifest_sha256": "2fc4a12d556dd082317333e3bc544943c32d70ec69bcf54a3579c9ccb0776e6e",
+      "manifest": {
+        "schema": "cocoa-ssc-shear-v1",
+        "status": "completed",
+        "scope": "Native shear SSC at effective ell; no band averaging",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+        "core": {
+          "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+          "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+        },
+        "lsst_y1": {
+          "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+          "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+        },
+        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "script_sha256": "4db554ad336a5925e0b63a43531394e9f889da594274e2b83c57f76a3a81be5b",
+        "threads": 6,
+        "settings": {
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "lens_file": "data/lsst_y1_lens.nz",
+          "source_file": "data/lsst_y1_source.nz",
+          "photoz_interpolation": 1,
+          "photoz_zmid": 1,
+          "excluded_gammat": [],
+          "band_first": [
+            30,
+            42,
+            58,
+            80,
+            111,
+            153,
+            212,
+            294,
+            408,
+            565,
+            783,
+            1085,
+            1504,
+            2084,
+            2887
+          ],
+          "band_last": [
+            41,
+            57,
+            79,
+            110,
+            152,
+            211,
+            293,
+            407,
+            564,
+            782,
+            1084,
+            1503,
+            2083,
+            2886,
+            4000
+          ],
+          "lnm_edges": [
+            -92.10340371976183,
+            -82.89306334778566,
+            -73.68272297580947,
+            -64.47238260383328,
+            -55.2620422318571,
+            -46.05170185988092,
+            -36.841361487904734,
+            -27.63102111592855,
+            -18.420680743952367,
+            -9.210340371976184,
+            0.0,
+            9.210340371976184,
+            11.51292546497023,
+            13.815510557964274,
+            16.981565060831088,
+            20.1476195636979,
+            23.31367406656471,
+            26.479728569431526,
+            29.64578307229834,
+            32.81183757516515,
+            35.977892078031964,
+            39.14394658089878
+          ],
+          "area_deg2": 12300.0,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6,
+            3.6,
+            3.6,
+            3.6
+          ],
+          "source_density_arcmin2": [
+            2.0,
+            2.0,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "sigma_e_component": [
+            0.26,
+            0.26,
+            0.26,
+            0.26,
+            0.26
+          ],
+          "bias": [
+            1.72716,
+            1.65168,
+            1.61423,
+            1.92886,
+            2.11633
+          ],
+          "source_bin": 0,
+          "theta_edges_arcmin": [
+            2.5,
+            3.135157300638495,
+            3.931684519898743,
+            4.93057977054716,
+            6.183257265604562,
+            7.754193663194464,
+            9.724246749491554,
+            12.194817275951436,
+            15.293068165060644,
+            19.1784697227408,
+            24.051007746530075,
+            30.16147700969869,
+            37.82438993799881,
+            47.4341649025257,
+            59.48542735753746,
+            74.5984687446338,
+            93.55117356047646,
+            117.31905790857074,
+            147.1254803624343,
+            184.50460954729266,
+            231.3803894494597,
+            290.1655668828209,
+            363.88587816263316,
+            456.3357870083319,
+            572.2737896727143,
+            717.6673398625871,
+            900.0
+          ],
+          "a_edges": [
+            0.2222222222222222,
+            0.3333333333333333,
+            0.4,
+            0.5,
+            0.5882352941176471,
+            0.7142857142857143,
+            0.8333333333333334,
+            0.9999900000999989
+          ],
+          "accuracy_boost": 1,
+          "accuracy_parameters": {
+            "non_gaussian_accuracyboost": 1,
+            "window_accuracyboost": 1,
+            "core_accuracyboost": 1,
+            "power_accuracyboost": 8,
+            "nonlimber_accuracyboost": 1,
+            "ell_max": 100000,
+            "mask_ell_max": 32768,
+            "ng_ell_intervals": 127,
+            "response_step": 5e-05,
+            "nonlimber_lmax": 1000,
+            "integration_accuracy": 2
+          },
+          "ell_max": 100000,
+          "nonlimber_lmax": 1000,
+          "nonlimber_nchi": 4097,
+          "mask_ell_max": 32768,
+          "ng_ell": [
+            2.0,
+            2.2175448391075405,
+            2.4540199810240115,
+            2.711072701620943,
+            2.99049361931564,
+            3.2942291684436062,
+            3.6243951580380873,
+            3.9832915104666125,
+            4.373418282593277,
+            4.797493081069478,
+            5.258469993067305,
+            5.759560164326276,
+            6.304254167859208,
+            6.896346319136704,
+            7.5399611071288,
+            8.23958192532129,
+            9.000082302845763,
+            9.826759853278155,
+            10.725373177591594,
+            11.702181978328102,
+            12.763990664422625,
+            13.918195750428918,
+            15.172837380328156,
+            16.536655334833014,
+            18.019149912331756,
+            19.630648107566405,
+            21.38237554904283,
+            23.286534696285745,
+            25.356389841657503,
+            27.6063595088596,
+            30.052116891761013,
+            32.71069903320619,
+            35.600625504337295,
+            38.74202741114634,
+            42.156787626910976,
+            45.86869322736732,
+            49.90360119047712,
+            54.28961851504632,
+            59.057298012894044,
+            64.23985113845201,
+            69.87337933835623,
+            75.99712553260282,
+            82.65374747907468,
+            89.88961492568436,
+            97.7551326200846,
+            106.30509142701517,
+            115.59904999915756,
+            125.7017496601996,
+            136.6835653901669,
+            148.62099605456785,
+            161.59719729226677,
+            175.70256077415857,
+            191.035343867739,
+            207.70235409378472,
+            225.8196931430422,
+            245.51356563571068,
+            266.9211582575077,
+            290.19159539634046,
+            315.48697793650496,
+            342.983512446615,
+            372.87273862713147,
+            405.362863567844,
+            440.680212109681,
+            479.07080341401354,
+            520.8020647217634,
+            566.1646942402934,
+            615.4746861348643,
+            669.0755317306752,
+            727.3406122589543,
+            790.6757998148769,
+            859.5222846454799,
+            934.3596484623203,
+            1015.7092051874664,
+            1104.1376324043104,
+            1200.2609188097215,
+            1304.748655165355,
+            1418.328698638669,
+            1541.7922430252722,
+            1675.9993301715688,
+            1821.884840989997,
+            1980.4650078000732,
+            2152.8444933598857,
+            2340.22408590032,
+            2543.9090637652525,
+            2765.318287925485,
+            3005.99408570446,
+            3267.612994565403,
+            3551.997440800598,
+            3861.1284344761684,
+            4197.159369064654,
+            4562.431021893223,
+            4959.487859899847,
+            5391.095764282759,
+            5860.261297512281,
+            6370.25264691828,
+            6924.622390745386,
+            7527.232245263273,
+            8182.279965319445,
+            8894.32858572257,
+            9668.338207150664,
+            10509.70054800323,
+            11424.27650288456,
+            12418.436969348406,
+            13499.10722730183,
+            14673.81518021322,
+            15950.74379417034,
+            17338.7881000775,
+            18847.61715606575,
+            20487.741401744297,
+            22270.585873479926,
+            24208.569790718473,
+            26315.193067744483,
+            28605.13035351482,
+            31094.333254644862,
+            33800.141453627846,
+            36741.40349633228,
+            39938.608090178146,
+            43414.02682760871,
+            47191.86932906553,
+            51298.45188618357,
+            55762.38077996964,
+            60614.751550950394,
+            65889.36560939619,
+            71622.96569452157,
+            77855.49182285718,
+            84630.3595087217,
+            91994.76219486505,
+            100000.0
+          ],
+          "nwindow": 16385,
+          "tree_npanel": 22,
+          "response_step": 5e-05,
+          "core_accuracyboost": 1,
+          "power_refinement": 8,
+          "integration_accuracy": 2,
+          "radial_nquad": 256,
+          "angle_nquad": 256,
+          "halo_mass_nquad": 256,
+          "tree_nquad": 256,
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "minimum_correlation_eigenvalue": 0.0011966972889025619,
+        "max_scaled_asymmetry": 2.220446049250313e-16,
+        "timing_scope": "Accuracy only; concurrent validation, no benchmark",
+        "files": {
+          "ssc.npz": "c511a5169420dae4cbea67ea3b896dcd69d9218750c964f9b0e891ba582c4c2c"
+        }
+      }
+    },
+    "cocoa_ssc_high_i0": {
+      "manifest_sha256": "c28886cda07e233d90b056e362c9fb4113ac483ed8f1980add72b34834429ad8",
+      "manifest": {
+        "schema": "cocoa-ssc-shear-v1",
+        "status": "completed",
+        "scope": "Native shear SSC at effective ell; no band averaging",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "74e7d3a4888795274305fc9846c35eadc11cccd0c872a05d382c587eb2fb9ae6",
+        "core": {
+          "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+          "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+        },
+        "lsst_y1": {
+          "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+          "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+        },
+        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "script_sha256": "4db554ad336a5925e0b63a43531394e9f889da594274e2b83c57f76a3a81be5b",
+        "threads": 6,
+        "settings": {
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "lens_file": "data/lsst_y1_lens.nz",
+          "source_file": "data/lsst_y1_source.nz",
+          "photoz_interpolation": 1,
+          "photoz_zmid": 1,
+          "excluded_gammat": [],
+          "band_first": [
+            30,
+            42,
+            58,
+            80,
+            111,
+            153,
+            212,
+            294,
+            408,
+            565,
+            783,
+            1085,
+            1504,
+            2084,
+            2887
+          ],
+          "band_last": [
+            41,
+            57,
+            79,
+            110,
+            152,
+            211,
+            293,
+            407,
+            564,
+            782,
+            1084,
+            1503,
+            2083,
+            2886,
+            4000
+          ],
+          "lnm_edges": [
+            -92.10340371976183,
+            -82.89306334778566,
+            -73.68272297580947,
+            -64.47238260383328,
+            -55.2620422318571,
+            -46.05170185988092,
+            -36.841361487904734,
+            -27.63102111592855,
+            -18.420680743952367,
+            -9.210340371976184,
+            0.0,
+            9.210340371976184,
+            11.51292546497023,
+            13.815510557964274,
+            16.981565060831088,
+            20.1476195636979,
+            23.31367406656471,
+            26.479728569431526,
+            29.64578307229834,
+            32.81183757516515,
+            35.977892078031964,
+            39.14394658089878
+          ],
+          "area_deg2": 12300.0,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6,
+            3.6,
+            3.6,
+            3.6
+          ],
+          "source_density_arcmin2": [
+            2.0,
+            2.0,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "sigma_e_component": [
+            0.26,
+            0.26,
+            0.26,
+            0.26,
+            0.26
+          ],
+          "bias": [
+            1.72716,
+            1.65168,
+            1.61423,
+            1.92886,
+            2.11633
+          ],
+          "source_bin": 0,
+          "theta_edges_arcmin": [
+            2.5,
+            3.135157300638495,
+            3.931684519898743,
+            4.93057977054716,
+            6.183257265604562,
+            7.754193663194464,
+            9.724246749491554,
+            12.194817275951436,
+            15.293068165060644,
+            19.1784697227408,
+            24.051007746530075,
+            30.16147700969869,
+            37.82438993799881,
+            47.4341649025257,
+            59.48542735753746,
+            74.5984687446338,
+            93.55117356047646,
+            117.31905790857074,
+            147.1254803624343,
+            184.50460954729266,
+            231.3803894494597,
+            290.1655668828209,
+            363.88587816263316,
+            456.3357870083319,
+            572.2737896727143,
+            717.6673398625871,
+            900.0
+          ],
+          "a_edges": [
+            0.2222222222222222,
+            0.3333333333333333,
+            0.4,
+            0.5,
+            0.5882352941176471,
+            0.7142857142857143,
+            0.8333333333333334,
+            0.9999900000999989
+          ],
+          "accuracy_boost": 1,
+          "accuracy_parameters": {
+            "non_gaussian_accuracyboost": 1,
+            "window_accuracyboost": 1,
+            "core_accuracyboost": 1,
+            "power_accuracyboost": 8,
+            "nonlimber_accuracyboost": 1,
+            "ell_max": 100000,
+            "mask_ell_max": 32768,
+            "ng_ell_intervals": 127,
+            "response_step": 5e-05,
+            "nonlimber_lmax": 1000,
+            "integration_accuracy": 0
+          },
+          "ell_max": 100000,
+          "nonlimber_lmax": 1000,
+          "nonlimber_nchi": 4097,
+          "mask_ell_max": 32768,
+          "ng_ell": [
+            2.0,
+            2.2175448391075405,
+            2.4540199810240115,
+            2.711072701620943,
+            2.99049361931564,
+            3.2942291684436062,
+            3.6243951580380873,
+            3.9832915104666125,
+            4.373418282593277,
+            4.797493081069478,
+            5.258469993067305,
+            5.759560164326276,
+            6.304254167859208,
+            6.896346319136704,
+            7.5399611071288,
+            8.23958192532129,
+            9.000082302845763,
+            9.826759853278155,
+            10.725373177591594,
+            11.702181978328102,
+            12.763990664422625,
+            13.918195750428918,
+            15.172837380328156,
+            16.536655334833014,
+            18.019149912331756,
+            19.630648107566405,
+            21.38237554904283,
+            23.286534696285745,
+            25.356389841657503,
+            27.6063595088596,
+            30.052116891761013,
+            32.71069903320619,
+            35.600625504337295,
+            38.74202741114634,
+            42.156787626910976,
+            45.86869322736732,
+            49.90360119047712,
+            54.28961851504632,
+            59.057298012894044,
+            64.23985113845201,
+            69.87337933835623,
+            75.99712553260282,
+            82.65374747907468,
+            89.88961492568436,
+            97.7551326200846,
+            106.30509142701517,
+            115.59904999915756,
+            125.7017496601996,
+            136.6835653901669,
+            148.62099605456785,
+            161.59719729226677,
+            175.70256077415857,
+            191.035343867739,
+            207.70235409378472,
+            225.8196931430422,
+            245.51356563571068,
+            266.9211582575077,
+            290.19159539634046,
+            315.48697793650496,
+            342.983512446615,
+            372.87273862713147,
+            405.362863567844,
+            440.680212109681,
+            479.07080341401354,
+            520.8020647217634,
+            566.1646942402934,
+            615.4746861348643,
+            669.0755317306752,
+            727.3406122589543,
+            790.6757998148769,
+            859.5222846454799,
+            934.3596484623203,
+            1015.7092051874664,
+            1104.1376324043104,
+            1200.2609188097215,
+            1304.748655165355,
+            1418.328698638669,
+            1541.7922430252722,
+            1675.9993301715688,
+            1821.884840989997,
+            1980.4650078000732,
+            2152.8444933598857,
+            2340.22408590032,
+            2543.9090637652525,
+            2765.318287925485,
+            3005.99408570446,
+            3267.612994565403,
+            3551.997440800598,
+            3861.1284344761684,
+            4197.159369064654,
+            4562.431021893223,
+            4959.487859899847,
+            5391.095764282759,
+            5860.261297512281,
+            6370.25264691828,
+            6924.622390745386,
+            7527.232245263273,
+            8182.279965319445,
+            8894.32858572257,
+            9668.338207150664,
+            10509.70054800323,
+            11424.27650288456,
+            12418.436969348406,
+            13499.10722730183,
+            14673.81518021322,
+            15950.74379417034,
+            17338.7881000775,
+            18847.61715606575,
+            20487.741401744297,
+            22270.585873479926,
+            24208.569790718473,
+            26315.193067744483,
+            28605.13035351482,
+            31094.333254644862,
+            33800.141453627846,
+            36741.40349633228,
+            39938.608090178146,
+            43414.02682760871,
+            47191.86932906553,
+            51298.45188618357,
+            55762.38077996964,
+            60614.751550950394,
+            65889.36560939619,
+            71622.96569452157,
+            77855.49182285718,
+            84630.3595087217,
+            91994.76219486505,
+            100000.0
+          ],
+          "nwindow": 16385,
+          "tree_npanel": 20,
+          "response_step": 5e-05,
+          "core_accuracyboost": 1,
+          "power_refinement": 8,
+          "integration_accuracy": 0,
+          "radial_nquad": 96,
+          "angle_nquad": 96,
+          "halo_mass_nquad": 96,
+          "tree_nquad": 96,
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "minimum_correlation_eigenvalue": 3.015769332866812e-13,
+        "max_scaled_asymmetry": 2.220446049250313e-16,
+        "timing_scope": "Accuracy only; concurrent validation, no benchmark",
+        "files": {
+          "ssc.npz": "07cac4b9cbf5394305f03b2d10b3741eae8f15a642435e1f3342d9de9412bf96"
+        }
+      }
+    },
+    "cocoa_ssc_high_i1": {
+      "manifest_sha256": "7596bfb4c76013793a4a4860a9105674478901612fca89fe9d08fc6c99ec4c8d",
+      "manifest": {
+        "schema": "cocoa-ssc-shear-v1",
+        "status": "completed",
+        "scope": "Native shear SSC at effective ell; no band averaging",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "74e7d3a4888795274305fc9846c35eadc11cccd0c872a05d382c587eb2fb9ae6",
+        "core": {
+          "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+          "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+        },
+        "lsst_y1": {
+          "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+          "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+        },
+        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "script_sha256": "4db554ad336a5925e0b63a43531394e9f889da594274e2b83c57f76a3a81be5b",
+        "threads": 6,
+        "settings": {
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "lens_file": "data/lsst_y1_lens.nz",
+          "source_file": "data/lsst_y1_source.nz",
+          "photoz_interpolation": 1,
+          "photoz_zmid": 1,
+          "excluded_gammat": [],
+          "band_first": [
+            30,
+            42,
+            58,
+            80,
+            111,
+            153,
+            212,
+            294,
+            408,
+            565,
+            783,
+            1085,
+            1504,
+            2084,
+            2887
+          ],
+          "band_last": [
+            41,
+            57,
+            79,
+            110,
+            152,
+            211,
+            293,
+            407,
+            564,
+            782,
+            1084,
+            1503,
+            2083,
+            2886,
+            4000
+          ],
+          "lnm_edges": [
+            -92.10340371976183,
+            -82.89306334778566,
+            -73.68272297580947,
+            -64.47238260383328,
+            -55.2620422318571,
+            -46.05170185988092,
+            -36.841361487904734,
+            -27.63102111592855,
+            -18.420680743952367,
+            -9.210340371976184,
+            0.0,
+            9.210340371976184,
+            11.51292546497023,
+            13.815510557964274,
+            16.981565060831088,
+            20.1476195636979,
+            23.31367406656471,
+            26.479728569431526,
+            29.64578307229834,
+            32.81183757516515,
+            35.977892078031964,
+            39.14394658089878
+          ],
+          "area_deg2": 12300.0,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6,
+            3.6,
+            3.6,
+            3.6
+          ],
+          "source_density_arcmin2": [
+            2.0,
+            2.0,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "sigma_e_component": [
+            0.26,
+            0.26,
+            0.26,
+            0.26,
+            0.26
+          ],
+          "bias": [
+            1.72716,
+            1.65168,
+            1.61423,
+            1.92886,
+            2.11633
+          ],
+          "source_bin": 0,
+          "theta_edges_arcmin": [
+            2.5,
+            3.135157300638495,
+            3.931684519898743,
+            4.93057977054716,
+            6.183257265604562,
+            7.754193663194464,
+            9.724246749491554,
+            12.194817275951436,
+            15.293068165060644,
+            19.1784697227408,
+            24.051007746530075,
+            30.16147700969869,
+            37.82438993799881,
+            47.4341649025257,
+            59.48542735753746,
+            74.5984687446338,
+            93.55117356047646,
+            117.31905790857074,
+            147.1254803624343,
+            184.50460954729266,
+            231.3803894494597,
+            290.1655668828209,
+            363.88587816263316,
+            456.3357870083319,
+            572.2737896727143,
+            717.6673398625871,
+            900.0
+          ],
+          "a_edges": [
+            0.2222222222222222,
+            0.3333333333333333,
+            0.4,
+            0.5,
+            0.5882352941176471,
+            0.7142857142857143,
+            0.8333333333333334,
+            0.9999900000999989
+          ],
+          "accuracy_boost": 1,
+          "accuracy_parameters": {
+            "non_gaussian_accuracyboost": 1,
+            "window_accuracyboost": 1,
+            "core_accuracyboost": 1,
+            "power_accuracyboost": 8,
+            "nonlimber_accuracyboost": 1,
+            "ell_max": 100000,
+            "mask_ell_max": 32768,
+            "ng_ell_intervals": 127,
+            "response_step": 5e-05,
+            "nonlimber_lmax": 1000,
+            "integration_accuracy": 1
+          },
+          "ell_max": 100000,
+          "nonlimber_lmax": 1000,
+          "nonlimber_nchi": 4097,
+          "mask_ell_max": 32768,
+          "ng_ell": [
+            2.0,
+            2.2175448391075405,
+            2.4540199810240115,
+            2.711072701620943,
+            2.99049361931564,
+            3.2942291684436062,
+            3.6243951580380873,
+            3.9832915104666125,
+            4.373418282593277,
+            4.797493081069478,
+            5.258469993067305,
+            5.759560164326276,
+            6.304254167859208,
+            6.896346319136704,
+            7.5399611071288,
+            8.23958192532129,
+            9.000082302845763,
+            9.826759853278155,
+            10.725373177591594,
+            11.702181978328102,
+            12.763990664422625,
+            13.918195750428918,
+            15.172837380328156,
+            16.536655334833014,
+            18.019149912331756,
+            19.630648107566405,
+            21.38237554904283,
+            23.286534696285745,
+            25.356389841657503,
+            27.6063595088596,
+            30.052116891761013,
+            32.71069903320619,
+            35.600625504337295,
+            38.74202741114634,
+            42.156787626910976,
+            45.86869322736732,
+            49.90360119047712,
+            54.28961851504632,
+            59.057298012894044,
+            64.23985113845201,
+            69.87337933835623,
+            75.99712553260282,
+            82.65374747907468,
+            89.88961492568436,
+            97.7551326200846,
+            106.30509142701517,
+            115.59904999915756,
+            125.7017496601996,
+            136.6835653901669,
+            148.62099605456785,
+            161.59719729226677,
+            175.70256077415857,
+            191.035343867739,
+            207.70235409378472,
+            225.8196931430422,
+            245.51356563571068,
+            266.9211582575077,
+            290.19159539634046,
+            315.48697793650496,
+            342.983512446615,
+            372.87273862713147,
+            405.362863567844,
+            440.680212109681,
+            479.07080341401354,
+            520.8020647217634,
+            566.1646942402934,
+            615.4746861348643,
+            669.0755317306752,
+            727.3406122589543,
+            790.6757998148769,
+            859.5222846454799,
+            934.3596484623203,
+            1015.7092051874664,
+            1104.1376324043104,
+            1200.2609188097215,
+            1304.748655165355,
+            1418.328698638669,
+            1541.7922430252722,
+            1675.9993301715688,
+            1821.884840989997,
+            1980.4650078000732,
+            2152.8444933598857,
+            2340.22408590032,
+            2543.9090637652525,
+            2765.318287925485,
+            3005.99408570446,
+            3267.612994565403,
+            3551.997440800598,
+            3861.1284344761684,
+            4197.159369064654,
+            4562.431021893223,
+            4959.487859899847,
+            5391.095764282759,
+            5860.261297512281,
+            6370.25264691828,
+            6924.622390745386,
+            7527.232245263273,
+            8182.279965319445,
+            8894.32858572257,
+            9668.338207150664,
+            10509.70054800323,
+            11424.27650288456,
+            12418.436969348406,
+            13499.10722730183,
+            14673.81518021322,
+            15950.74379417034,
+            17338.7881000775,
+            18847.61715606575,
+            20487.741401744297,
+            22270.585873479926,
+            24208.569790718473,
+            26315.193067744483,
+            28605.13035351482,
+            31094.333254644862,
+            33800.141453627846,
+            36741.40349633228,
+            39938.608090178146,
+            43414.02682760871,
+            47191.86932906553,
+            51298.45188618357,
+            55762.38077996964,
+            60614.751550950394,
+            65889.36560939619,
+            71622.96569452157,
+            77855.49182285718,
+            84630.3595087217,
+            91994.76219486505,
+            100000.0
+          ],
+          "nwindow": 16385,
+          "tree_npanel": 21,
+          "response_step": 5e-05,
+          "core_accuracyboost": 1,
+          "power_refinement": 8,
+          "integration_accuracy": 1,
+          "radial_nquad": 128,
+          "angle_nquad": 128,
+          "halo_mass_nquad": 128,
+          "tree_nquad": 128,
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "minimum_correlation_eigenvalue": 2.8908088620363514e-13,
+        "max_scaled_asymmetry": 3.3306690738754696e-16,
+        "timing_scope": "Accuracy only; concurrent validation, no benchmark",
+        "files": {
+          "ssc.npz": "1cfeb91228ca404055493be8721ff106c33dd3bcd00b6a7d7070850a68510f6a"
+        }
+      }
+    },
+    "cocoa_ssc_high_i2": {
+      "manifest_sha256": "62bda8afba1e8b4ce290d0e5d4b932ad5085b465ff25ee375ee7c6d3c149357f",
+      "manifest": {
+        "schema": "cocoa-ssc-shear-v1",
+        "status": "completed",
+        "scope": "Native shear SSC at effective ell; no band averaging",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "gaussian_manifest_sha256": "74e7d3a4888795274305fc9846c35eadc11cccd0c872a05d382c587eb2fb9ae6",
+        "core": {
+          "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+          "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+        },
+        "lsst_y1": {
+          "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+          "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+        },
+        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "script_sha256": "4db554ad336a5925e0b63a43531394e9f889da594274e2b83c57f76a3a81be5b",
+        "threads": 6,
+        "settings": {
+          "cosmology": {
+            "omegam": 0.3,
+            "omegab": 0.05,
+            "H0": 70.0,
+            "ns": 0.965,
+            "As_1e9": 2.1,
+            "w": -1.0,
+            "w0pwa": -1.0,
+            "mnu": 0.0,
+            "AccuracyBoost": 1.0,
+            "CLAccuracyBoost": 1.0,
+            "CAMBAccuracyBoost": 1.0,
+            "kmax": 20.0,
+            "k_per_logint": 20,
+            "non_linear_emul": 2,
+            "lens_potential_accuracy": 1.0,
+            "halofit_version": "takahashi"
+          },
+          "lens_file": "data/lsst_y1_lens.nz",
+          "source_file": "data/lsst_y1_source.nz",
+          "photoz_interpolation": 1,
+          "photoz_zmid": 1,
+          "excluded_gammat": [],
+          "band_first": [
+            30,
+            42,
+            58,
+            80,
+            111,
+            153,
+            212,
+            294,
+            408,
+            565,
+            783,
+            1085,
+            1504,
+            2084,
+            2887
+          ],
+          "band_last": [
+            41,
+            57,
+            79,
+            110,
+            152,
+            211,
+            293,
+            407,
+            564,
+            782,
+            1084,
+            1503,
+            2083,
+            2886,
+            4000
+          ],
+          "lnm_edges": [
+            -92.10340371976183,
+            -82.89306334778566,
+            -73.68272297580947,
+            -64.47238260383328,
+            -55.2620422318571,
+            -46.05170185988092,
+            -36.841361487904734,
+            -27.63102111592855,
+            -18.420680743952367,
+            -9.210340371976184,
+            0.0,
+            9.210340371976184,
+            11.51292546497023,
+            13.815510557964274,
+            16.981565060831088,
+            20.1476195636979,
+            23.31367406656471,
+            26.479728569431526,
+            29.64578307229834,
+            32.81183757516515,
+            35.977892078031964,
+            39.14394658089878
+          ],
+          "area_deg2": 12300.0,
+          "lens_density_arcmin2": [
+            3.6,
+            3.6,
+            3.6,
+            3.6,
+            3.6
+          ],
+          "source_density_arcmin2": [
+            2.0,
+            2.0,
+            2.0,
+            2.0,
+            2.0
+          ],
+          "sigma_e_component": [
+            0.26,
+            0.26,
+            0.26,
+            0.26,
+            0.26
+          ],
+          "bias": [
+            1.72716,
+            1.65168,
+            1.61423,
+            1.92886,
+            2.11633
+          ],
+          "source_bin": 0,
+          "theta_edges_arcmin": [
+            2.5,
+            3.135157300638495,
+            3.931684519898743,
+            4.93057977054716,
+            6.183257265604562,
+            7.754193663194464,
+            9.724246749491554,
+            12.194817275951436,
+            15.293068165060644,
+            19.1784697227408,
+            24.051007746530075,
+            30.16147700969869,
+            37.82438993799881,
+            47.4341649025257,
+            59.48542735753746,
+            74.5984687446338,
+            93.55117356047646,
+            117.31905790857074,
+            147.1254803624343,
+            184.50460954729266,
+            231.3803894494597,
+            290.1655668828209,
+            363.88587816263316,
+            456.3357870083319,
+            572.2737896727143,
+            717.6673398625871,
+            900.0
+          ],
+          "a_edges": [
+            0.2222222222222222,
+            0.3333333333333333,
+            0.4,
+            0.5,
+            0.5882352941176471,
+            0.7142857142857143,
+            0.8333333333333334,
+            0.9999900000999989
+          ],
+          "accuracy_boost": 1,
+          "accuracy_parameters": {
+            "non_gaussian_accuracyboost": 1,
+            "window_accuracyboost": 1,
+            "core_accuracyboost": 1,
+            "power_accuracyboost": 8,
+            "nonlimber_accuracyboost": 1,
+            "ell_max": 100000,
+            "mask_ell_max": 32768,
+            "ng_ell_intervals": 127,
+            "response_step": 5e-05,
+            "nonlimber_lmax": 1000,
+            "integration_accuracy": 2
+          },
+          "ell_max": 100000,
+          "nonlimber_lmax": 1000,
+          "nonlimber_nchi": 4097,
+          "mask_ell_max": 32768,
+          "ng_ell": [
+            2.0,
+            2.2175448391075405,
+            2.4540199810240115,
+            2.711072701620943,
+            2.99049361931564,
+            3.2942291684436062,
+            3.6243951580380873,
+            3.9832915104666125,
+            4.373418282593277,
+            4.797493081069478,
+            5.258469993067305,
+            5.759560164326276,
+            6.304254167859208,
+            6.896346319136704,
+            7.5399611071288,
+            8.23958192532129,
+            9.000082302845763,
+            9.826759853278155,
+            10.725373177591594,
+            11.702181978328102,
+            12.763990664422625,
+            13.918195750428918,
+            15.172837380328156,
+            16.536655334833014,
+            18.019149912331756,
+            19.630648107566405,
+            21.38237554904283,
+            23.286534696285745,
+            25.356389841657503,
+            27.6063595088596,
+            30.052116891761013,
+            32.71069903320619,
+            35.600625504337295,
+            38.74202741114634,
+            42.156787626910976,
+            45.86869322736732,
+            49.90360119047712,
+            54.28961851504632,
+            59.057298012894044,
+            64.23985113845201,
+            69.87337933835623,
+            75.99712553260282,
+            82.65374747907468,
+            89.88961492568436,
+            97.7551326200846,
+            106.30509142701517,
+            115.59904999915756,
+            125.7017496601996,
+            136.6835653901669,
+            148.62099605456785,
+            161.59719729226677,
+            175.70256077415857,
+            191.035343867739,
+            207.70235409378472,
+            225.8196931430422,
+            245.51356563571068,
+            266.9211582575077,
+            290.19159539634046,
+            315.48697793650496,
+            342.983512446615,
+            372.87273862713147,
+            405.362863567844,
+            440.680212109681,
+            479.07080341401354,
+            520.8020647217634,
+            566.1646942402934,
+            615.4746861348643,
+            669.0755317306752,
+            727.3406122589543,
+            790.6757998148769,
+            859.5222846454799,
+            934.3596484623203,
+            1015.7092051874664,
+            1104.1376324043104,
+            1200.2609188097215,
+            1304.748655165355,
+            1418.328698638669,
+            1541.7922430252722,
+            1675.9993301715688,
+            1821.884840989997,
+            1980.4650078000732,
+            2152.8444933598857,
+            2340.22408590032,
+            2543.9090637652525,
+            2765.318287925485,
+            3005.99408570446,
+            3267.612994565403,
+            3551.997440800598,
+            3861.1284344761684,
+            4197.159369064654,
+            4562.431021893223,
+            4959.487859899847,
+            5391.095764282759,
+            5860.261297512281,
+            6370.25264691828,
+            6924.622390745386,
+            7527.232245263273,
+            8182.279965319445,
+            8894.32858572257,
+            9668.338207150664,
+            10509.70054800323,
+            11424.27650288456,
+            12418.436969348406,
+            13499.10722730183,
+            14673.81518021322,
+            15950.74379417034,
+            17338.7881000775,
+            18847.61715606575,
+            20487.741401744297,
+            22270.585873479926,
+            24208.569790718473,
+            26315.193067744483,
+            28605.13035351482,
+            31094.333254644862,
+            33800.141453627846,
+            36741.40349633228,
+            39938.608090178146,
+            43414.02682760871,
+            47191.86932906553,
+            51298.45188618357,
+            55762.38077996964,
+            60614.751550950394,
+            65889.36560939619,
+            71622.96569452157,
+            77855.49182285718,
+            84630.3595087217,
+            91994.76219486505,
+            100000.0
+          ],
+          "nwindow": 16385,
+          "tree_npanel": 22,
+          "response_step": 5e-05,
+          "core_accuracyboost": 1,
+          "power_refinement": 8,
+          "integration_accuracy": 2,
+          "radial_nquad": 256,
+          "angle_nquad": 256,
+          "halo_mass_nquad": 256,
+          "tree_nquad": 256,
+          "gaussian": {
+            "nonlimber": false,
+            "ia": "none",
+            "A1": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "A2": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "B_TA": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "minimum_correlation_eigenvalue": 2.7541970226235334e-13,
+        "max_scaled_asymmetry": 2.220446049250313e-16,
+        "timing_scope": "Accuracy only; concurrent validation, no benchmark",
+        "files": {
+          "ssc.npz": "990b0022530cec9e8c543d98991cc50bb90cec58c85728ce73bc53f005cb81e4"
+        }
+      }
+    }
   },
+  "script_sha256": "f8e57ab58574b5c459c9c4b59d9b4f464144a53a5d80715c87fa9f834e6e66c1",
   "files": {
-    "ssc_native.npz": "321983370d6c3e4a9f4208e16e84cb7c982afc085d0aa95a2f13081501a1f575"
+    "ssc_native.npz": "006e32a6b9a98a0256d16c7e08b360a14cd6a8bd764c85eb7b1faa4fcf22af5d"
   }
 }

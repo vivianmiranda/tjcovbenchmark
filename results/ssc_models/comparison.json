@@ -3,18 +3,18 @@
   "status": "completed",
   "script_sha256": "e426d0c7efdf876bc4dec5d8a4c7e7e00a32bbb071eb110036e944f57abfa228",
   "files": {
-    "provenance/low.json": "7f7d52b63c0b24d7449a1f38269b8140a676f5637a178b02d3fdbc63c557e762",
-    "provenance/high.json": "dc18236323fafb1548fc4dce6047c553f3dc5ca033cb56afc58762d2dfd8d585",
-    "provenance/low_ccl.json": "08001caedae1ac4b4f29dc3dcac3f8f383e2fed5df6b5828656a2b71dcf2189f",
-    "provenance/high_ccl.json": "8ee57c093c7657b8c5aef09d30ee3431683630cdd9cd8f2389affa26fcf84a9b",
-    "models.npz": "4009852a834a229f69cd6cb5ef3d66a837939516c79a13b002e46d3c186055b1"
+    "provenance/low.json": "e702e9f5a279c54d988c828c44949a7b14ab88d4e6c3750f26990104015ae406",
+    "provenance/high.json": "ec102b0ced65870fafa2a197c3ca4e082828ea6fea5bfe6fd1baed77f499431a",
+    "provenance/low_ccl.json": "8d0ef3810f23132a1c19800f6f794c121e4122b2e794b6e60ffb79ba58865eba",
+    "provenance/high_ccl.json": "2f2875cc405ec79a93d9d4684b4a55fe1b4874005f62210b0981f46c7620a3e3",
+    "models.npz": "31f69c84592b26097c879a06964d9c183e67841bc570028c0678704ae43ec817"
   },
   "figures": {
-    "ssc_model_inputs.pdf": "7938bef93a74ca4346418346ceffbef55ff7d104f05d894a1815eed72c3d755c",
-    "ssc_model_inputs.png": "ad18bd131f1c682d5591ec32cd2ab668061d6f78f4a169cde2ca206f2ca2878f",
-    "ssc_model_swaps.pdf": "00a326c2ffa2b207795ddcaa14e1008aeb5dc295efbee2cfdd84a23711bf2489",
-    "ssc_model_swaps.png": "f20b7c9a46fe49c7242d5103d7a02b0dd01222e6c93a51cb22e7d2c346913b51",
-    "ssc_response_conventions.pdf": "d0360f0a5c80b5a689d56b9c793394bad313872491d622896baaa94f568e0321",
+    "ssc_model_inputs.pdf": "61b854bd8702427035618d74b51d73c51d210f58c53b27f19993849909a057dc",
+    "ssc_model_inputs.png": "19930f8a3675e92129adefb21b8bba8d442664a91d2c8f903399004adbd4bce6",
+    "ssc_model_swaps.pdf": "af7aa89250d212c8bf587e40c09d30ff50c3c952e83b3b7f5f37db0d938cd566",
+    "ssc_model_swaps.png": "599fbd52390c50cbfdb7ac1ff2072430ebde33ff29c795c67158ca4168327f46",
+    "ssc_response_conventions.pdf": "63005455c5923ccf06bf7b2bb9c2370d6a2daefcdb2f6e1ff6c003eda85dd940",
     "ssc_response_conventions.png": "487da55a5bef823672690659b2f5931f52672cf6ac0a8f9e606b329a6c68a90d"
   },
   "matrix_normalization": "100*(substitution-CoCoA)/sqrt(Cii*Cjj); C is native CoCoA SSC, not total covariance",
@@ -27,8 +27,8 @@
       "timeout_seconds": 600,
       "script_sha256": "1572f1f09c1b1b16069ed3800a2224bb285f889c5631c5f872fffb92981ffa4d",
       "timing_policy": "Correctness only; no benchmark durations",
-      "ccl_export_manifest_sha256": "08001caedae1ac4b4f29dc3dcac3f8f383e2fed5df6b5828656a2b71dcf2189f",
-      "cocoa_manifest_sha256": "989ef2e538f62b5c307fb40fd2075eabd3a5c505e8da10ad5f808fd9b1d1df9b",
+      "ccl_export_manifest_sha256": "8d0ef3810f23132a1c19800f6f794c121e4122b2e794b6e60ffb79ba58865eba",
+      "cocoa_manifest_sha256": "2fc4a12d556dd082317333e3bc544943c32d70ec69bcf54a3579c9ccb0776e6e",
       "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
       "cases": {
         "cocoa_response_cap_window": {
@@ -42,33 +42,33 @@
           ]
         },
         "cocoa_response_disc_window": {
-          "max_abs_difference_over_reference_rms_product": 0.08828724483905125,
+          "max_abs_difference_over_reference_rms_product": 0.08828900984539001,
           "diagonal_fractional_difference": [
-            -0.08828724483905126,
-            -0.0875453087127851,
-            -0.0869483467738239,
-            -0.08635654992398256,
-            -0.08546571385174362
+            -0.08828900984539001,
+            -0.08755013278969004,
+            -0.08695459326458799,
+            -0.08636275637856061,
+            -0.08547157932570892
           ]
         },
         "ccl_response_cap_window": {
-          "max_abs_difference_over_reference_rms_product": 0.19656245677639497,
+          "max_abs_difference_over_reference_rms_product": 0.1964515967999614,
           "diagonal_fractional_difference": [
-            -0.018633893839575477,
-            -0.0628706052872241,
-            -0.11205912738026336,
-            -0.15921538553769976,
-            -0.19656245677639494
+            -0.01890179950211246,
+            -0.06287581266910935,
+            -0.11195736830243064,
+            -0.15903253826645636,
+            -0.19645159679996138
           ]
         },
         "ccl_response_disc_window": {
-          "max_abs_difference_over_reference_rms_product": 0.26489580361761167,
+          "max_abs_difference_over_reference_rms_product": 0.26479811906649353,
           "diagonal_fractional_difference": [
-            -0.10328582575679712,
-            -0.143129711572478,
-            -0.18785113506047613,
-            -0.23092759483913272,
-            -0.26489580361761167
+            -0.10353495372649102,
+            -0.14313858616818498,
+            -0.1877620310090281,
+            -0.23076421008290815,
+            -0.26479811906649353
           ]
         }
       },
@@ -77,32 +77,32 @@
       },
       "scope": "SSC-only controlled predictions; no G/cNG or band averaging",
       "files": {
-        "models.npz": "76e46f4ab5bb1e6da2b0f807e4c93e16e2224fb0f3a10b452bd6bbcf9c705ff2"
+        "models.npz": "b340038444f554232c02ac16fdbecc1061e58d118fc0acd7adbb6e44679bf342"
       },
       "projection_check": {
-        "max_abs_difference_over_reference_rms_product": 2.0368547699593614e-05,
+        "max_abs_difference_over_reference_rms_product": 2.0368547717160088e-05,
         "diagonal_fractional_difference": [
-          -1.7057753791016594e-05,
-          -1.707020197894149e-05,
-          -2.0368547699600725e-05,
-          -1.7102254932899186e-05,
-          -1.7811895885122553e-05
+          -1.7057753829763378e-05,
+          -1.7070201964286547e-05,
+          -2.036854771714225e-05,
+          -1.7102254932788163e-05,
+          -1.7811895885566642e-05
         ]
       },
       "remaining_after_response_and_window_swaps": {
-        "max_abs_difference_over_reference_rms_product": 0.0018693779559434416,
+        "max_abs_difference_over_reference_rms_product": 0.0019241806656485605,
         "diagonal_fractional_difference": [
-          0.0016872547516513237,
-          0.0018126193385805678,
-          0.001869377955943552,
-          0.001827611218737868,
-          0.001726226726245006
+          0.0017420255319275935,
+          0.0018674114983789902,
+          0.0019241806656484783,
+          0.001882409428213716,
+          0.0017810079204834128
         ]
       },
       "negative_response_shells": {
         "count": 1,
         "maximum_redshift": 1.3662365328404036e-05,
-        "max_abs_contribution_over_common_rms_product": 3.3777477717324507e-18,
+        "max_abs_contribution_over_common_rms_product": 3.377747781579784e-18,
         "scope": "All shells with any negative CCL response; retained in full result"
       },
       "interpretation": {
@@ -126,7 +126,7 @@
           "dln(I11^2 Plinear)/dlnk",
           "dlnPlinear/dlnk"
         ],
-        "centered_logk_step": 2.5e-05
+        "centered_logk_step": 5e-05
       }
     },
     "high": {
@@ -136,8 +136,8 @@
       "timeout_seconds": 600,
       "script_sha256": "1572f1f09c1b1b16069ed3800a2224bb285f889c5631c5f872fffb92981ffa4d",
       "timing_policy": "Correctness only; no benchmark durations",
-      "ccl_export_manifest_sha256": "8ee57c093c7657b8c5aef09d30ee3431683630cdd9cd8f2389affa26fcf84a9b",
-      "cocoa_manifest_sha256": "dfce351a51ef60ec312e5e4af2898b5365f5be696f83ec7777b319ebd152a347",
+      "ccl_export_manifest_sha256": "2f2875cc405ec79a93d9d4684b4a55fe1b4874005f62210b0981f46c7620a3e3",
+      "cocoa_manifest_sha256": "62bda8afba1e8b4ce290d0e5d4b932ad5085b465ff25ee375ee7c6d3c149357f",
       "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
       "cases": {
         "cocoa_response_cap_window": {
@@ -151,33 +151,33 @@
           ]
         },
         "cocoa_response_disc_window": {
-          "max_abs_difference_over_reference_rms_product": 0.0729672390265693,
+          "max_abs_difference_over_reference_rms_product": 0.07297040764196053,
           "diagonal_fractional_difference": [
-            -0.07296723902656932,
-            -0.07290945286947714,
-            -0.07285188775236984,
-            -0.0727933989691032,
-            -0.07273527235869792
+            -0.0729704076419605,
+            -0.07291261606932564,
+            -0.07285504454685077,
+            -0.07279655320708711,
+            -0.0727384173943455
           ]
         },
         "ccl_response_cap_window": {
-          "max_abs_difference_over_reference_rms_product": 0.13990014186673547,
+          "max_abs_difference_over_reference_rms_product": 0.13990915035415916,
           "diagonal_fractional_difference": [
-            -0.1399001418667355,
-            -0.1393519240895622,
-            -0.13882193130562115,
-            -0.13829902361954205,
-            -0.13779708047236539
+            -0.13990915035415918,
+            -0.139361371220461,
+            -0.1388307989199864,
+            -0.1383082966445499,
+            -0.1378062011018497
           ]
         },
         "ccl_response_disc_window": {
-          "max_abs_difference_over_reference_rms_product": 0.20278801217062675,
+          "max_abs_difference_over_reference_rms_product": 0.20279910398151127,
           "diagonal_fractional_difference": [
-            -0.2027880121706267,
-            -0.2022213068044243,
-            -0.2016716049457571,
-            -0.20112742417353702,
-            -0.20060292746649433
+            -0.20279910398151124,
+            -0.20223280225077755,
+            -0.20168256020053144,
+            -0.20113875217488075,
+            -0.20061411106480964
           ]
         }
       },
@@ -186,32 +186,32 @@
       },
       "scope": "SSC-only controlled predictions; no G/cNG or band averaging",
       "files": {
-        "models.npz": "741e2b9e84f67ca724d7732c6f48a562acb30acb87f735de7ef4c586cd6715a7"
+        "models.npz": "7b929a45fb305f70b67a5b93ec7460c1924ec1c7e0e4aaac6d5e816949e0aaee"
       },
       "projection_check": {
-        "max_abs_difference_over_reference_rms_product": 2.5081761853773115e-06,
+        "max_abs_difference_over_reference_rms_product": 2.5081761783374903e-06,
         "diagonal_fractional_difference": [
-          -1.6192599975317634e-06,
-          -1.8515009591046905e-06,
-          -2.282684366416987e-06,
-          -2.50817618541177e-06,
-          -2.186329958742128e-06
+          -1.6192599984199418e-06,
+          -1.8515009421182782e-06,
+          -2.2826843750767267e-06,
+          -2.5081761783063428e-06,
+          -2.1863299651814216e-06
         ]
       },
       "remaining_after_response_and_window_swaps": {
-        "max_abs_difference_over_reference_rms_product": 0.0035070385359558154,
+        "max_abs_difference_over_reference_rms_product": 0.0035621198911635478,
         "diagonal_fractional_difference": [
-          0.0034120034807851862,
-          0.0034352075210100086,
-          0.0034583715808023108,
-          0.0034823752188644086,
-          0.0035070385359559086
+          0.0034670672520638046,
+          0.0034902755773285055,
+          0.003513443953736539,
+          0.003537452050375256,
+          0.0035621198911635066
         ]
       },
       "negative_response_shells": {
         "count": 6,
         "maximum_redshift": 0.00021676340952181405,
-        "max_abs_contribution_over_common_rms_product": 1.215799054374237e-12,
+        "max_abs_contribution_over_common_rms_product": 1.2157990590874385e-12,
         "scope": "All shells with any negative CCL response; retained in full result"
       },
       "interpretation": {
@@ -235,14 +235,14 @@
           "dln(I11^2 Plinear)/dlnk",
           "dlnPlinear/dlnk"
         ],
-        "centered_logk_step": 2.5e-05
+        "centered_logk_step": 5e-05
       }
     }
   },
   "sightline_masks_and_ranges": [
     {
       "quantity": "matter response [Mpc^3]",
-      "denominator_floor": 9.55950579924743e-08,
+      "denominator_floor": 9.552127819777065e-08,
       "relative_floor": 1e-12,
       "masked_samples": 0,
       "total_samples": 8960,
@@ -264,7 +264,7 @@
     },
     {
       "quantity": "matter response [Mpc^3]",
-      "denominator_floor": 1.6682714174831322e-09,
+      "denominator_floor": 1.6682928683247e-09,
       "relative_floor": 1e-12,
       "masked_samples": 0,
       "total_samples": 8960,
@@ -286,7 +286,7 @@
     },
     {
       "quantity": "background variance [Mpc]",
-      "denominator_floor": 4.325370401974791e-11,
+      "denominator_floor": 4.325355052717997e-11,
       "relative_floor": 1e-12,
       "masked_samples": 0,
       "total_samples": 1792
@@ -294,20 +294,20 @@
     {
       "quantity": "Low native CoCoA SSC diagonal",
       "ell": 67.5,
-      "fraction_below_displayed_z": 0.010864274666214351,
+      "fraction_below_displayed_z": 0.010865681858976134,
       "fraction_above_displayed_z": 0.0
     },
     {
       "quantity": "High native CoCoA SSC diagonal",
       "ell": 1558.0,
-      "fraction_below_displayed_z": 2.5529781088683135e-05,
+      "fraction_below_displayed_z": 2.5529661081297626e-05,
       "fraction_above_displayed_z": 0.0
     }
   ],
   "formula_masks": [
     {
       "quantity": "ccl_convention",
-      "denominator_floor": 1.5988562499539727e-07,
+      "denominator_floor": 1.5988562499520372e-07,
       "relative_floor": 1e-12,
       "masked_samples": 0,
       "total_samples": 33,
@@ -315,7 +315,7 @@
     },
     {
       "quantity": "two_halo_convention",
-      "denominator_floor": 1.5988562499539727e-07,
+      "denominator_floor": 1.5988562499520372e-07,
       "relative_floor": 1e-12,
       "masked_samples": 0,
       "total_samples": 33,
@@ -323,7 +323,7 @@
     },
     {
       "quantity": "fractional_nonlinear_convention",
-      "denominator_floor": 1.5988562499539727e-07,
+      "denominator_floor": 1.5988562499520372e-07,
       "relative_floor": 1e-12,
       "masked_samples": 0,
       "total_samples": 33,
@@ -331,7 +331,7 @@
     },
     {
       "quantity": "ccl_convention",
-      "denominator_floor": 1.0500278568942273e-07,
+      "denominator_floor": 1.0500278568940987e-07,
       "relative_floor": 1e-12,
       "masked_samples": 0,
       "total_samples": 33,
@@ -339,7 +339,7 @@
     },
     {
       "quantity": "two_halo_convention",
-      "denominator_floor": 1.0500278568942273e-07,
+      "denominator_floor": 1.0500278568940987e-07,
       "relative_floor": 1e-12,
       "masked_samples": 0,
       "total_samples": 33,
@@ -347,7 +347,7 @@
     },
     {
       "quantity": "fractional_nonlinear_convention",
-      "denominator_floor": 1.0500278568942273e-07,
+      "denominator_floor": 1.0500278568940987e-07,
       "relative_floor": 1e-12,
       "masked_samples": 0,
       "total_samples": 33,
@@ -355,7 +355,7 @@
     },
     {
       "quantity": "ccl_convention",
-      "denominator_floor": 6.5322962520403e-08,
+      "denominator_floor": 6.532296252034421e-08,
       "relative_floor": 1e-12,
       "masked_samples": 0,
       "total_samples": 33,
@@ -363,7 +363,7 @@
     },
     {
       "quantity": "two_halo_convention",
-      "denominator_floor": 6.5322962520403e-08,
+      "denominator_floor": 6.532296252034421e-08,
       "relative_floor": 1e-12,
       "masked_samples": 0,
       "total_samples": 33,
@@ -371,7 +371,7 @@
     },
     {
       "quantity": "fractional_nonlinear_convention",
-      "denominator_floor": 6.5322962520403e-08,
+      "denominator_floor": 6.532296252034421e-08,
       "relative_floor": 1e-12,
       "masked_samples": 0,
       "total_samples": 33,

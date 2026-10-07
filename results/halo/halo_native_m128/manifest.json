@@ -2,7 +2,7 @@
   "schema": "tjpcov-halo-ingredients-v1",
   "status": "completed",
   "scope": "Public CCL ingredients selected by native TJPCov SSC",
-  "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+  "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
   "native_model": {
     "mass_definition": "M200m",
     "mass_function": "Tinker08",
@@ -70,6 +70,6 @@
   "script_sha256": "3937ff73d90bd859838134223f0d712a64aada9ba8545e4010556b439885d417",
   "timing_scope": "Accuracy only; no benchmark timing",
   "files": {
-    "halo.npz": "82536cd49a55c4b91bd8e76ac9a912fafe655dc451c5b7197c266140d287cd28"
+    "halo.npz": "538081a0a50fac82d6284e2a0162da476d883a79a59fac4bd2dc4910aa0fe906"
   }
 }

@@ -1,6 +1,9 @@
 # Trispectrum and SSC attribution, 2026-10-06
 
-Current CoCoA production is unchanged. This benchmark uses the guarded
+This is the historical 1,500-node comparison before adoption of global
+natural-cubic power refinement. Follow [the refresh record](global_power_refresh.md)
+for the new production campaign; do not reuse these numerical conclusions
+as its results. This benchmark used the guarded
 Wynn/bias-0.8 binary with SHA256
 `22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc`.
 CCL is 3.3.3; TJPCov is commit

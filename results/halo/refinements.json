@@ -1,47 +1,47 @@
 {
-  "scope": "mass quadrature checks; not sigma-table or full-covariance convergence",
+  "scope": "mass quadrature; not sigma or full-matrix convergence",
   "checks": [
     {
-      "coarse": "halo_native",
+      "coarse": "halo_native_m128",
       "fine": "halo_native_m255",
-      "normalization": "coarse/fine - 1; largest absolute fractional change",
+      "normalization": "largest absolute coarse/fine - 1",
       "max_fractional_change": {
         "sigma": 0.0,
         "dndlnm": 0.0,
         "bias": 0.0,
         "concentration": 0.0,
         "linear": 0.0,
-        "i11": 4.5417393468305534e-07,
-        "i02": 2.6148349081545064e-06,
-        "i12": 8.17079071147031e-06
+        "i11": 4.5417393557123376e-07,
+        "i02": 2.6148349082655287e-06,
+        "i12": 8.170790711803377e-06
       }
     },
     {
-      "coarse": "halo_cocoa_final_i0",
-      "fine": "halo_cocoa_final_i1",
-      "normalization": "coarse/fine - 1; largest absolute fractional change",
+      "coarse": "halo_cocoa_i0",
+      "fine": "halo_cocoa_i1",
+      "normalization": "largest absolute coarse/fine - 1",
       "max_fractional_change": {
         "sigma": 0.0,
         "dndlnm": 0.0,
         "bias": 0.0,
         "concentration": 0.0,
         "linear": 0.0,
-        "i11": 8.031673037756093e-08,
-        "i02": 8.00799802691543e-07,
-        "i12": 8.820230320560896e-07
+        "i11": 8.032256815226901e-08,
+        "i02": 8.007998050230114e-07,
+        "i12": 8.82023031834045e-07
       }
     },
     {
-      "coarse": "halo_cocoa_final_i1",
-      "fine": "halo_cocoa_final_i2",
-      "normalization": "coarse/fine - 1; largest absolute fractional change",
+      "coarse": "halo_cocoa_i1",
+      "fine": "halo_cocoa_i2",
+      "normalization": "largest absolute coarse/fine - 1",
       "max_fractional_change": {
         "sigma": 0.0,
         "dndlnm": 0.0,
         "bias": 0.0,
         "concentration": 0.0,
         "linear": 0.0,
-        "i11": 6.13925712489305e-08,
+        "i11": 6.125288765090886e-08,
         "i02": 5.212216984684659e-07,
         "i12": 6.318382339554063e-07
       }

@@ -2,8 +2,8 @@
   "schema": "cocoa-halo-ingredients-v1",
   "status": "completed",
   "scope": "Native halo ingredients and explicit matched-fit diagnostics",
-  "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-  "native_manifest_sha256": "ddcdbc9aa385bb61d183219d2ffa35c7defc2fbf1816c30e8d9c457c97c449d0",
+  "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+  "native_manifest_sha256": "c8f1880bd97382a334844db09be995345daf888b1481b042eecb12435ee94754",
   "power_table_check": "linear and nonlinear CAMB tables bitwise equal",
   "native_model": {
     "mass_definition": "M200m",
@@ -65,18 +65,18 @@
     ]
   },
   "core": {
-    "commit": "a35dbc9bf5db0ae72ea980bbf6b0ad8289fe17d4",
-    "status": ""
+    "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+    "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
   },
   "lsst_y1": {
     "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
-    "status": ""
+    "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
   },
   "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
-  "script_sha256": "7d40cd04c04932eeebbd16b0dbeb6466a26b5f966d0378ea418b593100e0d4b8",
+  "script_sha256": "f53f265581c52f8d041cd9659853c491dfa5c5e5fdd899804c0340ac8bb31d44",
   "threads": 6,
   "timing_scope": "Accuracy only; no benchmark timing",
   "files": {
-    "halo.npz": "68b0556c355b349fb68af6e5f94a35acf7c4edb4734685377901834d0e9540d0"
+    "halo.npz": "70c4c6f27aba696f46afe79c6c71b5eb7da185a00e99be224a211dff3b119f15"
   }
 }

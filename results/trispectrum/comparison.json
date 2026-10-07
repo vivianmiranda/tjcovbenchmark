@@ -12,8 +12,8 @@
       "schema": "tjpcov-trispectrum-v1",
       "status": "completed",
       "scope": "Public CCL matter functions used by TJPCov cNG",
-      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
       "halo_order": [
         "1h",
         "2h13",
@@ -48,7 +48,7 @@
         0.0,
         0.0,
         0.0,
-        2.1733098598073248e-16
+        5.433274649518418e-17
       ],
       "tjpcov": {
         "commit": "2f59302af33607aec712185632d8274e59e6b33c",
@@ -65,15 +65,15 @@
       "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
       "timing_scope": "accuracy only",
       "files": {
-        "trispectrum.npz": "a6d9e2a6c64b10e9dd81488812049a203a31d4a1776da9d8802aa0eeaa091bce"
+        "trispectrum.npz": "ef6b40decec9172cbe982603fe9452fa0a98b0799945189610f4c339f965bd39"
       }
     },
     "native_m255": {
       "schema": "tjpcov-trispectrum-v1",
       "status": "completed",
       "scope": "Public CCL matter functions used by TJPCov cNG",
-      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
       "halo_order": [
         "1h",
         "2h13",
@@ -108,7 +108,7 @@
         0.0,
         0.0,
         0.0,
-        1.0866549303087315e-16
+        1.0866549303087548e-16
       ],
       "tjpcov": {
         "commit": "2f59302af33607aec712185632d8274e59e6b33c",
@@ -125,15 +125,15 @@
       "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
       "timing_scope": "accuracy only",
       "files": {
-        "trispectrum.npz": "9741eefbd3676fedbe45a694163b450f52afc3cc487e73c7c9f30cf0afbd7ab3"
+        "trispectrum.npz": "77292f1e15775da96d39770a5fb7e6ec51c5060cfa46f9e4bcdb6ea0dda24d58"
       }
     },
     "direct_m255": {
       "schema": "tjpcov-trispectrum-v1",
       "status": "completed",
       "scope": "Public CCL matter functions used by TJPCov cNG",
-      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
       "halo_order": [
         "1h",
         "2h13",
@@ -168,7 +168,7 @@
         0.0,
         0.0,
         0.0,
-        1.0866504795555222e-16
+        5.433252397777424e-17
       ],
       "tjpcov": {
         "commit": "2f59302af33607aec712185632d8274e59e6b33c",
@@ -185,15 +185,15 @@
       "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
       "timing_scope": "accuracy only",
       "files": {
-        "trispectrum.npz": "76b60a73ea8032157ae908d03a9daaf544070a023f9520693b43ab93e4d172ea"
+        "trispectrum.npz": "67aa863d80073548a560c6a38a6a270c263211d2ba833353a195d9d148b912ab"
       }
     },
     "bhattacharya_m255": {
       "schema": "tjpcov-trispectrum-v1",
       "status": "completed",
       "scope": "Public CCL matter functions used by TJPCov cNG",
-      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
       "halo_order": [
         "1h",
         "2h13",
@@ -228,7 +228,7 @@
         0.0,
         0.0,
         0.0,
-        1.0866533836606618e-16
+        2.1733067673213702e-16
       ],
       "tjpcov": {
         "commit": "2f59302af33607aec712185632d8274e59e6b33c",
@@ -245,15 +245,15 @@
       "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
       "timing_scope": "accuracy only",
       "files": {
-        "trispectrum.npz": "9df06b0ecf89fc1dd75dc25ccad924943da411e7c55d787360eec812edea8af7"
+        "trispectrum.npz": "bb9b9fbab0adff55499024f7a0eca3893f62f3a1b0785b89087fb2a53daab347"
       }
     },
     "tinker10_m255": {
       "schema": "tjpcov-trispectrum-v1",
       "status": "completed",
       "scope": "Public CCL matter functions used by TJPCov cNG",
-      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
       "halo_order": [
         "1h",
         "2h13",
@@ -288,7 +288,7 @@
         0.0,
         0.0,
         0.0,
-        2.173312435553e-16
+        5.433281088882617e-17
       ],
       "tjpcov": {
         "commit": "2f59302af33607aec712185632d8274e59e6b33c",
@@ -305,15 +305,15 @@
       "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
       "timing_scope": "accuracy only",
       "files": {
-        "trispectrum.npz": "3e9820ae34abd30bebdd3025181dc46823a405be00d32f8879425cf12d573644"
+        "trispectrum.npz": "6b45efa36bea6df15be4a01694ca5666ff39cdac606491f1f04175cfc42a438d"
       }
     },
     "both_m255": {
       "schema": "tjpcov-trispectrum-v1",
       "status": "completed",
       "scope": "Public CCL matter functions used by TJPCov cNG",
-      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
       "halo_order": [
         "1h",
         "2h13",
@@ -348,7 +348,7 @@
         0.0,
         0.0,
         0.0,
-        2.1733093049289334e-16
+        1.0866546524644916e-16
       ],
       "tjpcov": {
         "commit": "2f59302af33607aec712185632d8274e59e6b33c",
@@ -365,13 +365,13 @@
       "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
       "timing_scope": "accuracy only",
       "files": {
-        "trispectrum.npz": "fef99472fc1747e344b85a2d6f66c043d30ee599abad7fe016a03517d7e70e9d"
+        "trispectrum.npz": "1aada11a7b16197c7fd9fc1edc99b2a37fe0aa357d6d5f555548ed6b7529b5ad"
       }
     },
     "cocoa_i0": {
       "schema": "cocoa-trispectrum-v1",
       "status": "completed",
-      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
       "halo_order": [
         "1h",
         "2h13",
@@ -421,25 +421,25 @@
       ],
       "core": {
         "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
-        "status": ""
+        "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
       },
       "lsst_y1": {
         "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
-        "status": ""
+        "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
       },
       "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
       "threads": 6,
-      "script_sha256": "eaaa4b53e4d696aac64a626c17c58a02c5f1f7532af6b9ee910fbbb7ef944662",
+      "script_sha256": "68525688f4fb50c9b56fd81f2cc7c638e8a0fd40131ae583ee832b39f94e5eff",
       "power_table_check": "linear and nonlinear inputs bitwise equal",
       "timing_scope": "accuracy only",
       "files": {
-        "trispectrum.npz": "5eec487f27b282a3c7ebe120e348e395adff2ddebe2c42067f16e00159da5ce7"
+        "trispectrum.npz": "935b6da3985c0f078f459e5c2861cf5772dc6a6d8f52be7924105ff820c7114c"
       }
     },
     "cocoa_i1": {
       "schema": "cocoa-trispectrum-v1",
       "status": "completed",
-      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
       "halo_order": [
         "1h",
         "2h13",
@@ -489,25 +489,25 @@
       ],
       "core": {
         "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
-        "status": ""
+        "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
       },
       "lsst_y1": {
         "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
-        "status": ""
+        "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
       },
       "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
       "threads": 6,
-      "script_sha256": "eaaa4b53e4d696aac64a626c17c58a02c5f1f7532af6b9ee910fbbb7ef944662",
+      "script_sha256": "68525688f4fb50c9b56fd81f2cc7c638e8a0fd40131ae583ee832b39f94e5eff",
       "power_table_check": "linear and nonlinear inputs bitwise equal",
       "timing_scope": "accuracy only",
       "files": {
-        "trispectrum.npz": "a72084e87c1e9b808d6a3c40c0bc714f2917ba68df2a96adeebeed7d5e21274b"
+        "trispectrum.npz": "5cd3af7653b12241b48cff8130c69f7522775a114d054df6a6bcde0b50157b21"
       }
     },
     "cocoa_i2": {
       "schema": "cocoa-trispectrum-v1",
       "status": "completed",
-      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
       "halo_order": [
         "1h",
         "2h13",
@@ -557,19 +557,19 @@
       ],
       "core": {
         "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
-        "status": ""
+        "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
       },
       "lsst_y1": {
         "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
-        "status": ""
+        "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
       },
       "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
       "threads": 6,
-      "script_sha256": "eaaa4b53e4d696aac64a626c17c58a02c5f1f7532af6b9ee910fbbb7ef944662",
+      "script_sha256": "68525688f4fb50c9b56fd81f2cc7c638e8a0fd40131ae583ee832b39f94e5eff",
       "power_table_check": "linear and nonlinear inputs bitwise equal",
       "timing_scope": "accuracy only",
       "files": {
-        "trispectrum.npz": "2e377b4d0de9746bc518360f37449892d47b9d365874a4fd0fc1d5e2791318fb"
+        "trispectrum.npz": "eafb91418e8a3336d0cf595899078a61480f9016da1e6fba58314c4c817f2777"
       }
     },
     "comparison_native": {
@@ -578,7 +578,7 @@
       "cocoa": {
         "schema": "cocoa-trispectrum-v1",
         "status": "completed",
-        "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
         "halo_order": [
           "1h",
           "2h13",
@@ -628,27 +628,27 @@
         ],
         "core": {
           "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
-          "status": ""
+          "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
         },
         "lsst_y1": {
           "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
-          "status": ""
+          "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
         },
         "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
         "threads": 6,
-        "script_sha256": "eaaa4b53e4d696aac64a626c17c58a02c5f1f7532af6b9ee910fbbb7ef944662",
+        "script_sha256": "68525688f4fb50c9b56fd81f2cc7c638e8a0fd40131ae583ee832b39f94e5eff",
         "power_table_check": "linear and nonlinear inputs bitwise equal",
         "timing_scope": "accuracy only",
         "files": {
-          "trispectrum.npz": "5eec487f27b282a3c7ebe120e348e395adff2ddebe2c42067f16e00159da5ce7"
+          "trispectrum.npz": "935b6da3985c0f078f459e5c2861cf5772dc6a6d8f52be7924105ff820c7114c"
         }
       },
       "ccl": {
         "schema": "tjpcov-trispectrum-v1",
         "status": "completed",
         "scope": "Public CCL matter functions used by TJPCov cNG",
-        "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-        "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
         "halo_order": [
           "1h",
           "2h13",
@@ -683,7 +683,7 @@
           0.0,
           0.0,
           0.0,
-          1.0866549303087315e-16
+          1.0866549303087548e-16
         ],
         "tjpcov": {
           "commit": "2f59302af33607aec712185632d8274e59e6b33c",
@@ -700,7 +700,7 @@
         "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
         "timing_scope": "accuracy only",
         "files": {
-          "trispectrum.npz": "9741eefbd3676fedbe45a694163b450f52afc3cc487e73c7c9f30cf0afbd7ab3"
+          "trispectrum.npz": "77292f1e15775da96d39770a5fb7e6ec51c5060cfa46f9e4bcdb6ea0dda24d58"
         }
       },
       "halo_order": [
@@ -715,150 +715,150 @@
           "redshift": 0.1,
           "fractional_range": [
             [
-              -0.02259828625637532,
-              0.216982669267134
+              -0.022598289255126795,
+              0.21698266681180686
             ],
             [
-              -0.018414290097813795,
-              0.15213017024278352
+              -0.018412636137750057,
+              0.15213137847945513
             ],
             [
-              -0.014466238352691955,
-              0.13095629177333543
+              -0.014465456460623933,
+              0.13096398628349443
             ],
             [
-              -0.008550131596864338,
-              0.06512633146978344
+              -0.007300679296400521,
+              0.06513468567026663
             ],
             [
-              -0.018456348877935087,
-              0.6163065135945966
+              -0.0017721493322244081,
+              0.011852813174055373
             ]
           ],
           "maximum_absolute_fractional": [
-            0.216982669267134,
-            0.15213017024278352,
-            0.13095629177333543,
-            0.06512633146978344,
-            0.6163065135945966
+            0.21698266681180686,
+            0.15213137847945513,
+            0.13096398628349443,
+            0.06513468567026663,
+            0.011852813174055373
           ],
           "maximum_diagonal_fractional": [
-            0.216982669267134,
-            0.15213017024278352,
-            0.13095629177333543,
-            0.06512633146978344,
-            0.011846295266863677
+            0.21698266681180686,
+            0.15213137847945513,
+            0.13096398628349443,
+            0.06513468567026663,
+            0.011852813174055373
           ],
           "maximum_offdiagonal_fractional": [
-            0.173588400100789,
-            0.13176972187083402,
-            0.11135855659638728,
-            0.05814726759145107,
-            0.6163065135945966
+            0.1735883974761478,
+            0.13177056760259478,
+            0.11135943997664079,
+            0.05814897942231182,
+            0.007486320597384192
           ],
           "sum_fractional_range": [
-            -0.015602904063893863,
-            0.208167945731496
+            -0.013931063360436258,
+            0.20816869883987588
           ]
         },
         {
           "redshift": 0.5,
           "fractional_range": [
             [
-              0.006159376597019778,
-              0.26146064732606733
+              0.006159372409375664,
+              0.2614606446676684
             ],
             [
-              0.012310363305866476,
-              0.1713876803442108
+              0.012312172492000251,
+              0.17138890872033377
             ],
             [
-              0.04995561480662894,
-              0.19274711091895852
+              0.049956448365139544,
+              0.19275522594556133
             ],
             [
-              0.023070693287009975,
-              0.0654811230832049
+              0.024502978286014786,
+              0.06548284645985203
             ],
             [
-              -0.05722301460801602,
-              0.6158654920180052
+              -0.05721460671194119,
+              0.004647920945874102
             ]
           ],
           "maximum_absolute_fractional": [
-            0.26146064732606733,
-            0.1713876803442108,
-            0.19274711091895852,
-            0.0654811230832049,
-            0.6158654920180052
+            0.2614606446676684,
+            0.17138890872033377,
+            0.19275522594556133,
+            0.06548284645985203,
+            0.05721460671194119
           ],
           "maximum_diagonal_fractional": [
-            0.26146064732606733,
-            0.1713876803442108,
-            0.19274711091895852,
-            0.06042450731944783,
-            0.05722301460801602
+            0.2614606446676684,
+            0.17138890872033377,
+            0.19275522594556133,
+            0.06043282452696363,
+            0.05721460671194119
           ],
           "maximum_offdiagonal_fractional": [
-            0.21129852930050574,
-            0.1638367435168333,
-            0.17516700126162663,
-            0.0654811230832049,
-            0.6158654920180052
+            0.21129852637838037,
+            0.16376255997845415,
+            0.1751679353135381,
+            0.06548284645985203,
+            0.03396477458178512
           ],
           "sum_fractional_range": [
-            -0.006912208228951888,
-            0.2516143434625262
+            0.0013088069612008368,
+            0.25161538248774673
           ]
         },
         {
           "redshift": 1.0,
           "fractional_range": [
             [
-              0.018406673314053042,
-              0.08204847280514653
+              0.018406667896681866,
+              0.08204846891980427
             ],
             [
-              0.02567826483835574,
-              0.06876216773405934
+              0.02568438051568621,
+              0.06868891094411642
             ],
             [
-              0.07702041251982762,
-              0.10305552831007125
+              0.07702774024386584,
+              0.10306102330726723
             ],
             [
-              0.0001589642584446591,
-              0.04375356724062542
+              0.00016680777652075684,
+              0.04366820645278072
             ],
             [
-              -0.07122191704061441,
-              0.6152174188240667
+              -0.07121363591551234,
+              0.0043077254843173485
             ]
           ],
           "maximum_absolute_fractional": [
-            0.08204847280514653,
-            0.06876216773405934,
-            0.10305552831007125,
-            0.04375356724062542,
-            0.6152174188240667
+            0.08204846891980427,
+            0.06868891094411642,
+            0.10306102330726723,
+            0.04366820645278072,
+            0.07121363591551234
           ],
           "maximum_diagonal_fractional": [
-            0.06885746633649045,
-            0.055106132417511895,
-            0.10305552831007125,
-            0.042368994169495675,
-            0.07122191704061441
+            0.06885746413526472,
+            0.0551068691094398,
+            0.10306102330726723,
+            0.04237486334873425,
+            0.07121363591551234
           ],
           "maximum_offdiagonal_fractional": [
-            0.08204847280514653,
-            0.06876216773405934,
-            0.1005634142099106,
-            0.04375356724062542,
-            0.6152174188240667
+            0.08204846891980427,
+            0.06868891094411642,
+            0.10056456744576833,
+            0.04366820645278072,
+            0.04350231433372262
           ],
           "sum_fractional_range": [
-            -0.010158333757154914,
-            0.3881274892624913
+            0.0010355807521866822,
+            0.07900599382635609
           ]
         }
       ],
@@ -871,46 +871,46 @@
               0.0
             ],
             [
-              -2.984525788388183e-16,
-              3.0843674840138233e-16
+              -3.892561658055532e-16,
+              3.882165539827558e-16
             ],
             [
-              -9.485559508472818e-06,
-              1.608783072602824e-06
+              -9.485559510370059e-06,
+              1.608783072823562e-06
             ],
             [
-              -3.4398076838546395e-05,
-              3.1947115902477775e-06
+              -3.439807683867901e-05,
+              3.194711589856333e-06
             ],
             [
-              -0.00015226865341691798,
-              5.170667186930202e-06
+              -0.0001522687138957334,
+              5.170667305023218e-06
             ]
           ],
           "maximum_absolute_fractional": [
             0.0,
-            3.0843674840138233e-16,
-            9.485559508472818e-06,
-            3.4398076838546395e-05,
-            0.00015226865341691798
+            3.892561658055532e-16,
+            9.485559510370059e-06,
+            3.439807683867901e-05,
+            0.0001522687138957334
           ],
           "maximum_diagonal_fractional": [
             0.0,
-            2.984525788388183e-16,
-            9.485559508472818e-06,
-            3.4398076838546395e-05,
-            8.506732715605808e-05
+            2.1345781781066195e-16,
+            9.485559510370059e-06,
+            3.439807683867901e-05,
+            8.506732716891719e-05
           ],
           "maximum_offdiagonal_fractional": [
             0.0,
-            3.0843674840138233e-16,
-            1.608783072602824e-06,
-            1.6150933419623468e-05,
-            0.00015226865341691798
+            3.892561658055532e-16,
+            1.608783072823562e-06,
+            1.6150933421803687e-05,
+            0.0001522687138957334
           ],
           "sum_fractional_range": [
-            -5.437991638768125e-05,
-            4.058741556844936e-06
+            -5.437990523193825e-05,
+            4.058741548185196e-06
           ]
         },
         {
@@ -921,46 +921,46 @@
               0.0
             ],
             [
-              -3.0095327917477206e-16,
-              3.9682808587596873e-16
+              -2.0622282953924388e-16,
+              4.436612162362832e-16
             ],
             [
-              -6.582370695852697e-05,
-              2.401248259574078e-06
+              -6.58237069606952e-05,
+              2.4012482584411846e-06
             ],
             [
-              -0.0002323659797549819,
-              4.066033277845265e-06
+              -0.00023236597974360973,
+              4.066033277044996e-06
             ],
             [
-              -0.0005206244129669891,
-              5.749784662823707e-06
+              -0.0005206244129975458,
+              5.749784662823716e-06
             ]
           ],
           "maximum_absolute_fractional": [
             0.0,
-            3.9682808587596873e-16,
-            6.582370695852697e-05,
-            0.0002323659797549819,
-            0.0005206244129669891
+            4.436612162362832e-16,
+            6.58237069606952e-05,
+            0.00023236597974360973,
+            0.0005206244129975458
           ],
           "maximum_diagonal_fractional": [
             0.0,
-            3.702443670799498e-16,
-            6.582370695852697e-05,
-            0.0002323659797549819,
-            0.0005206244129669891
+            3.207382270447839e-16,
+            6.58237069606952e-05,
+            0.00023236597974360973,
+            0.0005206244129975458
           ],
           "maximum_offdiagonal_fractional": [
             0.0,
-            3.9682808587596873e-16,
-            9.956349176362132e-06,
-            0.00011642617902540024,
-            0.0002644169538646965
+            4.436612162362832e-16,
+            9.956349175775063e-06,
+            0.00011642617901881797,
+            0.00026441695384656457
           ],
           "sum_fractional_range": [
-            -0.00015452507970581397,
-            4.588380637216005e-06
+            -0.00015452507417224037,
+            4.588380622561061e-06
           ]
         },
         {
@@ -971,46 +971,46 @@
               0.0
             ],
             [
-              -2.1374588252375546e-16,
-              3.506371653840779e-16
+              -1.975186829752106e-16,
+              3.789208737447397e-16
             ],
             [
-              -0.00016120582483964018,
-              5.938717876614662e-06
+              -0.00016120582484139003,
+              5.938717876826181e-06
             ],
             [
-              -0.000581342167106641,
-              1.0500881451875688e-05
+              -0.000581342167105882,
+              1.050088145140425e-05
             ],
             [
-              -0.0011936816311340713,
-              1.5341765449171377e-05
+              -0.0011936816311498286,
+              1.5341765446867925e-05
             ]
           ],
           "maximum_absolute_fractional": [
             0.0,
-            3.506371653840779e-16,
-            0.00016120582483964018,
-            0.000581342167106641,
-            0.0011936816311340713
+            3.789208737447397e-16,
+            0.00016120582484139003,
+            0.000581342167105882,
+            0.0011936816311498286
           ],
           "maximum_diagonal_fractional": [
             0.0,
-            3.506371653840779e-16,
-            0.00016120582483964018,
-            0.000581342167106641,
-            0.0011936816311340713
+            3.789208737447397e-16,
+            0.00016120582484139003,
+            0.000581342167105882,
+            0.0011936816311498286
           ],
           "maximum_offdiagonal_fractional": [
             0.0,
-            2.79676387979554e-16,
-            2.4958798616437054e-05,
-            0.00029406188592796253,
-            0.0006677563942899431
+            2.7967638797955387e-16,
+            2.495879861601711e-05,
+            0.0002940618859321659,
+            0.0006677563942467673
           ],
           "sum_fractional_range": [
-            -0.0004934511553110754,
-            1.3590634784010902e-05
+            -0.00049345115531374,
+            1.3590634926563538e-05
           ]
         }
       ],
@@ -1023,46 +1023,46 @@
               0.0
             ],
             [
-              -7.667365234802247e-05,
-              0.00010599529478517021
+              6.789528593866129e-06,
+              9.510412858566328e-06
             ],
             [
-              -5.2443773575032806e-05,
-              8.656308245085492e-05
+              7.2217671952481355e-06,
+              9.295764588532673e-06
             ],
             [
-              -0.0005514799255689592,
-              0.0019422949306120614
+              -1.8861565345083103e-06,
+              2.135821611968003e-05
             ],
             [
-              -0.38130313454172216,
-              0.01879262159363715
+              -0.00484189764708269,
+              0.0031489187251258306
             ]
           ],
           "maximum_absolute_fractional": [
             0.0,
-            0.00010599529478517021,
-            8.656308245085492e-05,
-            0.0019422949306120614,
-            0.38130313454172216
+            9.510412858566328e-06,
+            9.295764588532673e-06,
+            2.135821611968003e-05,
+            0.00484189764708269
           ],
           "maximum_diagonal_fractional": [
             0.0,
-            0.00010599529478517021,
-            2.0989905075185793e-05,
-            0.00014750944788840764,
-            0.00021703104853607876
+            9.510412858566328e-06,
+            8.329857337072696e-06,
+            1.8111752093906125e-05,
+            2.711031761244802e-05
           ],
           "maximum_offdiagonal_fractional": [
             0.0,
-            0.00010575866158523703,
-            8.656308245085492e-05,
-            0.0019422949306120614,
-            0.38130313454172216
+            9.50701034621181e-06,
+            9.295764588532673e-06,
+            2.135821611968003e-05,
+            0.00484189764708269
           ],
           "sum_fractional_range": [
-            -0.12275251511380791,
-            0.010314157577244742
+            -0.0011033175138922546,
+            0.00035091922815322363
           ]
         },
         {
@@ -1073,46 +1073,46 @@
               0.0
             ],
             [
-              -0.00010664699750339394,
-              7.600175220940585e-05
+              -2.3187114669620018e-05,
+              -2.0472698859322097e-05
             ],
             [
-              -8.24182064065301e-05,
-              5.6572009580969874e-05
+              -2.275766119937361e-05,
+              -2.0684952333299843e-05
             ],
             [
-              -0.0006110891874005492,
-              0.0018823627920379231
+              -6.156937727228532e-05,
+              -3.86274875064932e-05
             ],
             [
-              -0.3813201426412788,
-              0.018700798527737497
+              -0.0049216133314802565,
+              0.0030594591174019654
             ]
           ],
           "maximum_absolute_fractional": [
             0.0,
-            0.00010664699750339394,
-            8.24182064065301e-05,
-            0.0018823627920379231,
-            0.3813201426412788
+            2.3187114669620018e-05,
+            2.275766119937361e-05,
+            6.156937727228532e-05,
+            0.0049216133314802565
           ],
           "maximum_diagonal_fractional": [
             0.0,
-            0.00010664699750339394,
-            2.1033808161351527e-05,
-            0.00017374052703594603,
-            0.00018516757480824297
+            2.3187114669620018e-05,
+            2.183132004277729e-05,
+            4.576685725719211e-05,
+            6.745024422789173e-05
           ],
           "maximum_offdiagonal_fractional": [
             0.0,
-            0.00010661666566065925,
-            8.24182064065301e-05,
-            0.0018823627920379231,
-            0.3813201426412788
+            2.318663204734035e-05,
+            2.275766119937361e-05,
+            6.156937727228532e-05,
+            0.0049216133314802565
           ],
           "sum_fractional_range": [
-            -0.18949017513787714,
-            0.013000003370722935
+            -0.0018964234453834328,
+            0.0005882536945016614
           ]
         },
         {
@@ -1123,54 +1123,54 @@
               0.0
             ],
             [
-              -8.480137976672393e-05,
-              9.785178972900524e-05
+              -1.339502492800951e-06,
+              1.3854986391156218e-06
             ],
             [
-              -6.057190733825017e-05,
-              7.842385082739345e-05
+              -9.080897142334079e-07,
+              1.1752389563162373e-06
             ],
             [
-              -0.0005679270446288159,
-              0.0019254737060363572
+              -1.8337147644023547e-05,
+              5.074779949434313e-06
             ],
             [
-              -0.38123709851149723,
-              0.018767776278750536
+              -0.004850215042964174,
+              0.0031249552775618338
             ]
           ],
           "maximum_absolute_fractional": [
             0.0,
-            9.785178972900524e-05,
-            7.842385082739345e-05,
-            0.0019254737060363572,
-            0.38123709851149723
+            1.3854986391156218e-06,
+            1.1752389563162373e-06,
+            1.8337147644023547e-05,
+            0.004850215042964174
           ],
           "maximum_diagonal_fractional": [
             0.0,
-            9.785178972900524e-05,
-            1.2874239915130222e-05,
-            0.00013124141628209691,
-            0.00019262972371641358
+            1.3854986391156218e-06,
+            2.1423469627282195e-07,
+            2.065506049394697e-06,
+            2.7471590410412095e-06
           ],
           "maximum_offdiagonal_fractional": [
             0.0,
-            9.764760787661262e-05,
-            7.842385082739345e-05,
-            0.0019254737060363572,
-            0.38123709851149723
+            1.382611721156168e-06,
+            1.1752389563162373e-06,
+            1.8337147644023547e-05,
+            0.004850215042964174
           ],
           "sum_fractional_range": [
-            -0.2708663066464537,
-            0.01563793862106344
+            -0.002936008820238034,
+            0.0012082431522058013
           ]
         }
       ],
-      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
-      "native_manifest_sha256": "f992638f815243e19b963bfb41ba4252bc44dd2345c171cac09993147357a2dc",
+      "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
+      "native_manifest_sha256": "b19c0af4b4c9acddd09ad3059085770a121ebd358feecf33db323c7454b1eb3b",
       "script_sha256": "d8601d571e3bb77d0fd6838eb2276d99966e865a3e1a6894b3fd8d163c5c3d41",
       "files": {
-        "comparison.npz": "df979baca701029afbda537baf1268c9cc0596e572ce13f8a6e6beb38d518480"
+        "comparison.npz": "0880c223106ca0899958baee17f36885e5c18131fc4165842b715f8c705bc40c"
       },
       "scope": "Matter trispectra, not projected covariance; copied 1h consistency check"
     },
@@ -1180,7 +1180,7 @@
       "cocoa": {
         "schema": "cocoa-trispectrum-v1",
         "status": "completed",
-        "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
         "halo_order": [
           "1h",
           "2h13",
@@ -1230,27 +1230,27 @@
         ],
         "core": {
           "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
-          "status": ""
+          "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
         },
         "lsst_y1": {
           "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
-          "status": ""
+          "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
         },
         "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
         "threads": 6,
-        "script_sha256": "eaaa4b53e4d696aac64a626c17c58a02c5f1f7532af6b9ee910fbbb7ef944662",
+        "script_sha256": "68525688f4fb50c9b56fd81f2cc7c638e8a0fd40131ae583ee832b39f94e5eff",
         "power_table_check": "linear and nonlinear inputs bitwise equal",
         "timing_scope": "accuracy only",
         "files": {
-          "trispectrum.npz": "5eec487f27b282a3c7ebe120e348e395adff2ddebe2c42067f16e00159da5ce7"
+          "trispectrum.npz": "935b6da3985c0f078f459e5c2861cf5772dc6a6d8f52be7924105ff820c7114c"
         }
       },
       "ccl": {
         "schema": "tjpcov-trispectrum-v1",
         "status": "completed",
         "scope": "Public CCL matter functions used by TJPCov cNG",
-        "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-        "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+        "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+        "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
         "halo_order": [
           "1h",
           "2h13",
@@ -1285,7 +1285,7 @@
           0.0,
           0.0,
           0.0,
-          1.0866504795555222e-16
+          5.433252397777424e-17
         ],
         "tjpcov": {
           "commit": "2f59302af33607aec712185632d8274e59e6b33c",
@@ -1302,7 +1302,7 @@
         "script_sha256": "03dc9596f901adef5c2e2a15737fb2db122887f3c6a38e549067da632f51ea27",
         "timing_scope": "accuracy only",
         "files": {
-          "trispectrum.npz": "76b60a73ea8032157ae908d03a9daaf544070a023f9520693b43ab93e4d172ea"
+          "trispectrum.npz": "67aa863d80073548a560c6a38a6a270c263211d2ba833353a195d9d148b912ab"
         }
       },
       "halo_order": [
@@ -1317,150 +1317,150 @@
           "redshift": 0.1,
           "fractional_range": [
             [
-              -0.02259828625637532,
-              0.216982669267134
+              -0.022598289255126795,
+              0.21698266681180686
             ],
             [
-              -0.018414290097813795,
-              0.15213017024278352
+              -0.018412636137750057,
+              0.15213137847945513
             ],
             [
-              -0.014462726358675458,
-              0.13095482506137582
+              -0.01445610802532402,
+              0.1309625195615558
             ],
             [
-              -0.008538437533887873,
-              0.06512335896638509
+              -0.007266531174239252,
+              0.06513171314355364
             ],
             [
-              -0.018430478296377523,
-              0.616552663872324
+              -0.001746119557625254,
+              0.01184827060128338
             ]
           ],
           "maximum_absolute_fractional": [
-            0.216982669267134,
-            0.15213017024278352,
-            0.13095482506137582,
-            0.06512335896638509,
-            0.616552663872324
+            0.21698266681180686,
+            0.15213137847945513,
+            0.1309625195615558,
+            0.06513171314355364,
+            0.01184827060128338
           ],
           "maximum_diagonal_fractional": [
-            0.216982669267134,
-            0.15213017024278352,
-            0.13095482506137582,
-            0.06512335896638509,
-            0.011841752723355364
+            0.21698266681180686,
+            0.15213137847945513,
+            0.1309625195615558,
+            0.06513171314355364,
+            0.01184827060128338
           ],
           "maximum_offdiagonal_fractional": [
-            0.173588400100789,
-            0.13176972187083402,
-            0.11135676866442902,
-            0.05814388712691693,
-            0.616552663872324
+            0.1735883974761478,
+            0.13177056760259478,
+            0.11135765204326037,
+            0.058145598952308475,
+            0.007481337137937318
           ],
           "sum_fractional_range": [
-            -0.015585276411878457,
-            0.2081677901463681
+            -0.013915304864441702,
+            0.20816854325465117
           ]
         },
         {
           "redshift": 0.5,
           "fractional_range": [
             [
-              0.006159376597019778,
-              0.26146064732606733
+              0.006159372409375664,
+              0.2614606446676684
             ],
             [
-              0.012310363305866476,
-              0.1713876803442108
+              0.012312172492000251,
+              0.17138890872033377
             ],
             [
-              0.050017857316340356,
-              0.1927460155364316
+              0.05002556494028434,
+              0.19275413055558133
             ],
             [
-              0.023166141025452266,
-              0.0654767908191262
+              0.024741093254186056,
+              0.06547851418876639
             ],
             [
-              -0.05722843125640476,
-              0.6162737031086867
+              -0.05722002340863304,
+              0.004901722056363793
             ]
           ],
           "maximum_absolute_fractional": [
-            0.26146064732606733,
-            0.1713876803442108,
-            0.1927460155364316,
-            0.0654767908191262,
-            0.6162737031086867
+            0.2614606446676684,
+            0.17138890872033377,
+            0.19275413055558133,
+            0.06547851418876639,
+            0.05722002340863304
           ],
           "maximum_diagonal_fractional": [
-            0.26146064732606733,
-            0.1713876803442108,
-            0.1927460155364316,
-            0.060420984671962163,
-            0.05722843125640476
+            0.2614606446676684,
+            0.17138890872033377,
+            0.19275413055558133,
+            0.06042930185184841,
+            0.05722002340863304
           ],
           "maximum_offdiagonal_fractional": [
-            0.21129852930050574,
-            0.1638367435168333,
-            0.17516431739583785,
-            0.0654767908191262,
-            0.6162737031086867
+            0.21129852637838037,
+            0.16376255997845415,
+            0.1751652514456155,
+            0.06547851418876639,
+            0.03397032904424217
           ],
           "sum_fractional_range": [
-            -0.006758727495074446,
-            0.251614186673111
+            0.0013066860642185762,
+            0.2516152256982014
           ]
         },
         {
           "redshift": 1.0,
           "fractional_range": [
             [
-              0.018406673314053042,
-              0.08204847280514653
+              0.018406667896681866,
+              0.08204846891980427
             ],
             [
-              0.02567826483835574,
-              0.06876216773405934
+              0.02568438051568621,
+              0.06868891094411642
             ],
             [
-              0.07701740511622064,
-              0.10305244705275324
+              0.07702473281979692,
+              0.10305794203460111
             ],
             [
-              0.00015025070776123476,
-              0.04374375282772251
+              0.00015809415750192435,
+              0.04365839284253042
             ],
             [
-              -0.07123552543173979,
-              0.6159902285134229
+              -0.07122724442796997,
+              0.0047882420677643235
             ]
           ],
           "maximum_absolute_fractional": [
-            0.08204847280514653,
-            0.06876216773405934,
-            0.10305244705275324,
-            0.04374375282772251,
-            0.6159902285134229
+            0.08204846891980427,
+            0.06868891094411642,
+            0.10305794203460111,
+            0.04365839284253042,
+            0.07122724442796997
           ],
           "maximum_diagonal_fractional": [
-            0.06885746633649045,
-            0.055106132417511895,
-            0.10305244705275324,
-            0.042360968350826186,
-            0.07123552543173979
+            0.06885746413526472,
+            0.0551068691094398,
+            0.10305794203460111,
+            0.042366837484876414,
+            0.07122724442796997
           ],
           "maximum_offdiagonal_fractional": [
-            0.08204847280514653,
-            0.06876216773405934,
-            0.10055690386006576,
-            0.04374375282772251,
-            0.6159902285134229
+            0.08204846891980427,
+            0.06868891094411642,
+            0.10055805708910155,
+            0.04365839284253042,
+            0.043516947891715695
           ],
           "sum_fractional_range": [
-            -0.009725279196224235,
-            0.38859141211842574
+            0.0010282809841326568,
+            0.0790059685102884
           ]
         }
       ],
@@ -1473,46 +1473,46 @@
               0.0
             ],
             [
-              -2.984525788388183e-16,
-              3.0843674840138233e-16
+              -3.892561658055532e-16,
+              3.882165539827558e-16
             ],
             [
-              -1.1995244558468972e-09,
-              3.955121410444389e-09
+              -1.1995234287210632e-09,
+              3.9551210847887625e-09
             ],
             [
-              -8.934285464181743e-10,
-              4.0217970923418786e-09
+              -8.934279409766979e-10,
+              4.02179635058062e-09
             ],
             [
-              -4.946886580281139e-06,
-              3.63136005887139e-07
+              -4.9468865791556446e-06,
+              3.631360047656258e-07
             ]
           ],
           "maximum_absolute_fractional": [
             0.0,
-            3.0843674840138233e-16,
-            3.955121410444389e-09,
-            4.0217970923418786e-09,
-            4.946886580281139e-06
+            3.892561658055532e-16,
+            3.9551210847887625e-09,
+            4.02179635058062e-09,
+            4.9468865791556446e-06
           ],
           "maximum_diagonal_fractional": [
             0.0,
-            2.984525788388183e-16,
-            3.955121410444389e-09,
-            4.0217970923418786e-09,
-            4.946886580281139e-06
+            2.1345781781066195e-16,
+            3.9551210847887625e-09,
+            4.02179635058062e-09,
+            4.9468865791556446e-06
           ],
           "maximum_offdiagonal_fractional": [
             0.0,
-            3.0843674840138233e-16,
-            1.0050785309555861e-10,
-            6.972024534448491e-11,
-            2.3078315324717602e-08
+            3.892561658055532e-16,
+            1.0050765398415388e-10,
+            6.971990322247852e-11,
+            2.3078314652027964e-08
           ],
           "sum_fractional_range": [
-            -1.1676236610913548e-07,
-            1.2996270726262082e-09
+            -1.1676236544300167e-07,
+            1.2996268505816033e-09
           ]
         },
         {
@@ -1523,46 +1523,46 @@
               0.0
             ],
             [
-              -3.0095327917477206e-16,
-              3.9682808587596873e-16
+              -2.0622282953924388e-16,
+              4.436612162362832e-16
             ],
             [
-              -1.248656318496815e-09,
-              4.62259255114548e-09
+              -1.248656932739114e-09,
+              4.622592739509433e-09
             ],
             [
-              -8.977753033497601e-10,
-              4.022909810783138e-09
+              -8.977758219772471e-10,
+              4.02291028536184e-09
             ],
             [
-              -4.9740143238922845e-06,
-              3.648829797330761e-07
+              -4.9740143243497645e-06,
+              3.648829800712915e-07
             ]
           ],
           "maximum_absolute_fractional": [
             0.0,
-            3.9682808587596873e-16,
-            4.62259255114548e-09,
-            4.022909810783138e-09,
-            4.9740143238922845e-06
+            4.436612162362832e-16,
+            4.622592739509433e-09,
+            4.02291028536184e-09,
+            4.9740143243497645e-06
           ],
           "maximum_diagonal_fractional": [
             0.0,
-            3.702443670799498e-16,
-            4.62259255114548e-09,
-            4.022909810783138e-09,
-            4.9740143238922845e-06
+            3.207382270447839e-16,
+            4.622592739509433e-09,
+            4.02291028536184e-09,
+            4.9740143243497645e-06
           ],
           "maximum_offdiagonal_fractional": [
             0.0,
-            3.9682808587596873e-16,
-            1.0066666787399772e-10,
-            6.812220299196238e-11,
-            2.333088962852387e-08
+            4.436612162362832e-16,
+            1.0066739151762374e-10,
+            6.812187474281049e-11,
+            2.3330887184564174e-08
           ],
           "sum_fractional_range": [
-            -1.6237653388539997e-07,
-            1.6684058579130578e-09
+            -1.6237653399642227e-07,
+            1.6684047476900332e-09
           ]
         },
         {
@@ -1573,46 +1573,46 @@
               0.0
             ],
             [
-              -2.1374588252375546e-16,
-              3.506371653840779e-16
+              -1.975186829752106e-16,
+              3.789208737447397e-16
             ],
             [
-              -1.1944721083331463e-09,
-              3.959595734342882e-09
+              -1.194471726629738e-09,
+              3.95959573434288e-09
             ],
             [
-              -9.002404662792682e-10,
-              4.025040425234676e-09
+              -9.002397941531853e-10,
+              4.025040254040174e-09
             ],
             [
-              -4.983014619263104e-06,
-              3.658078247767116e-07
+              -4.983014620104291e-06,
+              3.658078243367415e-07
             ]
           ],
           "maximum_absolute_fractional": [
             0.0,
-            3.506371653840779e-16,
-            3.959595734342882e-09,
-            4.025040425234676e-09,
-            4.983014619263104e-06
+            3.789208737447397e-16,
+            3.95959573434288e-09,
+            4.025040254040174e-09,
+            4.983014620104291e-06
           ],
           "maximum_diagonal_fractional": [
             0.0,
-            3.506371653840779e-16,
-            3.959595734342882e-09,
-            4.025040425234676e-09,
-            4.983014619263104e-06
+            3.789208737447397e-16,
+            3.95959573434288e-09,
+            4.025040254040174e-09,
+            4.983014620104291e-06
           ],
           "maximum_offdiagonal_fractional": [
             0.0,
-            2.79676387979554e-16,
-            9.905882652793964e-11,
-            6.87393255291536e-11,
-            2.9906692563636765e-08
+            2.7967638797955387e-16,
+            9.905905369660277e-11,
+            6.874012808612368e-11,
+            2.7456967314619666e-08
           ],
           "sum_fractional_range": [
-            -2.111891275191624e-07,
-            3.6394465219302674e-09
+            -2.111891271860955e-07,
+            3.6394462998856625e-09
           ]
         }
       ],
@@ -1625,46 +1625,46 @@
               0.0
             ],
             [
-              -7.667365234802247e-05,
-              0.00010599529478517021
+              6.789528593866129e-06,
+              9.510412858566328e-06
             ],
             [
-              -5.2443773575032806e-05,
-              8.656308245085492e-05
+              7.2217671952481355e-06,
+              9.295764588532673e-06
             ],
             [
-              -0.0005514799255689592,
-              0.0019422949306120614
+              -1.8861565345083103e-06,
+              2.135821611968003e-05
             ],
             [
-              -0.38130313454172216,
-              0.01879262159363715
+              -0.00484189764708269,
+              0.0031489187251258306
             ]
           ],
           "maximum_absolute_fractional": [
             0.0,
-            0.00010599529478517021,
-            8.656308245085492e-05,
-            0.0019422949306120614,
-            0.38130313454172216
+            9.510412858566328e-06,
+            9.295764588532673e-06,
+            2.135821611968003e-05,
+            0.00484189764708269
           ],
           "maximum_diagonal_fractional": [
             0.0,
-            0.00010599529478517021,
-            2.0989905075185793e-05,
-            0.00014750944788840764,
-            0.00021703104853607876
+            9.510412858566328e-06,
+            8.329857337072696e-06,
+            1.8111752093906125e-05,
+            2.711031761244802e-05
           ],
           "maximum_offdiagonal_fractional": [
             0.0,
-            0.00010575866158523703,
-            8.656308245085492e-05,
-            0.0019422949306120614,
-            0.38130313454172216
+            9.50701034621181e-06,
+            9.295764588532673e-06,
+            2.135821611968003e-05,
+            0.00484189764708269
           ],
           "sum_fractional_range": [
-            -0.12275251511380791,
-            0.010314157577244742
+            -0.0011033175138922546,
+            0.00035091922815322363
           ]
         },
         {
@@ -1675,46 +1675,46 @@
               0.0
             ],
             [
-              -0.00010664699750339394,
-              7.600175220940585e-05
+              -2.3187114669620018e-05,
+              -2.0472698859322097e-05
             ],
             [
-              -8.24182064065301e-05,
-              5.6572009580969874e-05
+              -2.275766119937361e-05,
+              -2.0684952333299843e-05
             ],
             [
-              -0.0006110891874005492,
-              0.0018823627920379231
+              -6.156937727228532e-05,
+              -3.86274875064932e-05
             ],
             [
-              -0.3813201426412788,
-              0.018700798527737497
+              -0.0049216133314802565,
+              0.0030594591174019654
             ]
           ],
           "maximum_absolute_fractional": [
             0.0,
-            0.00010664699750339394,
-            8.24182064065301e-05,
-            0.0018823627920379231,
-            0.3813201426412788
+            2.3187114669620018e-05,
+            2.275766119937361e-05,
+            6.156937727228532e-05,
+            0.0049216133314802565
           ],
           "maximum_diagonal_fractional": [
             0.0,
-            0.00010664699750339394,
-            2.1033808161351527e-05,
-            0.00017374052703594603,
-            0.00018516757480824297
+            2.3187114669620018e-05,
+            2.183132004277729e-05,
+            4.576685725719211e-05,
+            6.745024422789173e-05
           ],
           "maximum_offdiagonal_fractional": [
             0.0,
-            0.00010661666566065925,
-            8.24182064065301e-05,
-            0.0018823627920379231,
-            0.3813201426412788
+            2.318663204734035e-05,
+            2.275766119937361e-05,
+            6.156937727228532e-05,
+            0.0049216133314802565
           ],
           "sum_fractional_range": [
-            -0.18949017513787714,
-            0.013000003370722935
+            -0.0018964234453834328,
+            0.0005882536945016614
           ]
         },
         {
@@ -1725,54 +1725,54 @@
               0.0
             ],
             [
-              -8.480137976672393e-05,
-              9.785178972900524e-05
+              -1.339502492800951e-06,
+              1.3854986391156218e-06
             ],
             [
-              -6.057190733825017e-05,
-              7.842385082739345e-05
+              -9.080897142334079e-07,
+              1.1752389563162373e-06
             ],
             [
-              -0.0005679270446288159,
-              0.0019254737060363572
+              -1.8337147644023547e-05,
+              5.074779949434313e-06
             ],
             [
-              -0.38123709851149723,
-              0.018767776278750536
+              -0.004850215042964174,
+              0.0031249552775618338
             ]
           ],
           "maximum_absolute_fractional": [
             0.0,
-            9.785178972900524e-05,
-            7.842385082739345e-05,
-            0.0019254737060363572,
-            0.38123709851149723
+            1.3854986391156218e-06,
+            1.1752389563162373e-06,
+            1.8337147644023547e-05,
+            0.004850215042964174
           ],
           "maximum_diagonal_fractional": [
             0.0,
-            9.785178972900524e-05,
-            1.2874239915130222e-05,
-            0.00013124141628209691,
-            0.00019262972371641358
+            1.3854986391156218e-06,
+            2.1423469627282195e-07,
+            2.065506049394697e-06,
+            2.7471590410412095e-06
           ],
           "maximum_offdiagonal_fractional": [
             0.0,
-            9.764760787661262e-05,
-            7.842385082739345e-05,
-            0.0019254737060363572,
-            0.38123709851149723
+            1.382611721156168e-06,
+            1.1752389563162373e-06,
+            1.8337147644023547e-05,
+            0.004850215042964174
           ],
           "sum_fractional_range": [
-            -0.2708663066464537,
-            0.01563793862106344
+            -0.002936008820238034,
+            0.0012082431522058013
           ]
         }
       ],
-      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
-      "native_manifest_sha256": "a8f89fb9761c116782aad633ffe79312c76e4c691c52b7f8d1d58e624f966150",
+      "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
+      "native_manifest_sha256": "00d77d412701debe94e1e28be531db33453c525f7951bc1dc5597b328f2d5c91",
       "script_sha256": "d8601d571e3bb77d0fd6838eb2276d99966e865a3e1a6894b3fd8d163c5c3d41",
       "files": {
-        "comparison.npz": "b1732b698bbcbddb7244e8556b13c4f651ae13da7cbb8f6bf16c94e1390db4d5"
+        "comparison.npz": "88689cb2ef604fdad63ed4201d32bdbfbd878185cc4c39f3d981861bb8f4a14e"
       },
       "scope": "Matter trispectra, not projected covariance; copied 1h consistency check"
     }
@@ -1783,150 +1783,150 @@
         "redshift": 0.1,
         "fractional_range": [
           [
-            -0.02259828625637532,
-            0.216982669267134
+            -0.022598289255126795,
+            0.21698266681180686
           ],
           [
-            -0.018414290097813795,
-            0.15213017024278352
+            -0.018412636137750057,
+            0.15213137847945513
           ],
           [
-            -0.014466238352691955,
-            0.13095629177333543
+            -0.014465456460623933,
+            0.13096398628349443
           ],
           [
-            -0.008550131596864338,
-            0.06512633146978344
+            -0.007300679296400521,
+            0.06513468567026663
           ],
           [
-            -0.018456348877935087,
-            0.6163065135945966
+            -0.0017721493322244081,
+            0.011852813174055373
           ]
         ],
         "maximum_absolute_fractional": [
-          0.216982669267134,
-          0.15213017024278352,
-          0.13095629177333543,
-          0.06512633146978344,
-          0.6163065135945966
+          0.21698266681180686,
+          0.15213137847945513,
+          0.13096398628349443,
+          0.06513468567026663,
+          0.011852813174055373
         ],
         "maximum_diagonal_fractional": [
-          0.216982669267134,
-          0.15213017024278352,
-          0.13095629177333543,
-          0.06512633146978344,
-          0.011846295266863677
+          0.21698266681180686,
+          0.15213137847945513,
+          0.13096398628349443,
+          0.06513468567026663,
+          0.011852813174055373
         ],
         "maximum_offdiagonal_fractional": [
-          0.173588400100789,
-          0.13176972187083402,
-          0.11135855659638728,
-          0.05814726759145107,
-          0.6163065135945966
+          0.1735883974761478,
+          0.13177056760259478,
+          0.11135943997664079,
+          0.05814897942231182,
+          0.007486320597384192
         ],
         "sum_fractional_range": [
-          -0.015602904063893863,
-          0.208167945731496
+          -0.013931063360436258,
+          0.20816869883987588
         ]
       },
       {
         "redshift": 0.5,
         "fractional_range": [
           [
-            0.006159376597019778,
-            0.26146064732606733
+            0.006159372409375664,
+            0.2614606446676684
           ],
           [
-            0.012310363305866476,
-            0.1713876803442108
+            0.012312172492000251,
+            0.17138890872033377
           ],
           [
-            0.04995561480662894,
-            0.19274711091895852
+            0.049956448365139544,
+            0.19275522594556133
           ],
           [
-            0.023070693287009975,
-            0.0654811230832049
+            0.024502978286014786,
+            0.06548284645985203
           ],
           [
-            -0.05722301460801602,
-            0.6158654920180052
+            -0.05721460671194119,
+            0.004647920945874102
           ]
         ],
         "maximum_absolute_fractional": [
-          0.26146064732606733,
-          0.1713876803442108,
-          0.19274711091895852,
-          0.0654811230832049,
-          0.6158654920180052
+          0.2614606446676684,
+          0.17138890872033377,
+          0.19275522594556133,
+          0.06548284645985203,
+          0.05721460671194119
         ],
         "maximum_diagonal_fractional": [
-          0.26146064732606733,
-          0.1713876803442108,
-          0.19274711091895852,
-          0.06042450731944783,
-          0.05722301460801602
+          0.2614606446676684,
+          0.17138890872033377,
+          0.19275522594556133,
+          0.06043282452696363,
+          0.05721460671194119
         ],
         "maximum_offdiagonal_fractional": [
-          0.21129852930050574,
-          0.1638367435168333,
-          0.17516700126162663,
-          0.0654811230832049,
-          0.6158654920180052
+          0.21129852637838037,
+          0.16376255997845415,
+          0.1751679353135381,
+          0.06548284645985203,
+          0.03396477458178512
         ],
         "sum_fractional_range": [
-          -0.006912208228951888,
-          0.2516143434625262
+          0.0013088069612008368,
+          0.25161538248774673
         ]
       },
       {
         "redshift": 1.0,
         "fractional_range": [
           [
-            0.018406673314053042,
-            0.08204847280514653
+            0.018406667896681866,
+            0.08204846891980427
           ],
           [
-            0.02567826483835574,
-            0.06876216773405934
+            0.02568438051568621,
+            0.06868891094411642
           ],
           [
-            0.07702041251982762,
-            0.10305552831007125
+            0.07702774024386584,
+            0.10306102330726723
           ],
           [
-            0.0001589642584446591,
-            0.04375356724062542
+            0.00016680777652075684,
+            0.04366820645278072
           ],
           [
-            -0.07122191704061441,
-            0.6152174188240667
+            -0.07121363591551234,
+            0.0043077254843173485
           ]
         ],
         "maximum_absolute_fractional": [
-          0.08204847280514653,
-          0.06876216773405934,
-          0.10305552831007125,
-          0.04375356724062542,
-          0.6152174188240667
+          0.08204846891980427,
+          0.06868891094411642,
+          0.10306102330726723,
+          0.04366820645278072,
+          0.07121363591551234
         ],
         "maximum_diagonal_fractional": [
-          0.06885746633649045,
-          0.055106132417511895,
-          0.10305552831007125,
-          0.042368994169495675,
-          0.07122191704061441
+          0.06885746413526472,
+          0.0551068691094398,
+          0.10306102330726723,
+          0.04237486334873425,
+          0.07121363591551234
         ],
         "maximum_offdiagonal_fractional": [
-          0.08204847280514653,
-          0.06876216773405934,
-          0.1005634142099106,
-          0.04375356724062542,
-          0.6152174188240667
+          0.08204846891980427,
+          0.06868891094411642,
+          0.10056456744576833,
+          0.04366820645278072,
+          0.04350231433372262
         ],
         "sum_fractional_range": [
-          -0.010158333757154914,
-          0.3881274892624913
+          0.0010355807521866822,
+          0.07900599382635609
         ]
       }
     ],
@@ -1939,46 +1939,46 @@
             0.0
           ],
           [
-            -2.984525788388183e-16,
-            3.0843674840138233e-16
+            -3.892561658055532e-16,
+            3.882165539827558e-16
           ],
           [
-            -1.1995244558468972e-09,
-            3.955121410444389e-09
+            -1.1995234287210632e-09,
+            3.9551210847887625e-09
           ],
           [
-            -8.934285464181743e-10,
-            4.0217970923418786e-09
+            -8.934279409766979e-10,
+            4.02179635058062e-09
           ],
           [
-            -4.946886580281139e-06,
-            3.63136005887139e-07
+            -4.9468865791556446e-06,
+            3.631360047656258e-07
           ]
         ],
         "maximum_absolute_fractional": [
           0.0,
-          3.0843674840138233e-16,
-          3.955121410444389e-09,
-          4.0217970923418786e-09,
-          4.946886580281139e-06
+          3.892561658055532e-16,
+          3.9551210847887625e-09,
+          4.02179635058062e-09,
+          4.9468865791556446e-06
         ],
         "maximum_diagonal_fractional": [
           0.0,
-          2.984525788388183e-16,
-          3.955121410444389e-09,
-          4.0217970923418786e-09,
-          4.946886580281139e-06
+          2.1345781781066195e-16,
+          3.9551210847887625e-09,
+          4.02179635058062e-09,
+          4.9468865791556446e-06
         ],
         "maximum_offdiagonal_fractional": [
           0.0,
-          3.0843674840138233e-16,
-          1.0050785309555861e-10,
-          6.972024534448491e-11,
-          2.3078315324717602e-08
+          3.892561658055532e-16,
+          1.0050765398415388e-10,
+          6.971990322247852e-11,
+          2.3078314652027964e-08
         ],
         "sum_fractional_range": [
-          -1.1676236610913548e-07,
-          1.2996270726262082e-09
+          -1.1676236544300167e-07,
+          1.2996268505816033e-09
         ]
       },
       {
@@ -1989,46 +1989,46 @@
             0.0
           ],
           [
-            -3.0095327917477206e-16,
-            3.9682808587596873e-16
+            -2.0622282953924388e-16,
+            4.436612162362832e-16
           ],
           [
-            -1.248656318496815e-09,
-            4.62259255114548e-09
+            -1.248656932739114e-09,
+            4.622592739509433e-09
           ],
           [
-            -8.977753033497601e-10,
-            4.022909810783138e-09
+            -8.977758219772471e-10,
+            4.02291028536184e-09
           ],
           [
-            -4.9740143238922845e-06,
-            3.648829797330761e-07
+            -4.9740143243497645e-06,
+            3.648829800712915e-07
           ]
         ],
         "maximum_absolute_fractional": [
           0.0,
-          3.9682808587596873e-16,
-          4.62259255114548e-09,
-          4.022909810783138e-09,
-          4.9740143238922845e-06
+          4.436612162362832e-16,
+          4.622592739509433e-09,
+          4.02291028536184e-09,
+          4.9740143243497645e-06
         ],
         "maximum_diagonal_fractional": [
           0.0,
-          3.702443670799498e-16,
-          4.62259255114548e-09,
-          4.022909810783138e-09,
-          4.9740143238922845e-06
+          3.207382270447839e-16,
+          4.622592739509433e-09,
+          4.02291028536184e-09,
+          4.9740143243497645e-06
         ],
         "maximum_offdiagonal_fractional": [
           0.0,
-          3.9682808587596873e-16,
-          1.0066666787399772e-10,
-          6.812220299196238e-11,
-          2.333088962852387e-08
+          4.436612162362832e-16,
+          1.0066739151762374e-10,
+          6.812187474281049e-11,
+          2.3330887184564174e-08
         ],
         "sum_fractional_range": [
-          -1.6237653388539997e-07,
-          1.6684058579130578e-09
+          -1.6237653399642227e-07,
+          1.6684047476900332e-09
         ]
       },
       {
@@ -2039,46 +2039,46 @@
             0.0
           ],
           [
-            -2.1374588252375546e-16,
-            3.506371653840779e-16
+            -1.975186829752106e-16,
+            3.789208737447397e-16
           ],
           [
-            -1.1944721083331463e-09,
-            3.959595734342882e-09
+            -1.194471726629738e-09,
+            3.95959573434288e-09
           ],
           [
-            -9.002404662792682e-10,
-            4.025040425234676e-09
+            -9.002397941531853e-10,
+            4.025040254040174e-09
           ],
           [
-            -4.983014619263104e-06,
-            3.658078247767116e-07
+            -4.983014620104291e-06,
+            3.658078243367415e-07
           ]
         ],
         "maximum_absolute_fractional": [
           0.0,
-          3.506371653840779e-16,
-          3.959595734342882e-09,
-          4.025040425234676e-09,
-          4.983014619263104e-06
+          3.789208737447397e-16,
+          3.95959573434288e-09,
+          4.025040254040174e-09,
+          4.983014620104291e-06
         ],
         "maximum_diagonal_fractional": [
           0.0,
-          3.506371653840779e-16,
-          3.959595734342882e-09,
-          4.025040425234676e-09,
-          4.983014619263104e-06
+          3.789208737447397e-16,
+          3.95959573434288e-09,
+          4.025040254040174e-09,
+          4.983014620104291e-06
         ],
         "maximum_offdiagonal_fractional": [
           0.0,
-          2.79676387979554e-16,
-          9.905882652793964e-11,
-          6.87393255291536e-11,
-          2.9906692563636765e-08
+          2.7967638797955387e-16,
+          9.905905369660277e-11,
+          6.874012808612368e-11,
+          2.7456967314619666e-08
         ],
         "sum_fractional_range": [
-          -2.111891275191624e-07,
-          3.6394465219302674e-09
+          -2.111891271860955e-07,
+          3.6394462998856625e-09
         ]
       }
     ],
@@ -2091,46 +2091,46 @@
             0.0
           ],
           [
-            -7.667365234802247e-05,
-            0.00010599529478517021
+            6.789528593866129e-06,
+            9.510412858566328e-06
           ],
           [
-            -5.2443773575032806e-05,
-            8.656308245085492e-05
+            7.2217671952481355e-06,
+            9.295764588532673e-06
           ],
           [
-            -0.0005514799255689592,
-            0.0019422949306120614
+            -1.8861565345083103e-06,
+            2.135821611968003e-05
           ],
           [
-            -0.38130313454172216,
-            0.01879262159363715
+            -0.00484189764708269,
+            0.0031489187251258306
           ]
         ],
         "maximum_absolute_fractional": [
           0.0,
-          0.00010599529478517021,
-          8.656308245085492e-05,
-          0.0019422949306120614,
-          0.38130313454172216
+          9.510412858566328e-06,
+          9.295764588532673e-06,
+          2.135821611968003e-05,
+          0.00484189764708269
         ],
         "maximum_diagonal_fractional": [
           0.0,
-          0.00010599529478517021,
-          2.0989905075185793e-05,
-          0.00014750944788840764,
-          0.00021703104853607876
+          9.510412858566328e-06,
+          8.329857337072696e-06,
+          1.8111752093906125e-05,
+          2.711031761244802e-05
         ],
         "maximum_offdiagonal_fractional": [
           0.0,
-          0.00010575866158523703,
-          8.656308245085492e-05,
-          0.0019422949306120614,
-          0.38130313454172216
+          9.50701034621181e-06,
+          9.295764588532673e-06,
+          2.135821611968003e-05,
+          0.00484189764708269
         ],
         "sum_fractional_range": [
-          -0.12275251511380791,
-          0.010314157577244742
+          -0.0011033175138922546,
+          0.00035091922815322363
         ]
       },
       {
@@ -2141,46 +2141,46 @@
             0.0
           ],
           [
-            -0.00010664699750339394,
-            7.600175220940585e-05
+            -2.3187114669620018e-05,
+            -2.0472698859322097e-05
           ],
           [
-            -8.24182064065301e-05,
-            5.6572009580969874e-05
+            -2.275766119937361e-05,
+            -2.0684952333299843e-05
           ],
           [
-            -0.0006110891874005492,
-            0.0018823627920379231
+            -6.156937727228532e-05,
+            -3.86274875064932e-05
           ],
           [
-            -0.3813201426412788,
-            0.018700798527737497
+            -0.0049216133314802565,
+            0.0030594591174019654
           ]
         ],
         "maximum_absolute_fractional": [
           0.0,
-          0.00010664699750339394,
-          8.24182064065301e-05,
-          0.0018823627920379231,
-          0.3813201426412788
+          2.3187114669620018e-05,
+          2.275766119937361e-05,
+          6.156937727228532e-05,
+          0.0049216133314802565
         ],
         "maximum_diagonal_fractional": [
           0.0,
-          0.00010664699750339394,
-          2.1033808161351527e-05,
-          0.00017374052703594603,
-          0.00018516757480824297
+          2.3187114669620018e-05,
+          2.183132004277729e-05,
+          4.576685725719211e-05,
+          6.745024422789173e-05
         ],
         "maximum_offdiagonal_fractional": [
           0.0,
-          0.00010661666566065925,
-          8.24182064065301e-05,
-          0.0018823627920379231,
-          0.3813201426412788
+          2.318663204734035e-05,
+          2.275766119937361e-05,
+          6.156937727228532e-05,
+          0.0049216133314802565
         ],
         "sum_fractional_range": [
-          -0.18949017513787714,
-          0.013000003370722935
+          -0.0018964234453834328,
+          0.0005882536945016614
         ]
       },
       {
@@ -2191,217 +2191,192 @@
             0.0
           ],
           [
-            -8.480137976672393e-05,
-            9.785178972900524e-05
+            -1.339502492800951e-06,
+            1.3854986391156218e-06
           ],
           [
-            -6.057190733825017e-05,
-            7.842385082739345e-05
+            -9.080897142334079e-07,
+            1.1752389563162373e-06
           ],
           [
-            -0.0005679270446288159,
-            0.0019254737060363572
+            -1.8337147644023547e-05,
+            5.074779949434313e-06
           ],
           [
-            -0.38123709851149723,
-            0.018767776278750536
+            -0.004850215042964174,
+            0.0031249552775618338
           ]
         ],
         "maximum_absolute_fractional": [
           0.0,
-          9.785178972900524e-05,
-          7.842385082739345e-05,
-          0.0019254737060363572,
-          0.38123709851149723
+          1.3854986391156218e-06,
+          1.1752389563162373e-06,
+          1.8337147644023547e-05,
+          0.004850215042964174
         ],
         "maximum_diagonal_fractional": [
           0.0,
-          9.785178972900524e-05,
-          1.2874239915130222e-05,
-          0.00013124141628209691,
-          0.00019262972371641358
+          1.3854986391156218e-06,
+          2.1423469627282195e-07,
+          2.065506049394697e-06,
+          2.7471590410412095e-06
         ],
         "maximum_offdiagonal_fractional": [
           0.0,
-          9.764760787661262e-05,
-          7.842385082739345e-05,
-          0.0019254737060363572,
-          0.38123709851149723
+          1.382611721156168e-06,
+          1.1752389563162373e-06,
+          1.8337147644023547e-05,
+          0.004850215042964174
         ],
         "sum_fractional_range": [
-          -0.2708663066464537,
-          0.01563793862106344
+          -0.002936008820238034,
+          0.0012082431522058013
         ]
       }
     ],
     "cocoa_integration_refinement": [
       [
-        1.9061347175108878e-06,
-        1.384408779170343e-06,
-        2.071122629065947e-06,
-        1.5095425713873567e-06,
-        3.0265910634375004e-06
+        1.9061347217297353e-06,
+        1.3843976930383306e-06,
+        1.7998271161223656e-06,
+        9.468716254401599e-07,
+        5.73652707758221e-06
       ],
       [
-        1.5465427498639883e-06,
-        1.0977939910450374e-06,
-        1.5676790547924924e-06,
-        7.21063653230658e-07,
-        2.0678503902527012e-06
+        1.5465427485317207e-06,
+        1.0978120947857661e-06,
+        1.302511993150901e-06,
+        6.839746955478176e-07,
+        2.3953822252398282e-06
       ]
     ],
     "ccl_mass_refinement": [
-      3.115640121886809e-05,
-      2.512660966635938e-05,
-      1.634151466090028e-05,
-      8.170790372630243e-06,
-      1.8166969768529384e-06
+      3.1156401219090135e-05,
+      2.5126609666803468e-05,
+      1.634151466189948e-05,
+      8.170790372741266e-06,
+      1.8166969795174737e-06
     ],
     "native_diagnostic_changes": {
       "direct_m255": [
         0.0,
         0.0,
-        0.00016120582489087543,
-        0.0005813421671645447,
-        0.0011936813896545884
+        0.0001612058248932069,
+        0.0005813421671644337,
+        0.0011936813896712417
       ],
       "bhattacharya_m255": [
-        0.22692461687478072,
-        0.15900464237288614,
-        0.13107995148135965,
-        0.06722961651640058,
-        0.0112842813274312
+        0.22692461687478116,
+        0.1590046423728848,
+        0.13107995148135898,
+        0.06722961651639947,
+        0.011284281327430756
       ],
       "tinker10_m255": [
-        0.21295045765640896,
-        0.20849430029492044,
-        0.4795856138041008,
-        0.20647023546159815,
-        0.2588750541822752
+        0.2129504576564094,
+        0.20849430029492022,
+        0.47958561380410125,
+        0.2064702354615986,
+        0.25887505418227563
       ],
       "both_m255": [
-        0.37014757244921426,
+        0.3701475724492147,
         0.26350414786439,
-        0.48619699017740303,
-        0.20647023683479993,
-        0.2687515235455614
+        0.4861969901774035,
+        0.2064702368348008,
+        0.26875152354556164
       ]
     },
     "power_refinement": {
       "schema": "trispectrum-power-diagnostic-v1",
       "status": "completed",
-      "scope": "Same CAMB samples; cubic fill, production linear lookup; fixed halo moments",
-      "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-      "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+      "scope": "Same installed power samples; natural cubic fill, production linear lookup; fixed halo moments",
+      "spline_boundary": "natural",
+      "refinement_base": "installed input-bundle grid",
+      "power_preparation": {
+        "method": "natural cubic ln(P) versus log10(k), at fixed z",
+        "accuracy_boost": 1,
+        "power_accuracyboost": 8,
+        "refinement": 8,
+        "native_k_nodes": 1500,
+        "installed_k_nodes": 11993,
+        "redshift_nodes": 140,
+        "power_tables": [
+          "linear",
+          "nonlinear",
+          "linear_cb"
+        ],
+        "original_nodes_retained_exactly": true,
+        "installed_tables_reproduced_exactly": true,
+        "native_archive": "camb_native_tables.npz",
+        "installed_archive": "camb_tables.npz",
+        "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+      },
+      "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0",
+      "timeout_seconds": 600,
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
       "factors": [
         1,
-        2,
-        4,
-        8,
-        16
+        2
       ],
       "node_counts": [
-        1500,
-        2999,
-        5997,
         11993,
         23985
       ],
       "max_fractional_vs_smooth_by_halo_order": [
         [
           0.0,
-          9.786027951241838e-05,
-          7.84321230695717e-05,
-          0.0019221063195082877,
-          0.6163162670899445
+          1.3857571303788063e-06,
+          1.1753038228201618e-06,
+          1.8341504764096683e-05,
+          0.00487531134991559
         ],
         [
           0.0,
-          2.4849557957562496e-05,
-          1.751910877723084e-05,
-          0.00010469214722319542,
-          0.19387868301643074
-        ],
-        [
-          0.0,
-          6.4898104159549774e-06,
-          5.219768779984868e-06,
-          1.9536695335942156e-05,
-          0.017317160272700027
-        ],
-        [
-          0.0,
-          1.3857571312669847e-06,
-          1.1753038227091395e-06,
-          1.8341504750329918e-05,
-          0.0048753113838544415
-        ],
-        [
-          0.0,
-          4.376696891572607e-07,
+          4.3766968838010456e-07,
           2.898226834080475e-07,
-          1.3806261014437382e-06,
-          0.0038831921783277767
+          1.380626219571468e-06,
+          0.0038831921444248962
         ]
       ],
       "interior_pair_count": 36,
       "interior_max_fractional_vs_smooth_by_halo_order": [
         [
           0.0,
-          9.763807375229305e-05,
-          7.84321230695717e-05,
-          0.0019221063195082877,
-          0.6163162670899445
-        ],
-        [
-          0.0,
-          2.479301931868072e-05,
-          1.751910877723084e-05,
-          0.00010469214722319542,
-          0.19387868301643074
-        ],
-        [
-          0.0,
-          6.475050491672185e-06,
-          5.219768779984868e-06,
-          1.9536695335942156e-05,
-          0.017317160272700027
-        ],
-        [
-          0.0,
           1.3826098095304218e-06,
-          1.1753038227091395e-06,
-          1.8341504750329918e-05,
-          0.0048753113838544415
+          1.1753038228201618e-06,
+          1.8341504764096683e-05,
+          0.00487531134991559
         ],
         [
           0.0,
-          4.3667316351747587e-07,
+          4.366731645166766e-07,
           2.898226834080475e-07,
-          1.3806261014437382e-06,
-          0.0038831921783277767
+          1.380626219571468e-06,
+          0.0038831921444248962
         ]
       ],
       "boundary_scope": "Dense edge secants change; smooth control keeps original extrapolation. Interior metric excludes those samples.",
-      "script_sha256": "edbd16221ac6ccea185eb20bff4e946bb47f104562f225cc24e458540d36b53e",
+      "script_sha256": "fe30e97f78b69d914162286a4ad75c0a9e23118199b2609bbe02459667afeff6",
       "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
       "files": {
-        "diagnostic.npz": "d2b99ca66add701451b9be1078b4d007b588ae6f66966048513e374733515c58"
+        "diagnostic.npz": "32b25ea9780386f4ef0301014e257a79b1f32636a11636c21ca159b02ebef1a3"
       }
     }
   },
-  "script_sha256": "643a7ec327cbdbe1ae1c5d363545ecf45b26606998857150b4a5c5b755e463e6",
+  "script_sha256": "93b5aa43609ad04b8c744a034465636a68806dfe5dedfdf467d41e7328bc1a14",
   "files": {
-    "trispectra.npz": "9cb10b9d2523fc5534edfe4746259a611776160c5214c4df17be0634cd3b7a5a"
+    "trispectra.npz": "a8f0cc634401faec7cac986280a73c4827a428b4d487562ed2206d069febf81a"
   },
   "figures": {
-    "trispectrum_model_diagnostic.pdf": "e841163b6ef3396a68881f97efff17442de05201496b87942c9b66eca29d0741",
-    "trispectrum_model_diagnostic.png": "af1ba786dcae6eb93310a74582c32e7feca65adeef25ad6be744325b85b0b427",
-    "trispectrum_pairs.png": "3f796bcfd074edf8348cdca86f0f6418e35c85663041a2e83e2b3b3d47d21bd6",
-    "trispectrum_pairs.pdf": "77635748b7c333c391edc6aa829463fc800ebdd16cae73ec65663129972e1c71",
-    "trispectrum_terms.png": "29f2f3ee80d2c83610ed8925be5d416c41928d32156cd6618b31140e4d86dbcc",
-    "trispectrum_terms.pdf": "c998ff4b81d590e204459e0d4cd20537ddab1e7373419c51548d6dd19821f4c8",
-    "trispectrum_power_diagnostic.png": "15ca7b4fbcc3f95fc247a0f8f0a3c79df6181a8dd98236f61ff61da6058c27fb",
-    "trispectrum_power_diagnostic.pdf": "6b1bef6af62771dab32605f144f488d5411a445bcfc543606e3b1598e2197cc1"
+    "trispectrum_model_diagnostic.pdf": "0f00cfebd169a4430bda69cd8a74f6ab603df8e55d875a45b28bab5375cb53f7",
+    "trispectrum_model_diagnostic.png": "f76f565e7ae199afb6400c3964d1a3a1cfd6293a39b8708ec9f5e2926c036f89",
+    "trispectrum_pairs.png": "5ffb68a4a8f2909ba6cd64947e9deb63bddb0ae31bba22905b052b586e1c8baf",
+    "trispectrum_pairs.pdf": "6c3aa63f0cb6857d8dbd755c2c29db6028e9706a012994484677f30b1c30b6fc",
+    "trispectrum_terms.png": "d190912900883aea93a3de60cd1135b4f9d1a738fb23381e6e5e20d57d0097ef",
+    "trispectrum_terms.pdf": "7ce6652c8edea8dbce1e16fc03922247db42bb32a9d007df9a9cc5c81fce2bd6",
+    "trispectrum_power_diagnostic.png": "f6d5c00c936f0ddc0c2e1ea7598e623c1d87c6944d5b255ee64d86ab71b87a28",
+    "trispectrum_power_diagnostic.pdf": "a10cca54a4ce3584247aebc28149a2e025d85dc6e23d5218678eabd4a699d128"
   }
 }

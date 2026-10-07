@@ -5,8 +5,8 @@
   "timeout_seconds": 600,
   "script_sha256": "1572f1f09c1b1b16069ed3800a2224bb285f889c5631c5f872fffb92981ffa4d",
   "timing_policy": "Correctness only; no benchmark durations",
-  "ccl_export_manifest_sha256": "8ee57c093c7657b8c5aef09d30ee3431683630cdd9cd8f2389affa26fcf84a9b",
-  "cocoa_manifest_sha256": "dfce351a51ef60ec312e5e4af2898b5365f5be696f83ec7777b319ebd152a347",
+  "ccl_export_manifest_sha256": "2f2875cc405ec79a93d9d4684b4a55fe1b4874005f62210b0981f46c7620a3e3",
+  "cocoa_manifest_sha256": "62bda8afba1e8b4ce290d0e5d4b932ad5085b465ff25ee375ee7c6d3c149357f",
   "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
   "cases": {
     "cocoa_response_cap_window": {
@@ -20,33 +20,33 @@
       ]
     },
     "cocoa_response_disc_window": {
-      "max_abs_difference_over_reference_rms_product": 0.0729672390265693,
+      "max_abs_difference_over_reference_rms_product": 0.07297040764196053,
       "diagonal_fractional_difference": [
-        -0.07296723902656932,
-        -0.07290945286947714,
-        -0.07285188775236984,
-        -0.0727933989691032,
-        -0.07273527235869792
+        -0.0729704076419605,
+        -0.07291261606932564,
+        -0.07285504454685077,
+        -0.07279655320708711,
+        -0.0727384173943455
       ]
     },
     "ccl_response_cap_window": {
-      "max_abs_difference_over_reference_rms_product": 0.13990014186673547,
+      "max_abs_difference_over_reference_rms_product": 0.13990915035415916,
       "diagonal_fractional_difference": [
-        -0.1399001418667355,
-        -0.1393519240895622,
-        -0.13882193130562115,
-        -0.13829902361954205,
-        -0.13779708047236539
+        -0.13990915035415918,
+        -0.139361371220461,
+        -0.1388307989199864,
+        -0.1383082966445499,
+        -0.1378062011018497
       ]
     },
     "ccl_response_disc_window": {
-      "max_abs_difference_over_reference_rms_product": 0.20278801217062675,
+      "max_abs_difference_over_reference_rms_product": 0.20279910398151127,
       "diagonal_fractional_difference": [
-        -0.2027880121706267,
-        -0.2022213068044243,
-        -0.2016716049457571,
-        -0.20112742417353702,
-        -0.20060292746649433
+        -0.20279910398151124,
+        -0.20223280225077755,
+        -0.20168256020053144,
+        -0.20113875217488075,
+        -0.20061411106480964
       ]
     }
   },
@@ -55,32 +55,32 @@
   },
   "scope": "SSC-only controlled predictions; no G/cNG or band averaging",
   "files": {
-    "models.npz": "741e2b9e84f67ca724d7732c6f48a562acb30acb87f735de7ef4c586cd6715a7"
+    "models.npz": "7b929a45fb305f70b67a5b93ec7460c1924ec1c7e0e4aaac6d5e816949e0aaee"
   },
   "projection_check": {
-    "max_abs_difference_over_reference_rms_product": 2.5081761853773115e-06,
+    "max_abs_difference_over_reference_rms_product": 2.5081761783374903e-06,
     "diagonal_fractional_difference": [
-      -1.6192599975317634e-06,
-      -1.8515009591046905e-06,
-      -2.282684366416987e-06,
-      -2.50817618541177e-06,
-      -2.186329958742128e-06
+      -1.6192599984199418e-06,
+      -1.8515009421182782e-06,
+      -2.2826843750767267e-06,
+      -2.5081761783063428e-06,
+      -2.1863299651814216e-06
     ]
   },
   "remaining_after_response_and_window_swaps": {
-    "max_abs_difference_over_reference_rms_product": 0.0035070385359558154,
+    "max_abs_difference_over_reference_rms_product": 0.0035621198911635478,
     "diagonal_fractional_difference": [
-      0.0034120034807851862,
-      0.0034352075210100086,
-      0.0034583715808023108,
-      0.0034823752188644086,
-      0.0035070385359559086
+      0.0034670672520638046,
+      0.0034902755773285055,
+      0.003513443953736539,
+      0.003537452050375256,
+      0.0035621198911635066
     ]
   },
   "negative_response_shells": {
     "count": 6,
     "maximum_redshift": 0.00021676340952181405,
-    "max_abs_contribution_over_common_rms_product": 1.215799054374237e-12,
+    "max_abs_contribution_over_common_rms_product": 1.2157990590874385e-12,
     "scope": "All shells with any negative CCL response; retained in full result"
   },
   "interpretation": {
@@ -104,6 +104,6 @@
       "dln(I11^2 Plinear)/dlnk",
       "dlnPlinear/dlnk"
     ],
-    "centered_logk_step": 2.5e-05
+    "centered_logk_step": 5e-05
   }
 }

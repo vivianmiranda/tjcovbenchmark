@@ -1,102 +1,77 @@
 {
   "schema": "trispectrum-power-diagnostic-v1",
   "status": "completed",
-  "scope": "Same CAMB samples; cubic fill, production linear lookup; fixed halo moments",
-  "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-  "cocoa_manifest_sha256": "f08dd3ea95ffe27dc95ce45d4b97076b76403f006a169c23b2414840025d15c9",
+  "scope": "Same installed power samples; natural cubic fill, production linear lookup; fixed halo moments",
+  "spline_boundary": "natural",
+  "refinement_base": "installed input-bundle grid",
+  "power_preparation": {
+    "method": "natural cubic ln(P) versus log10(k), at fixed z",
+    "accuracy_boost": 1,
+    "power_accuracyboost": 8,
+    "refinement": 8,
+    "native_k_nodes": 1500,
+    "installed_k_nodes": 11993,
+    "redshift_nodes": 140,
+    "power_tables": [
+      "linear",
+      "nonlinear",
+      "linear_cb"
+    ],
+    "original_nodes_retained_exactly": true,
+    "installed_tables_reproduced_exactly": true,
+    "native_archive": "camb_native_tables.npz",
+    "installed_archive": "camb_tables.npz",
+    "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+  },
+  "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0",
+  "timeout_seconds": 600,
+  "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+  "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
   "factors": [
     1,
-    2,
-    4,
-    8,
-    16
+    2
   ],
   "node_counts": [
-    1500,
-    2999,
-    5997,
     11993,
     23985
   ],
   "max_fractional_vs_smooth_by_halo_order": [
     [
       0.0,
-      9.786027951241838e-05,
-      7.84321230695717e-05,
-      0.0019221063195082877,
-      0.6163162670899445
+      1.3857571303788063e-06,
+      1.1753038228201618e-06,
+      1.8341504764096683e-05,
+      0.00487531134991559
     ],
     [
       0.0,
-      2.4849557957562496e-05,
-      1.751910877723084e-05,
-      0.00010469214722319542,
-      0.19387868301643074
-    ],
-    [
-      0.0,
-      6.4898104159549774e-06,
-      5.219768779984868e-06,
-      1.9536695335942156e-05,
-      0.017317160272700027
-    ],
-    [
-      0.0,
-      1.3857571312669847e-06,
-      1.1753038227091395e-06,
-      1.8341504750329918e-05,
-      0.0048753113838544415
-    ],
-    [
-      0.0,
-      4.376696891572607e-07,
+      4.3766968838010456e-07,
       2.898226834080475e-07,
-      1.3806261014437382e-06,
-      0.0038831921783277767
+      1.380626219571468e-06,
+      0.0038831921444248962
     ]
   ],
   "interior_pair_count": 36,
   "interior_max_fractional_vs_smooth_by_halo_order": [
     [
       0.0,
-      9.763807375229305e-05,
-      7.84321230695717e-05,
-      0.0019221063195082877,
-      0.6163162670899445
-    ],
-    [
-      0.0,
-      2.479301931868072e-05,
-      1.751910877723084e-05,
-      0.00010469214722319542,
-      0.19387868301643074
-    ],
-    [
-      0.0,
-      6.475050491672185e-06,
-      5.219768779984868e-06,
-      1.9536695335942156e-05,
-      0.017317160272700027
-    ],
-    [
-      0.0,
       1.3826098095304218e-06,
-      1.1753038227091395e-06,
-      1.8341504750329918e-05,
-      0.0048753113838544415
+      1.1753038228201618e-06,
+      1.8341504764096683e-05,
+      0.00487531134991559
     ],
     [
       0.0,
-      4.3667316351747587e-07,
+      4.366731645166766e-07,
       2.898226834080475e-07,
-      1.3806261014437382e-06,
-      0.0038831921783277767
+      1.380626219571468e-06,
+      0.0038831921444248962
     ]
   ],
   "boundary_scope": "Dense edge secants change; smooth control keeps original extrapolation. Interior metric excludes those samples.",
-  "script_sha256": "edbd16221ac6ccea185eb20bff4e946bb47f104562f225cc24e458540d36b53e",
+  "script_sha256": "fe30e97f78b69d914162286a4ad75c0a9e23118199b2609bbe02459667afeff6",
   "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
   "files": {
-    "diagnostic.npz": "d2b99ca66add701451b9be1078b4d007b588ae6f66966048513e374733515c58"
+    "diagnostic.npz": "32b25ea9780386f4ef0301014e257a79b1f32636a11636c21ca159b02ebef1a3"
   }
 }
