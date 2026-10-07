@@ -10,6 +10,7 @@ import argparse
 import signal
 import sys
 from pathlib import Path
+from time import perf_counter
 
 from common import (load_bundle, require_thread_environment, revision,
                     sha256, write_json)
@@ -22,10 +23,13 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--integration-accuracy", type=int, choices=range(3),
                         default=0)
+    parser.add_argument("--timing", action="store_true",
+                        help="record first-use compute time on a quiet machine")
     args = parser.parse_args()
     threads = require_thread_environment()
-    if threads > 6 or args.output.exists():
-        parser.error("Use at most six threads and a new output directory")
+    if threads > (8 if args.timing else 6) or args.output.exists():
+        parser.error("Use at most six accuracy workers or eight timing workers, "
+                     "and a new output directory")
     inputs = load_bundle(args.inputs, "lsst-y1-tjpcov-inputs-v1")
     signal.signal(signal.SIGALRM, signal.SIG_DFL)
     signal.alarm(600)
@@ -44,7 +48,9 @@ def main():
                              integration_accuracy=args.integration_accuracy)
     if settings["cosmology"] != inputs["cosmology"]:
         raise ValueError("Cosmology differs from the input bundle")
+    setup_started = perf_counter()
     tables = initialize(interface=ci, settings=settings)
+    setup_seconds = perf_counter() - setup_started
     original = np.load(args.inputs / "inputs.npz", allow_pickle=False)
     np.testing.assert_array_equal(tables["z_2D"], original["z"])
     np.testing.assert_array_equal(10**tables["log10k_2D"], original["k_h_mpc"])
@@ -66,6 +72,7 @@ def main():
     internal_k = np.sqrt((pairs[0]-pairs[1])[:, None]**2
                          +2*pairs[0, :, None]*pairs[1, :, None]*corner)
     length = 2997.92458
+    construction_started = perf_counter()
     rows = []
     for z in redshift:
         a = float(1/(1+z))
@@ -90,6 +97,7 @@ def main():
                          power=power, internal_power=internal, tree=tree))
         print(f"CoCoA five halo terms: z={z}", flush=True)
     arrays = {name: np.array([row[name] for row in rows]) for name in rows[0]}
+    construction_seconds = perf_counter() - construction_started
     if not all(np.isfinite(value).all() for value in arrays.values()):
         raise ValueError("Non-finite CoCoA trispectrum ingredient")
     args.output.mkdir(parents=True)
@@ -111,7 +119,14 @@ def main():
         "interface_sha256": sha256(ci.__file__), "threads": threads,
         "script_sha256": sha256(__file__),
         "power_table_check": "linear and nonlinear inputs bitwise equal",
-        "timing_scope": "accuracy only",
+        "timing_scope": "First five-term matter trispectrum" if args.timing
+                        else "accuracy only",
+        "timing": ({"setup_seconds": setup_seconds,
+                    "construction_seconds": construction_seconds,
+                    "scope": "All five native halo terms at nine k nodes "
+                             "and three redshifts; includes first halo tables, "
+                             "power lookups and angular averages; no projection"}
+                   if args.timing else None),
         "files": {"trispectrum.npz": sha256(args.output / "trispectrum.npz")},
     })
 

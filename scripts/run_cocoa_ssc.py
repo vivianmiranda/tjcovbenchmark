@@ -9,6 +9,7 @@ Run in the Cocoa environment, with an explicit OpenMP thread allocation.
 import argparse
 import sys
 from pathlib import Path
+from time import perf_counter
 
 from common import load_bundle, require_thread_environment, revision
 from common import sha256, write_json
@@ -24,6 +25,8 @@ def main():
                         default=0)
     parser.add_argument("--accuracy-boost", type=int, choices=(1, 2, 4, 8),
                         default=1)
+    parser.add_argument("--timing", action="store_true",
+                        help="record first-use compute time on a quiet machine")
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Choose a fresh output directory")
@@ -66,7 +69,9 @@ def main():
         raise ValueError("CoCoA source distribution changed since export")
     if settings["area_deg2"] != inputs["area_deg2"]:
         raise ValueError("CoCoA and TJPCov survey areas differ")
+    setup_started = perf_counter()
     tables = initialize(interface=ci, settings=settings)
+    setup_seconds = perf_counter() - setup_started
     original = np.load(args.inputs / "inputs.npz", allow_pickle=False)
     np.testing.assert_array_equal(tables["z_2D"], original["z"])
     np.testing.assert_array_equal(10.0**tables["log10k_2D"], original["k_h_mpc"])
@@ -78,6 +83,7 @@ def main():
 
     ell = np.load(args.gaussian_run / "gaussian.npz")["effective_ell"]
     backend = ci.covariance
+    construction_started = perf_counter()
     snapshot = limber_spectra(
         interface=backend, ell=ell, a_edges=settings["a_edges"],
         nquad=settings["radial_nquad"], nwindow=settings["nwindow"],
@@ -125,6 +131,7 @@ def main():
     covariance = backend.covariance_project(
         left=shell, right=shell, weight=np.ascontiguousarray(dchi*variance),
     )
+    construction_seconds = perf_counter() - construction_started
     if covariance.shape != (5, 5) or not np.all(np.isfinite(covariance)):
         raise ValueError("Invalid CoCoA SSC matrix")
     rms = np.sqrt(np.diag(covariance))
@@ -149,7 +156,13 @@ def main():
         "minimum_correlation_eigenvalue": float(np.linalg.eigvalsh(
             (correlation+correlation.T)/2)[0]),
         "max_scaled_asymmetry": float(np.max(np.abs(correlation-correlation.T))),
-        "timing_scope": "Accuracy only; concurrent validation, no benchmark",
+        "timing_scope": "First native SSC construction" if args.timing
+                        else "Accuracy only; no benchmark",
+        "timing": ({"setup_seconds": setup_seconds,
+                    "construction_seconds": construction_seconds,
+                    "scope": "First SSC construction, including shell geometry, "
+                             "halo response, cap variance and projection"}
+                   if args.timing else None),
         "files": {"ssc.npz": sha256(args.output / "ssc.npz")},
     }
     write_json(args.output / "manifest.json", record)
