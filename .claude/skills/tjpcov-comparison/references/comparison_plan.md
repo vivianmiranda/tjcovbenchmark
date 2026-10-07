@@ -172,8 +172,10 @@ See references/trispectrum_diagnostics.md for the measured attribution,
 galaxy-bias placement test and exact scope. Figures/results are linked
 from the README. No production CoCoA/CCL/TJPCov source changed.
 
-Next: bounded cNG projections and complete-matrix
-comparisons below. Real-space worker, memory and
+The bounded cNG projection and complete Fourier source-bin comparison
+were subsequently completed on 2026-10-07; see
+[the current measured record](projected_cng_complete.md). Quiet complete
+timings and full-survey comparisons remain pending. Real-space worker, memory and
 noise audits remain gates before a native real-space run. No overlapping
 elapsed times from this campaign may be used as benchmarks.
 
@@ -214,5 +216,7 @@ as a passing result. No scientific figures were produced during the initial prep
 The completed numerical campaign is summarized above.
 
 The initial import, source-bin and galaxy/shear extension gates are now
-complete. Gaussian assembly agreement with shared spectra does not yet
-establish agreement of independently generated native spectra.
+complete. Gaussian assembly agreement with shared spectra does not by
+itself establish native-spectrum agreement. The subsequent complete
+Fourier pilot measures both native spectra and covariance; keep these
+two scopes distinct when reporting the earlier roundoff agreement.

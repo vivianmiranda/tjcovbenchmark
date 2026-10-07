@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "gaussian_shared_spectra_rms_residual": 4.372249330088434e-16,
+  "cng_connected_projector_replay_rms_residual": 3.376692434233555e-16,
+  "cocoa_manifest_sha256": "d904bbf298099974ebc005243d1dd071904266e5eb6cc995213f3fba30f30d2d",
+  "native_manifest_sha256": "894870d0e574dff1f2299d2fcba63816ee1cecfe9c952347a47236376801a8a6",
+  "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+  "script_sha256": "50ec705039c08530528a94403cf36925b93535cb82291859c6b66fd23a411fa4"
+}

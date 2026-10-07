@@ -18,9 +18,12 @@ tested. Small native SSC comparisons and their sampling diagnostics are
 also complete. Native halo ingredients and all five matter-trispectrum
 terms have now been compared, including unequal wavenumbers and controlled
 input changes. The large discrepancies have several distinct causes,
-described below. Fresh-process [SSC and trispectrum timings](#timings) are
-now measured. Complete cNG projections and full TJPCov covariance timings
-remain pending.
+described below. A [shared-input cNG projection](#cng-projection) and a
+[complete 100 × 100 Fourier source-bin comparison](#complete-fourier) are
+also complete; both total matrices are positive definite. Fresh-process
+[SSC and trispectrum timings](#timings) are measured. Quiet timings for
+the complete pilot, full-survey matrices and real-space comparisons remain
+pending.
 
 The checks identify different causes in different parts of the calculation:
 
@@ -46,7 +49,9 @@ The checks identify different causes in different parts of the calculation:
 9. [Super-sample covariance](#ssc)
 10. [Halo ingredients](#halo)
 11. [Separated matter trispectra](#trispectrum)
-12. [Galaxy-bias placement](#galaxy-bias)
+12. [Connected covariance projection](#cng-projection)
+13. [Complete Fourier covariance](#complete-fourier)
+14. [Galaxy-bias placement](#galaxy-bias)
 
 ## Comparison scope <a name="scope"></a>
 
@@ -170,8 +175,9 @@ so the construction ratios above exclude these different setup tasks.
 >   expansion to more survey bins more predictable at fixed numerical
 >   sampling. The full run and pilot use their respective documented
 >   angular bins and Gaussian settings.
-> - **TJPCov:** a complete G + SSC + cNG pilot and full LSST Y1 run have
->   not yet been measured. Its cache reuse and cost of adding tomographic
+> - **TJPCov:** the complete G + SSC + cNG source-bin pilot has been
+>   calculated, but its quiet timing and a full LSST Y1 run remain
+>   unmeasured. Its cache reuse and cost of adding tomographic
 >   pairs need separate measurements. Neither matrix size nor the SSC
 >   ratio above establishes that scaling; OneCovariance's scaling cannot
 >   be transferred to TJPCov.
@@ -369,8 +375,9 @@ the supplied signal or noise off.
 
 This isolates **Gaussian assembly**. It does not compare native spectra,
 validate the halo model, or generate SSC/cNG. CCL uses the supplied CAMB
-power but its own background and interpolation; a later native-spectrum
-comparison must measure those differences. The three noise calls also
+power but its own background and interpolation. The later
+[complete Fourier pilot](#complete-fourier) measures the difference when
+each code generates its own spectra. The three noise calls also
 do not constitute a production timing measurement.
 
 ### Run the prepared case
@@ -1132,8 +1139,8 @@ This isolates the sensitivity to interpolated power shape. It does
 **not** establish the smooth curve as an exact physical solution or
 certify the final grid as converged. The halo moments stay fixed only
 in this diagnostic. The native comparisons above use the globally
-refined production inputs throughout; a complete cross-code projected
-cNG matrix still needs to be computed.
+refined production inputs throughout. Their effect on projected cNG is
+measured in the [complete Fourier pilot](#complete-fourier) below.
 
 ### Numerical checks and reproduction
 
@@ -1214,6 +1221,125 @@ and create the four figures above.
 ```bash
 python scripts/plot_trispectrum.py work --output work/results/trispectrum \
   --figures work/figures/trispectrum
+```
+
+## Connected covariance projection <a name="cng-projection"></a>
+
+First, hold the physical inputs fixed: the same CCL matter trispectrum,
+background distances, shear kernel and spin factors at eight multipoles.
+
+- **CCL:** projects its saved native trispectrum through its public cNG
+  integrator, as called by TJPCov.
+- **CoCoA:** projects those inputs through its production C kernel using
+  fixed line-of-sight quadrature with 256 points per panel.
+
+![Shared-input connected covariance projection](figures/cng_projection/connected_projection.png)
+
+The largest difference is **0.01966%** of the CCL cNG diagonal rms product.
+Both matrix panels use that same normalization. This checks projection
+with shared physical inputs, with a small endpoint distinction: CoCoA's
+panels stop at redshift 0.00001, while CCL includes the interval down to
+the observer. CCL's trispectrum interpolation is also piecewise linear in
+scale factor, so its knots affect quadrature refinement. This is a
+finite-endpoint and resolution check, not a proof for identical domains.
+The [projection record](results/cng_projection/manifest.json) and saved
+inputs preserve those choices.
+
+## Complete Fourier covariance <a name="complete-fourier"></a>
+
+This **100 × 100** comparison retains all 10,000 entries for LSST Y1
+source bin 3, using common CAMB inputs, source distribution, survey area
+and shape noise. Each code supplies its own spectra, halo model and
+survey-window prediction. It is a source-bin pilot, not the full
+1560-entry LSST Y1 covariance or a calibrated likelihood covariance.
+
+The estimator matches TJPCov's native convention: Gaussian covariance is
+averaged over integer multipoles in bands with edges 15, 45, …, 3015,
+weights proportional to multipole and the upper edge excluded. SSC and
+cNG are evaluated at the centers 30, 60, …, 3000 without band averaging.
+
+![Complete Fourier component differences](figures/complete_fourier/complete_shear_difference.png)
+
+Each pixel is **100 × (CoCoA − TJPCov)** divided by the TJPCov **total**
+diagonal rms product. Every entry is shown, with a separate color scale
+per component; this is not the fractional error of a small SSC/cNG entry.
+
+| Component | Largest difference on the total rms scale |
+| --- | ---: |
+| Gaussian | 0.5632% |
+| SSC | 0.7486% |
+| cNG | 0.01539% |
+| Total | 1.1322% |
+
+- **Gaussian:** each code now calculates its own spectra; their center
+  values differ by at most **0.4703%**. The earlier roundoff agreement
+  tested assembly with shared spectra, not native spectrum agreement.
+- **SSC:** it contributes most of the largest coherent-mode difference,
+  consistent with the response and window differences isolated above.
+- **cNG:** its own diagonal changes from **−0.869% to +18.665%** between
+  codes, while its impact on the total rms scale is much smaller. The
+  correlation and diagonal plots below distinguish structure from weight
+  in the total covariance.
+
+![Native connected covariance structure](figures/complete_fourier/connected_covariance_structure.png)
+
+![Complete covariance diagonal components](figures/complete_fourier/complete_shear_components.png)
+
+**Both totals are positive definite.** The largest diagonal difference is
+**1.1322%**, but generalized CoCoA/TJPCov variance ratios range from
+**1.000065 to 1.082360**: a coherent combination of bins changes variance
+by up to **8.236%**, mainly through SSC. This is distinct from a diagonal
+error and is not a parameter-level Fisher result. Small native
+antisymmetries, about 10⁻¹⁷ on the total rms scale, remain in the saved
+matrices; positivity and mode ratios use their symmetric parts.
+
+### Sampling checks and limits
+
+- **TJPCov/CCL cNG:** this pilot explicitly uses **701 wavenumber nodes**
+  (`N_K=96`), not CCL's default 1220 nodes (`N_K=167`). The physical range
+  remains 0.00005–1000 Mpc⁻¹. Its full time grid has 99 nodes, of which 69
+  are retained for this tracer. Refining 468 → 701 wavenumber nodes changes
+  cNG by at most **1.115%** on its own rms scale, but the total by only
+  **0.004354%** on the total rms scale and **0.004433%** in mode variance.
+  At fixed 234 wavenumber nodes, [99 → 197 time nodes](results/cng_time_grid/manifest.json)
+  change cNG by at most **0.09927%** on its own rms scale. These checks do
+  not establish full cNG sampling convergence.
+- **CoCoA:** integration level 0 → 1 changes the total by at most
+  **0.0002401%** on its rms scale, with the 11,993-node power tables fixed.
+
+The [complete record](results/complete_fourier/report.json) contains all
+component, mode and refinement diagnostics; the [assembly checks](results/cng_time_grid/assembly_verification.json)
+replay shared spectra and connected projection through the actual C
+kernels. These are accuracy runs. Complete-pilot quiet timings remain
+pending and are not inferred from these elapsed times.
+
+### Reproduce the pilot
+
+Use the previously exported `work/lsst_y1` inputs and fresh output
+directories. Finish each calculation before starting the next.
+
+**Step :one:**: in the **CoCoA terminal**, calculate all three components.
+
+```bash
+python ../../tjcovbenchmark/scripts/run_cocoa_complete.py ../../tjcovbenchmark/work/lsst_y1 --cocoa . --output ../../tjcovbenchmark/work/complete_cocoa
+```
+
+**Step :two:**: in the **TJPCov terminal**, calculate Gaussian and SSC.
+
+```bash
+python scripts/run_complete_native.py work/lsst_y1 --tjpcov ../TJPCov --components gaussian ssc --output work/complete_tj_base
+```
+
+**Step :three:**: calculate cNG with the explicit pilot sampling.
+
+```bash
+python scripts/run_complete_native.py work/lsst_y1 --tjpcov ../TJPCov --components cng --k-density 96 --a-refinement 2 --output work/complete_tj_cng
+```
+
+**Step :four:**: collect the complete matrices and figures.
+
+```bash
+python scripts/report_complete_covariance.py --tjpcov-base work/complete_tj_base --tjpcov-cng work/complete_tj_cng --cocoa work/complete_cocoa --output work/results/complete_fourier --figures work/figures/complete_fourier
 ```
 
 ## Galaxy-bias placement <a name="galaxy-bias"></a>

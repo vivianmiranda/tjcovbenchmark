@@ -70,7 +70,14 @@ The completed global dense-power production refresh is recorded in
 native CAMB anchors and installed power tables separately. Read it before
 rerunning or interpreting the older 1,500-node comparisons. All 63 refresh
 stages passed; the old 4h discrepancy is not a result for the new
-11,993-node baseline. Projected cNG and complete totals remain pending.
+11,993-node baseline. The subsequent shared-input cNG projection and
+complete 100x100 native Fourier pilot are recorded in
+[projected cNG and complete covariance](references/projected_cng_complete.md).
+Read that record before interpreting the complete figure: Gaussian is
+band-averaged, SSC/cNG are center-sampled, and its cNG sampling is an
+explicit 701-node pilot rather than CCL's default 1220-node grid. Quiet
+complete-pilot timings, full-survey and real-space comparisons remain
+pending.
 
 Run only one numerical job at a time unless concurrent correctness runs
 are explicitly authorized and their worker allocation is coordinated.

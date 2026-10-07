@@ -290,7 +290,10 @@ the separately measured full CoCoA LSST real-space time of 53.4 s versus
 not a TJPCov speed ratio. Do not copy OneCov's scaling behavior onto TJPCov.
 The trispectrum timing is an ingredient calculation, not projected cNG.
 
-Still pending: fair Gaussian timing (the existing native TJPCov path also
-generates spectra while CoCoA receives saved spectra), equivalent halo
-ingredient timing scopes, projected cNG and complete Fourier totals.
+The subsequent 2026-10-07 projected cNG and complete Fourier pilot are
+now measured; see [the complete-covariance record](projected_cng_complete.md).
+Still pending: quiet complete-pilot and Gaussian timing, equivalent halo
+ingredient timing scopes, full-survey and real-space comparisons. Time
+the new native-spectrum runners for a complete construction scope,
+not the earlier shared-spectrum Gaussian assembly diagnostic.
 Native real-space SSC/cNG remain absent from the inspected checkout.
