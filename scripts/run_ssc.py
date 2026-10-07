@@ -38,12 +38,14 @@ def main():
                         help="multiply CCL N_K density; nodes need not nest")
     parser.add_argument("--timeout", type=int, default=600,
                         help="Unix wall-time limit in seconds (default: 600)")
+    parser.add_argument("--timing", action="store_true",
+                        help="record first-use compute time on a quiet machine")
     args = parser.parse_args()
     if args.timeout <= 0:
         parser.error("--timeout must be positive")
     threads = require_thread_environment()
-    if threads > 6:
-        parser.error("The authorized laptop pilot permits at most six threads")
+    if threads > (8 if args.timing else 6):
+        parser.error("Use at most six accuracy workers or eight timing workers")
     output = args.output.resolve()
     if output.exists():
         parser.error("Choose a fresh output directory; never reuse SSC caches")
@@ -97,6 +99,7 @@ def main():
     if sha256(ccl._ccllib.__file__) != gaussian["ccl_binary_sha256"]:
         raise ValueError("CCL binary changed since the Gaussian input export")
 
+    setup_started = perf_counter()
     data = np.load(inputs / "inputs.npz", allow_pickle=False)
     cosmos = manifest["cosmology"]
     h = cosmos["H0"] / 100
@@ -186,6 +189,7 @@ def main():
     }
     native = FourierSSCHaloModelFsky(configuration)
     print(f"Computing five-point SSC with {args.integration_method}", flush=True)
+    setup_seconds = perf_counter() - setup_started
     started = perf_counter()
     matrix = native.get_covariance_block(
         (source, source), (source, source), include_b_modes=False)
@@ -267,6 +271,11 @@ def main():
         "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
         "background": "native CCL; only CAMB power is supplied",
         "native_block_seconds_diagnostic_only": elapsed,
+        "timing": ({"setup_seconds": setup_seconds,
+                    "construction_seconds": elapsed,
+                    "scope": "First native SSC block, including halo response, "
+                             "survey variance and projection; no disk-cache hit"}
+                   if args.timing else None),
         "threads": threads, "timeout_seconds": args.timeout,
         "positive_diagonal": positive_diagonal,
         "symmetric_within_relative_1e-10": symmetric,

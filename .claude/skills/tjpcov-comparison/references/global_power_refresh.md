@@ -245,3 +245,52 @@ No projected cNG, complete Fourier G/SSC/cNG/total or real-space comparison
 becomes complete merely because these 63 ingredient/pilot stages pass.
 Those pending scopes must remain explicit. The README does not need the
 historical 1,500-node argument or internal campaign execution details.
+
+## Quiet component timings, 2026-10-07
+
+The user requested timing tables and scaling warnings comparable to the
+OneCov README. The missing timing phase is now completed for the two
+refined SSC pilots and separated matter trispectra. No full TJPCov
+G+SSC+cNG or real-space measurement has been added.
+
+`scripts/time_components.py` launches six existing cases three times in
+fresh processes, with alternating code order between rounds. It uses
+eight OpenMP threads, BLAS one, new output/cache directories and a
+600-second hard limit per child. No other numerical/compiler job was
+active; the M2 Pro/macOS 13.7.5 preflight found 90.41% idle CPU. The local
+execution journal is `work/component_timings_20261007/timing.json`.
+
+All 18 processes passed. `collect_component_timings.py` checked every
+scientific setting and native source/binary fingerprint against the
+accuracy archives (allowing new commit labels, thread counts and timer
+metadata). Every saved scientific array also agrees bitwise in dtype,
+shape and bytes. Updated CoCoA core/LSST commit labels are recorded;
+the compiled interface fingerprint is unchanged.
+
+| Scope | CoCoA mean ± sample scatter (s) | TJPCov/CCL (s) |
+| --- | ---: | ---: |
+| Low-ell 5x5 SSC | 2.798584 ± 0.014324 | 5.656082 ± 0.009809 |
+| High-ell 5x5 SSC | 2.803663 ± 0.010699 | 5.667027 ± 0.029702 |
+| Five matter terms, 45 pairs, three redshifts | 0.159405 ± 0.006791 | 0.164755 ± 0.000545 |
+
+First-use halo tables are included. CoCoA SSC includes geometry, response,
+cap variance and projection. TJPCov SSC times its unmodified native block
+call, including its small compressed cache write. Benchmark exports and
+extra diagnostics are excluded. The original runner's generic exclusion
+of file writing was corrected in the publication scope after inspecting
+that native cache write; no measurement was altered. The executed runner
+is preserved and hash-checked in the work folder. Setup includes CAMB in
+CoCoA but saved-table installation in CCL; do not compare those as equal
+work. These native models retain their documented physical differences.
+
+`results/component_timings_20261007.json` contains all samples, hashes,
+settings and peak memory. The README now gives tables and a warning with
+the separately measured full CoCoA LSST real-space time of 53.4 s versus
+48.0 s for its source-bin pilot. That 1.11 ratio is a CoCoA reuse example,
+not a TJPCov speed ratio. Do not copy OneCov's scaling behavior onto TJPCov.
+The trispectrum timing is an ingredient calculation, not projected cNG.
+
+Still pending: fair Gaussian timing (the existing native TJPCov path also
+generates spectra while CoCoA receives saved spectra), equivalent halo
+ingredient timing scopes, projected cNG and complete Fourier totals.
+Native real-space SSC/cNG remain absent from the inspected checkout.

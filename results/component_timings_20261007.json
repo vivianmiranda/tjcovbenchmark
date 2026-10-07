@@ -1,0 +1,2325 @@
+{
+  "schema": "tjpcov-component-timings-v1",
+  "status": "completed",
+  "threads": 8,
+  "repeats": 3,
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "runner_sha256": "591f01e6a63eba5b94b30bb6bb1bd513d792d1b1cd39c12f72e236d8dda57168",
+  "policy": "Sequential fresh processes, first-use tables included; no disk-cache hits; benchmark exports and plotting excluded; the native TJPCov SSC block-cache write is included",
+  "environment": {
+    "OMP_NUM_THREADS": "8",
+    "OMP_PROC_BIND": "disabled",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  },
+  "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+  "runs": [
+    {
+      "case": "cocoa_ssc_low_i2",
+      "repeat": 1,
+      "command": [
+        "<workspace>/cocoa/Cocoa/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_cocoa_ssc.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/gaussian_shear_low",
+        "--cocoa",
+        "<workspace>/cocoa/Cocoa",
+        "--accuracy-boost",
+        "1",
+        "--integration-accuracy",
+        "2",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/cocoa_ssc_low_i2_r1",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/cocoa_ssc_low_i2_r1.log",
+      "status": "completed",
+      "script_sha256": "f552f23a65c2cba2defab54e76eb81a7dcd9210f13b3918eee052c3fc5396f17",
+      "returncode": 0,
+      "manifest_sha256": "92729e06c34ac657a8e0fb1d15d0ebd6cfc0a16c7c92228579e09d58747d8aba",
+      "archive_manifest_sha256": "2fc4a12d556dd082317333e3bc544943c32d70ec69bcf54a3579c9ccb0776e6e",
+      "peak_memory_bytes": 2967011328,
+      "timing": {
+        "setup_seconds": 0.501937041990459,
+        "construction_seconds": 2.814729709061794,
+        "scope": "First SSC construction, including shell geometry, halo response, cap variance and projection"
+      },
+      "accuracy_checks": {
+        "ssc.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "ell",
+            "ssc",
+            "geometry",
+            "window",
+            "response",
+            "variance",
+            "shell"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "ssc.npz": "c511a5169420dae4cbea67ea3b896dcd69d9218750c964f9b0e891ba582c4c2c"
+      }
+    },
+    {
+      "case": "ssc_low_a16",
+      "repeat": 1,
+      "command": [
+        "<workspace>/tjcovbenchmark/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_ssc.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/gaussian_shear_low",
+        "--tjpcov",
+        "<workspace>/TJPCov",
+        "--match-power-a-range",
+        "--a-refinement",
+        "16",
+        "--k-refinement",
+        "1",
+        "--integration-method",
+        "qag_quad",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/ssc_low_a16_r1",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/ssc_low_a16_r1.log",
+      "status": "completed",
+      "script_sha256": "b7a1ac4d46c4116a979fd4017c64bdd2b68b75db5cb063bb09896ab720a0b06c",
+      "returncode": 0,
+      "manifest_sha256": "ded21510c4fb1f91cb991a8aaad40bbbecfb20fb6cfe6105fd7868707b2f0a3d",
+      "archive_manifest_sha256": "968ac8e8e8c86c026541556f0c85ba7f673e8ecb2a151d6604087d896ce3f87f",
+      "peak_memory_bytes": 524861440,
+      "timing": {
+        "setup_seconds": 0.7754303329857066,
+        "construction_seconds": 5.644756291992962,
+        "scope": "First native SSC block, including halo response, survey variance and projection; no disk-cache hit"
+      },
+      "accuracy_checks": {
+        "ssc.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "ell",
+            "ssc",
+            "window_a",
+            "disc_variance",
+            "native_response_a",
+            "native_response_lk",
+            "base_response_a",
+            "base_response_lk"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "ssc.npz": "c8a183536bb9f71ed1d509e78a7dd30d155d28a68768d3f4b16d70b53ee633bc"
+      }
+    },
+    {
+      "case": "cocoa_ssc_high_i2",
+      "repeat": 1,
+      "command": [
+        "<workspace>/cocoa/Cocoa/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_cocoa_ssc.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/gaussian_shear_high",
+        "--cocoa",
+        "<workspace>/cocoa/Cocoa",
+        "--accuracy-boost",
+        "1",
+        "--integration-accuracy",
+        "2",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/cocoa_ssc_high_i2_r1",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/cocoa_ssc_high_i2_r1.log",
+      "status": "completed",
+      "script_sha256": "f552f23a65c2cba2defab54e76eb81a7dcd9210f13b3918eee052c3fc5396f17",
+      "returncode": 0,
+      "manifest_sha256": "dc50e93ebe738cc671d0d434e7b1842614236701069d5fe0b891dbbbb51bf473",
+      "archive_manifest_sha256": "62bda8afba1e8b4ce290d0e5d4b932ad5085b465ff25ee375ee7c6d3c149357f",
+      "peak_memory_bytes": 2985672704,
+      "timing": {
+        "setup_seconds": 0.4889119169674814,
+        "construction_seconds": 2.792445290950127,
+        "scope": "First SSC construction, including shell geometry, halo response, cap variance and projection"
+      },
+      "accuracy_checks": {
+        "ssc.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "ell",
+            "ssc",
+            "geometry",
+            "window",
+            "response",
+            "variance",
+            "shell"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "ssc.npz": "990b0022530cec9e8c543d98991cc50bb90cec58c85728ce73bc53f005cb81e4"
+      }
+    },
+    {
+      "case": "ssc_high_a16",
+      "repeat": 1,
+      "command": [
+        "<workspace>/tjcovbenchmark/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_ssc.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/gaussian_shear_high",
+        "--tjpcov",
+        "<workspace>/TJPCov",
+        "--match-power-a-range",
+        "--a-refinement",
+        "16",
+        "--k-refinement",
+        "1",
+        "--integration-method",
+        "qag_quad",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/ssc_high_a16_r1",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/ssc_high_a16_r1.log",
+      "status": "completed",
+      "script_sha256": "b7a1ac4d46c4116a979fd4017c64bdd2b68b75db5cb063bb09896ab720a0b06c",
+      "returncode": 0,
+      "manifest_sha256": "064e266767b28932dd6db159b130ee43c27a87783fd126121911fc7a5062dbf6",
+      "archive_manifest_sha256": "5869ac7ce2791dac02898c9ab65feaad8be23df315992af979a2f94e64ef0394",
+      "peak_memory_bytes": 513998848,
+      "timing": {
+        "setup_seconds": 0.7644631249131635,
+        "construction_seconds": 5.641259249998257,
+        "scope": "First native SSC block, including halo response, survey variance and projection; no disk-cache hit"
+      },
+      "accuracy_checks": {
+        "ssc.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "ell",
+            "ssc",
+            "window_a",
+            "disc_variance",
+            "native_response_a",
+            "native_response_lk",
+            "base_response_a",
+            "base_response_lk"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "ssc.npz": "65e59b5ccb9ed98d9462dd51fdcf152f52e694ef947377597d87d91ca4ecb441"
+      }
+    },
+    {
+      "case": "trispectrum_cocoa_i2",
+      "repeat": 1,
+      "command": [
+        "<workspace>/cocoa/Cocoa/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/export_cocoa_trispectrum.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "--cocoa",
+        "<workspace>/cocoa/Cocoa",
+        "--integration-accuracy",
+        "2",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/trispectrum_cocoa_i2_r1",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/trispectrum_cocoa_i2_r1.log",
+      "status": "completed",
+      "script_sha256": "7232ad55a6920e298adf348b3c1d2e6d18cb47836213d866ebc3dd782784e7b6",
+      "returncode": 0,
+      "manifest_sha256": "5829e3c5bc982ae5e046f4f128d27259107cb018120f9ae3a49a6a44242fd6fd",
+      "archive_manifest_sha256": "8596963d795ead2634da1755067035c9363e159538e2bcd540aa636bf1695f25",
+      "peak_memory_bytes": 453246976,
+      "timing": {
+        "setup_seconds": 0.4910324999364093,
+        "construction_seconds": 0.15544333297293633,
+        "scope": "All five native halo terms at nine k nodes and three redshifts; includes first halo tables, power lookups and angular averages; no projection"
+      },
+      "accuracy_checks": {
+        "trispectrum.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "k",
+            "redshift",
+            "first",
+            "second",
+            "corner",
+            "weight",
+            "internal_k",
+            "terms",
+            "moments",
+            "i11",
+            "power",
+            "internal_power",
+            "tree"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "trispectrum.npz": "eafb91418e8a3336d0cf595899078a61480f9016da1e6fba58314c4c817f2777"
+      }
+    },
+    {
+      "case": "trispectrum_native_m255",
+      "repeat": 1,
+      "command": [
+        "<workspace>/tjcovbenchmark/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_trispectrum.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/trispectrum_cocoa_i0",
+        "--tjpcov",
+        "<workspace>/TJPCov",
+        "--mass-refinement",
+        "2",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/trispectrum_native_m255_r1",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/trispectrum_native_m255_r1.log",
+      "status": "completed",
+      "script_sha256": "16b1fc2b1578446904963e98a46cd92ea8b351b00ed00ccd166098cc466e16ec",
+      "returncode": 0,
+      "manifest_sha256": "cd2eb0ff1cbbe805afade525eaa5815bea421764fbd9238706d841387a3dff4c",
+      "archive_manifest_sha256": "b19c0af4b4c9acddd09ad3059085770a121ebd358feecf33db323c7454b1eb3b",
+      "peak_memory_bytes": 292126720,
+      "timing": {
+        "setup_seconds": 0.7287261669989675,
+        "construction_seconds": 0.16421120800077915,
+        "scope": "All five native CCL halo terms at nine k nodes and three redshifts; includes first halo tables; excludes extra ingredient exports and projection"
+      },
+      "accuracy_checks": {
+        "trispectrum.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "k",
+            "redshift",
+            "first",
+            "second",
+            "moments",
+            "i11",
+            "power",
+            "internal_power",
+            "terms"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "trispectrum.npz": "77292f1e15775da96d39770a5fb7e6ec51c5060cfa46f9e4bcdb6ea0dda24d58"
+      }
+    },
+    {
+      "case": "trispectrum_native_m255",
+      "repeat": 2,
+      "command": [
+        "<workspace>/tjcovbenchmark/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_trispectrum.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/trispectrum_cocoa_i0",
+        "--tjpcov",
+        "<workspace>/TJPCov",
+        "--mass-refinement",
+        "2",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/trispectrum_native_m255_r2",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/trispectrum_native_m255_r2.log",
+      "status": "completed",
+      "script_sha256": "16b1fc2b1578446904963e98a46cd92ea8b351b00ed00ccd166098cc466e16ec",
+      "returncode": 0,
+      "manifest_sha256": "ebaf0544c0fa919b1ef88e7ac311f9c8fccc3612c61b04cafbbfbbe71b768cfd",
+      "archive_manifest_sha256": "b19c0af4b4c9acddd09ad3059085770a121ebd358feecf33db323c7454b1eb3b",
+      "peak_memory_bytes": 299810816,
+      "timing": {
+        "setup_seconds": 0.7283298330148682,
+        "construction_seconds": 0.16530212492216378,
+        "scope": "All five native CCL halo terms at nine k nodes and three redshifts; includes first halo tables; excludes extra ingredient exports and projection"
+      },
+      "accuracy_checks": {
+        "trispectrum.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "k",
+            "redshift",
+            "first",
+            "second",
+            "moments",
+            "i11",
+            "power",
+            "internal_power",
+            "terms"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "trispectrum.npz": "77292f1e15775da96d39770a5fb7e6ec51c5060cfa46f9e4bcdb6ea0dda24d58"
+      }
+    },
+    {
+      "case": "trispectrum_cocoa_i2",
+      "repeat": 2,
+      "command": [
+        "<workspace>/cocoa/Cocoa/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/export_cocoa_trispectrum.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "--cocoa",
+        "<workspace>/cocoa/Cocoa",
+        "--integration-accuracy",
+        "2",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/trispectrum_cocoa_i2_r2",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/trispectrum_cocoa_i2_r2.log",
+      "status": "completed",
+      "script_sha256": "7232ad55a6920e298adf348b3c1d2e6d18cb47836213d866ebc3dd782784e7b6",
+      "returncode": 0,
+      "manifest_sha256": "b8fe18f893d3ae13d881943020e996f83c5596db4ed389c15f361eba525ea519",
+      "archive_manifest_sha256": "8596963d795ead2634da1755067035c9363e159538e2bcd540aa636bf1695f25",
+      "peak_memory_bytes": 432701440,
+      "timing": {
+        "setup_seconds": 0.4920142909977585,
+        "construction_seconds": 0.1555262920446694,
+        "scope": "All five native halo terms at nine k nodes and three redshifts; includes first halo tables, power lookups and angular averages; no projection"
+      },
+      "accuracy_checks": {
+        "trispectrum.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "k",
+            "redshift",
+            "first",
+            "second",
+            "corner",
+            "weight",
+            "internal_k",
+            "terms",
+            "moments",
+            "i11",
+            "power",
+            "internal_power",
+            "tree"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "trispectrum.npz": "eafb91418e8a3336d0cf595899078a61480f9016da1e6fba58314c4c817f2777"
+      }
+    },
+    {
+      "case": "ssc_high_a16",
+      "repeat": 2,
+      "command": [
+        "<workspace>/tjcovbenchmark/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_ssc.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/gaussian_shear_high",
+        "--tjpcov",
+        "<workspace>/TJPCov",
+        "--match-power-a-range",
+        "--a-refinement",
+        "16",
+        "--k-refinement",
+        "1",
+        "--integration-method",
+        "qag_quad",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/ssc_high_a16_r2",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/ssc_high_a16_r2.log",
+      "status": "completed",
+      "script_sha256": "b7a1ac4d46c4116a979fd4017c64bdd2b68b75db5cb063bb09896ab720a0b06c",
+      "returncode": 0,
+      "manifest_sha256": "648d31496e140250854a34ae701821dd0e7b69e60c1fcadd1843afc16c573fae",
+      "archive_manifest_sha256": "5869ac7ce2791dac02898c9ab65feaad8be23df315992af979a2f94e64ef0394",
+      "peak_memory_bytes": 553648128,
+      "timing": {
+        "setup_seconds": 0.7404080829583108,
+        "construction_seconds": 5.660308791906573,
+        "scope": "First native SSC block, including halo response, survey variance and projection; no disk-cache hit"
+      },
+      "accuracy_checks": {
+        "ssc.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "ell",
+            "ssc",
+            "window_a",
+            "disc_variance",
+            "native_response_a",
+            "native_response_lk",
+            "base_response_a",
+            "base_response_lk"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "ssc.npz": "65e59b5ccb9ed98d9462dd51fdcf152f52e694ef947377597d87d91ca4ecb441"
+      }
+    },
+    {
+      "case": "cocoa_ssc_high_i2",
+      "repeat": 2,
+      "command": [
+        "<workspace>/cocoa/Cocoa/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_cocoa_ssc.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/gaussian_shear_high",
+        "--cocoa",
+        "<workspace>/cocoa/Cocoa",
+        "--accuracy-boost",
+        "1",
+        "--integration-accuracy",
+        "2",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/cocoa_ssc_high_i2_r2",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/cocoa_ssc_high_i2_r2.log",
+      "status": "completed",
+      "script_sha256": "f552f23a65c2cba2defab54e76eb81a7dcd9210f13b3918eee052c3fc5396f17",
+      "returncode": 0,
+      "manifest_sha256": "fafeca8f8a1f380702e6ff92df1a2e6d357d7582fdbbbc96ba6a162c494ad498",
+      "archive_manifest_sha256": "62bda8afba1e8b4ce290d0e5d4b932ad5085b465ff25ee375ee7c6d3c149357f",
+      "peak_memory_bytes": 2959130624,
+      "timing": {
+        "setup_seconds": 0.48675749998074025,
+        "construction_seconds": 2.8137531669344753,
+        "scope": "First SSC construction, including shell geometry, halo response, cap variance and projection"
+      },
+      "accuracy_checks": {
+        "ssc.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "ell",
+            "ssc",
+            "geometry",
+            "window",
+            "response",
+            "variance",
+            "shell"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "ssc.npz": "990b0022530cec9e8c543d98991cc50bb90cec58c85728ce73bc53f005cb81e4"
+      }
+    },
+    {
+      "case": "ssc_low_a16",
+      "repeat": 2,
+      "command": [
+        "<workspace>/tjcovbenchmark/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_ssc.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/gaussian_shear_low",
+        "--tjpcov",
+        "<workspace>/TJPCov",
+        "--match-power-a-range",
+        "--a-refinement",
+        "16",
+        "--k-refinement",
+        "1",
+        "--integration-method",
+        "qag_quad",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/ssc_low_a16_r2",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/ssc_low_a16_r2.log",
+      "status": "completed",
+      "script_sha256": "b7a1ac4d46c4116a979fd4017c64bdd2b68b75db5cb063bb09896ab720a0b06c",
+      "returncode": 0,
+      "manifest_sha256": "58c39b6dd022c825deb6f883da65cfa318dba57d0314815f216c2f4eafc50fb9",
+      "archive_manifest_sha256": "968ac8e8e8c86c026541556f0c85ba7f673e8ecb2a151d6604087d896ce3f87f",
+      "peak_memory_bytes": 538116096,
+      "timing": {
+        "setup_seconds": 0.7497233339818195,
+        "construction_seconds": 5.661858334089629,
+        "scope": "First native SSC block, including halo response, survey variance and projection; no disk-cache hit"
+      },
+      "accuracy_checks": {
+        "ssc.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "ell",
+            "ssc",
+            "window_a",
+            "disc_variance",
+            "native_response_a",
+            "native_response_lk",
+            "base_response_a",
+            "base_response_lk"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "ssc.npz": "c8a183536bb9f71ed1d509e78a7dd30d155d28a68768d3f4b16d70b53ee633bc"
+      }
+    },
+    {
+      "case": "cocoa_ssc_low_i2",
+      "repeat": 2,
+      "command": [
+        "<workspace>/cocoa/Cocoa/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_cocoa_ssc.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/gaussian_shear_low",
+        "--cocoa",
+        "<workspace>/cocoa/Cocoa",
+        "--accuracy-boost",
+        "1",
+        "--integration-accuracy",
+        "2",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/cocoa_ssc_low_i2_r2",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/cocoa_ssc_low_i2_r2.log",
+      "status": "completed",
+      "script_sha256": "f552f23a65c2cba2defab54e76eb81a7dcd9210f13b3918eee052c3fc5396f17",
+      "returncode": 0,
+      "manifest_sha256": "b6eee493c48303698ab9b4b552139995c58bc3ad8fe24f74b82521fd703a9528",
+      "archive_manifest_sha256": "2fc4a12d556dd082317333e3bc544943c32d70ec69bcf54a3579c9ccb0776e6e",
+      "peak_memory_bytes": 2983411712,
+      "timing": {
+        "setup_seconds": 0.4864873340120539,
+        "construction_seconds": 2.793619000003673,
+        "scope": "First SSC construction, including shell geometry, halo response, cap variance and projection"
+      },
+      "accuracy_checks": {
+        "ssc.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "ell",
+            "ssc",
+            "geometry",
+            "window",
+            "response",
+            "variance",
+            "shell"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "ssc.npz": "c511a5169420dae4cbea67ea3b896dcd69d9218750c964f9b0e891ba582c4c2c"
+      }
+    },
+    {
+      "case": "cocoa_ssc_low_i2",
+      "repeat": 3,
+      "command": [
+        "<workspace>/cocoa/Cocoa/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_cocoa_ssc.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/gaussian_shear_low",
+        "--cocoa",
+        "<workspace>/cocoa/Cocoa",
+        "--accuracy-boost",
+        "1",
+        "--integration-accuracy",
+        "2",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/cocoa_ssc_low_i2_r3",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/cocoa_ssc_low_i2_r3.log",
+      "status": "completed",
+      "script_sha256": "f552f23a65c2cba2defab54e76eb81a7dcd9210f13b3918eee052c3fc5396f17",
+      "returncode": 0,
+      "manifest_sha256": "97082717be30c6a1013b3f9531329e2f0d02a1c75c89de7f0854bf4630359e93",
+      "archive_manifest_sha256": "2fc4a12d556dd082317333e3bc544943c32d70ec69bcf54a3579c9ccb0776e6e",
+      "peak_memory_bytes": 2965684224,
+      "timing": {
+        "setup_seconds": 0.48576783400494605,
+        "construction_seconds": 2.7874039160087705,
+        "scope": "First SSC construction, including shell geometry, halo response, cap variance and projection"
+      },
+      "accuracy_checks": {
+        "ssc.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "ell",
+            "ssc",
+            "geometry",
+            "window",
+            "response",
+            "variance",
+            "shell"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "ssc.npz": "c511a5169420dae4cbea67ea3b896dcd69d9218750c964f9b0e891ba582c4c2c"
+      }
+    },
+    {
+      "case": "ssc_low_a16",
+      "repeat": 3,
+      "command": [
+        "<workspace>/tjcovbenchmark/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_ssc.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/gaussian_shear_low",
+        "--tjpcov",
+        "<workspace>/TJPCov",
+        "--match-power-a-range",
+        "--a-refinement",
+        "16",
+        "--k-refinement",
+        "1",
+        "--integration-method",
+        "qag_quad",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/ssc_low_a16_r3",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/ssc_low_a16_r3.log",
+      "status": "completed",
+      "script_sha256": "b7a1ac4d46c4116a979fd4017c64bdd2b68b75db5cb063bb09896ab720a0b06c",
+      "returncode": 0,
+      "manifest_sha256": "0d501a074124356113a29938e8be44fd92f5bebadff5b8d7809ae7ccd4e261d1",
+      "archive_manifest_sha256": "968ac8e8e8c86c026541556f0c85ba7f673e8ecb2a151d6604087d896ce3f87f",
+      "peak_memory_bytes": 546652160,
+      "timing": {
+        "setup_seconds": 0.744694666005671,
+        "construction_seconds": 5.661632250063121,
+        "scope": "First native SSC block, including halo response, survey variance and projection; no disk-cache hit"
+      },
+      "accuracy_checks": {
+        "ssc.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "ell",
+            "ssc",
+            "window_a",
+            "disc_variance",
+            "native_response_a",
+            "native_response_lk",
+            "base_response_a",
+            "base_response_lk"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "ssc.npz": "c8a183536bb9f71ed1d509e78a7dd30d155d28a68768d3f4b16d70b53ee633bc"
+      }
+    },
+    {
+      "case": "cocoa_ssc_high_i2",
+      "repeat": 3,
+      "command": [
+        "<workspace>/cocoa/Cocoa/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_cocoa_ssc.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/gaussian_shear_high",
+        "--cocoa",
+        "<workspace>/cocoa/Cocoa",
+        "--accuracy-boost",
+        "1",
+        "--integration-accuracy",
+        "2",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/cocoa_ssc_high_i2_r3",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/cocoa_ssc_high_i2_r3.log",
+      "status": "completed",
+      "script_sha256": "f552f23a65c2cba2defab54e76eb81a7dcd9210f13b3918eee052c3fc5396f17",
+      "returncode": 0,
+      "manifest_sha256": "b49f53cd86151273f338cd1370ce4ccdf67e13ce8e3e0c1652ebacc7d0c25d04",
+      "archive_manifest_sha256": "62bda8afba1e8b4ce290d0e5d4b932ad5085b465ff25ee375ee7c6d3c149357f",
+      "peak_memory_bytes": 2958557184,
+      "timing": {
+        "setup_seconds": 0.4864013328915462,
+        "construction_seconds": 2.8047908330336213,
+        "scope": "First SSC construction, including shell geometry, halo response, cap variance and projection"
+      },
+      "accuracy_checks": {
+        "ssc.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "ell",
+            "ssc",
+            "geometry",
+            "window",
+            "response",
+            "variance",
+            "shell"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "ssc.npz": "990b0022530cec9e8c543d98991cc50bb90cec58c85728ce73bc53f005cb81e4"
+      }
+    },
+    {
+      "case": "ssc_high_a16",
+      "repeat": 3,
+      "command": [
+        "<workspace>/tjcovbenchmark/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_ssc.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/gaussian_shear_high",
+        "--tjpcov",
+        "<workspace>/TJPCov",
+        "--match-power-a-range",
+        "--a-refinement",
+        "16",
+        "--k-refinement",
+        "1",
+        "--integration-method",
+        "qag_quad",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/ssc_high_a16_r3",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/ssc_high_a16_r3.log",
+      "status": "completed",
+      "script_sha256": "b7a1ac4d46c4116a979fd4017c64bdd2b68b75db5cb063bb09896ab720a0b06c",
+      "returncode": 0,
+      "manifest_sha256": "a11de3ad8cfc70cce7e7f7a4f554b900794009ba5d6b3713a2b144cccb9ca94f",
+      "archive_manifest_sha256": "5869ac7ce2791dac02898c9ab65feaad8be23df315992af979a2f94e64ef0394",
+      "peak_memory_bytes": 564068352,
+      "timing": {
+        "setup_seconds": 0.8207573749823496,
+        "construction_seconds": 5.699512624996714,
+        "scope": "First native SSC block, including halo response, survey variance and projection; no disk-cache hit"
+      },
+      "accuracy_checks": {
+        "ssc.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "ell",
+            "ssc",
+            "window_a",
+            "disc_variance",
+            "native_response_a",
+            "native_response_lk",
+            "base_response_a",
+            "base_response_lk"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "ssc.npz": "65e59b5ccb9ed98d9462dd51fdcf152f52e694ef947377597d87d91ca4ecb441"
+      }
+    },
+    {
+      "case": "trispectrum_cocoa_i2",
+      "repeat": 3,
+      "command": [
+        "<workspace>/cocoa/Cocoa/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/export_cocoa_trispectrum.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "--cocoa",
+        "<workspace>/cocoa/Cocoa",
+        "--integration-accuracy",
+        "2",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/trispectrum_cocoa_i2_r3",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/trispectrum_cocoa_i2_r3.log",
+      "status": "completed",
+      "script_sha256": "7232ad55a6920e298adf348b3c1d2e6d18cb47836213d866ebc3dd782784e7b6",
+      "returncode": 0,
+      "manifest_sha256": "315f72156e8b0586881d7cb7afe46e89ac6c3657aadbcdbd216723705e50b163",
+      "archive_manifest_sha256": "8596963d795ead2634da1755067035c9363e159538e2bcd540aa636bf1695f25",
+      "peak_memory_bytes": 420675584,
+      "timing": {
+        "setup_seconds": 0.4874057499691844,
+        "construction_seconds": 0.1672464159782976,
+        "scope": "All five native halo terms at nine k nodes and three redshifts; includes first halo tables, power lookups and angular averages; no projection"
+      },
+      "accuracy_checks": {
+        "trispectrum.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "k",
+            "redshift",
+            "first",
+            "second",
+            "corner",
+            "weight",
+            "internal_k",
+            "terms",
+            "moments",
+            "i11",
+            "power",
+            "internal_power",
+            "tree"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "trispectrum.npz": "eafb91418e8a3336d0cf595899078a61480f9016da1e6fba58314c4c817f2777"
+      }
+    },
+    {
+      "case": "trispectrum_native_m255",
+      "repeat": 3,
+      "command": [
+        "<workspace>/tjcovbenchmark/.local/bin/python",
+        "<workspace>/tjcovbenchmark/scripts/run_trispectrum.py",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/lsst_y1",
+        "<workspace>/tjcovbenchmark/work/global_power_11993/trispectrum_cocoa_i0",
+        "--tjpcov",
+        "<workspace>/TJPCov",
+        "--mass-refinement",
+        "2",
+        "--output",
+        "<workspace>/tjcovbenchmark/work/component_timings_20261007/trispectrum_native_m255_r3",
+        "--timing"
+      ],
+      "log": "<workspace>/tjcovbenchmark/work/component_timings_20261007/trispectrum_native_m255_r3.log",
+      "status": "completed",
+      "script_sha256": "16b1fc2b1578446904963e98a46cd92ea8b351b00ed00ccd166098cc466e16ec",
+      "returncode": 0,
+      "manifest_sha256": "b42309b46d502228457562ed0dee907fc03f3b7595f7741016736f5f85328b19",
+      "archive_manifest_sha256": "b19c0af4b4c9acddd09ad3059085770a121ebd358feecf33db323c7454b1eb3b",
+      "peak_memory_bytes": 294141952,
+      "timing": {
+        "setup_seconds": 0.7271207079757005,
+        "construction_seconds": 0.16475074994377792,
+        "scope": "All five native CCL halo terms at nine k nodes and three redshifts; includes first halo tables; excludes extra ingredient exports and projection"
+      },
+      "accuracy_checks": {
+        "trispectrum.npz": {
+          "all_arrays_exact": true,
+          "arrays": [
+            "k",
+            "redshift",
+            "first",
+            "second",
+            "moments",
+            "i11",
+            "power",
+            "internal_power",
+            "terms"
+          ]
+        }
+      },
+      "all_arrays_bitwise_equal_to_accuracy_archive": true,
+      "scientific_files": {
+        "trispectrum.npz": "77292f1e15775da96d39770a5fb7e6ec51c5060cfa46f9e4bcdb6ea0dda24d58"
+      }
+    }
+  ],
+  "summary": {
+    "cocoa_ssc_low_i2": {
+      "setup_seconds": {
+        "seconds": [
+          0.501937041990459,
+          0.4864873340120539,
+          0.48576783400494605
+        ],
+        "mean": 0.49139740333581966,
+        "sample_stdev": 0.00913468156493879
+      },
+      "construction_seconds": {
+        "seconds": [
+          2.814729709061794,
+          2.793619000003673,
+          2.7874039160087705
+        ],
+        "mean": 2.798584208358079,
+        "sample_stdev": 0.014323571900757327
+      }
+    },
+    "ssc_low_a16": {
+      "setup_seconds": {
+        "seconds": [
+          0.7754303329857066,
+          0.7497233339818195,
+          0.744694666005671
+        ],
+        "mean": 0.7566161109910657,
+        "sample_stdev": 0.016486451630090326
+      },
+      "construction_seconds": {
+        "seconds": [
+          5.644756291992962,
+          5.661858334089629,
+          5.661632250063121
+        ],
+        "mean": 5.656082292048571,
+        "sample_stdev": 0.009809255142032746
+      }
+    },
+    "cocoa_ssc_high_i2": {
+      "setup_seconds": {
+        "seconds": [
+          0.4889119169674814,
+          0.48675749998074025,
+          0.4864013328915462
+        ],
+        "mean": 0.4873569166132559,
+        "sample_stdev": 0.0013583936561568477
+      },
+      "construction_seconds": {
+        "seconds": [
+          2.792445290950127,
+          2.8137531669344753,
+          2.8047908330336213
+        ],
+        "mean": 2.803663096972741,
+        "sample_stdev": 0.010698609078209626
+      }
+    },
+    "ssc_high_a16": {
+      "setup_seconds": {
+        "seconds": [
+          0.7644631249131635,
+          0.7404080829583108,
+          0.8207573749823496
+        ],
+        "mean": 0.7752095276179413,
+        "sample_stdev": 0.04123852641051818
+      },
+      "construction_seconds": {
+        "seconds": [
+          5.641259249998257,
+          5.660308791906573,
+          5.699512624996714
+        ],
+        "mean": 5.6670268889671815,
+        "sample_stdev": 0.029702079822203548
+      }
+    },
+    "trispectrum_cocoa_i2": {
+      "setup_seconds": {
+        "seconds": [
+          0.4910324999364093,
+          0.4920142909977585,
+          0.4874057499691844
+        ],
+        "mean": 0.49015084696778405,
+        "sample_stdev": 0.0024274774089220654
+      },
+      "construction_seconds": {
+        "seconds": [
+          0.15544333297293633,
+          0.1555262920446694,
+          0.1672464159782976
+        ],
+        "mean": 0.15940534699863443,
+        "sample_stdev": 0.006790691614980946
+      }
+    },
+    "trispectrum_native_m255": {
+      "setup_seconds": {
+        "seconds": [
+          0.7287261669989675,
+          0.7283298330148682,
+          0.7271207079757005
+        ],
+        "mean": 0.7280589026631787,
+        "sample_stdev": 0.0008363175894642609
+      },
+      "construction_seconds": {
+        "seconds": [
+          0.16421120800077915,
+          0.16530212492216378,
+          0.16475074994377792
+        ],
+        "mean": 0.16475469428890696,
+        "sample_stdev": 0.0005454691565383911
+      }
+    }
+  },
+  "journal_sha256": "487aa74068db445502c076c03ff99d678be11c36d7ffff742efc3f0c0079951f",
+  "scope_audit": "The original journal's generic file-writing exclusion was too broad. TJPCov writes a small SSC cache inside get_covariance_block; its full call is timed unchanged. This corrects the description, not the timings.",
+  "preflight": {
+    "observed_local_time": "2026-10-07 09:11:03",
+    "timezone": "America/New_York",
+    "hardware": "Apple M2 Pro",
+    "os": "macOS 13.7.5 (22H527)",
+    "cpu_idle_percent_before_launch": 90.41,
+    "process_check": "No other numerical or compiler process matched before launch; 18 fresh processes ran sequentially.",
+    "overlapping_numerical_jobs": false
+  },
+  "preflight_sha256": "2a96faf5531c772bcd42cecc028442919de546dd71b061d96471676a4a162dff",
+  "cases": {
+    "cocoa_ssc_low_i2": {
+      "schema": "cocoa-ssc-shear-v1",
+      "status": "completed",
+      "scope": "Native shear SSC at effective ell; no band averaging",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "gaussian_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+      "core": {
+        "commit": "959bb1d9fb54deafa6fe934c0327054bdede8a5e",
+        "status": ""
+      },
+      "lsst_y1": {
+        "commit": "c187522125986ad181985c39143aeebbaad50a61",
+        "status": ""
+      },
+      "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+      "script_sha256": "f552f23a65c2cba2defab54e76eb81a7dcd9210f13b3918eee052c3fc5396f17",
+      "threads": 8,
+      "settings": {
+        "cosmology": {
+          "omegam": 0.3,
+          "omegab": 0.05,
+          "H0": 70.0,
+          "ns": 0.965,
+          "As_1e9": 2.1,
+          "w": -1.0,
+          "w0pwa": -1.0,
+          "mnu": 0.0,
+          "AccuracyBoost": 1.0,
+          "CLAccuracyBoost": 1.0,
+          "CAMBAccuracyBoost": 1.0,
+          "kmax": 20.0,
+          "k_per_logint": 20,
+          "non_linear_emul": 2,
+          "lens_potential_accuracy": 1.0,
+          "halofit_version": "takahashi"
+        },
+        "lens_file": "data/lsst_y1_lens.nz",
+        "source_file": "data/lsst_y1_source.nz",
+        "photoz_interpolation": 1,
+        "photoz_zmid": 1,
+        "excluded_gammat": [],
+        "band_first": [
+          30,
+          42,
+          58,
+          80,
+          111,
+          153,
+          212,
+          294,
+          408,
+          565,
+          783,
+          1085,
+          1504,
+          2084,
+          2887
+        ],
+        "band_last": [
+          41,
+          57,
+          79,
+          110,
+          152,
+          211,
+          293,
+          407,
+          564,
+          782,
+          1084,
+          1503,
+          2083,
+          2886,
+          4000
+        ],
+        "lnm_edges": [
+          -92.10340371976183,
+          -82.89306334778566,
+          -73.68272297580947,
+          -64.47238260383328,
+          -55.2620422318571,
+          -46.05170185988092,
+          -36.841361487904734,
+          -27.63102111592855,
+          -18.420680743952367,
+          -9.210340371976184,
+          0.0,
+          9.210340371976184,
+          11.51292546497023,
+          13.815510557964274,
+          16.981565060831088,
+          20.1476195636979,
+          23.31367406656471,
+          26.479728569431526,
+          29.64578307229834,
+          32.81183757516515,
+          35.977892078031964,
+          39.14394658089878
+        ],
+        "area_deg2": 12300.0,
+        "lens_density_arcmin2": [
+          3.6,
+          3.6,
+          3.6,
+          3.6,
+          3.6
+        ],
+        "source_density_arcmin2": [
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0
+        ],
+        "sigma_e_component": [
+          0.26,
+          0.26,
+          0.26,
+          0.26,
+          0.26
+        ],
+        "bias": [
+          1.72716,
+          1.65168,
+          1.61423,
+          1.92886,
+          2.11633
+        ],
+        "source_bin": 0,
+        "theta_edges_arcmin": [
+          2.5,
+          3.135157300638495,
+          3.931684519898743,
+          4.93057977054716,
+          6.183257265604562,
+          7.754193663194464,
+          9.724246749491554,
+          12.194817275951436,
+          15.293068165060644,
+          19.1784697227408,
+          24.051007746530075,
+          30.16147700969869,
+          37.82438993799881,
+          47.4341649025257,
+          59.48542735753746,
+          74.5984687446338,
+          93.55117356047646,
+          117.31905790857074,
+          147.1254803624343,
+          184.50460954729266,
+          231.3803894494597,
+          290.1655668828209,
+          363.88587816263316,
+          456.3357870083319,
+          572.2737896727143,
+          717.6673398625871,
+          900.0
+        ],
+        "a_edges": [
+          0.2222222222222222,
+          0.3333333333333333,
+          0.4,
+          0.5,
+          0.5882352941176471,
+          0.7142857142857143,
+          0.8333333333333334,
+          0.9999900000999989
+        ],
+        "accuracy_boost": 1,
+        "accuracy_parameters": {
+          "non_gaussian_accuracyboost": 1,
+          "window_accuracyboost": 1,
+          "core_accuracyboost": 1,
+          "power_accuracyboost": 8,
+          "nonlimber_accuracyboost": 1,
+          "ell_max": 100000,
+          "mask_ell_max": 32768,
+          "ng_ell_intervals": 127,
+          "response_step": 5e-05,
+          "nonlimber_lmax": 1000,
+          "integration_accuracy": 2
+        },
+        "ell_max": 100000,
+        "nonlimber_lmax": 1000,
+        "nonlimber_nchi": 4097,
+        "mask_ell_max": 32768,
+        "ng_ell": [
+          2.0,
+          2.2175448391075405,
+          2.4540199810240115,
+          2.711072701620943,
+          2.99049361931564,
+          3.2942291684436062,
+          3.6243951580380873,
+          3.9832915104666125,
+          4.373418282593277,
+          4.797493081069478,
+          5.258469993067305,
+          5.759560164326276,
+          6.304254167859208,
+          6.896346319136704,
+          7.5399611071288,
+          8.23958192532129,
+          9.000082302845763,
+          9.826759853278155,
+          10.725373177591594,
+          11.702181978328102,
+          12.763990664422625,
+          13.918195750428918,
+          15.172837380328156,
+          16.536655334833014,
+          18.019149912331756,
+          19.630648107566405,
+          21.38237554904283,
+          23.286534696285745,
+          25.356389841657503,
+          27.6063595088596,
+          30.052116891761013,
+          32.71069903320619,
+          35.600625504337295,
+          38.74202741114634,
+          42.156787626910976,
+          45.86869322736732,
+          49.90360119047712,
+          54.28961851504632,
+          59.057298012894044,
+          64.23985113845201,
+          69.87337933835623,
+          75.99712553260282,
+          82.65374747907468,
+          89.88961492568436,
+          97.7551326200846,
+          106.30509142701517,
+          115.59904999915756,
+          125.7017496601996,
+          136.6835653901669,
+          148.62099605456785,
+          161.59719729226677,
+          175.70256077415857,
+          191.035343867739,
+          207.70235409378472,
+          225.8196931430422,
+          245.51356563571068,
+          266.9211582575077,
+          290.19159539634046,
+          315.48697793650496,
+          342.983512446615,
+          372.87273862713147,
+          405.362863567844,
+          440.680212109681,
+          479.07080341401354,
+          520.8020647217634,
+          566.1646942402934,
+          615.4746861348643,
+          669.0755317306752,
+          727.3406122589543,
+          790.6757998148769,
+          859.5222846454799,
+          934.3596484623203,
+          1015.7092051874664,
+          1104.1376324043104,
+          1200.2609188097215,
+          1304.748655165355,
+          1418.328698638669,
+          1541.7922430252722,
+          1675.9993301715688,
+          1821.884840989997,
+          1980.4650078000732,
+          2152.8444933598857,
+          2340.22408590032,
+          2543.9090637652525,
+          2765.318287925485,
+          3005.99408570446,
+          3267.612994565403,
+          3551.997440800598,
+          3861.1284344761684,
+          4197.159369064654,
+          4562.431021893223,
+          4959.487859899847,
+          5391.095764282759,
+          5860.261297512281,
+          6370.25264691828,
+          6924.622390745386,
+          7527.232245263273,
+          8182.279965319445,
+          8894.32858572257,
+          9668.338207150664,
+          10509.70054800323,
+          11424.27650288456,
+          12418.436969348406,
+          13499.10722730183,
+          14673.81518021322,
+          15950.74379417034,
+          17338.7881000775,
+          18847.61715606575,
+          20487.741401744297,
+          22270.585873479926,
+          24208.569790718473,
+          26315.193067744483,
+          28605.13035351482,
+          31094.333254644862,
+          33800.141453627846,
+          36741.40349633228,
+          39938.608090178146,
+          43414.02682760871,
+          47191.86932906553,
+          51298.45188618357,
+          55762.38077996964,
+          60614.751550950394,
+          65889.36560939619,
+          71622.96569452157,
+          77855.49182285718,
+          84630.3595087217,
+          91994.76219486505,
+          100000.0
+        ],
+        "nwindow": 16385,
+        "tree_npanel": 22,
+        "response_step": 5e-05,
+        "core_accuracyboost": 1,
+        "power_refinement": 8,
+        "integration_accuracy": 2,
+        "radial_nquad": 256,
+        "angle_nquad": 256,
+        "halo_mass_nquad": 256,
+        "tree_nquad": 256,
+        "gaussian": {
+          "nonlimber": false,
+          "ia": "none",
+          "A1": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "A2": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "B_TA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "minimum_correlation_eigenvalue": 0.0011966972889025619,
+      "max_scaled_asymmetry": 2.220446049250313e-16,
+      "timing_scope": "First native SSC construction"
+    },
+    "ssc_low_a16": {
+      "schema": "tjpcov-ssc-shear-v1",
+      "status": "completed",
+      "scope": "native SSC at five effective multipoles; not band averaged",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "gaussian_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
+      "input_manifest": {
+        "schema": "lsst-y1-tjpcov-inputs-v1",
+        "survey": "LSST Y1 forecast subset",
+        "source_bin_1based": 3,
+        "lens_bins_1based": [
+          1,
+          2
+        ],
+        "area_deg2": 12300.0,
+        "source_density_arcmin2": 2.0,
+        "sigma_e_component": 0.26,
+        "lens_density_arcmin2": [
+          3.6,
+          3.6
+        ],
+        "bias": [
+          1.72716,
+          1.65168
+        ],
+        "cosmology": {
+          "omegam": 0.3,
+          "omegab": 0.05,
+          "H0": 70.0,
+          "ns": 0.965,
+          "As_1e9": 2.1,
+          "w": -1.0,
+          "w0pwa": -1.0,
+          "mnu": 0.0,
+          "AccuracyBoost": 1.0,
+          "CLAccuracyBoost": 1.0,
+          "CAMBAccuracyBoost": 1.0,
+          "kmax": 20.0,
+          "k_per_logint": 20,
+          "non_linear_emul": 2,
+          "lens_potential_accuracy": 1.0,
+          "halofit_version": "takahashi"
+        },
+        "gaussian": {
+          "nonlimber": false,
+          "ia": "none",
+          "A1": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "A2": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "B_TA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "rsd": false,
+        "magnification": false,
+        "galaxy_bias": "linear",
+        "power_preparation": {
+          "method": "natural cubic ln(P) versus log10(k), at fixed z",
+          "accuracy_boost": 1,
+          "power_accuracyboost": 8,
+          "refinement": 8,
+          "native_k_nodes": 1500,
+          "installed_k_nodes": 11993,
+          "redshift_nodes": 140,
+          "power_tables": [
+            "linear",
+            "nonlinear",
+            "linear_cb"
+          ],
+          "original_nodes_retained_exactly": true,
+          "installed_tables_reproduced_exactly": true,
+          "native_archive": "camb_native_tables.npz",
+          "installed_archive": "camb_tables.npz",
+          "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+        },
+        "units": {
+          "k": "h/Mpc",
+          "power": "(Mpc/h)^3",
+          "nz": "z_mid then unrenormalized n(z)",
+          "power_axes": [
+            "redshift",
+            "wavenumber"
+          ]
+        },
+        "cocoa": {
+          "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+          "status": ""
+        },
+        "core": {
+          "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+          "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+        },
+        "lsst_y1": {
+          "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+          "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+        },
+        "threads": 6,
+        "camb_version": "1.6.7",
+        "camb_source": {
+          "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+          "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+        },
+        "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+        "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+        "files": {
+          "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+          "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+          "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+        }
+      },
+      "source_name": "source3",
+      "area_sr": 3.746794263376515,
+      "shape": [
+        5,
+        5
+      ],
+      "effective_ell": [
+        35.5,
+        49.0,
+        67.5,
+        93.0,
+        129.0
+      ],
+      "integration_method": "qag_quad",
+      "a_domain_control": {
+        "match_power_a_range": true,
+        "a_refinement": 16,
+        "original_A_SPLINE_MINLOG_PK": 0.01,
+        "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+        "A_SPLINE_MIN_PK": 0.1,
+        "A_SPLINE_NA_PK": 625,
+        "A_SPLINE_NLOG_PK": 161,
+        "input_a_min": 0.019611688566385566
+      },
+      "k_sampling": {
+        "k_refinement": 1,
+        "original_N_K": 167,
+        "N_K": 167,
+        "K_MIN_Mpc_inverse": 5e-05,
+        "K_MAX_Mpc_inverse": 1000.0,
+        "base_count": 1220,
+        "refined_count": 1220,
+        "nested_nodes_claimed": false
+      },
+      "halo_model": {
+        "mass_definition": "200m",
+        "mass_function": "Tinker08",
+        "bias": "Tinker10",
+        "concentration": "Duffy08",
+        "profile": "analytic NFW",
+        "number_count_legs": 0,
+        "response": "linear-power slope and amplitude plus normalized I12",
+        "hmc_defaults": {
+          "log10M_min": 8.0,
+          "log10M_max": 16.0,
+          "nM": 128,
+          "integration_method_M": "simpson"
+        }
+      },
+      "window": "CCL circular-disc transverse linear-power integral",
+      "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
+      "background": "native CCL; only CAMB power is supplied",
+      "threads": 8,
+      "timeout_seconds": 600,
+      "positive_diagonal": true,
+      "symmetric_within_relative_1e-10": true,
+      "minimum_ssc_correlation_eigenvalue": 0.0014593883353969724,
+      "max_asymmetry_over_peak": 5.3766976780182924e-17,
+      "tjpcov": {
+        "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+        "status": ""
+      },
+      "installed_source": {
+        "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+        "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+        "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+        "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+      },
+      "versions": {
+        "tjpcov": "0.5.2.dev9+g2f59302af",
+        "pyccl": "3.3.3",
+        "sacc": "2.4",
+        "numpy": "2.4.3",
+        "scipy": "1.17.1"
+      },
+      "python": "3.12.13",
+      "platform": "macOS-13.7.5-arm64-arm-64bit",
+      "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+      "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+      "script_sha256": "b7a1ac4d46c4116a979fd4017c64bdd2b68b75db5cb063bb09896ab720a0b06c"
+    },
+    "cocoa_ssc_high_i2": {
+      "schema": "cocoa-ssc-shear-v1",
+      "status": "completed",
+      "scope": "Native shear SSC at effective ell; no band averaging",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "gaussian_manifest_sha256": "74e7d3a4888795274305fc9846c35eadc11cccd0c872a05d382c587eb2fb9ae6",
+      "core": {
+        "commit": "959bb1d9fb54deafa6fe934c0327054bdede8a5e",
+        "status": ""
+      },
+      "lsst_y1": {
+        "commit": "c187522125986ad181985c39143aeebbaad50a61",
+        "status": ""
+      },
+      "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+      "script_sha256": "f552f23a65c2cba2defab54e76eb81a7dcd9210f13b3918eee052c3fc5396f17",
+      "threads": 8,
+      "settings": {
+        "cosmology": {
+          "omegam": 0.3,
+          "omegab": 0.05,
+          "H0": 70.0,
+          "ns": 0.965,
+          "As_1e9": 2.1,
+          "w": -1.0,
+          "w0pwa": -1.0,
+          "mnu": 0.0,
+          "AccuracyBoost": 1.0,
+          "CLAccuracyBoost": 1.0,
+          "CAMBAccuracyBoost": 1.0,
+          "kmax": 20.0,
+          "k_per_logint": 20,
+          "non_linear_emul": 2,
+          "lens_potential_accuracy": 1.0,
+          "halofit_version": "takahashi"
+        },
+        "lens_file": "data/lsst_y1_lens.nz",
+        "source_file": "data/lsst_y1_source.nz",
+        "photoz_interpolation": 1,
+        "photoz_zmid": 1,
+        "excluded_gammat": [],
+        "band_first": [
+          30,
+          42,
+          58,
+          80,
+          111,
+          153,
+          212,
+          294,
+          408,
+          565,
+          783,
+          1085,
+          1504,
+          2084,
+          2887
+        ],
+        "band_last": [
+          41,
+          57,
+          79,
+          110,
+          152,
+          211,
+          293,
+          407,
+          564,
+          782,
+          1084,
+          1503,
+          2083,
+          2886,
+          4000
+        ],
+        "lnm_edges": [
+          -92.10340371976183,
+          -82.89306334778566,
+          -73.68272297580947,
+          -64.47238260383328,
+          -55.2620422318571,
+          -46.05170185988092,
+          -36.841361487904734,
+          -27.63102111592855,
+          -18.420680743952367,
+          -9.210340371976184,
+          0.0,
+          9.210340371976184,
+          11.51292546497023,
+          13.815510557964274,
+          16.981565060831088,
+          20.1476195636979,
+          23.31367406656471,
+          26.479728569431526,
+          29.64578307229834,
+          32.81183757516515,
+          35.977892078031964,
+          39.14394658089878
+        ],
+        "area_deg2": 12300.0,
+        "lens_density_arcmin2": [
+          3.6,
+          3.6,
+          3.6,
+          3.6,
+          3.6
+        ],
+        "source_density_arcmin2": [
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0
+        ],
+        "sigma_e_component": [
+          0.26,
+          0.26,
+          0.26,
+          0.26,
+          0.26
+        ],
+        "bias": [
+          1.72716,
+          1.65168,
+          1.61423,
+          1.92886,
+          2.11633
+        ],
+        "source_bin": 0,
+        "theta_edges_arcmin": [
+          2.5,
+          3.135157300638495,
+          3.931684519898743,
+          4.93057977054716,
+          6.183257265604562,
+          7.754193663194464,
+          9.724246749491554,
+          12.194817275951436,
+          15.293068165060644,
+          19.1784697227408,
+          24.051007746530075,
+          30.16147700969869,
+          37.82438993799881,
+          47.4341649025257,
+          59.48542735753746,
+          74.5984687446338,
+          93.55117356047646,
+          117.31905790857074,
+          147.1254803624343,
+          184.50460954729266,
+          231.3803894494597,
+          290.1655668828209,
+          363.88587816263316,
+          456.3357870083319,
+          572.2737896727143,
+          717.6673398625871,
+          900.0
+        ],
+        "a_edges": [
+          0.2222222222222222,
+          0.3333333333333333,
+          0.4,
+          0.5,
+          0.5882352941176471,
+          0.7142857142857143,
+          0.8333333333333334,
+          0.9999900000999989
+        ],
+        "accuracy_boost": 1,
+        "accuracy_parameters": {
+          "non_gaussian_accuracyboost": 1,
+          "window_accuracyboost": 1,
+          "core_accuracyboost": 1,
+          "power_accuracyboost": 8,
+          "nonlimber_accuracyboost": 1,
+          "ell_max": 100000,
+          "mask_ell_max": 32768,
+          "ng_ell_intervals": 127,
+          "response_step": 5e-05,
+          "nonlimber_lmax": 1000,
+          "integration_accuracy": 2
+        },
+        "ell_max": 100000,
+        "nonlimber_lmax": 1000,
+        "nonlimber_nchi": 4097,
+        "mask_ell_max": 32768,
+        "ng_ell": [
+          2.0,
+          2.2175448391075405,
+          2.4540199810240115,
+          2.711072701620943,
+          2.99049361931564,
+          3.2942291684436062,
+          3.6243951580380873,
+          3.9832915104666125,
+          4.373418282593277,
+          4.797493081069478,
+          5.258469993067305,
+          5.759560164326276,
+          6.304254167859208,
+          6.896346319136704,
+          7.5399611071288,
+          8.23958192532129,
+          9.000082302845763,
+          9.826759853278155,
+          10.725373177591594,
+          11.702181978328102,
+          12.763990664422625,
+          13.918195750428918,
+          15.172837380328156,
+          16.536655334833014,
+          18.019149912331756,
+          19.630648107566405,
+          21.38237554904283,
+          23.286534696285745,
+          25.356389841657503,
+          27.6063595088596,
+          30.052116891761013,
+          32.71069903320619,
+          35.600625504337295,
+          38.74202741114634,
+          42.156787626910976,
+          45.86869322736732,
+          49.90360119047712,
+          54.28961851504632,
+          59.057298012894044,
+          64.23985113845201,
+          69.87337933835623,
+          75.99712553260282,
+          82.65374747907468,
+          89.88961492568436,
+          97.7551326200846,
+          106.30509142701517,
+          115.59904999915756,
+          125.7017496601996,
+          136.6835653901669,
+          148.62099605456785,
+          161.59719729226677,
+          175.70256077415857,
+          191.035343867739,
+          207.70235409378472,
+          225.8196931430422,
+          245.51356563571068,
+          266.9211582575077,
+          290.19159539634046,
+          315.48697793650496,
+          342.983512446615,
+          372.87273862713147,
+          405.362863567844,
+          440.680212109681,
+          479.07080341401354,
+          520.8020647217634,
+          566.1646942402934,
+          615.4746861348643,
+          669.0755317306752,
+          727.3406122589543,
+          790.6757998148769,
+          859.5222846454799,
+          934.3596484623203,
+          1015.7092051874664,
+          1104.1376324043104,
+          1200.2609188097215,
+          1304.748655165355,
+          1418.328698638669,
+          1541.7922430252722,
+          1675.9993301715688,
+          1821.884840989997,
+          1980.4650078000732,
+          2152.8444933598857,
+          2340.22408590032,
+          2543.9090637652525,
+          2765.318287925485,
+          3005.99408570446,
+          3267.612994565403,
+          3551.997440800598,
+          3861.1284344761684,
+          4197.159369064654,
+          4562.431021893223,
+          4959.487859899847,
+          5391.095764282759,
+          5860.261297512281,
+          6370.25264691828,
+          6924.622390745386,
+          7527.232245263273,
+          8182.279965319445,
+          8894.32858572257,
+          9668.338207150664,
+          10509.70054800323,
+          11424.27650288456,
+          12418.436969348406,
+          13499.10722730183,
+          14673.81518021322,
+          15950.74379417034,
+          17338.7881000775,
+          18847.61715606575,
+          20487.741401744297,
+          22270.585873479926,
+          24208.569790718473,
+          26315.193067744483,
+          28605.13035351482,
+          31094.333254644862,
+          33800.141453627846,
+          36741.40349633228,
+          39938.608090178146,
+          43414.02682760871,
+          47191.86932906553,
+          51298.45188618357,
+          55762.38077996964,
+          60614.751550950394,
+          65889.36560939619,
+          71622.96569452157,
+          77855.49182285718,
+          84630.3595087217,
+          91994.76219486505,
+          100000.0
+        ],
+        "nwindow": 16385,
+        "tree_npanel": 22,
+        "response_step": 5e-05,
+        "core_accuracyboost": 1,
+        "power_refinement": 8,
+        "integration_accuracy": 2,
+        "radial_nquad": 256,
+        "angle_nquad": 256,
+        "halo_mass_nquad": 256,
+        "tree_nquad": 256,
+        "gaussian": {
+          "nonlimber": false,
+          "ia": "none",
+          "A1": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "A2": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "B_TA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "minimum_correlation_eigenvalue": 2.7541970226235334e-13,
+      "max_scaled_asymmetry": 2.220446049250313e-16,
+      "timing_scope": "First native SSC construction"
+    },
+    "ssc_high_a16": {
+      "schema": "tjpcov-ssc-shear-v1",
+      "status": "completed",
+      "scope": "native SSC at five effective multipoles; not band averaged",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "gaussian_manifest_sha256": "74e7d3a4888795274305fc9846c35eadc11cccd0c872a05d382c587eb2fb9ae6",
+      "input_manifest": {
+        "schema": "lsst-y1-tjpcov-inputs-v1",
+        "survey": "LSST Y1 forecast subset",
+        "source_bin_1based": 3,
+        "lens_bins_1based": [
+          1,
+          2
+        ],
+        "area_deg2": 12300.0,
+        "source_density_arcmin2": 2.0,
+        "sigma_e_component": 0.26,
+        "lens_density_arcmin2": [
+          3.6,
+          3.6
+        ],
+        "bias": [
+          1.72716,
+          1.65168
+        ],
+        "cosmology": {
+          "omegam": 0.3,
+          "omegab": 0.05,
+          "H0": 70.0,
+          "ns": 0.965,
+          "As_1e9": 2.1,
+          "w": -1.0,
+          "w0pwa": -1.0,
+          "mnu": 0.0,
+          "AccuracyBoost": 1.0,
+          "CLAccuracyBoost": 1.0,
+          "CAMBAccuracyBoost": 1.0,
+          "kmax": 20.0,
+          "k_per_logint": 20,
+          "non_linear_emul": 2,
+          "lens_potential_accuracy": 1.0,
+          "halofit_version": "takahashi"
+        },
+        "gaussian": {
+          "nonlimber": false,
+          "ia": "none",
+          "A1": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "A2": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "B_TA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "rsd": false,
+        "magnification": false,
+        "galaxy_bias": "linear",
+        "power_preparation": {
+          "method": "natural cubic ln(P) versus log10(k), at fixed z",
+          "accuracy_boost": 1,
+          "power_accuracyboost": 8,
+          "refinement": 8,
+          "native_k_nodes": 1500,
+          "installed_k_nodes": 11993,
+          "redshift_nodes": 140,
+          "power_tables": [
+            "linear",
+            "nonlinear",
+            "linear_cb"
+          ],
+          "original_nodes_retained_exactly": true,
+          "installed_tables_reproduced_exactly": true,
+          "native_archive": "camb_native_tables.npz",
+          "installed_archive": "camb_tables.npz",
+          "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+        },
+        "units": {
+          "k": "h/Mpc",
+          "power": "(Mpc/h)^3",
+          "nz": "z_mid then unrenormalized n(z)",
+          "power_axes": [
+            "redshift",
+            "wavenumber"
+          ]
+        },
+        "cocoa": {
+          "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+          "status": ""
+        },
+        "core": {
+          "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+          "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+        },
+        "lsst_y1": {
+          "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+          "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+        },
+        "threads": 6,
+        "camb_version": "1.6.7",
+        "camb_source": {
+          "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+          "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+        },
+        "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+        "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+        "files": {
+          "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+          "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+          "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+        }
+      },
+      "source_name": "source3",
+      "area_sr": 3.746794263376515,
+      "shape": [
+        5,
+        5
+      ],
+      "effective_ell": [
+        1511.5,
+        1534.5,
+        1558.0,
+        1582.5,
+        1607.5
+      ],
+      "integration_method": "qag_quad",
+      "a_domain_control": {
+        "match_power_a_range": true,
+        "a_refinement": 16,
+        "original_A_SPLINE_MINLOG_PK": 0.01,
+        "A_SPLINE_MINLOG_PK": 0.019611688566385566,
+        "A_SPLINE_MIN_PK": 0.1,
+        "A_SPLINE_NA_PK": 625,
+        "A_SPLINE_NLOG_PK": 161,
+        "input_a_min": 0.019611688566385566
+      },
+      "k_sampling": {
+        "k_refinement": 1,
+        "original_N_K": 167,
+        "N_K": 167,
+        "K_MIN_Mpc_inverse": 5e-05,
+        "K_MAX_Mpc_inverse": 1000.0,
+        "base_count": 1220,
+        "refined_count": 1220,
+        "nested_nodes_claimed": false
+      },
+      "halo_model": {
+        "mass_definition": "200m",
+        "mass_function": "Tinker08",
+        "bias": "Tinker10",
+        "concentration": "Duffy08",
+        "profile": "analytic NFW",
+        "number_count_legs": 0,
+        "response": "linear-power slope and amplitude plus normalized I12",
+        "hmc_defaults": {
+          "log10M_min": 8.0,
+          "log10M_max": 16.0,
+          "nM": 128,
+          "integration_method_M": "simpson"
+        }
+      },
+      "window": "CCL circular-disc transverse linear-power integral",
+      "disc_variance_units": "Mpc (k dk times a three-dimensional P)",
+      "background": "native CCL; only CAMB power is supplied",
+      "threads": 8,
+      "timeout_seconds": 600,
+      "positive_diagonal": true,
+      "symmetric_within_relative_1e-10": true,
+      "minimum_ssc_correlation_eigenvalue": 2.4935650026453113e-12,
+      "max_asymmetry_over_peak": 0.0,
+      "tjpcov": {
+        "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+        "status": ""
+      },
+      "installed_source": {
+        "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+        "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+        "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8",
+        "covariance_io.py": "335dd259895548e859dcd21ebc244294808213c39a82cbed81afc5cc19ba6595"
+      },
+      "versions": {
+        "tjpcov": "0.5.2.dev9+g2f59302af",
+        "pyccl": "3.3.3",
+        "sacc": "2.4",
+        "numpy": "2.4.3",
+        "scipy": "1.17.1"
+      },
+      "python": "3.12.13",
+      "platform": "macOS-13.7.5-arm64-arm-64bit",
+      "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+      "ccl_ssc_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+      "script_sha256": "b7a1ac4d46c4116a979fd4017c64bdd2b68b75db5cb063bb09896ab720a0b06c"
+    },
+    "trispectrum_cocoa_i2": {
+      "schema": "cocoa-trispectrum-v1",
+      "status": "completed",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "units": {
+        "k": "h/Mpc",
+        "power": "(Mpc/h)^3",
+        "terms": "(Mpc/h)^9"
+      },
+      "axes": {
+        "terms": [
+          "redshift",
+          "halo_order",
+          "unordered_pair"
+        ]
+      },
+      "integration_accuracy": 2,
+      "halo_mass_nquad": 256,
+      "tree_nquad": 256,
+      "tree_npanel": 22,
+      "lnm_edges": [
+        -92.10340371976183,
+        -82.89306334778566,
+        -73.68272297580947,
+        -64.47238260383328,
+        -55.2620422318571,
+        -46.05170185988092,
+        -36.841361487904734,
+        -27.63102111592855,
+        -18.420680743952367,
+        -9.210340371976184,
+        0.0,
+        9.210340371976184,
+        11.51292546497023,
+        13.815510557964274,
+        16.981565060831088,
+        20.1476195636979,
+        23.31367406656471,
+        26.479728569431526,
+        29.64578307229834,
+        32.81183757516515,
+        35.977892078031964,
+        39.14394658089878
+      ],
+      "core": {
+        "commit": "959bb1d9fb54deafa6fe934c0327054bdede8a5e",
+        "status": ""
+      },
+      "lsst_y1": {
+        "commit": "c187522125986ad181985c39143aeebbaad50a61",
+        "status": ""
+      },
+      "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+      "threads": 8,
+      "script_sha256": "7232ad55a6920e298adf348b3c1d2e6d18cb47836213d866ebc3dd782784e7b6",
+      "power_table_check": "linear and nonlinear inputs bitwise equal",
+      "timing_scope": "First five-term matter trispectrum"
+    },
+    "trispectrum_native_m255": {
+      "schema": "tjpcov-trispectrum-v1",
+      "status": "completed",
+      "scope": "Public CCL matter functions used by TJPCov cNG",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "cocoa_manifest_sha256": "c32f4ab346f3ab1b11f82643c5f601dc15e18c4de296defcf0f3586113f258e1",
+      "halo_order": [
+        "1h",
+        "2h13",
+        "2h22",
+        "3h",
+        "4h"
+      ],
+      "units": {
+        "k": "h/Mpc",
+        "power": "(Mpc/h)^3",
+        "terms": "(Mpc/h)^9"
+      },
+      "axes": {
+        "terms": [
+          "redshift",
+          "halo_order",
+          "unordered_pair"
+        ]
+      },
+      "mass_precision": {
+        "log10M_min": 8.0,
+        "log10M_max": 16.0,
+        "nM": 255,
+        "integration_method_M": "simpson"
+      },
+      "mass_function": "tinker08",
+      "concentration": "duffy08",
+      "separable_growth": true,
+      "tinker10_normalization": "CCL norm_all_z=False; not CoCoA normalization",
+      "maximum_exchange_asymmetry_over_term_peak": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0866549303087548e-16
+      ],
+      "tjpcov": {
+        "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+        "status": ""
+      },
+      "tjpcov_source_sha256": "e7b04ce41b622f1d37b1fdd674a70c71c927b70f8516ca6fd4f0d16af12c8f6d",
+      "ccl_source_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+      "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+      "versions": {
+        "pyccl": "3.3.3",
+        "tjpcov": "0.5.2.dev9+g2f59302af"
+      },
+      "threads": 8,
+      "script_sha256": "16b1fc2b1578446904963e98a46cd92ea8b351b00ed00ccd166098cc466e16ec",
+      "timing_scope": "First five-term matter trispectrum"
+    }
+  },
+  "ratios_tjpcov_over_cocoa": {
+    "cocoa_ssc_low_i2": 2.0210513141453683,
+    "cocoa_ssc_high_i2": 2.021293819177547,
+    "trispectrum_cocoa_i2": 1.0335581421263011
+  }
+}

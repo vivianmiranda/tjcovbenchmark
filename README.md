@@ -18,7 +18,9 @@ tested. Small native SSC comparisons and their sampling diagnostics are
 also complete. Native halo ingredients and all five matter-trispectrum
 terms have now been compared, including unequal wavenumbers and controlled
 input changes. The large discrepancies have several distinct causes,
-described below. Complete cNG projections remain pending; timings come last.
+described below. Fresh-process [SSC and trispectrum timings](#timings) are
+now measured. Complete cNG projections and full TJPCov covariance timings
+remain pending.
 
 The checks identify different causes in different parts of the calculation:
 
@@ -35,15 +37,16 @@ The checks identify different causes in different parts of the calculation:
 
 1. [Comparison scope](#scope)
 2. [Physical choices](#physics)
-3. [Installation and compilation](#installation)
-4. [Starting and stopping](#sessions)
-5. [CoCoA environment](#cocoa-environment)
-6. [First Gaussian comparison](#gaussian)
-7. [Gaussian results](#results)
-8. [Super-sample covariance](#ssc)
-9. [Halo ingredients](#halo)
-10. [Separated matter trispectra](#trispectrum)
-11. [Galaxy-bias placement](#galaxy-bias)
+3. [Execution time and full-survey scaling](#timings)
+4. [Installation and compilation](#installation)
+5. [Starting and stopping](#sessions)
+6. [CoCoA environment](#cocoa-environment)
+7. [First Gaussian comparison](#gaussian)
+8. [Gaussian results](#results)
+9. [Super-sample covariance](#ssc)
+10. [Halo ingredients](#halo)
+11. [Separated matter trispectra](#trispectrum)
+12. [Galaxy-bias placement](#galaxy-bias)
 
 ## Comparison scope <a name="scope"></a>
 
@@ -116,6 +119,108 @@ Equal sky area alone does not match the SSC window:
 
 These are modeling differences to measure, not evidence of a numerical
 error. Numerical refinements must be checked within each code first.
+
+## Execution time and full-survey scaling <a name="timings"></a>
+
+**2026-10-07 · Apple M2 Pro · macOS 13.7.5 · eight OpenMP threads.**
+Each entry is the mean ± sample standard deviation of three fresh
+processes, run sequentially on a quiet machine. Construction includes
+first-use halo tables; setup, plotting and benchmark exports are excluded.
+TJPCov's native SSC call also writes its small block cache inside the timer.
+Fresh output directories prevent TJPCov from loading a saved covariance
+instead of computing it.
+
+| Calculation | CoCoA (s) | TJPCov / CCL (s) | TJPCov / CoCoA |
+| --- | ---: | ---: | ---: |
+| Low-multipole shear SSC, 5 × 5 | 2.799 ± 0.014 | 5.656 ± 0.010 | 2.02× |
+| High-multipole shear SSC, 5 × 5 | 2.804 ± 0.011 | 5.667 ± 0.030 | 2.02× |
+| Five matter-trispectrum terms, 45 pairs × 3 redshifts | 0.159 ± 0.007 | 0.165 ± 0.001 | 1.03× |
+
+CoCoA is about twice as fast for these SSC cases. The trispectrum times
+are similar: their difference is smaller than CoCoA's measured run-to-run
+scatter. These cases use the same dense CAMB tables but retain the native
+halo and survey-window choices discussed below.
+
+- **SSC:** both codes compute the complete 5 × 5 matrix at the same five
+  effective multipoles, without band averaging. CoCoA uses integration
+  level 2; TJPCov uses the checked 785-node CCL time grid. The timers
+  include response generation, background variance and projection.
+- **Trispectrum:** both compute 1h, 2h13, 2h22, 3h and 4h at nine
+  wavenumbers and three redshifts. CoCoA uses integration level 2 and
+  computes the 45 unordered pairs. CCL's public functions used by TJPCov
+  return full 9 × 9 arrays, from which the same pairs are selected; its
+  mass grid has 255 nodes. **This is matter-trispectrum construction,
+  not projected cNG covariance.**
+
+All scientific arrays from all **18 timed runs are bitwise identical**
+to their respective accuracy archives, including native asymmetries.
+The [timing record](results/component_timings_20261007.json) retains
+individual measurements, setup times, settings and source fingerprints.
+CoCoA setup includes CAMB; TJPCov/CCL setup installs the saved CAMB tables,
+so the construction ratios above exclude these different setup tasks.
+
+> [!WARNING]
+> **Component timings do not predict a full-survey speed ratio.**
+>
+> - **CoCoA:** shared matter responses and trispectra are reused across
+>   observable pairs. Its full **1560 × 1560 LSST Y1 real-space covariance
+>   takes 53.4 s**, compared with **48.0 s** for the 16 × 16 source-bin
+>   pilot in the [OneCovariance comparison](https://github.com/vivianmiranda/OneCov-benchmark-#real-shear):
+>   **1.11× the time, or about 11% more**. This measured reuse makes
+>   expansion to more survey bins more predictable at fixed numerical
+>   sampling. The full run and pilot use their respective documented
+>   angular bins and Gaussian settings.
+> - **TJPCov:** a complete G + SSC + cNG pilot and full LSST Y1 run have
+>   not yet been measured. Its cache reuse and cost of adding tomographic
+>   pairs need separate measurements. Neither matrix size nor the SSC
+>   ratio above establishes that scaling; OneCovariance's scaling cannot
+>   be transferred to TJPCov.
+>
+> The [full CoCoA timing record](https://github.com/vivianmiranda/OneCov-benchmark-/blob/main/results/global_power_20261006/full_lsst_timing_20261007.json)
+> documents the 53.4 s measurement. There is no measured full-survey
+> TJPCov/CoCoA speed ratio yet. The inspected native TJPCov real-space
+> calculator exposes Gaussian covariance only, so it cannot supply an
+> analogous native real-space G + SSC + cNG timing.
+
+**Timings still missing:** the Gaussian accuracy test gives CoCoA spectra
+already calculated by TJPCov, while TJPCov's native call also generates
+those spectra. Timing those two existing scripts would compare different
+work. The halo exports likewise contain different extra diagnostics.
+Separate measurements are needed for those scopes and for projected cNG
+and complete matrices.
+
+### Reproducing these timings
+
+Use the [CoCoA environment](#cocoa-environment), with the separate TJPCov
+environment already installed. Run these commands from `tjcovbenchmark/`,
+using the sibling checkout layout. Stop other numerical jobs before the
+timing step. Existing accuracy archives may be reused; choose fresh output
+paths for a new run.
+
+**Step :one:**: select six workers for the accuracy exports.
+
+```bash
+export OMP_NUM_THREADS=6
+```
+
+**Step :two:**: generate the matching accuracy cases and input archives.
+
+```bash
+python scripts/refresh_comparison.py --cocoa ../cocoa/Cocoa --tjpcov ../TJPCov --tjpcov-python .local/bin/python --output work/timing_inputs --groups inputs gaussian ssc trispectrum
+```
+
+**Step :three:**: select eight workers for the timing measurements.
+
+```bash
+export OMP_NUM_THREADS=8
+```
+
+**Step :four:**: measure each of the six cases three times and compare
+every saved array against its accuracy archive.
+
+```bash
+python scripts/time_components.py work/timing_inputs --cocoa ../cocoa/Cocoa --tjpcov ../TJPCov --tjpcov-python .local/bin/python --output work/component_timings
+```
 
 ## Installation and compilation <a name="installation"></a>
 
@@ -541,8 +646,9 @@ The [SSC record](results/ssc_native.json) and
 [array archive](results/ssc_native.npz) retain 16 native calculations,
 their complete matrices and source provenance. The four controlled
 sampling cases have a separate [record](results/ssc_sampling/report.json)
-and [array archive](results/ssc_sampling/sampling.npz). Timings are
-excluded from this accuracy campaign.
+and [array archive](results/ssc_sampling/sampling.npz). These accuracy-run
+durations are excluded from the benchmark; the separate fresh-process
+[timing measurements](#timings) reproduce their scientific arrays exactly.
 
 ### Separating the response from the survey window
 

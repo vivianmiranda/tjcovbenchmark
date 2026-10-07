@@ -9,6 +9,7 @@ import argparse
 import importlib.metadata
 import signal
 from pathlib import Path
+from time import perf_counter
 
 from common import (load_bundle, require_thread_environment, revision,
                     sha256, write_json)
@@ -26,10 +27,13 @@ def main():
                         default="duffy08")
     parser.add_argument("--mass-function", choices=("tinker08", "tinker10"),
                         default="tinker08")
+    parser.add_argument("--timing", action="store_true",
+                        help="record first-use compute time on a quiet machine")
     args = parser.parse_args()
     threads = require_thread_environment()
-    if threads > 6 or args.output.exists():
-        parser.error("Use at most six threads and a new output directory")
+    if threads > (8 if args.timing else 6) or args.output.exists():
+        parser.error("Use at most six accuracy workers or eight timing workers, "
+                     "and a new output directory")
     inputs = load_bundle(args.inputs, "lsst-y1-tjpcov-inputs-v1")
     cocoa = load_bundle(args.cocoa_run, "cocoa-trispectrum-v1")
     if cocoa["input_manifest_sha256"] != sha256(args.inputs / "manifest.json"):
@@ -45,6 +49,7 @@ def main():
     source = Path(tjpcov.__file__).resolve().parent / "covariance_fourier_cNG.py"
     if sha256(source) != sha256(args.tjpcov / "tjpcov" / source.name):
         raise ValueError("Installed TJPCov differs from the checkout")
+    setup_started = perf_counter()
     data = np.load(args.inputs / "inputs.npz", allow_pickle=False)
     cosmos = inputs["cosmology"]
     h = cosmos["H0"]/100
@@ -86,6 +91,8 @@ def main():
                  ccl.halos.halomod_trispectrum_2h_22,
                  ccl.halos.halomod_trispectrum_3h,
                  ccl.halos.halomod_trispectrum_4h]
+    setup_seconds = perf_counter() - setup_started
+    construction_started = perf_counter()
     terms = []
     exchange = []
     for name, function in zip(cocoa["halo_order"], functions):
@@ -98,6 +105,7 @@ def main():
                               /np.max(np.abs(matrix))))
         print(f"CCL native function completed: {name}", flush=True)
     terms = np.moveaxis(np.array(terms), 0, 1)
+    construction_seconds = perf_counter() - construction_started
 
     # Export CCL's actual moments and power evaluations. Supplying them
     # to CoCoA later isolates the angular integration/assembly from halo
@@ -144,7 +152,14 @@ def main():
         "ccl_binary_sha256": sha256(ccl._ccllib.__file__),
         "versions": {n: importlib.metadata.version(n) for n in ("pyccl", "tjpcov")},
         "threads": threads, "script_sha256": sha256(__file__),
-        "timing_scope": "accuracy only",
+        "timing_scope": "First five-term matter trispectrum" if args.timing
+                        else "accuracy only",
+        "timing": ({"setup_seconds": setup_seconds,
+                    "construction_seconds": construction_seconds,
+                    "scope": "All five native CCL halo terms at nine k nodes "
+                             "and three redshifts; includes first halo tables; "
+                             "excludes extra ingredient exports and projection"}
+                   if args.timing else None),
         "files": {"trispectrum.npz": sha256(args.output / "trispectrum.npz")},
     })
 
