@@ -163,7 +163,8 @@ def main():
     axes[0].set(title="Fixed moments; denser power table",
                 xlabel="Power k-grid nodes", ylabel="4h / smooth-input control − 1 [%]")
     from matplotlib.ticker import NullLocator
-    axes[0].set_xticks(power["node_counts"], ["1.5k", "3k", "6k", "12k", "24k"])
+    axes[0].set_xticks(power["node_counts"],
+                      [f"{count:,}" for count in power["node_counts"]])
     axes[0].xaxis.set_minor_locator(NullLocator())
     axes[0].legend()
     axes[1].set(title="Small native power differences", xlabel=r"$k$ [h/Mpc]",

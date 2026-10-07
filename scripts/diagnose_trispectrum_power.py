@@ -1,7 +1,8 @@
 """Isolate power-table interpolation in the unequal-k tree trispectrum.
 
-This changes supplied tables only in this diagnostic process. A cubic
-interpolant of the SAME CAMB log-power samples fills nested denser k grids.
+This changes supplied tables only in this diagnostic process. A natural
+cubic interpolant of the SAME installed log-power samples fills denser k
+grids. The input bundle records how CAMB's native samples were prepared.
 The actual CoCoA reader remains linear in log power. Halo moments, z nodes
 and angular quadrature stay fixed. Direct cubic evaluation is a smooth
 input control, not an independent trispectrum code or new CAMB solution.
@@ -21,7 +22,16 @@ def main():
     parser.add_argument("cocoa_run", type=Path)
     parser.add_argument("--cocoa", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--factors", type=int, nargs="+", default=[1, 2],
+                        choices=(1, 2, 4, 8, 16),
+                        help="Refine the installed grid, not raw CAMB; "
+                             "default 11993 then 23985 nodes")
+    parser.add_argument("--timeout", type=int, default=600)
     args = parser.parse_args()
+    if (args.factors[0] != 1
+            or any(b <= a for a, b in zip(args.factors, args.factors[1:]))
+            or args.timeout <= 0):
+        parser.error("Use increasing factors starting at 1 and positive timeout")
     threads = require_thread_environment()
     if threads > 6 or args.output.exists():
         parser.error("Use at most six threads and a new directory")
@@ -30,7 +40,7 @@ def main():
     if run["input_manifest_sha256"] != sha256(args.inputs / "manifest.json"):
         raise ValueError("Different original inputs")
     signal.signal(signal.SIGALRM, signal.SIG_DFL)
-    signal.alarm(600)
+    signal.alarm(args.timeout)
 
     import numpy as np
     from scipy.interpolate import CubicSpline
@@ -42,6 +52,7 @@ def main():
     if sha256(ci.__file__) != run["interface_sha256"]:
         raise ValueError("CoCoA library changed since the native export")
     from lsst_y1_covariance import configuration, initialize
+    from cosmolike_notebook_utils.covariance.power import refine_power_tables
     settings = configuration(gaussian={"nonlimber": False, "ia": "none"},
                              integration_accuracy=run["integration_accuracy"])
     tables = initialize(interface=ci, settings=settings)
@@ -50,16 +61,9 @@ def main():
     np.testing.assert_array_equal(10**tables["log10k_2D"], original["k_h_mpc"])
     x, z_nodes = tables["log10k_2D"], tables["z_2D"]
     np.testing.assert_array_equal(z_nodes, original["z"])
-    spline = {}
-    for name in ("linear", "nonlinear"):
+    for name in ("linear", "nonlinear", "linear_cb"):
         values = tables[f"lnP_{name}"].reshape((len(z_nodes), len(x)), order="F")
         np.testing.assert_array_equal(np.exp(values), original[f"p_{name}"])
-        spline[name] = CubicSpline(x, values, axis=1)
-    # The initializer also supplies cb power, even in this massless case.
-    # Keep its grid compatible with the matter table when replacing inputs.
-    cb_values = tables["lnP_linear_cb"].reshape(
-        (len(z_nodes), len(x)), order="F")
-    cb_spline = CubicSpline(x, cb_values, axis=1)
     first, second = grid["first"], grid["second"]
     k = grid["k"]
     length = 2997.92458
@@ -85,7 +89,7 @@ def main():
         f = (z-z_nodes[left])/(z_nodes[right]-z_nodes[left])
         values = ((1-f)*np.log(original["p_linear"][left])
                   +f*np.log(original["p_linear"][right]))
-        curve = CubicSpline(x, values)
+        curve = CubicSpline(x, values, bc_type="natural")
 
         def evaluate(wave):
             q = np.log10(wave)
@@ -100,16 +104,14 @@ def main():
         smooth.append(assemble(power, internal, index))
         smooth_power.append(power)
 
-    factors = np.array([1, 2, 4, 8, 16])
+    factors = np.array(args.factors)
     cases, powers = [], []
     for factor in factors:
         if factor > 1:
-            dense = np.linspace(x[0], x[-1], factor*(len(x)-1)+1)
-            np.testing.assert_allclose(dense[::factor], x, rtol=0, atol=2e-14)
-            new_tables = dict(tables, log10k_2D=dense)
-            for name in ("linear", "nonlinear"):
-                new_tables[f"lnP_{name}"] = spline[name](dense).ravel(order="F")
-            new_tables["lnP_linear_cb"] = cb_spline(dense).ravel(order="F")
+            # Use the production natural-spline helper for all three power
+            # tables. Only their k sampling changes; moments stay frozen.
+            new_tables = refine_power_tables(tables, refinement=int(factor))
+            np.testing.assert_array_equal(new_tables["log10k_2D"][::factor], x)
             ci.set_cosmology(omegam=meta["cosmology"]["omegam"],
                              omegab=meta["cosmology"]["omegab"],
                              H0=meta["cosmology"]["H0"], **new_tables)
@@ -143,7 +145,14 @@ def main():
                         smooth_power=smooth_power, interior_pairs=interior)
     write_json(args.output / "report.json", {
         "schema": "trispectrum-power-diagnostic-v1", "status": "completed",
-        "scope": "Same CAMB samples; cubic fill, production linear lookup; fixed halo moments",
+        "scope": "Same installed power samples; natural cubic fill, "
+                 "production linear lookup; fixed halo moments",
+        "spline_boundary": "natural",
+        "refinement_base": "installed input-bundle grid",
+        "power_preparation": meta.get("power_preparation"),
+        "helper_sha256": sha256(
+            core / "cosmolike_notebook_utils/covariance/power.py"),
+        "timeout_seconds": args.timeout,
         "input_manifest_sha256": sha256(args.inputs / "manifest.json"),
         "cocoa_manifest_sha256": sha256(args.cocoa_run / "manifest.json"),
         "factors": factors.tolist(), "node_counts": (factors*(len(x)-1)+1).tolist(),

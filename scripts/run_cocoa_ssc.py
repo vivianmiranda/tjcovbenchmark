@@ -70,7 +70,8 @@ def main():
     original = np.load(args.inputs / "inputs.npz", allow_pickle=False)
     np.testing.assert_array_equal(tables["z_2D"], original["z"])
     np.testing.assert_array_equal(10.0**tables["log10k_2D"], original["k_h_mpc"])
-    for name, key in (("linear", "lnP_linear"), ("nonlinear", "lnP_nonlinear")):
+    for name in ("linear", "nonlinear", "linear_cb"):
+        key = f"lnP_{name}"
         power = np.exp(tables[key].reshape(original[f"p_{name}"].shape,
                                           order="F"))
         np.testing.assert_array_equal(power, original[f"p_{name}"])
