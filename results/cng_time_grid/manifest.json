@@ -1,0 +1,390 @@
+{
+  "schema": "cng-time-grid-publication-v1",
+  "status": "completed",
+  "scope": "Native TJPCov cNG at fixed 234-node wavenumber grid; every entry retained",
+  "maximum_difference_percent_of_fine_cng_rms": 0.09927203670375884,
+  "normalization": "sqrt(fine cNG diagonal_i times fine cNG diagonal_j)",
+  "source_manifests": [
+    {
+      "schema": "tjpcov-complete-shear-v1",
+      "status": "completed",
+      "scope": "Native Gaussian band averages plus center-sampled SSC/cNG",
+      "components": {
+        "gaussian": {
+          "a_refinement": 2,
+          "N_K": 167,
+          "default_N_K": 167,
+          "a_count": 99,
+          "k_count": 1220,
+          "k_range_Mpc_inverse": [
+            5.000000000000004e-05,
+            999.9999999999998
+          ],
+          "integration_method": "qag_quad",
+          "max_asymmetry_over_peak": 0.0
+        },
+        "ssc": {
+          "a_refinement": 16,
+          "N_K": 167,
+          "default_N_K": 167,
+          "a_count": 785,
+          "k_count": 1220,
+          "k_range_Mpc_inverse": [
+            5.000000000000004e-05,
+            999.9999999999998
+          ],
+          "integration_method": "qag_quad",
+          "max_asymmetry_over_peak": 1.8348999551411904e-17
+        },
+        "cng": {
+          "a_refinement": 2,
+          "N_K": 32,
+          "default_N_K": 167,
+          "a_count": 99,
+          "k_count": 234,
+          "k_range_Mpc_inverse": [
+            5.000000000000004e-05,
+            999.9999999999998
+          ],
+          "integration_method": "qag_quad",
+          "max_asymmetry_over_peak": 3.84359529696355e-17,
+          "retained_a_count": 69,
+          "observer": "Read-only return-frame observation; not a timing run"
+        }
+      },
+      "shape": [
+        100,
+        100
+      ],
+      "source_name": "source3",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "input_manifest": {
+        "schema": "lsst-y1-tjpcov-inputs-v1",
+        "survey": "LSST Y1 forecast subset",
+        "source_bin_1based": 3,
+        "lens_bins_1based": [
+          1,
+          2
+        ],
+        "area_deg2": 12300.0,
+        "source_density_arcmin2": 2.0,
+        "sigma_e_component": 0.26,
+        "lens_density_arcmin2": [
+          3.6,
+          3.6
+        ],
+        "bias": [
+          1.72716,
+          1.65168
+        ],
+        "cosmology": {
+          "omegam": 0.3,
+          "omegab": 0.05,
+          "H0": 70.0,
+          "ns": 0.965,
+          "As_1e9": 2.1,
+          "w": -1.0,
+          "w0pwa": -1.0,
+          "mnu": 0.0,
+          "AccuracyBoost": 1.0,
+          "CLAccuracyBoost": 1.0,
+          "CAMBAccuracyBoost": 1.0,
+          "kmax": 20.0,
+          "k_per_logint": 20,
+          "non_linear_emul": 2,
+          "lens_potential_accuracy": 1.0,
+          "halofit_version": "takahashi"
+        },
+        "gaussian": {
+          "nonlimber": false,
+          "ia": "none",
+          "A1": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "A2": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "B_TA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "rsd": false,
+        "magnification": false,
+        "galaxy_bias": "linear",
+        "power_preparation": {
+          "method": "natural cubic ln(P) versus log10(k), at fixed z",
+          "accuracy_boost": 1,
+          "power_accuracyboost": 8,
+          "refinement": 8,
+          "native_k_nodes": 1500,
+          "installed_k_nodes": 11993,
+          "redshift_nodes": 140,
+          "power_tables": [
+            "linear",
+            "nonlinear",
+            "linear_cb"
+          ],
+          "original_nodes_retained_exactly": true,
+          "installed_tables_reproduced_exactly": true,
+          "native_archive": "camb_native_tables.npz",
+          "installed_archive": "camb_tables.npz",
+          "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+        },
+        "units": {
+          "k": "h/Mpc",
+          "power": "(Mpc/h)^3",
+          "nz": "z_mid then unrenormalized n(z)",
+          "power_axes": [
+            "redshift",
+            "wavenumber"
+          ]
+        },
+        "cocoa": {
+          "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+          "status": ""
+        },
+        "core": {
+          "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+          "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+        },
+        "lsst_y1": {
+          "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+          "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+        },
+        "threads": 6,
+        "camb_version": "1.6.7",
+        "camb_source": {
+          "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+          "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+        },
+        "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+        "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+        "files": {
+          "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+          "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+          "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+        }
+      },
+      "tjpcov": {
+        "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+        "status": ""
+      },
+      "installed_source": {
+        "covariance_fourier_cNG.py": "e7b04ce41b622f1d37b1fdd674a70c71c927b70f8516ca6fd4f0d16af12c8f6d",
+        "covariance_fourier_cNG_fsky.py": "d8bd19889091539a44ab6a32dd4ec141ee1380de5aeb3b005f8e73d2516d616c",
+        "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+        "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+        "covariance_gaussian_fsky.py": "98ab9596da9c9352054ac3f668b433fcdc5e2132d751761742e49cc2220eb8ec",
+        "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8"
+      },
+      "ccl_version": "3.3.3",
+      "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+      "ccl_pk4pt_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+      "script_sha256": "49468efb8adb31b68ababe82c71facbca6397892788314e546038e539aed373c",
+      "threads": 6,
+      "platform": "macOS-13.7.5-arm64-arm-64bit",
+      "timing": "accuracy only",
+      "peak_rss_bytes": 1123762176,
+      "files": {
+        "native_trispectrum.npz": "4e496835b5196559ca9c43872871ce2d3f75fa24a7f8692238538e62a0897239",
+        "covariance.npz": "b73ccada14fc1b1c04089866b30cdb9bd2b269dc5f7360a79aa2ec2e814256e7"
+      }
+    },
+    {
+      "schema": "tjpcov-complete-shear-v1",
+      "status": "completed",
+      "scope": "Native Gaussian band averages plus center-sampled SSC/cNG",
+      "components": {
+        "cng": {
+          "a_refinement": 4,
+          "N_K": 32,
+          "default_N_K": 167,
+          "a_count": 197,
+          "k_count": 234,
+          "k_range_Mpc_inverse": [
+            5.000000000000004e-05,
+            999.9999999999998
+          ],
+          "integration_method": "qag_quad",
+          "max_asymmetry_over_peak": 1.5376531876471974e-16,
+          "retained_a_count": 136,
+          "observer": "Read-only return-frame observation; not a timing run"
+        }
+      },
+      "shape": [
+        100,
+        100
+      ],
+      "source_name": "source3",
+      "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+      "input_manifest": {
+        "schema": "lsst-y1-tjpcov-inputs-v1",
+        "survey": "LSST Y1 forecast subset",
+        "source_bin_1based": 3,
+        "lens_bins_1based": [
+          1,
+          2
+        ],
+        "area_deg2": 12300.0,
+        "source_density_arcmin2": 2.0,
+        "sigma_e_component": 0.26,
+        "lens_density_arcmin2": [
+          3.6,
+          3.6
+        ],
+        "bias": [
+          1.72716,
+          1.65168
+        ],
+        "cosmology": {
+          "omegam": 0.3,
+          "omegab": 0.05,
+          "H0": 70.0,
+          "ns": 0.965,
+          "As_1e9": 2.1,
+          "w": -1.0,
+          "w0pwa": -1.0,
+          "mnu": 0.0,
+          "AccuracyBoost": 1.0,
+          "CLAccuracyBoost": 1.0,
+          "CAMBAccuracyBoost": 1.0,
+          "kmax": 20.0,
+          "k_per_logint": 20,
+          "non_linear_emul": 2,
+          "lens_potential_accuracy": 1.0,
+          "halofit_version": "takahashi"
+        },
+        "gaussian": {
+          "nonlimber": false,
+          "ia": "none",
+          "A1": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "A2": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "B_TA": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "rsd": false,
+        "magnification": false,
+        "galaxy_bias": "linear",
+        "power_preparation": {
+          "method": "natural cubic ln(P) versus log10(k), at fixed z",
+          "accuracy_boost": 1,
+          "power_accuracyboost": 8,
+          "refinement": 8,
+          "native_k_nodes": 1500,
+          "installed_k_nodes": 11993,
+          "redshift_nodes": 140,
+          "power_tables": [
+            "linear",
+            "nonlinear",
+            "linear_cb"
+          ],
+          "original_nodes_retained_exactly": true,
+          "installed_tables_reproduced_exactly": true,
+          "native_archive": "camb_native_tables.npz",
+          "installed_archive": "camb_tables.npz",
+          "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+        },
+        "units": {
+          "k": "h/Mpc",
+          "power": "(Mpc/h)^3",
+          "nz": "z_mid then unrenormalized n(z)",
+          "power_axes": [
+            "redshift",
+            "wavenumber"
+          ]
+        },
+        "cocoa": {
+          "commit": "a2cdfad1037927b777b191d12707b2d4d3d0a0bf",
+          "status": ""
+        },
+        "core": {
+          "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+          "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
+        },
+        "lsst_y1": {
+          "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
+          "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
+        },
+        "threads": 6,
+        "camb_version": "1.6.7",
+        "camb_source": {
+          "commit": "6c978c716e163157c95191ee1c089e8b36c8adb9",
+          "status": "M camb/_compilers.py\n M fortran/Makefile\n M fortran/Makefile_main\n M forutils\n?? camb/_compilers.patch\n?? fortran/Makefile.patch\n?? fortran/Makefile_main_osx.patch"
+        },
+        "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
+        "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
+        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
+        "files": {
+          "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+          "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+          "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+        }
+      },
+      "tjpcov": {
+        "commit": "2f59302af33607aec712185632d8274e59e6b33c",
+        "status": ""
+      },
+      "installed_source": {
+        "covariance_fourier_cNG.py": "e7b04ce41b622f1d37b1fdd674a70c71c927b70f8516ca6fd4f0d16af12c8f6d",
+        "covariance_fourier_cNG_fsky.py": "d8bd19889091539a44ab6a32dd4ec141ee1380de5aeb3b005f8e73d2516d616c",
+        "covariance_fourier_ssc.py": "6280ef544c2c353e696b8836c68dc4565957b71c48074a40ec88287e63780ca3",
+        "covariance_fourier_ssc_fsky.py": "0a4b70e9daded5e2b289afbe77b12a207b004d42487323bd97d7e77cf56be6a5",
+        "covariance_gaussian_fsky.py": "98ab9596da9c9352054ac3f668b433fcdc5e2132d751761742e49cc2220eb8ec",
+        "covariance_builder.py": "94708d3b83a9206a217c8bbd0e56b2a56897abcf24d56c025d9f86156ea56aa8"
+      },
+      "ccl_version": "3.3.3",
+      "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+      "ccl_pk4pt_sha256": "c8cd05d55dffc93285941dec538da8cb14f56b7cc4349e19ab328478e55a612a",
+      "script_sha256": "49468efb8adb31b68ababe82c71facbca6397892788314e546038e539aed373c",
+      "threads": 6,
+      "platform": "macOS-13.7.5-arm64-arm-64bit",
+      "timing": "accuracy only",
+      "peak_rss_bytes": 944275456,
+      "files": {
+        "native_trispectrum.npz": "057b465d5e92a1e47cf01d2ab099cd8e779a00c69e2907bd91aee10fed4ece76",
+        "covariance.npz": "ce4484108550e6f1332bebb469df402833382a93746e403def3c5b1099b50ffc"
+      }
+    }
+  ],
+  "source_manifest_sha256": [
+    "894870d0e574dff1f2299d2fcba63816ee1cecfe9c952347a47236376801a8a6",
+    "02c89c4cd3739e83ed118bfabe8cb2d09937d96c41ccb504c4d9b9efe6cc204c"
+  ],
+  "script_sha256": "76952f930291212fd63b50e74141fa5e7ce16783086835806101a810f55bcabd",
+  "files": {
+    "time_grid.npz": "71fa78761addd552385a80052a59060827063866daf4f0fd63476890c5015e16",
+    "assembly_verification.json": "f9f4face11e755aeed67d2144ae24b1af678635c2532d33808e876f78c28f07c"
+  }
+}

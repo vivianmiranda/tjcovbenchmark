@@ -1,0 +1,13 @@
+{
+  "schema": "cng-shared-projection-v1",
+  "status": "completed",
+  "scope": "Same CCL trispectrum, tracer, spin and background; distinct radial integrators",
+  "export_manifest_sha256": "a327fbb08cc27646a5505f873e0a6a30be07eed174fc68c0785da0c1047d9f43",
+  "max_abs_rms_residual": 0.00019658123899317863,
+  "max_fractional_residual": 0.00019658123899313207,
+  "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+  "script_sha256": "ff22df37629fbbda15e70881b19c3a52632e247c038819bd557c04a1718ac047",
+  "files": {
+    "comparison.npz": "ea3857ac91088d3c93da6963d86504b2934f27ee55a730b5ab134b0cbb227592"
+  }
+}
