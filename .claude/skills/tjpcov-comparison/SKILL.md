@@ -65,6 +65,13 @@ For a new install,
 check imports and a minimal source-bin case; a recipe alone is not proof
 that the environment works.
 
+The completed global dense-power production refresh is recorded in
+[the refresh record](references/global_power_refresh.md). It preserves
+native CAMB anchors and installed power tables separately. Read it before
+rerunning or interpreting the older 1,500-node comparisons. All 63 refresh
+stages passed; the old 4h discrepancy is not a result for the new
+11,993-node baseline. Projected cNG and complete totals remain pending.
+
 Run only one numerical job at a time unless concurrent correctness runs
 are explicitly authorized and their worker allocation is coordinated.
 The user subsequently authorized small TJPCov numerical covariance runs

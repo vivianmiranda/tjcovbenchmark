@@ -70,6 +70,25 @@
       "rsd": false,
       "magnification": false,
       "galaxy_bias": "linear",
+      "power_preparation": {
+        "method": "natural cubic ln(P) versus log10(k), at fixed z",
+        "accuracy_boost": 1,
+        "power_accuracyboost": 8,
+        "refinement": 8,
+        "native_k_nodes": 1500,
+        "installed_k_nodes": 11993,
+        "redshift_nodes": 140,
+        "power_tables": [
+          "linear",
+          "nonlinear",
+          "linear_cb"
+        ],
+        "original_nodes_retained_exactly": true,
+        "installed_tables_reproduced_exactly": true,
+        "native_archive": "camb_native_tables.npz",
+        "installed_archive": "camb_tables.npz",
+        "helper_sha256": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0"
+      },
       "units": {
         "k": "h/Mpc",
         "power": "(Mpc/h)^3",
@@ -84,12 +103,12 @@
         "status": ""
       },
       "core": {
-        "commit": "a35dbc9bf5db0ae72ea980bbf6b0ad8289fe17d4",
-        "status": ""
+        "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+        "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
       },
       "lsst_y1": {
         "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
-        "status": ""
+        "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
       },
       "threads": 6,
       "camb_version": "1.6.7",
@@ -100,13 +119,14 @@
       "source_nz_sha256": "de0bd0ee395ade11ca08af7fbee3b414528ff4c628fda8c56a1da76befe995f8",
       "lens_nz_sha256": "dcdd1b15476287ffdd7091d605a684ac2c7807728ad2147155b2632f1280b256",
       "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
-      "script_sha256": "8d4c992c7bd1bc5e8e9fb11b7badcf366db3d6e4d46aabcadfba25f202560ebc",
+      "script_sha256": "645ce4b8607f0692aba01830ce4835f4ee2f71f972617f466ea097c274363be6",
       "files": {
-        "inputs.npz": "6c540402d2468491ac04d8b1c8511a1c85ab924248cc7cb7f788b826401fec73",
-        "camb_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
+        "inputs.npz": "c236447c78ee66058c23c672da4414f8a2f5935f522f610aaf1dc95c554f41c5",
+        "camb_tables.npz": "e3325b9fef8ba953f375102bbab413c91b25f7a59be1592f50b26440ba8d0c21",
+        "camb_native_tables.npz": "26ed1a29b47f82e2aa3de13de93e5ccd3bf88bc7ceb802125157ca12211fff70"
       }
     },
-    "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
+    "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
     "tjpcov": {
       "commit": "2f59302af33607aec712185632d8274e59e6b33c",
       "status": ""
@@ -132,40 +152,56 @@
     "background": "native CCL; not imported from CAMB",
     "area_sr": 3.746794263376515,
     "source_name": "source3",
-    "ordering": "one source EE spectrum, then five increasing ell bands",
+    "field_names": [
+      "source3"
+    ],
+    "pairs": [
+      [
+        0,
+        0
+      ]
+    ],
+    "include_lenses": false,
+    "shape": [
+      5,
+      5
+    ],
+    "ordering": "listed observable pairs, then five increasing ell bands",
     "estimator": "native TJPCov ell-weighted average; integer ell nodes",
     "noise_extraction": "N factors 0,1,2; NN=(C2-2*C1+C0)/2; CN=C1-C0-NN",
+    "galaxy_zero_noise": null,
     "threads": 6,
+    "timeout_seconds": 600,
     "diagnostic_call_seconds": [
-      0.042385792010463774,
-      0.007120083027984947,
-      0.006930458010174334
+      0.0436692499788478,
+      0.007115958025678992,
+      0.00713320798240602
     ],
-    "diagnostic_elapsed_seconds": 0.20095895801205188,
+    "diagnostic_elapsed_seconds": 0.8606959169846959,
     "timing_scope": "diagnostic only; includes three noise configurations",
-    "script_sha256": "6c8c33b73c47ac135711ac8ca15f3bc54b3d26ff36202ba8248ae025ec245746",
+    "script_sha256": "7ce8b5040b0bbf2c24289df4cd3cf235d07dd47a7c7ce7e312011e9334bd73d6",
     "files": {
-      "gaussian.npz": "c30b14dee345c84eb82868b11b2719b2959b2d1aa7465212dfa9b6691919c9ca",
-      "source_bins.fits": "24418fd8df2ef135d34f5820d45ac5e8d430c637cb310284ae2a7be20491d4a2"
+      "gaussian.npz": "d6678ffd8da0e3238f829ff4afa5bd821b6bca6542e351d37d861adcc44bee99",
+      "source_bins.fits": "39ac3fc01cd85734f5a86cf7b119693c18d30120753c04d1a23f577cdc1c8fdb"
     }
   },
-  "native_manifest_sha256": "842b60fb8681ba4a076f508e8e9f3522e4a5150aad042e2d2df4271f7294894a",
+  "native_manifest_sha256": "e3e8eba2661163211302403c2bbfafa6477ac11c0a01a4f7676de9d3ecb1d008",
   "component_diagnostics": {
     "total": {
-      "max_variance_scaled_difference": 1.719015191997189e-16,
-      "max_fractional_nonzero_difference": 1.719015191997189e-16
+      "max_variance_scaled_difference": 4.1086464889712e-16,
+      "max_fractional_nonzero_difference": 4.108646488971199e-16
     },
     "sample_variance": {
-      "max_variance_scaled_difference": 1.3329725379655977e-16,
-      "max_fractional_nonzero_difference": 2.1865666058768328e-16
+      "max_variance_scaled_difference": 2.0543232444856e-16,
+      "max_fractional_nonzero_difference": 4.0322269150489534e-16
     },
     "noise": {
-      "max_variance_scaled_difference": 1.8137101522168157e-16,
-      "max_fractional_nonzero_difference": 6.339495021023727e-15
+      "max_variance_scaled_difference": 2.3636458889961336e-16,
+      "max_fractional_nonzero_difference": 3.5980917686891425e-15
     },
     "mixed": {
-      "max_variance_scaled_difference": 3.438030383994378e-16,
-      "max_fractional_nonzero_difference": 9.745565100896803e-16
+      "max_variance_scaled_difference": 6.1629697334568e-16,
+      "max_fractional_nonzero_difference": 1.5107243327940657e-15
     }
   },
   "passed": true,
@@ -176,16 +212,16 @@
   ],
   "threads": 6,
   "core": {
-    "commit": "a35dbc9bf5db0ae72ea980bbf6b0ad8289fe17d4",
-    "status": ""
+    "commit": "b72cb5bdf74fdb66c3074380814f5500f43ad2a5",
+    "status": "M .claude/skills/cosmolike-dev/SKILL.md\n M README.md\n M cocoa_covariance_testing.py\n M cosmolike/covariances/README.md\n M cosmolike_notebook_utils/covariance/README.md\n M cosmolike_notebook_utils/covariance/__init__.py\n M cosmolike_notebook_utils/covariance/accuracy.py\n M cosmolike_notebook_utils/covariance/forecast.py\n?? .claude/skills/cosmolike-dev/references/covariance_four_halo_power.md\n?? cosmolike_notebook_utils/covariance/power.py"
   },
   "lsst_y1": {
     "commit": "601f9cf0596bc293e11d3530e71c6e4313faaf74",
-    "status": ""
+    "status": "M EXAMPLE_EVALUATE_COVARIANCE.ipynb\n M covariance/README.md\n M covariance/default.yaml\n M tests/covariance/README.md\n?? tests/covariance/test_power_refinement.py"
   },
   "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
-  "script_sha256": "5adf74384d09603ba3b93b51848ee44ae69ee28e9faeab8089dafd86a79438ce",
-  "cocoa_min_scaled_eigenvalue": 0.9999999999999998,
+  "script_sha256": "aa241682a299e5d5c092e59093421a9a7e1b9137e8d25432bd703c0944f78699",
+  "cocoa_min_scaled_eigenvalue": 1.0,
   "tjpcov_min_scaled_eigenvalue": 0.9999999999999998,
   "generalized_variance_ratio_range": [
     0.9999999999999998,
@@ -193,6 +229,6 @@
   ],
   "max_generalized_variance_change": 2.220446049250313e-16,
   "files": {
-    "matrices.npz": "e31349f4f51b2c7063259646975db32739c042a880e84d84d54f11d1eece8ec8"
+    "matrices.npz": "0fe03fb06ff9d0c5af59e339619e35cc2a548c9f4475cddb62e536ea732765ce"
   }
 }

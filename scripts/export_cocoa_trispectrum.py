@@ -48,7 +48,7 @@ def main():
     original = np.load(args.inputs / "inputs.npz", allow_pickle=False)
     np.testing.assert_array_equal(tables["z_2D"], original["z"])
     np.testing.assert_array_equal(10**tables["log10k_2D"], original["k_h_mpc"])
-    for name in ("linear", "nonlinear"):
+    for name in ("linear", "nonlinear", "linear_cb"):
         actual = np.exp(tables[f"lnP_{name}"].reshape(
             original[f"p_{name}"].shape, order="F"))
         np.testing.assert_array_equal(actual, original[f"p_{name}"])

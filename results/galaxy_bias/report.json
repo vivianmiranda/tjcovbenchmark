@@ -2,8 +2,8 @@
   "schema": "tjpcov-galaxy-bias-diagnostic-v1",
   "scope": "Public projection scaling; not a physical covariance",
   "passed": true,
-  "input_manifest_sha256": "dbe10f9697e0a979d08a28af8dd244d806642305bc2fe2a48d6768f934e9d791",
-  "gaussian_manifest_sha256": "a280b1e4fe2ff470941a16ed0ed384ccd7cde5147a699f533265e1bd5d7ba3ac",
+  "input_manifest_sha256": "50ec38096881eea6de1e27ae06c187c86f4d3f931d9b39ef508f6f8817bdda33",
+  "gaussian_manifest_sha256": "23f74c9d9edaddae0d4fa3f85e8985d4fa38440f3b91eea423db1a1ce8dfd9dd",
   "metrics": {
     "cng_tracer_ratio": {
       "expected": 16,
@@ -63,6 +63,6 @@
   "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
   "script_sha256": "60cfa0f4804d5301bec8c8761855e5addb94d8a78e831694f95d2e4b3c68ab77",
   "files": {
-    "diagnostic.npz": "e14988ed4e41cc1ac8e1ce9142418786c084fd0d717f0072a184803fc3fccda3"
+    "diagnostic.npz": "80a19e30d88dc3c66336662e1478f489fec62d50f50d769a45a9243b601713e9"
   }
 }
