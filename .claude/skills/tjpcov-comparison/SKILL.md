@@ -77,7 +77,10 @@ Read that record before interpreting the complete figure: Gaussian is
 band-averaged, SSC/cNG are center-sampled, and its cNG sampling is an
 explicit 701-node pilot rather than CCL's default 1220-node grid. Quiet
 complete-pilot timings, full-survey and real-space comparisons remain
-pending.
+pending. The 2026-10-09 CoCoA-side rerun on the merged log-domain
+reader core is recorded in
+[the reader checkpoint](references/reader_refresh.md): bitwise except
+last-bit cNG, all published diagnostics unchanged.
 
 Run only one numerical job at a time unless concurrent correctness runs
 are explicitly authorized and their worker allocation is coordinated.

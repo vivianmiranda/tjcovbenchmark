@@ -393,7 +393,7 @@
       }
     },
     "cocoa": {
-      "manifest_sha256": "d904bbf298099974ebc005243d1dd071904266e5eb6cc995213f3fba30f30d2d",
+      "manifest_sha256": "7e662ee230cc5a50d9de4a7af9ef4307f2e90157f7f1fc094928efcd7bc7d8e1",
       "manifest": {
         "schema": "cocoa-complete-shear-v1",
         "status": "completed",
@@ -437,19 +437,19 @@
         },
         "installed_tables_equal_archive": true,
         "core": {
-          "commit": "959bb1d9fb54deafa6fe934c0327054bdede8a5e",
+          "commit": "23b0127f8d3fa55a84198807778fb8c390cd15aa",
           "status": ""
         },
         "lsst_y1": {
-          "commit": "c187522125986ad181985c39143aeebbaad50a61",
+          "commit": "05e35fb7ea0ec5ffc582250907922825cbfac11e",
           "status": ""
         },
-        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "interface_sha256": "3c361f80d018377cda141fd710e75adf27befe89ab945d371bd23c26cb27f1fb",
         "script_sha256": "dad036dea0e5a674232833c8de2f1314ff7cd45762de19692d6d475e608a7933",
         "helper_sha256": {
-          "cosmolike_notebook_utils/covariance/survey.py": "dc64e966a7e25bbebc1148bb0bce4039db2bcad1489521e80a8f587e57e1200e",
-          "cosmolike_notebook_utils/covariance/power.py": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0",
-          "cosmolike_notebook_utils/covariance/gaussian.py": "621e046334b2724aeb271901752009fc7251f3425e32abb64946e27140bf2921"
+          "cosmolike_notebook_utils/covariance/survey.py": "93911d78d5b36b1574f224c6a969ac69e2c7dd6970498c550165303f7b8ddfd0",
+          "cosmolike_notebook_utils/covariance/power.py": "03790172b0f1e069854d0a0384e1fa58a136d3ab43fdc857d803d34728600235",
+          "cosmolike_notebook_utils/covariance/gaussian.py": "85261044e0edc2c5cce9809595a7540715faa2e754f874ececabd072fe01e9dd"
         },
         "threads": 6,
         "settings": {
@@ -836,25 +836,25 @@
           "cng": {
             "max_total_rms_scaled_asymmetry": 3.469446951953614e-18,
             "minimum_diagonal": 1.0657350556020687e-26,
-            "minimum_total_rms_scaled_symmetric_eigenvalue": -0.008349042588481112
+            "minimum_total_rms_scaled_symmetric_eigenvalue": -0.008349042588481095
           },
           "total": {
             "max_total_rms_scaled_asymmetry": 1.0408340855860843e-17,
             "minimum_diagonal": 3.1588888035725945e-22,
-            "minimum_total_rms_scaled_symmetric_eigenvalue": 0.9607514979898247
+            "minimum_total_rms_scaled_symmetric_eigenvalue": 0.9607514979898245
           }
         },
         "total_positive": true,
         "timing_scope": "Accuracy only",
         "timing": null,
         "files": {
-          "covariance.npz": "a78953e6f5967ef688a387a381e469ed49a79adc40597edaa3b7484a3ea875ef",
-          "projection_inputs.npz": "2cf698da138ee8ac977eb9500c88e110955c4af00eefcd22ca368371a3b92f4e"
+          "covariance.npz": "812088ed42c497b2f2959dc1da1c441d526e8dd910fceed5add055ef6284c14c",
+          "projection_inputs.npz": "27bc9f68c3fc0ee56f32115aeee5a172c44927a6fa958d71d70bcf7ce2e65128"
         }
       }
     },
     "cocoa_refined": {
-      "manifest_sha256": "482260b473ba4b5280c327f34376a37c4eebdeefb44537d2fd65bd528943abfe",
+      "manifest_sha256": "037fab081f0880d8a40fe8feff598874d13ccba8fedd571c4b42f606ee6960e9",
       "manifest": {
         "schema": "cocoa-complete-shear-v1",
         "status": "completed",
@@ -898,19 +898,19 @@
         },
         "installed_tables_equal_archive": true,
         "core": {
-          "commit": "959bb1d9fb54deafa6fe934c0327054bdede8a5e",
+          "commit": "23b0127f8d3fa55a84198807778fb8c390cd15aa",
           "status": ""
         },
         "lsst_y1": {
-          "commit": "c187522125986ad181985c39143aeebbaad50a61",
+          "commit": "05e35fb7ea0ec5ffc582250907922825cbfac11e",
           "status": ""
         },
-        "interface_sha256": "22e2e3499ac4de7bdcd52eaee62fb148a30d3773d1c49e684d827e8943d079cc",
+        "interface_sha256": "3c361f80d018377cda141fd710e75adf27befe89ab945d371bd23c26cb27f1fb",
         "script_sha256": "dad036dea0e5a674232833c8de2f1314ff7cd45762de19692d6d475e608a7933",
         "helper_sha256": {
-          "cosmolike_notebook_utils/covariance/survey.py": "dc64e966a7e25bbebc1148bb0bce4039db2bcad1489521e80a8f587e57e1200e",
-          "cosmolike_notebook_utils/covariance/power.py": "0456a460e4b5a48ea843836c8ccad4fb9b53e0a81771828335d6a3d65f0646b0",
-          "cosmolike_notebook_utils/covariance/gaussian.py": "621e046334b2724aeb271901752009fc7251f3425e32abb64946e27140bf2921"
+          "cosmolike_notebook_utils/covariance/survey.py": "93911d78d5b36b1574f224c6a969ac69e2c7dd6970498c550165303f7b8ddfd0",
+          "cosmolike_notebook_utils/covariance/power.py": "03790172b0f1e069854d0a0384e1fa58a136d3ab43fdc857d803d34728600235",
+          "cosmolike_notebook_utils/covariance/gaussian.py": "85261044e0edc2c5cce9809595a7540715faa2e754f874ececabd072fe01e9dd"
         },
         "threads": 6,
         "settings": {
@@ -1297,20 +1297,20 @@
           "cng": {
             "max_total_rms_scaled_asymmetry": 3.469446951953614e-18,
             "minimum_diagonal": 1.0657356746521223e-26,
-            "minimum_total_rms_scaled_symmetric_eigenvalue": -0.008349033389576627
+            "minimum_total_rms_scaled_symmetric_eigenvalue": -0.008349033389576606
           },
           "total": {
             "max_total_rms_scaled_asymmetry": 1.3877787807814457e-17,
             "minimum_diagonal": 3.1588887540386863e-22,
-            "minimum_total_rms_scaled_symmetric_eigenvalue": 0.9607510071013525
+            "minimum_total_rms_scaled_symmetric_eigenvalue": 0.9607510071013511
           }
         },
         "total_positive": true,
         "timing_scope": "Accuracy only",
         "timing": null,
         "files": {
-          "covariance.npz": "4b966196d32b35660d472dfc3649536b117a717046d67dcc5d3cb59ceb434b8d",
-          "projection_inputs.npz": "ca58215764c941b42ef44bf7a7a8028e378efa9c882449f61d2b53357d57934b"
+          "covariance.npz": "5656cac50a1b3e275bb7f8a9913231aaa0637bee52863ecc97ef184cc099c121",
+          "projection_inputs.npz": "4a6724180cb9062286d6fcdae18553fdcb35fa17ec0d21778298c5cb1050c680"
         }
       }
     },
@@ -2068,8 +2068,8 @@
         "reference": 0.0
       },
       "total_variance_mode_change_range_percent": [
-        0.016089641921983717,
-        0.5803305512262457
+        0.016089641921983703,
+        0.5803305512262451
       ]
     },
     "ssc": {
@@ -2093,38 +2093,38 @@
         "reference": 4.144736029463248e-18
       },
       "total_variance_mode_change_range_percent": [
-        -0.12433848688310305,
-        7.771618158532477
+        -0.12433848688310298,
+        7.771618158532475
       ]
     },
     "cng": {
       "max_total_rms_scaled_difference_percent": 0.015390509240729886,
-      "rms_total_rms_scaled_difference_percent": 0.005673131340877087,
+      "rms_total_rms_scaled_difference_percent": 0.005673131340877024,
       "signed_total_rms_scaled_range_percent": [
-        -0.007736012601501657,
+        -0.007736012601501776,
         0.015390509240729886
       ],
       "max_relative_diagonal_difference_percent": 18.66481063256444,
-      "rms_relative_diagonal_difference_percent": 11.778371720387744,
+      "rms_relative_diagonal_difference_percent": 11.77837172038774,
       "signed_relative_diagonal_range_percent": [
-        -0.8694015515914307,
+        -0.8694015515914464,
         18.66481063256444
       ],
       "zero_reference_diagonals": 0,
-      "fractional_frobenius_difference_percent": 0.5155201878534902,
-      "absolute_frobenius_difference": 9.923925598680732e-23,
+      "fractional_frobenius_difference_percent": 0.515520187853468,
+      "absolute_frobenius_difference": 9.923925598680304e-23,
       "max_asymmetry_total_rms_scaled": {
-        "candidate": 2.012403805780286e-18,
+        "candidate": 2.6151184132323184e-18,
         "reference": 4.5329099121954946e-18
       },
       "total_variance_mode_change_range_percent": [
-        -0.07723906198259946,
-        0.406935317039796
+        -0.0772390619825941,
+        0.40693531703979424
       ]
     },
     "total": {
       "max_total_rms_scaled_difference_percent": 1.1321671262118864,
-      "rms_total_rms_scaled_difference_percent": 0.12123978160388152,
+      "rms_total_rms_scaled_difference_percent": 0.12123978160388146,
       "signed_total_rms_scaled_range_percent": [
         0.0034144413101360243,
         1.1321671262118864
@@ -2136,14 +2136,14 @@
         1.1321671262118864
       ],
       "zero_reference_diagonals": 0,
-      "fractional_frobenius_difference_percent": 0.7550956280237573,
-      "absolute_frobenius_difference": 1.074478092901122e-20,
+      "fractional_frobenius_difference_percent": 0.7550956280237572,
+      "absolute_frobenius_difference": 1.0744780929011217e-20,
       "max_asymmetry_total_rms_scaled": {
-        "candidate": 8.049615223121144e-18,
+        "candidate": 7.913100210313411e-18,
         "reference": 8.289472058926495e-18
       },
       "total_variance_mode_change_range_percent": [
-        0.006491950574464722,
+        0.006491950574464357,
         8.236043796644916
       ]
     }
@@ -2175,7 +2175,7 @@
       },
       "total": {
         "max_total_rms_scaled_difference_percent": 0.030114164103458543,
-        "rms_total_rms_scaled_difference_percent": 0.0008998797521973598,
+        "rms_total_rms_scaled_difference_percent": 0.0008998797521973595,
         "signed_total_rms_scaled_range_percent": [
           -0.014679364472398152,
           0.030114164103458543
@@ -2198,11 +2198,11 @@
         "convention": "Symmetric parts only for eigenvalues; saved matrices unchanged",
         "candidate_scaled_eigenvalue_range": [
           0.96694420247092,
-          1.473577923296197
+          1.473577923296196
         ],
         "reference_scaled_eigenvalue_range": [
-          0.9671322984828532,
-          1.4735049801529883
+          0.9671322984828524,
+          1.4735049801529878
         ],
         "positive_definite": {
           "candidate": true,
@@ -2210,10 +2210,10 @@
         },
         "both_positive_definite": true,
         "generalized_variance_ratio_range": [
-          0.9996088720200166,
-          1.000426291207003
+          0.9996088720200165,
+          1.0004262912070023
         ],
-        "max_generalized_variance_change_percent": 0.04262912070029934
+        "max_generalized_variance_change_percent": 0.042629120700232725
       },
       "cng_diagonal_rms_normalization_available": true,
       "cng_rms_scaled_difference_percent": {
@@ -2258,7 +2258,7 @@
       "normalization": "finer total diagonal RMS product",
       "cng": {
         "max_total_rms_scaled_difference_percent": 0.01676654728384359,
-        "rms_total_rms_scaled_difference_percent": 0.00034958300410454753,
+        "rms_total_rms_scaled_difference_percent": 0.0003495830041045476,
         "signed_total_rms_scaled_range_percent": [
           -0.0031530484880315057,
           0.01676654728384359
@@ -2279,7 +2279,7 @@
       },
       "total": {
         "max_total_rms_scaled_difference_percent": 0.016766547283834848,
-        "rms_total_rms_scaled_difference_percent": 0.0003495830041044556,
+        "rms_total_rms_scaled_difference_percent": 0.00034958300410445554,
         "signed_total_rms_scaled_range_percent": [
           -0.0031530484880315057,
           0.016766547283834848
@@ -2301,12 +2301,12 @@
       "variance_modes": {
         "convention": "Symmetric parts only for eigenvalues; saved matrices unchanged",
         "candidate_scaled_eigenvalue_range": [
-          0.9672471030532871,
-          1.4735496302734936
+          0.9672471030532866,
+          1.473549630273494
         ],
         "reference_scaled_eigenvalue_range": [
-          0.9671315499971844,
-          1.4735020769087934
+          0.967131549997185,
+          1.4735020769087939
         ],
         "positive_definite": {
           "candidate": true,
@@ -2314,10 +2314,10 @@
         },
         "both_positive_definite": true,
         "generalized_variance_ratio_range": [
-          0.9998866162600617,
-          1.00017010687529
+          0.9998866162600621,
+          1.0001701068752904
         ],
-        "max_generalized_variance_change_percent": 0.017010687528995483
+        "max_generalized_variance_change_percent": 0.017010687529039892
       },
       "cng_diagonal_rms_normalization_available": true,
       "cng_rms_scaled_difference_percent": {
@@ -2362,7 +2362,7 @@
       "normalization": "finer total diagonal RMS product",
       "cng": {
         "max_total_rms_scaled_difference_percent": 0.004354350807077742,
-        "rms_total_rms_scaled_difference_percent": 0.0001019309866694108,
+        "rms_total_rms_scaled_difference_percent": 0.00010193098666941083,
         "signed_total_rms_scaled_range_percent": [
           -0.0011235450077964014,
           0.004354350807077742
@@ -2405,12 +2405,12 @@
       "variance_modes": {
         "convention": "Symmetric parts only for eigenvalues; saved matrices unchanged",
         "candidate_scaled_eigenvalue_range": [
-          0.9671712813154154,
+          0.9671712813154152,
           1.4735196905047472
         ],
         "reference_scaled_eigenvalue_range": [
-          0.9671303967871753,
-          1.473505535924014
+          0.9671303967871743,
+          1.4735055359240148
         ],
         "positive_definite": {
           "candidate": true,
@@ -2418,10 +2418,10 @@
         },
         "both_positive_definite": true,
         "generalized_variance_ratio_range": [
-          0.9999717362560879,
-          1.000044327188498
+          0.9999717362560866,
+          1.0000443271884976
         ],
-        "max_generalized_variance_change_percent": 0.004432718849800565
+        "max_generalized_variance_change_percent": 0.0044327188497561565
       },
       "cng_diagonal_rms_normalization_available": true,
       "cng_rms_scaled_difference_percent": {
@@ -2489,7 +2489,7 @@
       },
       "ssc": {
         "max_total_rms_scaled_difference_percent": 0.00022982022189980505,
-        "rms_total_rms_scaled_difference_percent": 9.940530554921405e-06,
+        "rms_total_rms_scaled_difference_percent": 9.940530554921404e-06,
         "signed_total_rms_scaled_range_percent": [
           -0.00022982022189980505,
           2.752590716411346e-05
@@ -2509,29 +2509,29 @@
         }
       },
       "cng": {
-        "max_total_rms_scaled_difference_percent": 1.6144174593090295e-06,
-        "rms_total_rms_scaled_difference_percent": 7.510959915908724e-08,
+        "max_total_rms_scaled_difference_percent": 1.614417459415734e-06,
+        "rms_total_rms_scaled_difference_percent": 7.510959915228569e-08,
         "signed_total_rms_scaled_range_percent": [
-          -1.6144174593090295e-06,
+          -1.614417459415734e-06,
           8.865678709455319e-07
         ],
-        "max_relative_diagonal_difference_percent": 0.00023936952175065577,
-        "rms_relative_diagonal_difference_percent": 5.8979234650660006e-05,
+        "max_relative_diagonal_difference_percent": 0.00023936952176647683,
+        "rms_relative_diagonal_difference_percent": 5.8979234651126084e-05,
         "signed_relative_diagonal_range_percent": [
-          -0.00023936952175065577,
+          -0.00023936952176647683,
           8.038718581866867e-05
         ],
         "zero_reference_diagonals": 0,
-        "fractional_frobenius_difference_percent": 0.00013594662143797922,
-        "absolute_frobenius_difference": 2.612780816549628e-26,
+        "fractional_frobenius_difference_percent": 0.0001359466214493483,
+        "absolute_frobenius_difference": 2.612780816768132e-26,
         "max_asymmetry_total_rms_scaled": {
-          "candidate": 1.992010598168436e-18,
-          "reference": 2.5887352263115325e-18
+          "candidate": 2.5887352263115325e-18,
+          "reference": 2.7552331418911298e-18
         }
       },
       "total": {
         "max_total_rms_scaled_difference_percent": 0.0002401074537092404,
-        "rms_total_rms_scaled_difference_percent": 1.0012800845886836e-05,
+        "rms_total_rms_scaled_difference_percent": 1.0012800845879312e-05,
         "signed_total_rms_scaled_range_percent": [
           -0.0002401074537092404,
           2.0998096669348536e-05
@@ -2543,10 +2543,10 @@
           2.0998096669348536e-05
         ],
         "zero_reference_diagonals": 0,
-        "fractional_frobenius_difference_percent": 0.0002711037232563271,
-        "absolute_frobenius_difference": 3.885174369107559e-24,
+        "fractional_frobenius_difference_percent": 0.00027110372325633354,
+        "absolute_frobenius_difference": 3.8851743691076516e-24,
         "max_asymmetry_total_rms_scaled": {
-          "candidate": 7.968042392673745e-18,
+          "candidate": 7.82665500310737e-18,
           "reference": 1.0380558044363073e-17
         }
       }
@@ -2554,11 +2554,11 @@
     "variance_modes": {
       "convention": "Symmetric parts only for eigenvalues; saved matrices unchanged",
       "candidate_scaled_eigenvalue_range": [
-        0.9607509278934957,
-        1.5814403826595704
+        0.960750927893496,
+        1.58144038265957
       ],
       "reference_scaled_eigenvalue_range": [
-        0.9607510071013524,
+        0.9607510071013508,
         1.581445366620175
       ],
       "positive_definite": {
@@ -2567,10 +2567,10 @@
       },
       "both_positive_definite": true,
       "generalized_variance_ratio_range": [
-        0.9999931408155207,
-        1.0000032063137327
+        0.999993140815521,
+        1.0000032063137316
       ],
-      "max_generalized_variance_change_percent": 0.0006859184479290903
+      "max_generalized_variance_change_percent": 0.0006859184478957836
     },
     "baseline_settings": {
       "cosmology": {
@@ -3252,12 +3252,12 @@
   "variance_modes": {
     "convention": "Symmetric parts only for eigenvalues; saved matrices unchanged",
     "candidate_scaled_eigenvalue_range": [
-      0.971544832224944,
-      1.5919638654276054
+      0.9715448322249444,
+      1.5919638654276052
     ],
     "reference_scaled_eigenvalue_range": [
-      0.9671303967871753,
-      1.473505535924014
+      0.9671303967871743,
+      1.4735055359240148
     ],
     "positive_definite": {
       "candidate": true,
@@ -3265,22 +3265,22 @@
     },
     "both_positive_definite": true,
     "generalized_variance_ratio_range": [
-      1.0000649195057445,
-      1.0823604379664482
+      1.000064919505744,
+      1.0823604379664493
     ],
-    "max_generalized_variance_change_percent": 8.236043796644822
+    "max_generalized_variance_change_percent": 8.236043796644932
   },
   "both_positive_definite": true,
   "files": {
-    "matrices.npz": "b6fea8d52f42d1535984840cd1e4f4bf442db5ef196975f3feaba433ceebaf05"
+    "matrices.npz": "7cf018b7d64ad42dff27495dca1ccc3961e0601162f71ffdcfc341593ac8f47b"
   },
   "cng_structure_figure_normalization": "cNG / own cNG diagonal rms product",
   "figures": {
-    "complete_shear_components.pdf": "1643b4f9f0ac2d7d3def684922b78cba566556b6e7d32957a3d8bb5a5dcc7ea2",
-    "complete_shear_components.png": "6840058397e9d21c7231ff7656cb73356912ca722f5a414cb9c995f6c28523d4",
-    "complete_shear_difference.pdf": "0dc0b9c54477bf020a9ee1f10c1619308b6649da8878409839e24d7ba0957b87",
-    "complete_shear_difference.png": "76c3b2e0921eb57edb660ca777b795b19bacb77c7dfa4749e6d7fb9542533176",
-    "connected_covariance_structure.pdf": "af22cfc364e37ed3034753568b43ca50a1af8a77b43476ba4e8ada81ed5551ca",
-    "connected_covariance_structure.png": "2bfeee1e7327d85e5cf6bfe68ba081fab8256d08d03e0d687a7c3669f7bf9115"
+    "complete_shear_components.pdf": "da7f0b406c1b118a42a230786ac12ea783ea6ebc95f91e46d5f747e4ac7ca721",
+    "complete_shear_components.png": "151b32b4df13cb90c10c044ccd8108741fc99961fd9f26fee093d352c8c85dc1",
+    "complete_shear_difference.pdf": "5cdebaa8274355b918204f9ded9ac31ccb4e9c3d0c7cb5a2fa0ae1a7b48f9c4d",
+    "complete_shear_difference.png": "99014e7e49542339e3bcd21d97abf1e667310cf17e022ceeb57bc383a8316ffd",
+    "connected_covariance_structure.pdf": "5b9f2031e07534f783dd3ab333edb44838a6c179c914dca2f402b5db346eb783",
+    "connected_covariance_structure.png": "a44d2c7d762d1c9f21e9b3f60fdef4804bbc9e385e89d5882f67f8374fa2b183"
   }
 }

@@ -169,9 +169,9 @@ so the construction ratios above exclude these different setup tasks.
 >
 > - **CoCoA:** shared matter responses and trispectra are reused across
 >   observable pairs. Its full **1560 × 1560 LSST Y1 real-space covariance
->   takes 53.4 s**, compared with **48.0 s** for the 16 × 16 source-bin
+>   takes 29.5 s**, compared with **23.5 s** for the 16 × 16 source-bin
 >   pilot in the [OneCovariance comparison](https://github.com/vivianmiranda/OneCov-benchmark-#real-shear):
->   **1.11× the time, or about 11% more**. This measured reuse makes
+>   **1.25× the time, or about 25% more**. This measured reuse makes
 >   expansion to more survey bins more predictable at fixed numerical
 >   sampling. The full run and pilot use their respective documented
 >   angular bins and Gaussian settings.
@@ -182,8 +182,8 @@ so the construction ratios above exclude these different setup tasks.
 >   ratio above establishes that scaling; OneCovariance's scaling cannot
 >   be transferred to TJPCov.
 >
-> The [full CoCoA timing record](https://github.com/vivianmiranda/OneCov-benchmark-/blob/main/results/global_power_20261006/full_lsst_timing_20261007.json)
-> documents the 53.4 s measurement. There is no measured full-survey
+> The [full CoCoA timing record](https://github.com/vivianmiranda/OneCov-benchmark-/blob/main/results/reader_refresh_20261008/full_lsst_timing_20261008.json)
+> documents the 29.5 s measurement. There is no measured full-survey
 > TJPCov/CoCoA speed ratio yet. The inspected native TJPCov real-space
 > calculator exposes Gaussian covariance only, so it cannot supply an
 > analogous native real-space G + SSC + cNG timing.
@@ -1312,6 +1312,15 @@ component, mode and refinement diagnostics; the [assembly checks](results/cng_ti
 replay shared spectra and connected projection through the actual C
 kernels. These are accuracy runs. Complete-pilot quiet timings remain
 pending and are not inferred from these elapsed times.
+
+The CoCoA cases were recomputed on **2026-10-09**, after CoCoA adopted
+its log-domain power reader and fused trispectrum driver. Against the
+previous core, Gaussian, SSC and every saved signal and spectrum are
+bit-for-bit unchanged, and the largest cNG entry change is 2.3 × 10⁻³⁶
+in the saved units, against matrix entries of order 10⁻²⁰: every quoted
+diagnostic is unchanged at displayed precision. The unchanged TJPCov
+results are reused; the record verifies their input and source
+fingerprints before combining them.
 
 ### Reproduce the pilot
 
