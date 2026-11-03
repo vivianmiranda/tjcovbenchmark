@@ -1397,18 +1397,23 @@ completeness relation, so only the exact kernel shapes differ. Black
 marks the correct answer in every panel: the bin-integrated delta,
 which `gaussian_noise_pair_cov` writes in one step. Color marks a
 band-limited projection of the constant noise power trying to reach
-that answer. In the left panel the kernels are evaluated at the center of the narrowest
-bin: the partial sum first exceeds the exact answer at
+that answer.
+
+In the left panel the kernels are evaluated at the center of the
+narrowest bin: the partial sum first exceeds the exact answer at
 $\ell_{\max} = 16{,}657$ and keeps growing, reaching 5.9 times the
-exact diagonal at $\ell_{\max} = 10^5$. In the middle panel the
-kernels are averaged over each bin: every curve now approaches the
-exact diagonal, each bin needs $\ell_{\max}$ near $\pi$ over its
-width (the dotted lines), and the narrowest bin still sits at 0.97 at
-$\ell_{\max} = 10^5$. The right panel shows the narrowest bin's
-matrix row at two fixed band limits: at $\ell_{\max} = 2{,}000$ the
-diagonal entry holds 16% of the exact value and the rest spills into
-neighboring separations, while at $\ell_{\max} = 30{,}000$ the
-diagonal reaches 90% and the spill has nearly vanished.
+exact diagonal at $\ell_{\max} = 10^5$.
+
+In the middle panel the kernels are averaged over each bin: every
+curve now approaches the exact diagonal. Each bin needs
+$\ell_{\max}$ near $\pi$ over its width (the dotted lines), and the
+narrowest bin still sits at 0.97 at $\ell_{\max} = 10^5$.
+
+The right panel shows the narrowest bin's matrix row at two fixed band
+limits. At $\ell_{\max} = 2{,}000$ the diagonal entry holds 16% of
+the exact value and the rest spills into neighboring separations; at
+$\ell_{\max} = 30{,}000$ the diagonal reaches 90% and the spill has
+nearly vanished.
 
 ![Pure-noise projection convergence](figures/real_space_noise/noise_projection.png)
 
