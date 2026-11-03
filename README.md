@@ -1393,8 +1393,11 @@ into the neighboring bins.
 The figure below runs exactly this numerical experiment on the study's
 angular grid (26 logarithmic bins from 2.5 to 900 arcmin), with scalar
 Legendre kernels; the spin-2 kernels of $\xi_\pm$ obey the same
-completeness relation, so only the exact kernel shapes differ. In the
-left panel the kernels are evaluated at the center of the narrowest
+completeness relation, so only the exact kernel shapes differ. Black
+marks the correct answer in every panel: the bin-integrated delta,
+which `gaussian_noise_pair_cov` writes in one step. Color marks a
+band-limited projection of the constant noise power trying to reach
+that answer. In the left panel the kernels are evaluated at the center of the narrowest
 bin: the partial sum first exceeds the exact answer at
 $\ell_{\max} = 16{,}657$ and keeps growing, reaching 5.9 times the
 exact diagonal at $\ell_{\max} = 10^5$. In the middle panel the

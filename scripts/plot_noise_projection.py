@@ -110,11 +110,16 @@ def main():
                                 layout="constrained")
     ells = np.arange(LMAX + 1)
 
-    axes[0].plot(ells[1:], point_sum[1:], color="C3")
-    axes[0].axhline(1.0, color="black", linewidth=0.8, linestyle="dashed")
+    figure.suptitle("Pure-noise diagonal: band-limited projection (color) "
+                    "against the exact pair-count answer (black)")
+    axes[0].plot(ells[1:], point_sum[1:], color="C3",
+                 label="band-limited projection")
+    axes[0].axhline(1.0, color="black", linewidth=0.8, linestyle="dashed",
+                    label="exact pair-count answer")
     axes[0].set_xscale("log")
-    axes[0].set_title("Kernel at the bin center: no limit")
+    axes[0].set_title("Kernel at the bin center: never settles")
     axes[0].set_ylabel("partial sum / exact diagonal")
+    axes[0].legend(loc="upper left", fontsize=10)
 
     def arcmin(value):
         scaled = np.rad2deg(value) * 60.0
@@ -130,7 +135,7 @@ def main():
     axes[1].axhline(1.0, color="black", linewidth=0.8, linestyle="dashed")
     axes[1].set_xscale("log")
     axes[1].set_ylim(0.0, 1.1)
-    axes[1].set_title("Bin-averaged kernels: slow convergence")
+    axes[1].set_title("Bin-averaged kernels: converges, slowly")
     axes[1].legend(loc="upper left", fontsize=10, title="bin, with "
                    r"$\pi$/width dotted", title_fontsize=10)
 
@@ -138,12 +143,13 @@ def main():
     exact = np.zeros(NBIN)
     exact[0] = 1.0
     axes[2].plot(centers, exact, color="black", marker="o", linewidth=0.8,
-                 label="exact: bin-integrated delta")
+                 label="exact: CoCoA's analytic term")
     for limit, color in zip(ROW_BAND_LIMITS, ("C4", "C9")):
         axes[2].plot(centers, rows[limit], marker="s", markersize=4,
-                     color=color, label=rf"$\ell_{{\max}} = {limit:,}$")
+                     color=color,
+                     label=rf"projected, $\ell_{{\max}} = {limit:,}$")
     axes[2].set_xscale("log")
-    axes[2].set_title("First matrix row at fixed band limits")
+    axes[2].set_title("First matrix row: projection against exact")
     axes[2].set_xlabel(r"$\theta_j$ [arcmin]")
     axes[2].set_ylabel("entry / exact diagonal")
     axes[2].legend(loc="upper right", fontsize=10)
