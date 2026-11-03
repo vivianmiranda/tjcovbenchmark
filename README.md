@@ -51,7 +51,8 @@ The checks identify different causes in different parts of the calculation:
 11. [Separated matter trispectra](#trispectrum)
 12. [Connected covariance projection](#cng-projection)
 13. [Complete Fourier covariance](#complete-fourier)
-14. [Galaxy-bias placement](#galaxy-bias)
+14. [Real-space shape noise](#real-space-noise)
+15. [Galaxy-bias placement](#galaxy-bias)
 
 ## Comparison scope <a name="scope"></a>
 
@@ -71,10 +72,13 @@ to describe the survey tracers and the ordering of measured quantities.
 | Real-space covariance | `RealGaussianFsky` | One source bin's xi+ and xi−, including their cross-covariance. |
 
 TJPCov's public real-space calculator supplies **Gaussian covariance**.
-It currently projects the EE block only. The source study therefore
-requires a separate check of shear-noise contributions before a total
-real-space Gaussian agreement claim. Native real-space SSC and cNG are
-not exposed by the studied checkout.
+The studied checkout projects the EE signal block only, so the source
+study requires a separate check of shear-noise contributions before a
+total real-space Gaussian agreement claim. The
+[real-space shape noise](#real-space-noise) section gives the
+pure-noise term that check must reproduce and the conventions that
+change it. Native real-space SSC and cNG are not exposed by the
+studied checkout.
 
 Mask-coupled Gaussian covariance through NaMaster is a separate TJPCov
 capability. The first comparison uses the common sky-fraction
@@ -1350,6 +1354,93 @@ python scripts/run_complete_native.py work/lsst_y1 --tjpcov ../TJPCov --componen
 ```bash
 python scripts/report_complete_covariance.py --tjpcov-base work/complete_tj_base --tjpcov-cng work/complete_tj_cng --cocoa work/complete_cocoa --output work/results/complete_fourier --figures work/figures/complete_fourier
 ```
+
+## Real-space shape noise <a name="real-space-noise"></a>
+
+The Gaussian covariance of binned $\xi_\pm$ has three parts: signal
+times signal, signal times noise, and noise times noise. The first two
+are smooth functions of multipole, and the band-limited projection that
+builds the signal converges on them. The pure-noise part does not
+project the same way. White noise is constant in multipole, so the
+exact pure-noise covariance of unbinned estimators is a Dirac delta in
+separation, and a multipole sum evaluated at two fixed separations has
+no limit there. Kernels averaged over angular bins regularize the sum,
+and it then converges to the bin-integrated delta, but only once the
+band limit resolves the narrowest bin; below that the diagonal carries
+a band-limit-dependent error and the delta leaks into neighboring
+bins. Two codes that agree without noise and disagree on the
+with-noise diagonal therefore differ in the noise construction, not in
+the signal projection.
+
+CoCoA never projects the noise-times-noise product. The harmonic Wick
+assembly drops it on the real-space path (`gaussian_wick_cov` with
+`include_noise_noise = 0`; this and the two functions below live in
+`cosmolike/covariances/gaussian_cov.c` and
+`cosmolike/covariances/mask_cov.c` of cosmolike_core). The delta is
+instead integrated exactly over each angular bin, which turns it into
+the reciprocal of the expected ordered-pair count
+(`gaussian_noise_pair_cov`):
+
+$$
+\mathrm{Cov}_{NN}\!\left[\hat\xi_\pm^{AB}(\theta_i),\hat\xi_\pm^{CD}(\theta_j)\right]
+= \delta_{ij}\;2\,\bigl(\delta_{AC}\delta_{BD}+\delta_{AD}\delta_{BC}\bigr)\,
+\frac{\sigma_c^4}{n_A\,n_B\,A_{\mathrm{pair}}(\theta_i)}
+$$
+
+- $\sigma_c$: the ellipticity dispersion per component. The summed
+  dispersion of many papers is $\sigma_\epsilon^2 = 2\sigma_c^2$, so
+  the one-catalog auto covariance $4\sigma_c^4/(n^2 A_{\mathrm{pair}})$
+  equals $\sigma_\epsilon^4$ over the ordered-pair count.
+- $n_A$, $n_B$: the densities of the two catalogs, per steradian.
+- $A_{\mathrm{pair}}(\theta_i)$: the ordered-pair area in sr^2, the
+  survey solid angle times the ring
+  $2\pi\,(\cos\theta_i^{\mathrm{min}}-\cos\theta_i^{\mathrm{max}})$
+  (`annulus_pair_area_cov`), so $n_A n_B A_{\mathrm{pair}}$ is the
+  expected number of ordered pairs in the bin.
+- $\delta_{AC}\delta_{BD}$ and $\delta_{AD}\delta_{BC}$: catalog
+  identity in the direct and in the exchanged pairing. Only repeated
+  measurements of the same objects share noise.
+- The leading 2: the tangential and the cross ellipticity component
+  contribute the same pair variance to $\xi_+$, and likewise to
+  $\xi_-$. In the covariance of $\xi_+$ with $\xi_-$ the two
+  contributions enter with opposite signs and cancel, so that block
+  carries no pure noise at all.
+
+This is the pair-count form of the sampling terms in Friedrich et al.
+(2021), [arXiv:2012.08568](https://arxiv.org/abs/2012.08568),
+sections 6.10.1 to 6.10.3.
+
+Four conventions move a with-noise diagonal even between two codes
+that both integrate the delta analytically:
+
+1. **Dispersion definition** — per component ($\sigma_c$) or summed
+   ($\sigma_\epsilon$). Feeding a summed dispersion where a
+   per-component one belongs multiplies the pure-noise diagonal by
+   four. The `sigma_e_component` this study exports is per component,
+   and [run_gaussian.py](scripts/run_gaussian.py) asserts the Fourier
+   noise power built from it against TJPCov's internal value.
+2. **Bin integration of the delta** — the ring solid angle can be the
+   spherical $2\pi\,(\cos\theta^{\mathrm{min}}-\cos\theta^{\mathrm{max}})$,
+   the flat-sky annulus
+   $\pi\,[(\theta^{\mathrm{max}})^2-(\theta^{\mathrm{min}})^2]$, or a
+   bin-center $2\pi\,\theta_c\,\Delta\theta$ with some center
+   definition. The choices agree as the bins narrow and differ most in
+   wide logarithmic bins at small separations.
+3. **Edge correction of the pair area** — a uniform footprint times the
+   full ring counts pairs whose partner ring leaves the survey.
+   `mask_pair_area_cov` rebuilds $A_{\mathrm{pair}}$ from the raw mask
+   power spectrum instead; fewer pairs raise the pure-noise variance.
+4. **The mixed signal-times-noise term** stays inside the multipole
+   sum, where it converges; its band limit and bin-averaged kernels
+   are the machinery the no-noise comparison already exercises.
+
+The formula needs no Boltzmann code: the densities, the dispersion,
+the bin edges and the survey area fix every number. Checking a code's
+noise-only diagonal against it separates the noise construction from
+every other difference. That check against TJPCov's real-space
+calculator has not been run here; the [scope](#scope) section records
+it as the requirement standing before a total real-space agreement
+claim.
 
 ## Galaxy-bias placement <a name="galaxy-bias"></a>
 
