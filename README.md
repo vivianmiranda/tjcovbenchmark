@@ -1442,16 +1442,37 @@ exact diagonal at $\ell_{\max} = 10^5$; without the bin average
 there is no target at all.
 
 This object is not a hypothetical wrong choice; it sits inside
-TJPCov's own pipeline. The Wigner transform evaluates the projected
-covariance at individual separations on an internal grid of about
-thirty points per bin, and a later step averages those point values
-over each bin (`get_binning_info` builds the grid, `bin_cov` does the
-average, and a source comment at the grid warns that the binned
-covariance is sensitive to the grid's values). The average of point
-evaluations reproduces the bin-averaged kernels of the next figure
-only when the grid resolves the pure-noise ringing, whose period is
-about $\pi$ over the band limit. A caller who requests the unbinned
-covariance receives this figure's object directly.
+TJPCov's own pipeline, which reaches its binned covariance in two
+steps. The Wigner transform first evaluates the projected covariance
+at individual grid separations $\theta_a$, which for the pure-noise
+part alone is this figure's object with unaveraged kernels:
+
+$$
+C(\theta_a, \theta_b) = \frac{1}{f_{\mathrm{sky}}}
+\sum_{\ell=2}^{\ell_{\max}} \frac{2\ell+1}{(4\pi)^2}
+P_\ell(\cos\theta_a) P_\ell(\cos\theta_b) \left[2N^2\right]
+$$
+
+A second step (`bin_cov`) then averages the point values that fall in
+a pair of bins, $n_i$ of them in bin $i$:
+
+$$
+\mathrm{Cov}^{\mathrm{binned}}_{ij} \approx
+\frac{1}{n_i n_j}
+\sum_{\theta_a \in i} \sum_{\theta_b \in j}
+C(\theta_a, \theta_b)
+$$
+
+This average stands in for the bin-averaged kernels of the next
+figure, and the substitution holds only when the grid samples the
+integrand faster than it oscillates. The truncated delta rings with a
+period near $\pi/\ell_{\max}$: 0.36 arcmin at
+$\ell_{\max} = 30{,}000$. The grid of the studied checkout
+(`get_binning_info`) is linear with about 1.2 arcmin spacing above
+1 arcmin, so the narrowest bins hold zero or one grid point, and the
+source comment beside the grid warns that the binned covariance is
+sensitive to its values. A caller who requests the unbinned
+covariance receives $C(\theta_a, \theta_b)$ directly.
 
 ![Unbinned pure-noise projection](figures/real_space_noise/noise_center.png)
 
