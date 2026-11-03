@@ -14,6 +14,18 @@ width in cos theta). With kernels evaluated at the bin center the same
 sum has no limit. The spin-2 kernels of xi_pm obey the same
 completeness relation, so the convergence behavior shown here carries
 over; only the exact kernels differ.
+
+The band-limited route is what TJPCov's real-space calculator runs at
+the studied checkout: covariance_gaussian_fsky.py multiplies
+(C_ell + N) into both Wick pairings, pure-noise product included, and
+covariance_builder.py projects the result up to a caller-chosen lmax
+and bins it. CoCoA replaces the pure-noise product by the exact
+pair-count term (gaussian_noise_pair_cov in cosmolike_core). The
+figure labels name the two routes accordingly.
+
+Three separate figures are written: the unbinned projection at one bin
+center (noise_center), the bin-averaged projection for three bins
+(noise_binned), and one matrix row at fixed band limits (noise_row).
 """
 
 import argparse
@@ -29,6 +41,8 @@ NBIN = 26
 LMAX = 100_000
 ROW_BAND_LIMITS = (2_000, 30_000)
 SHOWN_BINS = (0, 12, 25)
+EXACT_LABEL = "exact pair count (CoCoA)"
+PROJECTED_LABEL = "TJPCov/CCL route"
 
 
 def legendre_at(x, lmax):
@@ -57,6 +71,17 @@ def bin_averaged_kernels(edges_rad, lmax):
     anti = (table[2:] - table[:-2]) / (2*ells + 1)[:, None]
     kernels[1:] = (anti[:, :-1] - anti[:, 1:]) / dx
     return kernels, dx
+
+
+def math_band_limit(limit):
+    """A band limit as mathtext, with a grouped thousands separator."""
+    grouped = f"{limit:,}".replace(",", "{,}")
+    return rf"$\ell_{{\max}} = {grouped}$"
+
+
+def save(figure, output, stem):
+    for extension in ("png", "pdf"):
+        figure.savefig(output / f"{stem}.{extension}", dpi=200)
 
 
 def main():
@@ -104,62 +129,73 @@ def main():
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    plt.rcParams.update({"font.size": 12, "axes.spines.top": False,
+    plt.rcParams.update({"font.size": 13, "axes.spines.top": False,
                          "axes.spines.right": False})
-    figure, axes = plt.subplots(1, 3, figsize=(15, 4.2),
-                                layout="constrained")
     ells = np.arange(LMAX + 1)
-
-    figure.suptitle("Pure-noise diagonal: band-limited projection (color) "
-                    "against the exact pair-count answer (black)")
-    axes[0].plot(ells[1:], point_sum[1:], color="C3",
-                 label="band-limited projection")
-    axes[0].axhline(1.0, color="black", linewidth=0.8, linestyle="dashed",
-                    label="exact pair-count answer")
-    axes[0].set_xscale("log")
-    axes[0].set_title("Kernel at the bin center: never settles")
-    axes[0].set_ylabel("partial sum / exact diagonal")
-    axes[0].legend(loc="upper left", fontsize=10, frameon=False)
 
     def arcmin(value):
         scaled = np.rad2deg(value) * 60.0
         return f"{scaled:.1f}" if scaled < 10.0 else f"{scaled:.0f}"
 
-    labels = [f"{arcmin(edges[i])} to {arcmin(edges[i + 1])} arcmin"
-              for i in SHOWN_BINS]
-    for (index, series), label, color in zip(diagonal.items(), labels,
-                                             ("C0", "C1", "C2")):
-        axes[1].plot(ells[1:], series[1:], color=color, label=label)
-        axes[1].axvline(resolve[index], color=color, linewidth=0.8,
-                        linestyle="dotted")
-    axes[1].axhline(1.0, color="black", linewidth=0.8, linestyle="dashed")
-    axes[1].set_xscale("log")
-    axes[1].set_ylim(0.0, 1.1)
-    axes[1].set_title("Bin-averaged kernels: converges, slowly")
-    axes[1].legend(loc="upper left", fontsize=10, frameon=False,
-                   bbox_to_anchor=(0.0, 0.95))
+    # Figure 1: the projection with kernels at one bin center.
+    figure, axis = plt.subplots(figsize=(7.0, 4.6), layout="constrained")
+    axis.plot(ells[1:], point_sum[1:], color="C3",
+              label="projected at the bin center")
+    axis.axhline(1.0, color="black", linewidth=0.9, linestyle="dashed",
+                 label=EXACT_LABEL)
+    axis.set_xscale("log")
+    axis.set_title("Unbinned projection of the pure noise: never settles")
+    axis.set_xlabel(r"band limit $\ell_{\max}$")
+    axis.set_ylabel("partial sum / exact diagonal")
+    axis.legend(loc="upper left", frameon=False)
+    save(figure, args.output, "noise_center")
+    plt.close(figure)
 
+    # Figure 2: the projection with bin-averaged kernels, three bins.
+    # Curve names sit next to the curves in their own color; no legend.
+    figure, axis = plt.subplots(figsize=(7.0, 4.6), layout="constrained")
+    for index, color in zip(SHOWN_BINS, ("C0", "C1", "C2")):
+        axis.plot(ells[1:], diagonal[index][1:], color=color)
+        axis.axvline(resolve[index], color=color, linewidth=0.9,
+                     linestyle="dotted")
+    axis.axhline(1.0, color="black", linewidth=0.9, linestyle="dashed")
+    axis.text(1.3, 1.045, EXACT_LABEL, color="black")
+    axis.text(1.3, 0.84,
+              f"{arcmin(edges[25])} to {arcmin(edges[26])} arcmin",
+              color="C2")
+    axis.text(60.0, 0.62,
+              f"{arcmin(edges[12])} to {arcmin(edges[13])} arcmin",
+              color="C1")
+    axis.text(1.1e3, 0.42,
+              f"{arcmin(edges[0])} to {arcmin(edges[1])} arcmin",
+              color="C0")
+    axis.set_xscale("log")
+    axis.set_ylim(0.0, 1.12)
+    axis.set_title("Bin-averaged projection: the TJPCov/CCL route")
+    axis.set_xlabel(r"band limit $\ell_{\max}$")
+    axis.set_ylabel("partial sum / exact diagonal")
+    save(figure, args.output, "noise_binned")
+    plt.close(figure)
+
+    # Figure 3: one matrix row of the pure-noise term at fixed limits.
+    figure, axis = plt.subplots(figsize=(7.0, 4.6), layout="constrained")
     centers = np.rad2deg(np.sqrt(edges[:-1] * edges[1:])) * 60.0
     exact = np.zeros(NBIN)
     exact[0] = 1.0
-    axes[2].plot(centers, exact, color="black", marker="o", linewidth=0.8,
-                 label="exact: CoCoA's analytic term")
+    axis.plot(centers, exact, color="black", marker="o", linewidth=0.9,
+              label=EXACT_LABEL)
     for limit, color in zip(ROW_BAND_LIMITS, ("C4", "C9")):
-        axes[2].plot(centers, rows[limit], marker="s", markersize=4,
-                     color=color,
-                     label=rf"projected, $\ell_{{\max}} = {limit:,}$")
-    axes[2].set_xscale("log")
-    axes[2].set_title("First matrix row: projection against exact")
-    axes[2].set_xlabel(r"$\theta_j$ [arcmin]")
-    axes[2].set_ylabel("entry / exact diagonal")
-    axes[2].legend(loc="upper right", fontsize=10, frameon=False)
-
-    for axis in axes[:2]:
-        axis.set_xlabel(r"band limit $\ell_{\max}$")
-    for extension in ("png", "pdf"):
-        figure.savefig(args.output / f"noise_projection.{extension}",
-                       dpi=200)
-    print(f"figure written to {args.output}")
+        axis.plot(centers, rows[limit], marker="s", markersize=4,
+                  color=color,
+                  label=f"{PROJECTED_LABEL}, {math_band_limit(limit)}")
+    axis.set_xscale("log")
+    axis.set_title("First matrix row of the pure-noise term")
+    axis.set_xlabel(r"$\theta_j$ [arcmin]")
+    axis.set_ylabel("entry / exact diagonal")
+    axis.legend(loc="upper right", frameon=False)
+    save(figure, args.output, "noise_row")
+    plt.close(figure)
+    print(f"figures written to {args.output}")
 
 
 if __name__ == "__main__":

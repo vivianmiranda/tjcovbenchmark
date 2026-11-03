@@ -1390,43 +1390,82 @@ narrowest bin width. Below that, the computed diagonal is off by an
 amount that depends on $\ell_{\max}$, and part of the delta spills
 into the neighboring bins.
 
-The figure below runs exactly this numerical experiment on the study's
-angular grid (26 logarithmic bins from 2.5 to 900 arcmin), with scalar
-Legendre kernels; the spin-2 kernels of $\xi_\pm$ obey the same
-completeness relation, so only the exact kernel shapes differ. Black
-marks the correct answer in every panel: the bin-integrated delta,
-which `gaussian_noise_pair_cov` writes in one step. Color marks a
-band-limited projection of the constant noise power trying to reach
-that answer.
+#### The two routes in equations
 
-In the left panel the kernels are evaluated at the center of the
-narrowest bin: the partial sum first exceeds the exact answer at
-$\ell_{\max} = 16{,}657$ and keeps growing, reaching 5.9 times the
-exact diagonal at $\ell_{\max} = 10^5$.
+Written for the scalar correlation $w(\theta)$ of one catalog, with
+constant noise power $N$ (for $\xi_\pm$ the kernels gain spin and
+the pair counts gain a factor of two per shear component; the full
+pair-count formula appears below), define the band-limited projection
+of a multipole series $X_\ell$ onto two angular bins:
 
-In the middle panel the kernels are averaged over each bin: every
-curve now approaches the exact diagonal. Each bin needs
+$$
+P_{ij}\left[X\right] = \frac{1}{f_{\mathrm{sky}}}
+\sum_{\ell=2}^{\ell_{\max}} \frac{2\ell+1}{(4\pi)^2}
+\bar{P}_\ell(\theta_i) \bar{P}_\ell(\theta_j) X_\ell
+$$
+
+with $\bar{P}_\ell$ the Legendre kernel averaged over each bin.
+TJPCov sends the complete Wick product through this projection:
+
+$$
+\mathrm{Cov}^{\mathrm{TJPCov}}_{ij} =
+P_{ij}\left[2 \left(C_\ell + N\right)^2\right]
+$$
+
+CoCoA projects only the terms that carry a signal and writes the
+pure-noise piece in closed form, with $A_{\mathrm{pair}}$ the
+ordered-pair area defined below:
+
+$$
+\mathrm{Cov}^{\mathrm{CoCoA}}_{ij} =
+P_{ij}\left[2 C_\ell^2 + 4 C_\ell N\right]
++ \delta_{ij} \frac{2 N^2}{A_{\mathrm{pair}}(\theta_i)}
+$$
+
+The two lines differ by one object only: the projected pure noise
+$P_{ij}[2 N^2]$ against the exact
+$\delta_{ij} 2N^2/A_{\mathrm{pair}}$. The first converges to the
+second as the band limit grows, and the three figures below measure
+how slowly, on the study's angular grid (26 logarithmic bins from 2.5
+to 900 arcmin). Black always marks the exact answer; color marks the
+projected route.
+
+The first figure evaluates the kernels at the center of the narrowest
+bin instead of averaging them: the partial sum first exceeds the exact
+answer at $\ell_{\max} = 16{,}657$ and keeps growing, reaching 5.9
+times the exact diagonal at $\ell_{\max} = 10^5$.
+
+![Unbinned pure-noise projection](figures/real_space_noise/noise_center.png)
+
+The second figure averages the kernels over each bin, the TJPCov/CCL
+route: every curve now approaches the exact diagonal. Each bin needs
 $\ell_{\max}$ near $\pi$ over its width (the dotted lines), and the
 narrowest bin still sits at 0.97 at $\ell_{\max} = 10^5$.
 
-The right panel shows the narrowest bin's matrix row at two fixed band
-limits. At $\ell_{\max} = 2{,}000$ the diagonal entry holds 16% of
-the exact value and the rest spills into neighboring separations; at
-$\ell_{\max} = 30{,}000$ the diagonal reaches 90% and the spill has
-nearly vanished.
+![Bin-averaged pure-noise projection](figures/real_space_noise/noise_binned.png)
 
-![Pure-noise projection convergence](figures/real_space_noise/noise_projection.png)
+The third figure shows the narrowest bin's matrix row at two fixed
+band limits. At $\ell_{\max} = 2{,}000$ the diagonal entry holds 16%
+of the exact value and the rest spills into neighboring separations;
+at $\ell_{\max} = 30{,}000$ the diagonal reaches 90% and the spill
+has nearly vanished.
+
+![Pure-noise matrix row](figures/real_space_noise/noise_row.png)
 
 [plot_noise_projection.py](scripts/plot_noise_projection.py) rebuilds
-the figure from numpy and matplotlib alone.
+all three figures from numpy and matplotlib alone.
 
 The practical consequence: two codes that agree without noise and
 disagree on the with-noise diagonal differ in the noise construction,
-not in the signal projection. None of this is specific to one code.
-CoCoA sidesteps the failure by construction, as the next paragraphs
-describe; whether a given TJPCov revision projects its noise or adds
-it exactly is part of the open check the [scope](#scope) section
-names.
+not in the signal projection. At the studied checkout, TJPCov's
+real-space calculator takes the projected route: its harmonic block
+multiplies signal plus noise into both Wick pairings, pure-noise
+product included (`covariance_gaussian_fsky.py`), and
+`covariance_builder.py` projects that block up to a caller-chosen band
+limit before binning. CoCoA takes the exact route the next paragraphs
+describe. The [scope](#scope) section's open check is therefore
+quantitative: the routes are known, and their numbers have not been
+compared here.
 
 CoCoA splits the calculation along that line. At each multipole, the
 Gaussian covariance is a sum of products of two angular power spectra,
