@@ -1390,9 +1390,35 @@ narrowest bin width. Below that, the computed diagonal is off by an
 amount that depends on $\ell_{\max}$, and part of the delta spills
 into the neighboring bins.
 
+The figure below runs exactly this numerical experiment on the study's
+angular grid (26 logarithmic bins from 2.5 to 900 arcmin), with scalar
+Legendre kernels; the spin-2 kernels of $\xi_\pm$ obey the same
+completeness relation, so only the exact kernel shapes differ. In the
+left panel the kernels are evaluated at the center of the narrowest
+bin: the partial sum first exceeds the exact answer at
+$\ell_{\max} = 16{,}657$ and keeps growing, reaching 5.9 times the
+exact diagonal at $\ell_{\max} = 10^5$. In the middle panel the
+kernels are averaged over each bin: every curve now approaches the
+exact diagonal, each bin needs $\ell_{\max}$ near $\pi$ over its
+width (the dotted lines), and the narrowest bin still sits at 0.97 at
+$\ell_{\max} = 10^5$. The right panel shows the narrowest bin's
+matrix row at two fixed band limits: at $\ell_{\max} = 2{,}000$ the
+diagonal entry holds 16% of the exact value and the rest spills into
+neighboring separations, while at $\ell_{\max} = 30{,}000$ the
+diagonal reaches 90% and the spill has nearly vanished.
+
+![Pure-noise projection convergence](figures/real_space_noise/noise_projection.png)
+
+[plot_noise_projection.py](scripts/plot_noise_projection.py) rebuilds
+the figure from numpy and matplotlib alone.
+
 The practical consequence: two codes that agree without noise and
 disagree on the with-noise diagonal differ in the noise construction,
-not in the signal projection.
+not in the signal projection. None of this is specific to one code.
+CoCoA sidesteps the failure by construction, as the next paragraphs
+describe; whether a given TJPCov revision projects its noise or adds
+it exactly is part of the open check the [scope](#scope) section
+names.
 
 CoCoA splits the calculation along that line. At each multipole, the
 Gaussian covariance is a sum of products of two angular power spectra,
