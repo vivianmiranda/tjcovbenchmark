@@ -1418,8 +1418,8 @@ ordered-pair area defined below:
 
 $$
 \mathrm{Cov}^{\mathrm{CoCoA}}_{ij} =
-P_{ij}\left[2 C_\ell^2 + 4 C_\ell N\right]
-+ \delta_{ij} \frac{2 N^2}{A_{\mathrm{pair}}(\theta_i)}
+P_{ij}\left[2 C_\ell^2 + 4 C_\ell N\right] +
+\delta_{ij} \frac{2 N^2}{A_{\mathrm{pair}}(\theta_i)}
 $$
 
 The two lines differ by one object only: the projected pure noise
