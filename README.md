@@ -1358,33 +1358,57 @@ python scripts/report_complete_covariance.py --tjpcov-base work/complete_tj_base
 ## Real-space shape noise <a name="real-space-noise"></a>
 
 The Gaussian covariance of binned $\xi_\pm$ has three parts: signal
-times signal, signal times noise, and noise times noise. The first two
-are smooth functions of multipole, and the band-limited projection that
-builds the signal converges on them. The pure-noise part does not
-project the same way. White noise is constant in multipole, so the
-exact pure-noise covariance of unbinned estimators is a Dirac delta in
-separation, and a multipole sum evaluated at two fixed separations has
-no limit there. Kernels averaged over angular bins regularize the sum,
-and it then converges to the bin-integrated delta, but only once the
-band limit resolves the narrowest bin; below that the diagonal carries
-a band-limit-dependent error and the delta leaks into neighboring
-bins. Two codes that agree without noise and disagree on the
-with-noise diagonal therefore differ in the noise construction, not in
-the signal projection.
+times signal, signal times noise, and noise times noise. A real-space
+covariance comes out of a projection: a sum over multipoles, cut at a
+band limit $\ell_{\max}$, of the harmonic covariance times two
+angular kernels. The two parts that contain a signal fall off with
+multipole, so their sums settle well below any reasonable band limit,
+and raising $\ell_{\max}$ stops changing the answer. That is the
+path the no-noise comparison already validates.
 
-CoCoA never projects the noise-times-noise product. The harmonic Wick
-assembly drops it on the real-space path (`gaussian_wick_cov` with
-`include_noise_noise = 0`; this and the two functions below live in
-`cosmolike/covariances/gaussian_cov.c` and
-`cosmolike/covariances/mask_cov.c` of cosmolike_core). The delta is
-instead integrated exactly over each angular bin, which turns it into
-the reciprocal of the expected ordered-pair count
-(`gaussian_noise_pair_cov`):
+The pure-noise part behaves differently, and the physical picture says
+why. Shape noise is independent from galaxy to galaxy, so it
+correlates two estimates of $\xi_\pm$ only when they average the
+same galaxy pairs. Estimates in disjoint angular bins share no pairs,
+so their pure-noise covariance is exactly zero; all of it sits where
+the two separations coincide. In the unbinned limit that concentration
+is a Dirac delta: zero at any two distinct separations, and finite
+only once integrated over a bin. The projection shows the same fact as
+a convergence failure. The noise power $N$ is the same number at every
+multipole, so each new multipole adds a term of about the same size as
+the one before, and at two fixed separations the partial sums keep
+oscillating as $\ell_{\max}$ grows; no single $\ell_{\max}$
+settles them. Averaging the kernels over the angular bins tames the
+sum: it then has a finite target, the delta integrated over the bin.
+It reaches that target slowly, needing multipoles up to roughly $\pi$
+over the narrowest bin width. Below that, the computed diagonal is off
+by an amount that depends on $\ell_{\max}$, and part of the delta
+spills into the neighboring bins.
+
+The practical consequence: two codes that agree without noise and
+disagree on the with-noise diagonal differ in the noise construction,
+not in the signal projection.
+
+CoCoA splits the calculation along that line. At each multipole, the
+Gaussian covariance is a sum of products of two angular power spectra,
+and each factor is either a signal $C_\ell$ or a constant noise power
+$N$. The function `gaussian_wick_cov` builds that multipole table; its
+name points at Wick's theorem, the rule that writes a Gaussian
+four-point average as a sum over pairings of two-point averages. On
+the real-space path the table is built with `include_noise_noise = 0`:
+products with at most one noise factor stay in the table and go
+through the multipole projection, which converges on them, and the
+product of two noise factors never enters it. That product is handled
+in one exact step instead. Integrating its Dirac delta over an angular
+bin leaves one over the expected number of ordered galaxy pairs in the
+bin, and `gaussian_noise_pair_cov` returns that number. Every function
+named in this section lives in `cosmolike/covariances/gaussian_cov.c`
+or `cosmolike/covariances/mask_cov.c` of cosmolike_core.
 
 $$
-\mathrm{Cov}_{NN}\!\left[\hat\xi_\pm^{AB}(\theta_i),\hat\xi_\pm^{CD}(\theta_j)\right]
-= \delta_{ij}\;2\,\bigl(\delta_{AC}\delta_{BD}+\delta_{AD}\delta_{BC}\bigr)\,
-\frac{\sigma_c^4}{n_A\,n_B\,A_{\mathrm{pair}}(\theta_i)}
+\mathrm{Cov}_{NN}\left[\hat{\xi}_{\pm}^{AB}(\theta_i), \hat{\xi}_{\pm}^{CD}(\theta_j)\right]
+= 2 \delta_{ij} \left(\delta_{AC}\delta_{BD}+\delta_{AD}\delta_{BC}\right)
+\frac{\sigma_c^4}{n_A n_B A_{\mathrm{pair}}(\theta_i)}
 $$
 
 - $\sigma_c$: the ellipticity dispersion per component. The summed
@@ -1394,7 +1418,7 @@ $$
 - $n_A$, $n_B$: the densities of the two catalogs, per steradian.
 - $A_{\mathrm{pair}}(\theta_i)$: the ordered-pair area in sr^2, the
   survey solid angle times the ring
-  $2\pi\,(\cos\theta_i^{\mathrm{min}}-\cos\theta_i^{\mathrm{max}})$
+  $2\pi (\cos\theta_i^{\mathrm{min}}-\cos\theta_i^{\mathrm{max}})$
   (`annulus_pair_area_cov`), so $n_A n_B A_{\mathrm{pair}}$ is the
   expected number of ordered pairs in the bin.
 - $\delta_{AC}\delta_{BD}$ and $\delta_{AD}\delta_{BC}$: catalog
@@ -1420,10 +1444,10 @@ that both integrate the delta analytically:
    and [run_gaussian.py](scripts/run_gaussian.py) asserts the Fourier
    noise power built from it against TJPCov's internal value.
 2. **Bin integration of the delta** — the ring solid angle can be the
-   spherical $2\pi\,(\cos\theta^{\mathrm{min}}-\cos\theta^{\mathrm{max}})$,
+   spherical $2\pi (\cos\theta^{\mathrm{min}}-\cos\theta^{\mathrm{max}})$,
    the flat-sky annulus
-   $\pi\,[(\theta^{\mathrm{max}})^2-(\theta^{\mathrm{min}})^2]$, or a
-   bin-center $2\pi\,\theta_c\,\Delta\theta$ with some center
+   $\pi [(\theta^{\mathrm{max}})^2-(\theta^{\mathrm{min}})^2]$, or a
+   bin-center $2\pi \theta_c \Delta\theta$ with some center
    definition. The choices agree as the bins narrow and differ most in
    wide logarithmic bins at small separations.
 3. **Edge correction of the pair area** — a uniform footprint times the
