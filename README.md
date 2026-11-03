@@ -1441,6 +1441,18 @@ $\ell_{\max} = 16{,}657$ and keeps growing, reaching 5.9 times the
 exact diagonal at $\ell_{\max} = 10^5$; without the bin average
 there is no target at all.
 
+This object is not a hypothetical wrong choice; it sits inside
+TJPCov's own pipeline. The Wigner transform evaluates the projected
+covariance at individual separations on an internal grid of about
+thirty points per bin, and a later step averages those point values
+over each bin (`get_binning_info` builds the grid, `bin_cov` does the
+average, and a source comment at the grid warns that the binned
+covariance is sensitive to the grid's values). The average of point
+evaluations reproduces the bin-averaged kernels of the next figure
+only when the grid resolves the pure-noise ringing, whose period is
+about $\pi$ over the band limit. A caller who requests the unbinned
+covariance receives this figure's object directly.
+
 ![Unbinned pure-noise projection](figures/real_space_noise/noise_center.png)
 
 **Figure :two:**: the same diagonal with the bin-averaged kernels of
@@ -1539,10 +1551,10 @@ part.
    components. The per-component noise power is the same number either
    way:
 
-   $$
+   ```math
    N = \frac{\sigma_c^2}{\bar{n}}
      = \frac{\sigma_\epsilon^2}{2\bar{n}}
-   $$
+   ```
 
    A code handed $\sigma_\epsilon$ where it expects $\sigma_c$
    builds $N$ twice too large. The pure-noise term is quadratic in
@@ -1559,14 +1571,14 @@ part.
    named: spherical, flat-sky annulus, and bin-center with some
    definition of the center $\theta_c$:
 
-   $$
+   ```math
    \Omega_{\mathrm{ring}} =
    2\pi \left(\cos\theta^{\mathrm{min}} - \cos\theta^{\mathrm{max}}\right),
    \qquad
    \pi \left[(\theta^{\mathrm{max}})^2 - (\theta^{\mathrm{min}})^2\right],
    \qquad
    2\pi \theta_c \Delta\theta
-   $$
+   ```
 
    On this study's grid the
    differences are measured, not hypothetical. The arithmetic bin
