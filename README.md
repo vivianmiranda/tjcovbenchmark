@@ -1526,29 +1526,68 @@ This is the pair-count form of the sampling terms in Friedrich et al.
 (2021), [arXiv:2012.08568](https://arxiv.org/abs/2012.08568),
 sections 6.10.1 to 6.10.3.
 
-Four conventions move a with-noise diagonal even between two codes
-that both integrate the delta analytically:
+#### Four conventions that move the diagonal
 
-1. **Dispersion definition** — per component ($\sigma_c$) or summed
-   ($\sigma_\epsilon$). Feeding a summed dispersion where a
-   per-component one belongs multiplies the pure-noise diagonal by
-   four. The `sigma_e_component` this study exports is per component,
-   and [run_gaussian.py](scripts/run_gaussian.py) asserts the Fourier
-   noise power built from it against TJPCov's internal value.
-2. **Bin integration of the delta** — the ring solid angle can be the
-   spherical $2\pi (\cos\theta^{\mathrm{min}}-\cos\theta^{\mathrm{max}})$,
+Four conventions move a with-noise diagonal even between two codes
+that both add the pure-noise term analytically. The first three change
+the exact pair-count term itself; the fourth lives in the projected
+part.
+
+1. **Dispersion definition.** Two conventions coexist in the
+   literature: $\sigma_c$ is the dispersion of one ellipticity
+   component, and $\sigma_\epsilon^2 = 2\sigma_c^2$ sums both
+   components. The per-component noise power is the same number either
+   way, $N = \sigma_c^2/\bar{n} = \sigma_\epsilon^2/(2\bar{n})$,
+   but a code handed $\sigma_\epsilon$ where it expects $\sigma_c$
+   builds $N$ twice too large. The pure-noise term is quadratic in
+   $N$, so its diagonal comes out four times too large, while the
+   mixed signal-times-noise term is linear in $N$ and only doubles.
+   This study pins the convention at the export: `sigma_e_component`
+   is per component, and [run_gaussian.py](scripts/run_gaussian.py)
+   asserts the Fourier noise power built from it against the value
+   TJPCov holds internally.
+
+2. **Bin integration of the delta.** Integrating the delta turns the
+   pure-noise diagonal into one over the ring solid angle, and three
+   ring areas circulate: the spherical
+   $2\pi (\cos\theta^{\mathrm{min}} - \cos\theta^{\mathrm{max}})$,
    the flat-sky annulus
-   $\pi [(\theta^{\mathrm{max}})^2-(\theta^{\mathrm{min}})^2]$, or a
-   bin-center $2\pi \theta_c \Delta\theta$ with some center
-   definition. The choices agree as the bins narrow and differ most in
-   wide logarithmic bins at small separations.
-3. **Edge correction of the pair area** — a uniform footprint times the
-   full ring counts pairs whose partner ring leaves the survey.
-   `mask_pair_area_cov` rebuilds $A_{\mathrm{pair}}$ from the raw mask
-   power spectrum instead; fewer pairs raise the pure-noise variance.
-4. **The mixed signal-times-noise term** stays inside the multipole
-   sum, where it converges; its band limit and bin-averaged kernels
-   are the machinery the no-noise comparison already exercises.
+   $\pi [(\theta^{\mathrm{max}})^2 - (\theta^{\mathrm{min}})^2]$,
+   and a bin-center $2\pi \theta_c \Delta\theta$ with some
+   definition of the center $\theta_c$. On this study's grid the
+   differences are measured, not hypothetical. The arithmetic bin
+   center reproduces the flat annulus exactly. A geometric
+   (logarithmic) center sits 0.64% below the flat annulus on every bin
+   of a logarithmic grid. The spherical ring falls below the flat one
+   by an amount that grows with separation: about $10^{-7}$ at
+   2.5 arcmin and 0.93% at the widest bin. A smaller ring holds fewer
+   pairs, and the noise diagonal rises by the same fraction. CoCoA
+   uses the spherical form (`annulus_pair_area_cov`, with a two-sine
+   identity so narrow bins do not subtract nearly equal cosines).
+
+3. **Edge correction of the pair area.** The uniform expression
+   multiplies the survey area by the full ring, which assumes every
+   partner ring lies inside the footprint. A galaxy near the boundary
+   loses the part of its ring that leaves the survey, so the true
+   pair count is smaller, and the loss grows with the separation and
+   with the length of the boundary. `mask_pair_area_cov` rebuilds
+   $A_{\mathrm{pair}}$ from the raw mask power spectrum instead of
+   assuming a uniform footprint; fewer pairs raise the pure-noise
+   variance by the same fraction. Two codes that correct differently,
+   or of which only one corrects, separate on the diagonal most at
+   the largest separations.
+
+4. **The mixed signal-times-noise term.** In the equations above this
+   is the $4 C_\ell N$ inside $P_{ij}$. It carries one factor of
+   $C_\ell$, which falls off with multipole, so the projection
+   converges on it the way it converges on the signal, and it needs
+   no analytic rescue. The band limit and the bin-averaged kernels
+   still have to match between the codes, but that is the same
+   machinery the no-noise comparison already exercises. One coupling
+   to the first item is worth knowing: a wrong dispersion convention
+   enters this term linearly and the pure-noise term quadratically,
+   so the two errors move the diagonal by different factors and
+   cannot cancel.
 
 The formula needs no Boltzmann code: the densities, the dispersion,
 the bin edges and the survey area fix every number. Checking a code's
