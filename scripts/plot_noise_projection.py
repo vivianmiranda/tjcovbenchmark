@@ -119,7 +119,7 @@ def main():
     axes[0].set_xscale("log")
     axes[0].set_title("Kernel at the bin center: never settles")
     axes[0].set_ylabel("partial sum / exact diagonal")
-    axes[0].legend(loc="upper left", fontsize=10)
+    axes[0].legend(loc="upper left", fontsize=10, frameon=False)
 
     def arcmin(value):
         scaled = np.rad2deg(value) * 60.0
@@ -136,8 +136,8 @@ def main():
     axes[1].set_xscale("log")
     axes[1].set_ylim(0.0, 1.1)
     axes[1].set_title("Bin-averaged kernels: converges, slowly")
-    axes[1].legend(loc="upper left", fontsize=10, title="bin, with "
-                   r"$\pi$/width dotted", title_fontsize=10)
+    axes[1].legend(loc="upper left", fontsize=10, frameon=False,
+                   bbox_to_anchor=(0.0, 0.95))
 
     centers = np.rad2deg(np.sqrt(edges[:-1] * edges[1:])) * 60.0
     exact = np.zeros(NBIN)
@@ -152,7 +152,7 @@ def main():
     axes[2].set_title("First matrix row: projection against exact")
     axes[2].set_xlabel(r"$\theta_j$ [arcmin]")
     axes[2].set_ylabel("entry / exact diagonal")
-    axes[2].legend(loc="upper right", fontsize=10)
+    axes[2].legend(loc="upper right", fontsize=10, frameon=False)
 
     for axis in axes[:2]:
         axis.set_xlabel(r"band limit $\ell_{\max}$")
