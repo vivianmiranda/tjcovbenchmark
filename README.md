@@ -1537,8 +1537,14 @@ part.
    literature: $\sigma_c$ is the dispersion of one ellipticity
    component, and $\sigma_\epsilon^2 = 2\sigma_c^2$ sums both
    components. The per-component noise power is the same number either
-   way, $N = \sigma_c^2/\bar{n} = \sigma_\epsilon^2/(2\bar{n})$,
-   but a code handed $\sigma_\epsilon$ where it expects $\sigma_c$
+   way:
+
+   $$
+   N = \frac{\sigma_c^2}{\bar{n}}
+     = \frac{\sigma_\epsilon^2}{2\bar{n}}
+   $$
+
+   A code handed $\sigma_\epsilon$ where it expects $\sigma_c$
    builds $N$ twice too large. The pure-noise term is quadratic in
    $N$, so its diagonal comes out four times too large, while the
    mixed signal-times-noise term is linear in $N$ and only doubles.
@@ -1549,12 +1555,20 @@ part.
 
 2. **Bin integration of the delta.** Integrating the delta turns the
    pure-noise diagonal into one over the ring solid angle, and three
-   ring areas circulate: the spherical
-   $2\pi (\cos\theta^{\mathrm{min}} - \cos\theta^{\mathrm{max}})$,
-   the flat-sky annulus
-   $\pi [(\theta^{\mathrm{max}})^2 - (\theta^{\mathrm{min}})^2]$,
-   and a bin-center $2\pi \theta_c \Delta\theta$ with some
-   definition of the center $\theta_c$. On this study's grid the
+   ring areas circulate, written here in the same order they are
+   named: spherical, flat-sky annulus, and bin-center with some
+   definition of the center $\theta_c$:
+
+   $$
+   \Omega_{\mathrm{ring}} =
+   2\pi \left(\cos\theta^{\mathrm{min}} - \cos\theta^{\mathrm{max}}\right),
+   \qquad
+   \pi \left[(\theta^{\mathrm{max}})^2 - (\theta^{\mathrm{min}})^2\right],
+   \qquad
+   2\pi \theta_c \Delta\theta
+   $$
+
+   On this study's grid the
    differences are measured, not hypothetical. The arithmetic bin
    center reproduces the flat annulus exactly. A geometric
    (logarithmic) center sits 0.64% below the flat annulus on every bin
