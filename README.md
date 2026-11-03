@@ -1425,30 +1425,40 @@ $$
 The two lines differ by one object only: the projected pure noise
 $P_{ij}[2 N^2]$ against the exact
 $\delta_{ij} 2N^2/A_{\mathrm{pair}}$. The first converges to the
-second as the band limit grows, and the three figures below measure
-how slowly, on the study's angular grid (26 logarithmic bins from 2.5
-to 900 arcmin). Black always marks the exact answer; color marks the
-projected route.
+second as the band limit grows. The three figures below plot that one
+object and nothing else, in three views, on the study's angular grid
+(26 logarithmic bins from 2.5 to 900 arcmin). Every plotted ratio is
+dimensionless, so the noise power and the pair area cancel and the
+same curves apply to any survey with these bins. Black always marks
+the exact answer; color marks the projected route.
 
-The first figure evaluates the kernels at the center of the narrowest
-bin instead of averaging them: the partial sum first exceeds the exact
-answer at $\ell_{\max} = 16{,}657$ and keeps growing, reaching 5.9
-times the exact diagonal at $\ell_{\max} = 10^5$.
+**Figure :one:**: the narrowest bin's diagonal with the kernels
+evaluated at the bin center instead of averaged over the bin,
+$P_{11}^{\mathrm{center}}[2N^2]$ in units of the exact
+$2N^2/A_{\mathrm{pair}}(\theta_1)$, against the band limit. The
+partial sum first exceeds the exact answer at
+$\ell_{\max} = 16{,}657$ and keeps growing, reaching 5.9 times the
+exact diagonal at $\ell_{\max} = 10^5$; without the bin average
+there is no target at all.
 
 ![Unbinned pure-noise projection](figures/real_space_noise/noise_center.png)
 
-The second figure averages the kernels over each bin, the TJPCov/CCL
-route: every curve now approaches the exact diagonal. Each bin needs
-$\ell_{\max}$ near $\pi$ over its width (the dotted lines), and the
-narrowest bin still sits at 0.97 at $\ell_{\max} = 10^5$.
+**Figure :two:**: the same diagonal with the bin-averaged kernels of
+$P_{ij}$, which is the TJPCov/CCL route: $P_{ii}[2N^2]$ in units of
+$2N^2/A_{\mathrm{pair}}(\theta_i)$, for three bins $i$. Every curve
+now approaches the exact diagonal. Each bin needs $\ell_{\max}$ near
+$\pi$ over its width (the dotted lines), and the narrowest bin still
+sits at 0.97 at $\ell_{\max} = 10^5$.
 
 ![Bin-averaged pure-noise projection](figures/real_space_noise/noise_binned.png)
 
-The third figure shows the narrowest bin's matrix row at two fixed
-band limits. At $\ell_{\max} = 2{,}000$ the diagonal entry holds 16%
-of the exact value and the rest spills into neighboring separations;
-at $\ell_{\max} = 30{,}000$ the diagonal reaches 90% and the spill
-has nearly vanished.
+**Figure :three:**: one full row of the same object, $P_{1j}[2N^2]$
+for the narrowest bin against every $\theta_j$ at two fixed band
+limits, in units of the geometric mean of the two exact diagonals. At
+$\ell_{\max} = 2{,}000$ the diagonal entry holds 16% of the exact
+value and the rest spills into neighboring separations; at
+$\ell_{\max} = 30{,}000$ the diagonal reaches 90% and the spill has
+nearly vanished.
 
 ![Pure-noise matrix row](figures/real_space_noise/noise_row.png)
 
